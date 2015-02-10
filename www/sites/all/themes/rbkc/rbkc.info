@@ -1,0 +1,13 @@
+name = RBKC
+description = Corporate theme for the Royal Borough of Kensington and Chelsea.
+package = Core
+core = 7.x
+
+stylesheets[all][] = css/main.css
+stylesheets[all][] = css/homepage.css
+
+scripts[] = js/main.js
+
+regions[servicedropdown] = ServiceDropDown
+regions[footerlinks] = Footerlinks
+regions[content] = Content

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the site.
+ */
+
+function rbkc_deploy_install() {
+  // Drop down service menu.
+  $menu_machine_name = 'drop-down-service-menu';
+
+  $menu = array(
+    'menu_name' => $menu_machine_name,
+    'title' => st('Drop down service menu'),
+    'description' => 'The drop down service menu.',
+  );
+  menu_save($menu);
+
+  // @todo: Update link path.
+  $links = array(
+    'Parking, transport and streets',
+    'Bins and recycling',
+    'Planning',
+    'Libraries',
+    'Council tax',
+    'Births, deaths and marriages',
+    'Children and education',
+    'Leisure and culture',
+    'Parks and ecology',
+    'Housing',
+    'Jobs',
+    'Health and social care',
+    'Licensing',
+    'Business and enterprise',
+    'Environment',
+    'Advice and benefits',
+    'Community and local life',
+    'Newsroom',
+  );
+
+  foreach ($links as $link) {
+    $item = array(
+      'link_title' => st($link),
+      'link_path' => '<front>',
+      'menu_name' => $menu_machine_name,
+    );
+    menu_link_save($item);
+  }
+
+  // Update the menu router information.
+  menu_rebuild();
+}
