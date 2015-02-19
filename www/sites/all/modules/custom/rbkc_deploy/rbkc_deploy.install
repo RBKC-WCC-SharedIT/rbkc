@@ -51,6 +51,9 @@ function rbkc_deploy_install() {
   menu_rebuild();
 }
 
-function rbkc_deploy_7000() {
+/**
+ * Switch on the Service Hub Feature.
+ */
+function rbkc_deploy_update_7000() {
   module_enable(array('feature_service_hub'));
 }
