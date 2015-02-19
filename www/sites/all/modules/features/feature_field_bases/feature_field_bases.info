@@ -13,4 +13,5 @@ features[field_base][] = field_contact_button
 features[field_base][] = field_expiry_date
 features[field_base][] = field_publish_date
 features[field_base][] = field_site_section
+features[field_base][] = field_top_task
 features[taxonomy][] = site_sections
