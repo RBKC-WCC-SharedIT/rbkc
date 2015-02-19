@@ -50,3 +50,7 @@ function rbkc_deploy_install() {
   // Update the menu router information.
   menu_rebuild();
 }
+
+function rbkc_deploy_7000() {
+  module_enable(array('feature_service_hub'));
+}
