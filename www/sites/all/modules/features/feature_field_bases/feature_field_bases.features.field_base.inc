@@ -100,6 +100,43 @@ function feature_field_bases_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
+  // Exported field_base: 'field_hub_link'
+  $field_bases['field_hub_link'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_hub_link',
+    'foreign keys' => array(
+      'nid' => array(
+        'columns' => array(
+          'nid' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'nid' => array(
+        0 => 'nid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'node_reference',
+    'settings' => array(
+      'referenceable_types' => array(
+        'answer' => 'answer',
+        'servicehub' => 'servicehub',
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'node_reference',
+  );
+
   // Exported field_base: 'field_publish_date'
   $field_bases['field_publish_date'] = array(
     'active' => 1,

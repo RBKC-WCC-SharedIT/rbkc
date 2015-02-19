@@ -71,5 +71,26 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 
 }
 
+/**
+ * Implements template_preprocess_field().
+ */
+function rbkc_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
 
+  if (!isset($element['#field_name'])) {
+    return;
+  }
 
+  if ('field_top_task' !== $element['#field_name']) {
+    return;
+  }
+
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['#element']['attributes']['class'] = 'first';
+  }
+
+  $last_index = (count($variables['items'])) - 1;
+  if (!empty($variables['items'][$last_index])) {
+    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
+  }
+}
