@@ -1,0 +1,20 @@
+name = RBKC Profile
+description = Royal Borough of Kensington and Chelsea site installation profile.
+core = 7.x
+dependencies[] = block
+dependencies[] = help
+dependencies[] = toolbar
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = syslog
+
+dependencies[] = ctools
+dependencies[] = strongarm
+dependencies[] = features

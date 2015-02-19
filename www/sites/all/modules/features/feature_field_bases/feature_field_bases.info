@@ -1,0 +1,17 @@
+name = Field bases
+description = Field bases Feature.
+core = 7.x
+package = Features
+dependencies[] = date
+dependencies[] = features
+dependencies[] = link
+dependencies[] = taxonomy
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = body
+features[field_base][] = field_contact_button
+features[field_base][] = field_expiry_date
+features[field_base][] = field_publish_date
+features[field_base][] = field_site_section
+features[field_base][] = field_top_task
+features[taxonomy][] = site_sections

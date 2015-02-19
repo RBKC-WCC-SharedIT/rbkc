@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Drupal hooks.
+ */
+
+/**
+ * Implements hook_block_info().
+ *
+ * Provides a block that divides up the menu links in drop-down-service-menu
+ * into three separate unordered lists.
+ */
+function rbkc_navigation_block_info() {
+  $blocks['drop-down-service-menu']['info'] = t('RBKC drop down service menu');
+  $blocks['drop-down-service-menu']['cache'] = DRUPAL_CACHE_GLOBAL;
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function rbkc_navigation_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'drop-down-service-menu':
+      $block['subject'] = '<none>';
+
+      $split_into = 3;
+      $menu_links = menu_navigation_links('drop-down-service-menu');
+      $split_menus = rbkc_navigation_split_menu($menu_links, $split_into);
+
+      $output = '';
+      foreach ($split_menus as $menu) {
+        $output .= theme('links', array('links' => $menu));
+      }
+
+      $block['content'] = $output;
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Given an array of menu links, split the array into $split_count equal chunks.
+ *
+ * @param array $menu_links
+ * @param $split_count
+ *
+ * @return array
+ *  An array with $split_count keys contains menu links.
+ */
+function rbkc_navigation_split_menu(array $menu_links, $split_count) {
+  $menu_link_count = count($menu_links);
+  $links_per_split = ceil($menu_link_count / $split_count);
+  return array_chunk($menu_links, $links_per_split);
+}
