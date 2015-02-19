@@ -82,7 +82,7 @@ function feature_answer_field_default_field_instances() {
     'settings' => array(
       'absolute_url' => 1,
       'attributes' => array(
-        'class' => '',
+        'class' => 'contact-team',
         'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
