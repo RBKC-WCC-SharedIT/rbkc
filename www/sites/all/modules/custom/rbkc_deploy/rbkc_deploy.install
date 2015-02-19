@@ -52,8 +52,19 @@ function rbkc_deploy_install() {
 }
 
 /**
+ * Implements hook_update_N().
+ *
  * Switch on the Service Hub Feature.
  */
 function rbkc_deploy_update_7000() {
   module_enable(array('feature_service_hub'));
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the metatags module.
+ */
+function rbkc_deploy_update_7001() {
+  module_enable(array('metatag'));
 }
