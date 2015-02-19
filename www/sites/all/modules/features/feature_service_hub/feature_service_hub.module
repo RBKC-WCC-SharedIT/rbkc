@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Service Hub feature.
+ */
+
+include_once 'feature_service_hub.features.inc';
