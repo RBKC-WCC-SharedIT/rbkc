@@ -1,4 +1,4 @@
-(function($) { 
+(function($) {
 
 	var headerMob,
 			headerDesk,
@@ -12,103 +12,125 @@
 			serviceList,
 			commsHeight,
 			slickSlider;
-	
-	
-	function headerMob() { // opening menu and search in mobile view  
-		$('#openmenu').click(function() {
+
+
+	function headerMob() { // opening menu and search in mobile view
+		$('#openMenu').click(function() {
 			$('.search input').fadeOut(0); //hide
 			$('.search').slideUp(50).css("width", "0"); //hide
-			$('#opensearch').removeClass('active');
-			if($('.headerglobal-nav').is(":hidden")){
-				$('.headerglobal-nav').css("width", "auto").slideDown(150); //show
+			$('#openSearch').removeClass('active');
+			if($('.headerglobal__nav').is(":hidden")){
+				$('.headerglobal__nav').css("width", "auto").slideDown(150); //show
 				$(this).addClass('active');
 			} else {
-				$('.headerglobal-nav').slideUp(50).css("width", "0"); //hide
+				$('.headerglobal__nav').slideUp(50).css("width", "0"); //hide
 				$(this).removeClass('active');
 			}
-		});	  
-		$('#opensearch').click(function() {
-			$('.headerglobal-nav').slideUp(50).css("width", "0"); //hide
-			$('#openmenu').removeClass('active');
+		});
+		$('#openSearch').click(function() {
+			$('.headerglobal__nav').slideUp(50).css("width", "0"); //hide
+			$('#openMenu').removeClass('active');
 			if($('.search').is(":hidden")){
-				$('.search input').fadeIn(200); 
+				$('.search input').fadeIn(200);
 				$('.search').css("width", "auto").slideDown(200); //show
 				$(this).addClass('active');
 			} else {
 				$('.search input').fadeOut(0); //hide
 				$('.search').slideUp(50).css("width", "0"); //hide
 				$(this).removeClass('active');
-			} 
+			}
 		});
 	} //end headerMob
 
-	function headerDesk() {  // the Service menu button in desktop view  	 
-		$('.openservicemenu').click(function() {
-			if($('.servicemenu').hasClass('hide')){
-				$('.servicemenu').removeClass('hide');
+	function headerDesk() {  // the Service menu button in desktop view
+		$('#openServiceMenu').click(function() {
+			if($('.service-menu').hasClass('hide')){
+				$('.service-menu').removeClass('hide');
 				$(this).addClass('active');
 			} else {
-				$('.servicemenu').addClass('hide');
+				$('.service-menu').addClass('hide');
 				$(this).removeClass('active');
 			}
-		});	  
-		$('.servicemenu-close').click(function() {
-			$('.servicemenu').addClass('hide');
-			$('.openservicemenu').removeClass('active');
-		});	
+		});
+		$('.service-menu__close').click(function() {
+			$('.service-menu').addClass('hide');
+			$('#openServiceMenu').removeClass('active');
+		});
 	} //end headerDesk
 
-	
+
 	function wrapH2() {
-		
+
 		$('.content h2').each(function() {
 			if ($(this).height() > 40) {
 				$(this).css("line-height", "2rem");
-			}	
+			}
 		});
 	}
-	
-	function stylePDF() { // styling PDF links with icon 
-		
-		$('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){  
-			
+
+	function stylePDF() { // styling PDF links with icon
+
+		$('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
+
 			var linkElement = $(this);
-					
+
 			var linkText = linkElement.text();
-					
+
 			var	linkHref =  $(this).attr('href');
-					
-			var linkParent = $(this).parents("li:first, p:first");		
-						
+
+			var linkParent = $(this).parents("li:first, p:first");
+
 			linkParent.addClass("docLink");  // adding a class to the link's parent
 
 			$('<br>').appendTo(linkElement);
-								
+
 			// Create the Icon with the duplicated link
-			var Icon = 
+			var Icon =
 				$('<a />', {  // creating a div with class of docLink
 					'class': 'docLink-icon',
 					'href' : linkHref,
 					'role' : 'presentation',   //to hide from screen reader
 					'tabindex' : "-1", // to hide from screen reader
 				}).prependTo(linkParent);
-						
+
 		}); // end each function
 	} // end stylePDF
-	
-	 	
+
+	// show/hide right hand column menu
+	function addViewAllMore() {
+		var childNumber = $('.related-more ul').find('li');
+			if (childNumber.length > 3) {
+					$('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-more ul');
+			}
+	}
+	function addViewAllElsewhere() {
+		var childNumber = $('.related-elsewhere ul').find('li');
+			if (childNumber.length > 3) {
+					$('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-elsewhere ul');
+			}
+	}
+	function showMore() {
+		$(this).parent().find('li:gt(2)').slideToggle('150');
+				if ($(this).text() === "View all") {
+					$(this).text("View less").attr('title', 'View fewer links');/* Toggles the title text  */
+				}
+				else {
+					$(this).text("View all").attr('title', 'View more links');/* Toggles the title text */
+					}
+	} 	// end show/hide right hand column menu
+
 	// if broswer does not support html5 placeholder, add value to form field
 	function checkPlaceholder() {
-		if(!Modernizr.input.placeholder){		
+		if(!Modernizr.input.placeholder){
 		   $('.headerglobal-search_full_text input').val('Enter search terms...');
 		   $('.headerglobal-search_full_text input').click(function() {
-				function doOnce() {	
+				function doOnce() {
 					$('.headerglobal-search_full_text input').val("");
-					doOnce = function () {};
+					doOnce = function() {};
 				}
 				doOnce();
 		   });
-		}	
+		}
 	}
 
 	function serviceList() {
@@ -123,7 +145,7 @@
 				$('.servicelist-2nd').slideUp(200);
 				$('.servicelist-viewall span').text('View more services');
 				$(this).removeClass('viewless');
-			}	
+			}
 		});
 	} // end service list
 
@@ -146,7 +168,7 @@
 								slidesToShow: 3,
 								slidesToScroll: 1,
 								autoplay: true,
-								autoplaySpeed: 4000,	
+								autoplaySpeed: 4000,
 								responsive: [
 									{
 									  breakpoint: 700,
@@ -160,47 +182,47 @@
 									  settings: {
 										slidesToShow: 1,
 										swipe: true,
-					
+
 									  }
 									}
-								  ] 
-							});				
+								  ]
+							});
 	} // end slickSlider
-	
+
 
 $(document).ready(function() {
-  
+
 	headerMob();
-	  
+
 	headerDesk();
-	  
+
 	stylePDF();
-	 
-	accordion(); 
-	
+
+	accordion();
+
 	addViewAllMore();
-	
+
 	addViewAllElsewhere();
-	
+
 	$('.viewAll').on("click",showMore);
 
 	LHCtrim();
-		
+
 	checkPlaceholder();
-	
+
 	wrapH2();
-	
+
 	serviceList();
-	
-	commsHeight(); 
-	
+
+	commsHeight();
+
 	try	{
 	slickSlider();
 	}
 	catch(e){
 		// if not on home page then we want to do nothing
 	}
-  
+
 }); // END DOC READY
 
 

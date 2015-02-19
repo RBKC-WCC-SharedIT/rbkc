@@ -3,14 +3,14 @@
 
 // adding classes for footer menu links
 function rbkc_menu_tree__menu_footer_links($variables) {
-  return '<ul class="footerglobal-links lightlinks">' . $variables['tree'] . '</ul>';
+  return '<ul class="footerglobal__links lightlinks">' . $variables['tree'] . '</ul>';
 }
 
 
 
 // splitting service menu link into three
-function rbkc_menu_tree__menu_drop_down_service_menu($variables) {
-	
+/*function rbkc_menu_tree__menu_drop_down_service_menu($variables) {
+
 	$htmlString = $variables['tree'];
 	$arrayItems = explode("</li>", $htmlString);
 	$numEachMenu = floor(count($arrayItems)/3);
@@ -20,7 +20,7 @@ function rbkc_menu_tree__menu_drop_down_service_menu($variables) {
 	$arrayItems3 = implode($arrayItems[2]);
 
 	return '<ul>'. $arrayItems1 .'</ul><ul>' . $arrayItems2 . '</ul><ul>' . $arrayItems3 . '</ul>';
-}
+}*/
 
 
 // removing 'leaf' classes from menus
