@@ -13,17 +13,17 @@
                     <h2>Conservation areas</h2>
                   </div>
                   <div class="col7">
-                      <!-- the first three topics on that topic page are pulled through here -->
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
-                      <p>An introduction to conservation areas and the rules around
-                      them.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
-                      <p>View maps of conservation areas.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
-                      <p>Search for properties to see if which (if any) conservation
-                      areas they are in.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
-                   </div><!--end col 7-->
+                    <!-- the first three topics on that topic page are pulled through here -->
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
+                    <p>An introduction to conservation areas and the rules around
+                    them.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
+                    <p>View maps of conservation areas.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
+                    <p>Search for properties to see if which (if any) conservation
+                    areas they are in.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
+                  </div><!--end col 7-->
                   </section>
                 </div> <!--end blueBorderTop-->
 
@@ -35,17 +35,17 @@
                     <h2>Conservation areas</h2>
                   </div>
                   <div class="col7">
-                      <!-- the first three topics on that topic page are pulled through here -->
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
-                      <p>An introduction to conservation areas and the rules around
-                      them.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
-                      <p>View maps of conservation areas.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
-                      <p>Search for properties to see if which (if any) conservation
-                      areas they are in.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
-                   </div><!--end col 7-->
+                    <!-- the first three topics on that topic page are pulled through here -->
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
+                    <p>An introduction to conservation areas and the rules around
+                    them.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
+                    <p>View maps of conservation areas.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
+                    <p>Search for properties to see if which (if any) conservation
+                    areas they are in.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
+                  </div><!--end col 7-->
                   </section>
                 </div> <!--end blueBorderTop-->
 
@@ -57,17 +57,17 @@
                     <h2>Conservation areas</h2>
                   </div>
                   <div class="col7">
-                      <!-- the first three topics on that topic page are pulled through here -->
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
-                      <p>An introduction to conservation areas and the rules around
-                      them.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
-                      <p>View maps of conservation areas.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
-                      <p>Search for properties to see if which (if any) conservation
-                      areas they are in.</p>
-                      <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
-                   </div><!--end col 7-->
+                    <!-- the first three topics on that topic page are pulled through here -->
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasexplained.aspx">Conservation areas explained</a></h3>
+                    <p>An introduction to conservation areas and the rules around
+                    them.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareamaps.aspx">Conservation area maps</a></h3>
+                    <p>View maps of conservation areas.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas/conservationareasearch.aspx">Search conservation areas</a></h3>
+                    <p>Search for properties to see if which (if any) conservation
+                    areas they are in.</p>
+                    <h3><a href="/planningandbuildingcontrol/heritageandconservation/conservationareas1.aspx">More in Conservation areas...</a></h3>
+                  </div><!--end col 7-->
                   </section>
                 </div> <!--end blueBorderTop-->
 

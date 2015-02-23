@@ -8,8 +8,8 @@
                 <div class="blue-border-top row">
 
                   <div class="topics col8">
-                    <h2><a title="r" href="#">About the Local Development
-                    Framework</a></h2>
+                    <h2><a title="r" href="#">About the local development
+                    framework</a></h2>
                     <p>Grumpy wizards make toxic brew for the evil Queen and Jack. One
                     morning, when Gregor Samsa woke from troubled dreams, he found
                     himself transformed in his bed into a horrible vermin.</p>
