@@ -57,7 +57,7 @@ function rbkc_deploy_install() {
  * Switch on the Service Hub Feature.
  */
 function rbkc_deploy_update_7000() {
-  module_enable(array('feature_service_hub'));
+  module_enable(array('feature_service_hub'), TRUE);
 }
 
 /**
@@ -66,5 +66,14 @@ function rbkc_deploy_update_7000() {
  * Switch on the metatags module.
  */
 function rbkc_deploy_update_7001() {
-  module_enable(array('metatag'));
+  module_enable(array('metatag'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the node_reference module.
+ */
+function rbkc_deploy_update_7002() {
+  module_enable(array('node_reference'), TRUE);
 }
