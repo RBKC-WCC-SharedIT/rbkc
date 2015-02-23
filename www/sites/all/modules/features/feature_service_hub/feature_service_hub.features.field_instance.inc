@@ -10,47 +10,84 @@
 function feature_service_hub_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-servicehub-body'
-  $field_instances['node-servicehub-body'] = array(
+  // Exported field_instance: 'node-servicehub-field_news_stories'
+  $field_instances['node-servicehub-field_news_stories'] = array(
     'bundle' => 'servicehub',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'News stories appear towards the bottom of the service hub page.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
+    'field_name' => 'field_news_stories',
+    'label' => 'News stories',
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+        'rows' => 5,
       ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'type' => 'text_textarea',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-servicehub-field_other_popular_content'
+  $field_instances['node-servicehub-field_other_popular_content'] = array(
+    'bundle' => 'servicehub',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Start typing the title to link other popular content.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_other_popular_content',
+    'label' => 'Other popular content',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 4,
     ),
   );
 
@@ -156,11 +193,14 @@ function feature_service_hub_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Body');
+  t('News stories');
+  t('News stories appear towards the bottom of the service hub page.');
+  t('Other popular content');
   t('Popular tasks');
   t('Popular tasks appear at the top of the service hub page.');
   t('Popular topics');
   t('Start typing the title to link a popular topic.');
+  t('Start typing the title to link other popular content.');
 
   return $field_instances;
 }
