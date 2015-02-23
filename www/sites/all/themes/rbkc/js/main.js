@@ -13,51 +13,29 @@
 			commsHeight,
 			slickSlider;
 
-
-	function headerMob() { // opening menu and search in mobile view
-		$('#openMenu').click(function() {
-			$('.search input').fadeOut(0); //hide
-			$('.search').slideUp(50).css("width", "0"); //hide
-			$('#openSearch').removeClass('active');
-			if($('.headerglobal__nav').is(":hidden")){
-				$('.headerglobal__nav').css("width", "auto").slideDown(150); //show
-				$(this).addClass('active');
-			} else {
-				$('.headerglobal__nav').slideUp(50).css("width", "0"); //hide
-				$(this).removeClass('active');
-			}
-		});
-		$('#openSearch').click(function() {
-			$('.headerglobal__nav').slideUp(50).css("width", "0"); //hide
-			$('#openMenu').removeClass('active');
-			if($('.search').is(":hidden")){
-				$('.search input').fadeIn(200);
-				$('.search').css("width", "auto").slideDown(200); //show
-				$(this).addClass('active');
-			} else {
-				$('.search input').fadeOut(0); //hide
-				$('.search').slideUp(50).css("width", "0"); //hide
-				$(this).removeClass('active');
-			}
-		});
-	} //end headerMob
-
-	function headerDesk() {  // the Service menu button in desktop view
-		$('#openServiceMenu').click(function() {
-			if($('.service-menu').hasClass('hide')){
-				$('.service-menu').removeClass('hide');
-				$(this).addClass('active');
-			} else {
-				$('.service-menu').addClass('hide');
-				$(this).removeClass('active');
-			}
-		});
-		$('.service-menu__close').click(function() {
-			$('.service-menu').addClass('hide');
-			$('#openServiceMenu').removeClass('active');
-		});
-	} //end headerDesk
-
+  // opening and closing header menus - pure css?
+  function assignOpenMenu( thisButton, thisMenu, otherButton, otherMenu ) {
+    $(thisButton).click(function() {
+      // test to see if other menu provided (only defined when acting on two mobile menus)
+      if (otherButton !== undefined && otherMenu !== undefined) {
+        $(otherMenu).addClass('hide'); //hide
+        $(otherButton).removeClass('active');
+      }
+      if($(thisMenu).hasClass('hide')) {
+        $(thisMenu).removeClass('hide');
+        $(thisButton).addClass('active');
+      } else {
+        $(thisMenu).addClass('hide');
+        $(thisButton).removeClass('active');
+      }
+      if(thisMenu === '.service-menu') {
+          $('.service-menu__close').click(function() {
+          $('.service-menu').addClass('hide');
+          $('#openServiceMenu').removeClass('active');
+        });
+      }
+    });
+  } //end assignOpenMenu
 
 	function wrapH2() {
 
@@ -192,9 +170,16 @@
 
 $(document).ready(function() {
 
-	headerMob();
+	//headerMob();
 
-	headerDesk();
+	//headerDesk();
+
+  // assign click function to open the service menu in mobile
+  assignOpenMenu( '#openMenu', '.headerglobal__nav', '#openSearch', '.search' );
+  // assign click function to open the search in mobile
+  assignOpenMenu( '#openSearch', '.search', '#openMenu', '.headerglobal__nav');
+  //assign click function to open the service menu in desktop
+  assignOpenMenu( '#openServiceMenu', '.service-menu');
 
 	stylePDF();
 
