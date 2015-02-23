@@ -81,7 +81,7 @@ function rbkc_preprocess_field(&$variables, $hook) {
     return;
   }
 
-  if ('field_top_task' !== $element['#field_name']) {
+  if ('field_popular_tasks' !== $element['#field_name']) {
     return;
   }
 

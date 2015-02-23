@@ -54,55 +54,12 @@ function feature_service_hub_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-servicehub-field_hub_link'
-  $field_instances['node-servicehub-field_hub_link'] = array(
+  // Exported field_instance: 'node-servicehub-field_popular_tasks'
+  $field_instances['node-servicehub-field_popular_tasks'] = array(
     'bundle' => 'servicehub',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Start typing to find the page you want to create a hub link to.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'node_reference',
-        'settings' => array(
-          'node_reference_view_mode' => 'teaser',
-        ),
-        'type' => 'node_reference_node',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_hub_link',
-    'label' => 'Hub link',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'node_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'node_reference_autocomplete',
-      'weight' => 41,
-    ),
-  );
-
-  // Exported field_instance: 'node-servicehub-field_top_task'
-  $field_instances['node-servicehub-field_top_task'] = array(
-    'bundle' => 'servicehub',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'These appear at the top of the service hub page.',
+    'description' => 'Popular tasks appear at the top of the service hub page.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -119,8 +76,8 @@ function feature_service_hub_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_top_task',
-    'label' => 'Top task',
+    'field_name' => 'field_popular_tasks',
+    'label' => 'Popular tasks',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -154,13 +111,56 @@ function feature_service_hub_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-servicehub-field_popular_topics'
+  $field_instances['node-servicehub-field_popular_topics'] = array(
+    'bundle' => 'servicehub',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Start typing the title to link a popular topic.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'teaser',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_popular_topics',
+    'label' => 'Popular topics',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 3,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Hub link');
-  t('Start typing to find the page you want to create a hub link to.');
-  t('These appear at the top of the service hub page.');
-  t('Top task');
+  t('Popular tasks');
+  t('Popular tasks appear at the top of the service hub page.');
+  t('Popular topics');
+  t('Start typing the title to link a popular topic.');
 
   return $field_instances;
 }
