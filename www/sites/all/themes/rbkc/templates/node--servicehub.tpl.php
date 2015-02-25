@@ -1,9 +1,5 @@
               <div class="middle inner padlr">
-                <ul class="iconlinks iconlinks--top-tasks rowexpand">
-                    <li class="col4"><a class="first" title="#" href="#">Answer more content</a></li>
-                    <li class="col4"><a title="#" href="#">Answer less content</a></li>
-                    <li class="col4"><a class="last" title="#" href="#">Answer with long name</a></li>
-                </ul>
+                <?php print render($content['field_popular_tasks']); ?>
 
                 <ul class="secondary-topics row">
                   <li class="col4">
