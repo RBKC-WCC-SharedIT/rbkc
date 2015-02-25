@@ -8,6 +8,11 @@
                 <div class="blue-border-top row">
 
                   <div class="topics col8">
+
+                    <?php print render($content['field_topic_link']); ?>
+
+                    <br><br><br>
+
                     <h2><a title="r" href="#">About the local development
                     framework</a></h2>
                     <p>Grumpy wizards make toxic brew for the evil Queen and Jack. One
