@@ -68,8 +68,8 @@
        </div><!-- end inner breadcrumb-->
        <?php endif; /* end if breadcrumb*/ ?>
 
-      <div class="inner heading group">
-           <h1 class='heading__h1 <?php if (strlen($title) > 56) { print "long";} ?>'> <?php print $title; ?> </h1>
+      <div class="heading group">
+           <h1 class='heading__h1 <?php if (strlen($title) > 56) { print "longx";} ?>'> <?php print $title; ?> </h1>
       </div>
     </div><!-- end ribbon -->
     <?php endif; /* end if is front*/ ?>
