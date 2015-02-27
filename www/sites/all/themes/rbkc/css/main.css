@@ -263,6 +263,7 @@ margin-bottom: 0 !important;
   overflow:hidden;
   width:auto;
 }
+.row-begin,
 .row div:first-child,
 .row a:first-child,
 .row li:first-child,
@@ -834,7 +835,7 @@ div.accordionContents.show {
 }
 .iconlinks .first {
   padding-top: 24px;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
   background-position: 1rem 60%;
 }
 .iconlinks .last {
@@ -2457,11 +2458,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     align-items: center;
   }
 
-  .secondary-topics {
-    margin-bottom: 1rem;
-  }
-
-
   /*** related menu ***/
   .related__more ,
   .related__elsewhere {
@@ -3380,12 +3376,12 @@ float: left;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.lt-ie9 .iconlinks--top-tasks .first a {
+.lt-ie9 .iconlinks--top-tasks .first {
   border: solid #58d2c4 1px;
   padding: 1em 4em 1em 1em;
   background-position: 92% 50%;
 }
-.lt-ie9 .iconlinks--top-tasks .last a {
+.lt-ie9 .iconlinks--top-tasks .last {
   border: solid #58d2c4 1px;
   padding: 1em 4em 1em 1em;
   background-position: 92% 50%;
