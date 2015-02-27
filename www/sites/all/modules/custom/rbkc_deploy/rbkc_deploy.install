@@ -57,7 +57,7 @@ function rbkc_deploy_install() {
  * Switch on the Service Hub Feature.
  */
 function rbkc_deploy_update_7000() {
-  module_enable(array('feature_service_hub'));
+  module_enable(array('feature_service_hub'), TRUE);
 }
 
 /**
@@ -66,5 +66,96 @@ function rbkc_deploy_update_7000() {
  * Switch on the metatags module.
  */
 function rbkc_deploy_update_7001() {
-  module_enable(array('metatag'));
+  module_enable(array('metatag'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the node_reference module.
+ */
+function rbkc_deploy_update_7002() {
+  module_enable(array('node_reference'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Create the footer menu and place it in the footerlinks region.
+ */
+function rbkc_deploy_update_7003() {
+  $menu_machine_name = 'menu-footer-links';
+
+  $footer_menu = array(
+    'menu_name' => $menu_machine_name,
+    'title' => st('Footer links'),
+    'description' => 'Footer links.',
+  );
+  menu_save($footer_menu);
+
+  $links = array(
+    'Cookies and your privacy',
+    'Contact us',
+    'Terms of use',
+  );
+
+  // It proved necessary to set a weight to control the order of the menu links.
+  $weight = 50;
+  foreach ($links as $link) {
+    $item = array(
+      'link_title' => st($link),
+      'link_path' => '<front>',
+      'menu_name' => $menu_machine_name,
+      'weight' => $weight,
+    );
+    $weight++;
+    menu_link_save($item);
+  }
+
+  // Update the menu router information.
+  menu_rebuild();
+
+  // Put the menu in the footerlinks block.
+  $default_theme = variable_get('theme_default', '');
+
+  if (!$default_theme) {
+    return;
+  }
+
+  $blocks = array(
+    array(
+      'module' => 'menu',
+      'delta' => $menu_machine_name,
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'footerlinks',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the topics feature.
+ */
+function rbkc_deploy_update_7004() {
+  module_enable(array('feature_topics'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the workbench_scheduler module.
+ */
+function rbkc_deploy_update_7005() {
+  module_enable(array('workbench_scheduler'), TRUE);
 }

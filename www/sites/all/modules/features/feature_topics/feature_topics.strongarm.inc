@@ -1,19 +1,19 @@
 <?php
 /**
  * @file
- * feature_service_hub.strongarm.inc
+ * feature_topics.strongarm.inc
  */
 
 /**
  * Implements hook_strongarm().
  */
-function feature_service_hub_strongarm() {
+function feature_topics_strongarm() {
   $export = array();
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__servicehub';
+  $strongarm->name = 'field_bundle_settings_node__topic';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -35,57 +35,60 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '5',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '4',
         ),
         'xmlsitemap' => array(
-          'weight' => '6',
+          'weight' => '3',
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '6',
         ),
       ),
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_node__servicehub'] = $strongarm;
+  $export['field_bundle_settings_node__topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_servicehub';
+  $strongarm->name = 'menu_options_topic';
   $strongarm->value = array();
-  $export['menu_options_servicehub'] = $strongarm;
+  $export['menu_options_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_servicehub';
+  $strongarm->name = 'menu_parent_topic';
   $strongarm->value = 'main-menu:0';
-  $export['menu_parent_servicehub'] = $strongarm;
+  $export['menu_parent_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_servicehub';
-  $strongarm->value = array();
-  $export['node_options_servicehub'] = $strongarm;
+  $strongarm->name = 'node_options_topic';
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
+  $export['node_options_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_servicehub';
+  $strongarm->name = 'node_preview_topic';
   $strongarm->value = '1';
-  $export['node_preview_servicehub'] = $strongarm;
+  $export['node_preview_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_servicehub';
+  $strongarm->name = 'node_submitted_topic';
   $strongarm->value = 0;
-  $export['node_submitted_servicehub'] = $strongarm;
+  $export['node_submitted_topic'] = $strongarm;
 
   return $export;
 }

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Topics feature.
+ */
+
+include_once 'feature_topics.features.inc';

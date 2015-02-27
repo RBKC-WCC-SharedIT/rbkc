@@ -7,24 +7,14 @@ function rbkc_menu_tree__menu_footer_links($variables) {
 }
 
 
-
-// splitting service menu link into three
-/*function rbkc_menu_tree__menu_drop_down_service_menu($variables) {
-
-	$htmlString = $variables['tree'];
-	$arrayItems = explode("</li>", $htmlString);
-	$numEachMenu = floor(count($arrayItems)/3);
-	$arrayItems = array_chunk($arrayItems, $numEachMenu);
-	$arrayItems1 = implode($arrayItems[0]);
-	$arrayItems2 = implode($arrayItems[1]);
-	$arrayItems3 = implode($arrayItems[2]);
-
-	return '<ul>'. $arrayItems1 .'</ul><ul>' . $arrayItems2 . '</ul><ul>' . $arrayItems3 . '</ul>';
-}*/
-
+function rbkc_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
+  }
+}
 
 // removing 'leaf' classes from menus
-
 function rbkc_menu_link__menu_footer_links($variables) {
 
 	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
@@ -71,5 +61,26 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 
 }
 
+/**
+ * Implements template_preprocess_field().
+ */
+function rbkc_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
 
+  if (!isset($element['#field_name'])) {
+    return;
+  }
 
+  if ('field_popular_tasks' !== $element['#field_name']) {
+    return;
+  }
+
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['#element']['attributes']['class'] = 'first';
+  }
+
+  $last_index = (count($variables['items'])) - 1;
+  if (!empty($variables['items'][$last_index])) {
+    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
+  }
+}
