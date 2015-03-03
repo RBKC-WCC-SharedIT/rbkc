@@ -64,54 +64,67 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 /**
  * Override menu link variables.
  *
- * @param type $variables
+ * @param $variables
+ *
+ * @return string
  */
-function rbkc_menu_link(&$variables) {
-  // Capture book table of content menu links, remove their classes and add an
-  // active class just to the tip menu link item.
-  $find = 'menu_link__book_toc';
+function rbkc_menu_link__book_toc_publication(&$variables) {
+  // Remove all classes from book menu links.
+  unset($variables['element']['#attributes']['class']);
 
-  if ($find === substr($variables['theme_hook_original'], 0, strlen($find))) {
-    // Remove all classes from book menu links.
-    unset($variables['element']['#attributes']['class']);
+  // Get the menu link id (mlid) of the tip of the active menu trail.
+  $active_trail = menu_get_active_trail();
+  $active_tip = array_pop($active_trail);
+  $active_tip_mlid = $active_tip['mlid'];
 
-    // Get the menu link id (mlid) of the tip of the active menu trail.
-    $active_trail = menu_get_active_trail();
-    $active_tip = array_pop($active_trail);
-    $active_tip_mlid = $active_tip['mlid'];
-
-    // Compare this against the menu link we're processing.
-    if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
-      $variables['element']['#attributes']['class'][] = 'active';
-    }
+  // Compare this against the menu link we're processing.
+  if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
+    $variables['element']['#attributes']['class'][] = 'active';
   }
 
   $element = $variables['element'];
-  $sub_menu = '';
 
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
 }
+
+
 
 /**
  * Override menu tree variables.
  */
 function rbkc_preprocess_menu_tree(&$variables) {
-  // Catch all book module menu tree theme calls and pass them through a common
-  // theme function.
-  $find = 'menu_tree__book_toc';
-  if ($find === substr($variables['theme_hook_original'], 0, strlen($find))) {
-    $variables['theme_hook_suggestions'][] = 'menu_tree__book';
+  // Add theme suggestions for guide and publication menus.
+  switch ($variables['theme_hook_original']) {
+    case 'menu_tree__book_toc_guide':
+      $variables['theme_hook_suggestions'][] = 'menu_tree__book_guide';
+      break;
+
+    case 'menu_tree__book_toc_publication':
+      $variables['theme_hook_suggestions'][] = 'menu_tree__book_publication';
+      break;
   }
 }
 
 /**
- * Common book module table of contents theme function.
+ * Guide table of contents menu theme function.
  */
-function rbkc_menu_tree__book(&$variables) {
+function rbkc_menu_tree__book_toc_guide_left(&$variables) {
+  return '<ol class="toc__numlist floatleft">' . $variables['tree'] . '</ol>';
+}
+
+/**
+ * Guide table of contents menu theme function.
+ */
+function rbkc_menu_tree__book_toc_guide_right(&$variables) {
+  $start = str_replace('menu_tree__book_toc_guide_right__', '', $variables['theme_hook_original']);
+  return '<ol class="toc__numlist floatright" start="' . $start . '">' . $variables['tree'] . '</ol>';
+}
+
+/**
+ * Publication table of contents menu theme function.
+ */
+function rbkc_menu_tree__book_toc_publication(&$variables) {
   return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
 }
 
@@ -137,4 +150,31 @@ function rbkc_preprocess_field(&$variables, $hook) {
   if (!empty($variables['items'][$last_index])) {
     $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
   }
+}
+
+/**
+ * Override menu link variables.
+ *
+ * @param array $variables
+ *
+ * @return string
+ */
+function rbkc_menu_link__book_toc_guide(array $variables) {
+  // Remove all classes from book menu links.
+  unset($variables['element']['#attributes']['class']);
+
+//  // Get the menu link id (mlid) of the tip of the active menu trail.
+//  $active_trail = menu_get_active_trail();
+//  $active_tip = array_pop($active_trail);
+//  $active_tip_mlid = $active_tip['mlid'];
+//
+//  // Compare this against the menu link we're processing.
+//  if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
+//    $variables['element']['#attributes']['class'][] = 'active';
+//  }
+
+  $element = $variables['element'];
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
 }
