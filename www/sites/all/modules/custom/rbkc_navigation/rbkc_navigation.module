@@ -58,3 +58,112 @@ function rbkc_navigation_split_menu(array $menu_links, $split_count) {
   $links_per_split = ceil($menu_link_count / $split_count);
   return array_chunk($menu_links, $links_per_split);
 }
+
+
+/**
+ * Implements hook_preprocess_node().
+ *
+ * Override node variables.
+ */
+function rbkc_navigation_preprocess_node(&$variables) {
+  switch ($variables['type']) {
+    case 'publication':
+      $variables['content']['book_menu'] = _rbkc_navigation_book_menu($variables['node']);
+      break;
+  }
+}
+
+/**
+ * Generate a table of contents menu for a book (including the parent page).
+ *
+ * book_block_view() in 'only show book menu when on a book' mode does not
+ * include a parent page menu link.
+ *
+ * This function is loosely based on the book_block_view() function and
+ * generates a menu tree with the parent and child menu items for the book all
+ * at the same level.
+ *
+ * @see book_block_view().
+ */
+function _rbkc_navigation_book_menu(stdClass $node) {
+  $content = array();
+
+  if (empty($node->book['bid'])) {
+    return $content;
+  }
+
+  // Access check.
+  $select = db_select('node', 'n')
+    ->fields('n', array('title'))
+    ->condition('n.nid', $node->book['bid'])
+    ->addTag('node_access');
+
+  $title = $select->execute()->fetchField();
+
+  // Only show the block if the user has view access for the top-level node.
+  if (!$title) {
+    return $content;
+  }
+
+  // Obtain the menu tree data for the book.
+  $menu_tree = menu_tree_all_data($node->book['menu_name'], $node->book);
+
+  // Bring the 'below' menu links up.
+  $menu_tree = _rbkc_navigation_level_up_menu_links($menu_tree);
+
+  // Get a direct link to a PDF if one is attached to the parent book page.
+  $parent_node = node_load($node->book['bid']);
+  $pdf_menu_link = _rbkc_navigation_pdf_menu_link('field_asset', $parent_node);
+
+  $content['content'] = menu_tree_output($menu_tree) + array($pdf_menu_link);
+
+  return $content;
+}
+
+/**
+ * Level up below links.
+ *
+ * Move menu links that are 'below' the top level to the top level.
+ *
+ * @param array $menu_links
+ *
+ * @return array
+ *    An array of menu links.
+ */
+function _rbkc_navigation_level_up_menu_links(array $menu_links) {
+  $parent_menu_link_key = key($menu_links);
+
+  foreach ($menu_links[$parent_menu_link_key]['below'] as $child_menu_link_key => $child_menu_link_item) {
+    $menu_links[$child_menu_link_key] = $child_menu_link_item;
+    unset($menu_links[$parent_menu_link_key]['below'][$child_menu_link_key]);
+  }
+
+  return $menu_links;
+}
+
+/**
+ * Generate a menu link to a PDF file on a node (if one exists).
+ *
+ * @param string $field_name
+ * @param \stdClass $node
+ *
+ * @return array A menu link array or an empty array if no PDF file is found.
+ * A menu link array or an empty array if no PDF file is found.
+ */
+function _rbkc_navigation_pdf_menu_link($field_name, stdClass $node) {
+  $menu_link = array();
+
+  if ($file = $node->{$field_name}[LANGUAGE_NONE][0]) {
+    $menu_link = array(
+      '#href' => file_create_url($file['uri']),
+      '#title' => t('Download the guide as a PDF'),
+      '#access' => file_download_access($file['uri']),
+      '#theme' => 'menu_link',
+      '#below' => array(),
+      '#localized_options' => array(),
+      '#attributes' => array(),
+    );
+  }
+
+  return $menu_link;
+}

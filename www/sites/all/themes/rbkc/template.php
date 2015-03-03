@@ -62,6 +62,60 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 }
 
 /**
+ * Override menu link variables.
+ *
+ * @param type $variables
+ */
+function rbkc_menu_link(&$variables) {
+  // Capture book table of content menu links, remove their classes and add an
+  // active class just to the tip menu link item.
+  $find = 'menu_link__book_toc';
+
+  if ($find === substr($variables['theme_hook_original'], 0, strlen($find))) {
+    // Remove all classes from book menu links.
+    unset($variables['element']['#attributes']['class']);
+
+    // Get the menu link id (mlid) of the tip of the active menu trail.
+    $active_trail = menu_get_active_trail();
+    $active_tip = array_pop($active_trail);
+    $active_tip_mlid = $active_tip['mlid'];
+
+    // Compare this against the menu link we're processing.
+    if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
+      $variables['element']['#attributes']['class'][] = 'active';
+    }
+  }
+
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
+ * Override menu tree variables.
+ */
+function rbkc_preprocess_menu_tree(&$variables) {
+  // Catch all book module menu tree theme calls and pass them through a common
+  // theme function.
+  $find = 'menu_tree__book_toc';
+  if ($find === substr($variables['theme_hook_original'], 0, strlen($find))) {
+    $variables['theme_hook_suggestions'][] = 'menu_tree__book';
+  }
+}
+
+/**
+ * Common book module table of contents theme function.
+ */
+function rbkc_menu_tree__book(&$variables) {
+  return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
+}
+
+/**
  * Implements template_preprocess_field().
  */
 function rbkc_preprocess_field(&$variables, $hook) {
