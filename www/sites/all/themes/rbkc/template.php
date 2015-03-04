@@ -7,12 +7,6 @@ function rbkc_menu_tree__menu_footer_links($variables) {
 }
 
 
-function rbkc_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'teaser') {
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
-  }
-}
 
 // removing 'leaf' classes from menus
 function rbkc_menu_link__menu_footer_links($variables) {
@@ -62,7 +56,7 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 }
 
 /**
- * Implements template_preprocess_field().
+ * Implements template_preprocess_field().  - this is so that we can style the markup and output of specific fields
  */
 function rbkc_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
@@ -82,5 +76,30 @@ function rbkc_preprocess_field(&$variables, $hook) {
   $last_index = (count($variables['items'])) - 1;
   if (!empty($variables['items'][$last_index])) {
     $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
+  }
+}
+
+
+/**
+ * access fields - they are available deeply nested in the $page variable so we use a preprocess funtion for easier access https://www.drupal.org/node/950434
+ */
+
+/*function hook_preprocess_page(&$variables) {
+        if (arg(0) == 'node') {
+                $variables['node_content'] =& $variables['page']['content']['system_main']['nodes'][arg(1)];
+        }
+}*/
+
+
+
+//  this is so that we can style how content appears when it's pulled through onto other pages
+function rbkc_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
+  }
+  if($vars['view_mode'] == 'top_three_topics') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__top';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__top';
   }
 }
