@@ -1,39 +1,24 @@
 <?php
 
-
-// adding classes for footer menu links
+/**
+ * Adding classes for footer menu links.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
 function rbkc_menu_tree__menu_footer_links($variables) {
   return '<ul class="footerglobal__links lightlinks">' . $variables['tree'] . '</ul>';
 }
 
-
-
-// removing 'leaf' classes from menus
+/**
+ * Removing 'leaf' classes from menus.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
 function rbkc_menu_link__menu_footer_links($variables) {
-
-	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
-		if ('leaf' == $class) {
-			unset($variables['element']['#attributes']['class'][$index]);
-		}
-	}
-
-	$element = $variables['element'];
-	$sub_menu = '';
-
-	if ($element['#below']) {
-		$sub_menu = drupal_render($element['#below']);
-	}
-
-	$output = l($element['#title'], $element['#href'],
-	$element['#localized_options']);
-
-	return '<li' . drupal_attributes($element['#attributes']) . '>' .
-	$output . $sub_menu . "</li>\n";
-
-}
-
-function rbkc_menu_link__menu_drop_down_service_menu($variables) {
-
 	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
 		if ('leaf' == $class) {
 			unset($variables['element']['#attributes']['class'][$index]);
@@ -56,7 +41,101 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 }
 
 /**
- * Implements template_preprocess_field().  - this is so that we can style the markup and output of specific fields
+ * Override theme_menu_link for the drop down service menu.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
+function rbkc_menu_link__menu_drop_down_service_menu($variables) {
+	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
+		if ('leaf' == $class) {
+			unset($variables['element']['#attributes']['class'][$index]);
+		}
+	}
+
+	$element = $variables['element'];
+	$sub_menu = '';
+
+	if ($element['#below']) {
+		$sub_menu = drupal_render($element['#below']);
+	}
+
+	$output = l($element['#title'], $element['#href'],
+	$element['#localized_options']);
+
+	return '<li' . drupal_attributes($element['#attributes']) . '>' .
+	$output . $sub_menu . "</li>\n";
+
+}
+
+/**
+ * Override theme_menu_link for the publication table of contents.
+ *
+ * @param $variables
+ *
+ * @return string
+ */
+function rbkc_menu_link__book_toc_publication(&$variables) {
+  // Remove all classes from book menu links.
+  unset($variables['element']['#attributes']['class']);
+
+  // Get the menu link id (mlid) of the tip of the active menu trail.
+  $active_trail = menu_get_active_trail();
+  $active_tip = array_pop($active_trail);
+  $active_tip_mlid = $active_tip['mlid'];
+
+  // Compare this against the menu link we're processing.
+  if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
+    $variables['element']['#attributes']['class'][] = 'active';
+  }
+
+  $element = $variables['element'];
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+}
+
+/**
+ * Override theme_menu_tree variables.
+ */
+function rbkc_preprocess_menu_tree(&$variables) {
+  // Add theme suggestions for guide and publication menus.
+  switch ($variables['theme_hook_original']) {
+    case 'menu_tree__book_toc_guide':
+      $variables['theme_hook_suggestions'][] = 'menu_tree__book_guide';
+      break;
+
+    case 'menu_tree__book_toc_publication':
+      $variables['theme_hook_suggestions'][] = 'menu_tree__book_publication';
+      break;
+  }
+}
+
+/**
+ * Guide table of contents menu theme function.
+ */
+function rbkc_menu_tree__book_toc_guide_left(&$variables) {
+  return '<ol class="toc__numlist floatleft">' . $variables['tree'] . '</ol>';
+}
+
+/**
+ * Guide table of contents menu theme function.
+ */
+function rbkc_menu_tree__book_toc_guide_right(&$variables) {
+  $start = str_replace('menu_tree__book_toc_guide_right__', '', $variables['theme_hook_original']);
+  return '<ol class="toc__numlist floatright" start="' . $start . '">' . $variables['tree'] . '</ol>';
+}
+
+/**
+ * Publication table of contents menu theme function.
+ */
+function rbkc_menu_tree__book_toc_publication(&$variables) {
+  return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Implements template_preprocess_field().
  */
 function rbkc_preprocess_field(&$variables, $hook) {
   $element = $variables['element'];
@@ -79,20 +158,31 @@ function rbkc_preprocess_field(&$variables, $hook) {
   }
 }
 
+/**
+ * Override menu link variables.
+ *
+ * @param array $variables
+ *
+ * @return string
+ */
+function rbkc_menu_link__book_toc_guide(array $variables) {
+  // Remove all classes from book menu links.
+  unset($variables['element']['#attributes']['class']);
+
+  $element = $variables['element'];
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+}
 
 /**
- * access fields - they are available deeply nested in the $page variable so we use a preprocess funtion for easier access https://www.drupal.org/node/950434
+ * Implements template_preprocess_node().
+ *
+ * This is so that we can style how content appears when it's pulled through
+ * onto other pages.
+ *
+ * @param type $vars
  */
-
-/*function hook_preprocess_page(&$variables) {
-        if (arg(0) == 'node') {
-                $variables['node_content'] =& $variables['page']['content']['system_main']['nodes'][arg(1)];
-        }
-}*/
-
-
-
-//  this is so that we can style how content appears when it's pulled through onto other pages
 function rbkc_preprocess_node(&$vars) {
   if($vars['view_mode'] == 'teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
