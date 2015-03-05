@@ -172,6 +172,7 @@ function rbkc_deploy_update_7006() {
   node_type_delete('book');
 
   features_revert();
+}
 
 /**
  * Implements hook_update_N().

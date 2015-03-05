@@ -3,29 +3,16 @@
                   <div class="col8">
                     <div class="toc contrast group">
                      <h2 class="toc__header ">Contents</h2>
-                      <ol class="toc__numlist floatleft">
-                        <li class="active"><span>Planning advice</span></li>
-                        <li><a href="#">Permitted development</a></li>
-                        <li><a href="#">Submitting your application</a></li>
-                      </ol>
-                      <ol class="toc__numlist floatright"  start="4">
-                        <li><a href="#">Considering an application</a></li>
-                        <li><a href="#">When a decision is made</a></li>
-                        <li><a href="#">Application forms</a></li>
-                      </ol>
+                      <?php print render($content['book_menu']); ?>
                     </div>
 
                     <div class="content group">
                       <?php
-                        print render($content);
+                        print render($content['body']);
                       ?>
                     </div><!-- end content -->
 
-                    <div class="contrast pag">
-                      <a class="pag__next-name" href="#">
-                        <span>Permitted development</span>
-                      </a>
-                    </div><!-- end pagination -->
+                    <?php print render($content['book_navigation']); ?>
                   </div><!--end col 8-->
 
                   <div class="col4"  role="complementary">
