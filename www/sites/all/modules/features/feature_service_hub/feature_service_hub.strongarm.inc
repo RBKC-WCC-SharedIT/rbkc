@@ -35,13 +35,16 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => '6',
+        ),
+        'metatags' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(),

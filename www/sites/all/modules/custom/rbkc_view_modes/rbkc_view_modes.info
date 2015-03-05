@@ -1,0 +1,4 @@
+name = Custom view modes
+description = Custom view modes for page content.
+core = 7.x
+package = RBKC

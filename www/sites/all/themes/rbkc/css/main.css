@@ -261,6 +261,7 @@ margin-bottom: 0 !important;
   overflow:hidden;
   width:auto;
 }
+.row-begin,
 .row div:first-child,
 .row a:first-child,
 .row li:first-child,
@@ -358,20 +359,20 @@ margin-bottom: 0 !important;
   background-size: 100%;
 }
 
-.largetext {
+.large-text {
   font-size:20px;
   /* 16/20 = 1.25  */
   font-size:1.25rem;
   line-height:29px;
   line-height: 1.8125rem;
 }
-.smalltext {
+.small-text {
   font-size: 14px;
   /* 14/16 = .875; */
   font-size:.875rem;
   line-height:24px;
 }
-.smallesttext {
+.smallest-text {
   font-size:13px;
   /* 13/16 = .8125; */
   font-size:.8125rem;
@@ -402,6 +403,11 @@ margin-bottom: 0 !important;
   -webkit-border-radius: 3px 3px 3px 3px;
   -moz-border-radius: 3px 3px 3px 3px;
   border-radius: 3px 3px 3px 3px;
+}
+
+/* blue border as used on topic and sub-hub pages */
+.blue-border-top {
+  border-top:solid 1px #b0e5e7;
 }
 
 /****************************************************/
@@ -857,7 +863,7 @@ div.accordionContents.show {
 }
 .iconlinks .first {
   padding-top: 24px;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
   background-position: 1rem 60%;
 }
 .iconlinks .last {
@@ -917,56 +923,31 @@ div.accordionContents.show {
   margin-right: 1.3rem;
 }
 
-/***** Service Sub-Hub and Topic page - rewrite - SP ********/
-.blueBorderTop {
-  border-top:solid 1px #b0e5e7;
-  padding-top:1rem;
+/***** Service Sub-Hub and Topic page  ********/
+/* a view of a topic pulled through to a sub-hub page */
+.sub-hub-topic {
+  padding: 24px 0;
 }
-.blueBorderTop h2 {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+.sub-hub-topic h3 {
+  margin-bottom:6px;
 }
-.subHubHead {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+/* begin Topic page elements (simple list page) */
+.topics {
+  margin-left:auto !important;
+  margin-right:auto !important;
+  float: none !important;
+  padding: 36px 0 24px 0;
 }
-
-p.expanded {
-position:absolute;
-left:0;
-bottom:1em;
-margin-bottom:0;
+.topics h2 {
+  margin-bottom:6px;
+/*  font-size:18px;
+  font-size:1.125rem; */
 }
-.pb2  {
-  padding-bottom:2em;
+.topics h2 a {
+  border-bottom: 0;
 }
-
-/* begin Topic page elements (simple list page) - rewrite SP */
-.topic {
-  margin-left:auto;
-  margin-right:auto;
-  max-width: 620px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-top: 8px;
-  padding-top: 0.5rem;
-  padding-bottom: 2rem;
-}
-.topic h2,
-.sectionHolder h3 {
-  margin-bottom:4px;
-  margin-bottom:0.25rem;
-  /* not usual size for h2s, but makes it visually consistent with sub-hub pages */
-  font-size:20px;
-  font-size:18px;
-  font-size:1.125rem;
-  line-height:1.5em;
-  display: inline-block;
-}
-.topic h2 {
-  /* Fix for http://www.rbkc.gov.uk/planningandbuildingcontrol/planningpolicy/consultation/basements.aspx  -
-  the h2 looked wrong when there was no content immediately after each h2 - overrides the display: inline-block declaration 3 lines above; */
-  display:block;
+.topics h2 a:hover {
+  border-bottom: dotted 1px;
 }
 
 /*  begin related menu for answer and guide page */
@@ -2493,11 +2474,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     align-items: center;
   }
 
-  .secondary-topics {
-    margin-bottom: 1rem;
-  }
-
-
   /*** related menu ***/
   .related__more ,
   .related__elsewhere {
@@ -3439,12 +3415,12 @@ float: left;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.lt-ie9 .iconlinks--top-tasks .first a {
+.lt-ie9 .iconlinks--top-tasks .first {
   border: solid #58d2c4 1px;
   padding: 1em 4em 1em 1em;
   background-position: 92% 50%;
 }
-.lt-ie9 .iconlinks--top-tasks .last a {
+.lt-ie9 .iconlinks--top-tasks .last {
   border: solid #58d2c4 1px;
   padding: 1em 4em 1em 1em;
   background-position: 92% 50%;
