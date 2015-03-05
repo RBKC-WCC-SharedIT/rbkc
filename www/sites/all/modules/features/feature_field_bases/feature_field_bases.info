@@ -18,5 +18,6 @@ features[field_base][] = field_popular_tasks
 features[field_base][] = field_popular_topics
 features[field_base][] = field_publish_date
 features[field_base][] = field_site_section
+features[field_base][] = field_subhub_link_to_topic
 features[field_base][] = field_topic_link
 features[taxonomy][] = site_sections
