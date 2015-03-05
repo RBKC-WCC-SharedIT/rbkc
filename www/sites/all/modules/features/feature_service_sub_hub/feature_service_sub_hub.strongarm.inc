@@ -76,7 +76,10 @@ function feature_service_sub_hub_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_subhub';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_subhub'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -112,26 +115,7 @@ function feature_service_sub_hub_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_node_subhub';
   $strongarm->value = array(
-    'entity' => 'node',
-    'bundle' => 'service_sub_hub',
-    'info' => array(
-      'label' => 'Service Sub-Hub',
-      'admin' => array(
-        'path' => 'admin/structure/types/manage/%node_type',
-        'real path' => 'admin/structure/types/manage/service-sub-hub',
-        'bundle argument' => 4,
-        'access arguments' => array(
-          0 => 'administer content types',
-        ),
-      ),
-      'xmlsitemap' => array(
-        'entity' => 'node',
-        'bundle' => 'service_sub_hub',
-        'status' => '0',
-        'priority' => '0.5',
-      ),
-    ),
-    'status' => '0',
+    'status' => '1',
     'priority' => '0.5',
   );
   $export['xmlsitemap_settings_node_subhub'] = $strongarm;
