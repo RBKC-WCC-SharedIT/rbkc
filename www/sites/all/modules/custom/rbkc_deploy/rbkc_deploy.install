@@ -168,3 +168,12 @@ function rbkc_deploy_update_7005() {
 function rbkc_deploy_update_7006() {
   module_enable(array('rbkc_view_modes'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the Sub-Hub feature.
+ */
+function rbkc_deploy_update_7007() {
+  module_enable(array('feature_service_sub_hub'), TRUE);
+}
