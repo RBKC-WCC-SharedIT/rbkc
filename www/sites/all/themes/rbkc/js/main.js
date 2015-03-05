@@ -67,16 +67,38 @@
   } // end stylePDF
 
   // show/hide right hand column menu - need to remove repetition from functions adding links
-  function addViewAllMore() {
-    var childNumber = $('.related-more ul').find('li');
-      if (childNumber.length > 3) {
-          $('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-more ul');
+/*  function addViewAllMore() {
+    var childNumber = $('.related__more li').length;
+      if (childNumber > 3) {
+          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related__more ul');
       }
+  } */
+
+  function addViewAll() {
+    var relatedMenu = document.getElementsByClassName('related')[0];
+
+    var lists = relatedMenu.getElementsByTagName('ul');
+
+    for (var i = 0; i < lists.length; i++) {
+
+      var listItems = lists[i].getElementsByTagName('li');
+
+      if (listItems.length > 3) {
+        var para = document.createElement("p");
+        var node = document.createTextNode("View all");
+        para.appendChild(node);
+        lists[i].insertBefore(para, lists);
+      }
+    }
+
+    //alert(lists.length);
+
   }
+
   function addViewAllElsewhere() {
     var childNumber = $('.related-elsewhere ul').find('li');
       if (childNumber.length > 3) {
-          $('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-elsewhere ul');
+          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-elsewhere ul');
       }
   }
   function showMore() {
@@ -175,11 +197,11 @@ $(document).ready(function() {
 
   //accordion();
 
-  addViewAllMore();
+  //addViewAllMore();
 
-  addViewAllElsewhere();
+  //addViewAllElsewhere();
 
-  $('.viewAll').on("click",showMore);
+  $('.view__all').on("click",showMore);
 
   checkPlaceholder();
 
@@ -195,6 +217,8 @@ $(document).ready(function() {
   catch(e){
     // if not on home page then we want to do nothing
   }
+
+  addViewAll();
 
 }); // END DOC READY
 
