@@ -4,7 +4,6 @@
  * @file
  * Install, update and uninstall functions for the site.
  */
-
 function rbkc_deploy_install() {
   // Drop down service menu.
   $menu_machine_name = 'drop-down-service-menu';
@@ -178,9 +177,18 @@ function rbkc_deploy_update_7006() {
 /**
  * Implements hook_update_N().
  *
- * Switch on the Guide Feature.
+ * Switch on the RBKC view modes module.
  */
 function rbkc_deploy_update_7007() {
+  module_enable(array('rbkc_view_modes'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the Guide Feature.
+ */
+function rbkc_deploy_update_7008() {
   module_enable(array('feature_guide'), TRUE);
 }
 
@@ -190,10 +198,19 @@ function rbkc_deploy_update_7007() {
  * Change the behaviour of the book menu so that it doesn't show all the books
  * on all the pages.
  */
-function rbkc_deploy_update_7008() {
+function rbkc_deploy_update_7009() {
   // In 'all pages' mode, the book module generates a nested menu where the
   // parent page exists in a menu and the child pages are nested menus,
   // changing the mode to 'book pages' causes book module to generate a menu of
   // just the child links.
   variable_set('book_block_mode', 'book pages');
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the Sub-Hub feature.
+ */
+function rbkc_deploy_update_7010() {
+  module_enable(array('feature_service_sub_hub'), TRUE);
 }

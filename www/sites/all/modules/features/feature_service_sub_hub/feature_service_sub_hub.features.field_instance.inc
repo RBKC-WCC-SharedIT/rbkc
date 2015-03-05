@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * feature_topics.features.field_instance.inc
+ * feature_service_sub_hub.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function feature_topics_field_default_field_instances() {
+function feature_service_sub_hub_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-topic-body'
-  $field_instances['node-topic-body'] = array(
-    'bundle' => 'topic',
+  // Exported field_instance: 'node-subhub-body'
+  $field_instances['node-subhub-body'] = array(
+    'bundle' => 'subhub',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -26,14 +26,18 @@ function feature_topics_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
         'weight' => 0,
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
     ),
@@ -57,33 +61,30 @@ function feature_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_topic_link'
-  $field_instances['node-topic-field_topic_link'] = array(
-    'bundle' => 'topic',
+  // Exported field_instance: 'node-subhub-field_subhub_link_to_topic'
+  $field_instances['node-subhub-field_subhub_link_to_topic'] = array(
+    'bundle' => 'subhub',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(
-          'node_reference_view_mode' => 'teaser',
+          'node_reference_view_mode' => 'top_three_topics',
         ),
         'type' => 'node_reference_node',
         'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'node_reference',
-        'settings' => array(
-          'node_reference_view_mode' => 'teaser',
-        ),
-        'type' => 'node_reference_node',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'top_three_topics' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(
           'node_reference_view_mode' => 'top_three_topics',
@@ -93,8 +94,8 @@ function feature_topics_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_topic_link',
-    'label' => 'topic_link',
+    'field_name' => 'field_subhub_link_to_topic',
+    'label' => 'Link to topic',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -115,7 +116,7 @@ function feature_topics_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('topic_link');
+  t('Link to topic');
 
   return $field_instances;
 }

@@ -1,45 +1,24 @@
 <?php
 
-
-// adding classes for footer menu links
+/**
+ * Adding classes for footer menu links.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
 function rbkc_menu_tree__menu_footer_links($variables) {
   return '<ul class="footerglobal__links lightlinks">' . $variables['tree'] . '</ul>';
 }
 
-
-function rbkc_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'teaser') {
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
-  }
-}
-
-// removing 'leaf' classes from menus
+/**
+ * Removing 'leaf' classes from menus.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
 function rbkc_menu_link__menu_footer_links($variables) {
-
-	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
-		if ('leaf' == $class) {
-			unset($variables['element']['#attributes']['class'][$index]);
-		}
-	}
-
-	$element = $variables['element'];
-	$sub_menu = '';
-
-	if ($element['#below']) {
-		$sub_menu = drupal_render($element['#below']);
-	}
-
-	$output = l($element['#title'], $element['#href'],
-	$element['#localized_options']);
-
-	return '<li' . drupal_attributes($element['#attributes']) . '>' .
-	$output . $sub_menu . "</li>\n";
-
-}
-
-function rbkc_menu_link__menu_drop_down_service_menu($variables) {
-
 	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
 		if ('leaf' == $class) {
 			unset($variables['element']['#attributes']['class'][$index]);
@@ -62,7 +41,36 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 }
 
 /**
- * Override menu link variables.
+ * Override theme_menu_link for the drop down service menu.
+ *
+ * @param type $variables
+ *
+ * @return type
+ */
+function rbkc_menu_link__menu_drop_down_service_menu($variables) {
+	foreach ($variables['element']['#attributes']['class'] as $index => $class) {
+		if ('leaf' == $class) {
+			unset($variables['element']['#attributes']['class'][$index]);
+		}
+	}
+
+	$element = $variables['element'];
+	$sub_menu = '';
+
+	if ($element['#below']) {
+		$sub_menu = drupal_render($element['#below']);
+	}
+
+	$output = l($element['#title'], $element['#href'],
+	$element['#localized_options']);
+
+	return '<li' . drupal_attributes($element['#attributes']) . '>' .
+	$output . $sub_menu . "</li>\n";
+
+}
+
+/**
+ * Override theme_menu_link for the publication table of contents.
  *
  * @param $variables
  *
@@ -88,10 +96,8 @@ function rbkc_menu_link__book_toc_publication(&$variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
 }
 
-
-
 /**
- * Override menu tree variables.
+ * Override theme_menu_tree variables.
  */
 function rbkc_preprocess_menu_tree(&$variables) {
   // Add theme suggestions for guide and publication menus.
@@ -167,4 +173,23 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
 
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+}
+
+/**
+ * Implements template_preprocess_node().
+ *
+ * This is so that we can style how content appears when it's pulled through
+ * onto other pages.
+ *
+ * @param type $vars
+ */
+function rbkc_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
+  }
+  if($vars['view_mode'] == 'top_three_topics') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__top';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__top';
+  }
 }
