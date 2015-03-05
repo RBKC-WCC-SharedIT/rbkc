@@ -79,21 +79,35 @@
 
     var lists = relatedMenu.getElementsByTagName('ul');
 
-    for (var i = 0; i < lists.length; i++) {
+   // alert(lists.length); is correctly showing 2
 
-      var listItems = lists[i].getElementsByTagName('li');
+    for (var i = 0; i <= lists.length; i++) {
+      // wrapping code in function to prevent closure problem
+      (function(i) {
+        var listItems = lists[i].getElementsByTagName('li');
+        //alert(listItems.length);
+        if (listItems.length > 3) {
+          var parent = lists[i].parentNode;
+          var para = document.createElement("p");
+          var node = document.createTextNode("View all");
+          para.appendChild(node);
+          para.className = '.related__viewall';
+          var viewAll = parent.insertBefore(para, lists[i]);
+        }
+      })(i);
 
-      if (listItems.length > 3) {
+
+    /* if (listItems.length > 3) {
         var para = document.createElement("p");
         var node = document.createTextNode("View all");
         para.appendChild(node);
-        lists[i].insertBefore(para, lists);
+        lists[i].insertBefore(para, lists); */
+
       }
     }
 
-    //alert(lists.length);
 
-  }
+
 
   function addViewAllElsewhere() {
     var childNumber = $('.related-elsewhere ul').find('li');
