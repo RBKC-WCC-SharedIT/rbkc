@@ -66,55 +66,26 @@
     }); // end each function
   } // end stylePDF
 
-  // show/hide right hand column menu - need to remove repetition from functions adding links
-/*  function addViewAllMore() {
-    var childNumber = $('.related__more li').length;
-      if (childNumber > 3) {
-          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related__more ul');
-      }
-  } */
 
+  // where there are more than three items in menu add 'view all'
   function addViewAll() {
     var relatedMenu = document.getElementsByClassName('related')[0];
-
     var lists = relatedMenu.getElementsByTagName('ul');
-
-   // alert(lists.length); is correctly showing 2
-
-    for (var i = 0; i <= lists.length; i++) {
-      // wrapping code in function to prevent closure problem
+    for (var i = 0, l = lists.length; i < l; i++) {
       (function(i) {
         var listItems = lists[i].getElementsByTagName('li');
-        //alert(listItems.length);
         if (listItems.length > 3) {
           var parent = lists[i].parentNode;
           var para = document.createElement("p");
           var node = document.createTextNode("View all");
           para.appendChild(node);
-          para.className = '.related__viewall';
-          var viewAll = parent.insertBefore(para, lists[i]);
+          para.className = 'related__viewall';
+          var viewAll = parent.appendChild(para);
         }
       })(i);
-
-
-    /* if (listItems.length > 3) {
-        var para = document.createElement("p");
-        var node = document.createTextNode("View all");
-        para.appendChild(node);
-        lists[i].insertBefore(para, lists); */
-
-      }
     }
-
-
-
-
-  function addViewAllElsewhere() {
-    var childNumber = $('.related-elsewhere ul').find('li');
-      if (childNumber.length > 3) {
-          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-elsewhere ul');
-      }
   }
+
   function showMore() {
     $(this).parent().find('li:gt(2)').slideToggle('150');
         if ($(this).text() === "View all") {
@@ -211,11 +182,9 @@ $(document).ready(function() {
 
   //accordion();
 
-  //addViewAllMore();
+  addViewAll();
 
-  //addViewAllElsewhere();
-
-  $('.view__all').on("click",showMore);
+  $('.related__viewall').on("click", showMore);
 
   checkPlaceholder();
 
@@ -232,7 +201,7 @@ $(document).ready(function() {
     // if not on home page then we want to do nothing
   }
 
-  addViewAll();
+
 
 }); // END DOC READY
 
