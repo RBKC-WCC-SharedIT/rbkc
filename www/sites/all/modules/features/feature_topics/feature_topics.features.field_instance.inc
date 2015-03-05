@@ -26,11 +26,14 @@ function feature_topics_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -72,9 +75,21 @@ function feature_topics_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'teaser',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 1,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'top_three_topics',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',

@@ -28,6 +28,12 @@ function feature_topics_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
