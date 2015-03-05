@@ -33,6 +33,15 @@ function feature_answer_field_default_field_instances() {
         'type' => 'text_summary_or_trimmed',
         'weight' => 0,
       ),
+      'top_three_topics' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_summary_or_trimmed',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
@@ -69,6 +78,12 @@ function feature_answer_field_default_field_instances() {
         'weight' => 1,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -131,6 +146,12 @@ Note: This content will not automatically be unpublished on this date, it will j
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_expiry_date',
@@ -181,6 +202,12 @@ Note: Content will only be published on the date set here if it is approved, una
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_publish_date',
@@ -225,6 +252,12 @@ Note: Content will only be published on the date set here if it is approved, una
         'weight' => 4,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
