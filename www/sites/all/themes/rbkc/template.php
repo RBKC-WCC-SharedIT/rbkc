@@ -163,16 +163,6 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
   // Remove all classes from book menu links.
   unset($variables['element']['#attributes']['class']);
 
-//  // Get the menu link id (mlid) of the tip of the active menu trail.
-//  $active_trail = menu_get_active_trail();
-//  $active_tip = array_pop($active_trail);
-//  $active_tip_mlid = $active_tip['mlid'];
-//
-//  // Compare this against the menu link we're processing.
-//  if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
-//    $variables['element']['#attributes']['class'][] = 'active';
-//  }
-
   $element = $variables['element'];
 
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
