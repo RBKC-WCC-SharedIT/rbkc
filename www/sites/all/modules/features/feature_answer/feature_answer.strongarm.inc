@@ -28,6 +28,12 @@ function feature_answer_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -42,6 +48,9 @@ function feature_answer_strongarm() {
         ),
         'xmlsitemap' => array(
           'weight' => '6',
+        ),
+        'metatags' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -83,6 +92,13 @@ function feature_answer_strongarm() {
   $strongarm->name = 'node_submitted_answer';
   $strongarm->value = 0;
   $export['node_submitted_answer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_answer_pattern';
+  $strongarm->value = '[node:field_service_hub]/[node:title]';
+  $export['pathauto_node_answer_pattern'] = $strongarm;
 
   return $export;
 }

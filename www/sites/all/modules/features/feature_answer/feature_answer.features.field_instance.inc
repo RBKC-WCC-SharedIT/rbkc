@@ -178,7 +178,7 @@ Note: This content will not automatically be unpublished on this date, it will j
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -234,16 +234,16 @@ Note: Content will only be published on the date set here if it is approved, una
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-answer-field_site_section'
-  $field_instances['node-answer-field_site_section'] = array(
+  // Exported field_instance: 'node-answer-field_service_hub'
+  $field_instances['node-answer-field_service_hub'] = array(
     'bundle' => 'answer',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Select the section(s) of the site this content should appear under.',
+    'description' => 'Select the Service hub that this page should appear under.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -265,8 +265,8 @@ Note: Content will only be published on the date set here if it is approved, una
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_site_section',
-    'label' => 'Site section',
+    'field_name' => 'field_service_hub',
+    'label' => 'Service hub',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -276,7 +276,7 @@ Note: Content will only be published on the date set here if it is approved, una
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -287,14 +287,14 @@ Note: Content will only be published on the date set here if it is approved, una
   t('Expiry date');
   t('Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.');
   t('Publish date');
-  t('Select the section(s) of the site this content should appear under.');
+  t('Select the Service hub that this page should appear under.');
+  t('Service hub');
   t('Set the expiry date for this item of content.
 
 Note: This content will not automatically be unpublished on this date, it will just be flagged for review. ');
   t('Set the published date for this item of content.
 
 Note: Content will only be published on the date set here if it is approved, unapproved content will remain unpublished.');
-  t('Site section');
 
   return $field_instances;
 }
