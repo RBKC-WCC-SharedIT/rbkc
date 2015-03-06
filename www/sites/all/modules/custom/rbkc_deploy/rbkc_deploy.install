@@ -236,3 +236,21 @@ function rbkc_deploy_update_7012() {
     ->condition('machine_name', 'site_sections')
     ->execute();
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Remove date fields from Answer content type.
+ */
+function rbkc_deploy_update_7013() {
+  // Remove the date fields from Answer content type.
+  $field_names = array(
+    'field_publish_date',
+    'field_expiry_date',
+  );
+
+  foreach ($field_names as $field_name) {
+    $instance = field_info_instance('node', $field_name, 'answer');
+    field_delete_instance($instance, TRUE);
+  }
+}
