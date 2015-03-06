@@ -214,3 +214,25 @@ function rbkc_deploy_update_7009() {
 function rbkc_deploy_update_7010() {
   module_enable(array('feature_service_sub_hub'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Remove the site_section field.
+ */
+function rbkc_deploy_update_7011() {
+  $instance = field_info_instance('node', 'field_site_section', 'answer');
+  field_delete_instance($instance, TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Rename site_sections vocabulary to service_hub.
+ */
+function rbkc_deploy_update_7012() {
+  db_update('taxonomy_vocabulary')
+    ->fields(array('name' => t('Service Hub'), 'machine_name' => 'service_hub', 'description' => 'Service Hub.'))
+    ->condition('machine_name', 'site_sections')
+    ->execute();
+}
