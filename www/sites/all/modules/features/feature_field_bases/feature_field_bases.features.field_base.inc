@@ -293,13 +293,13 @@ function feature_field_bases_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_site_section'
-  $field_bases['field_site_section'] = array(
+  // Exported field_base: 'field_service_hub'
+  $field_bases['field_service_hub'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_site_section',
+    'field_name' => 'field_service_hub',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -318,7 +318,7 @@ function feature_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'site_sections',
+          'vocabulary' => 'service_hub',
           'parent' => 0,
         ),
       ),
