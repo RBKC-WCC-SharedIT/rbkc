@@ -10,18 +10,15 @@
   font-style: Regular;
 }
 
-/* style notes
-
-see http://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem
-
-*/
+/* style notes - see http://mattstauffer.co/blog/organizing-css-oocss-smacss-and-bem */
 
 /****************************************************/
 /*                    BASE RULES                    */
 /****************************************************/
 
 html {
-  height: 100%;  /* height 100% so that footer can always be pushed to bottom of page */
+  /* height 100% so that footer can always be pushed to bottom of page */
+  height: 100%;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
   position: relative;
@@ -34,7 +31,8 @@ body {
   font-size:100%;
   height: 100%;
   line-height: 16px;
-  line-height:1.5rem;  /* setting explicit line height to maintain 12px baseline grid - override where necessary */
+  /* setting explicit line height to maintain 12px baseline grid - override where necessary */
+  line-height:1.5rem;
   margin: 0;
   position: relative;
 }
@@ -444,8 +442,7 @@ margin-bottom: 0 !important;
   border-bottom: none;
 }
 /* can't use the nowrap image replacement on these as overflow needs to be visible for active display element - have put text inside accessibly hidden span tags */
-.headerglobal__open
- {
+.headerglobal__open {
   display: inline-block;
   width:42px;
   height:42px;
@@ -468,6 +465,8 @@ margin-bottom: 0 !important;
   margin: 0 -16px;
   margin: 0 -1rem;
   clear: both;
+  transition: all linear .2s;
+  visibility: visible;
 }
 .headerglobal__nav li {
   padding: 10px;
@@ -784,6 +783,34 @@ a.footerglobal__contact:hover,
   /* elements hidden by default from sight and from text readers - will be visible if no js */
   display:none;
 }
+
+.js .headerglobal__nav.hide,
+.js .search.hide {
+  display: block;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all linear .05s;
+}
+.headerglobal__nav,
+.search {
+  max-height: 600px;
+  transition: all linear .2s;
+}
+
+.js .headerglobal__nav.hide *,
+.js .search.hide *  {
+  opacity: 0;
+  transition: all linear .05s;
+}
+.headerglobal__nav *,
+.search * {
+  opacity: 1;
+  transition: all linear .2s;
+}
+
+
+
 .viewAll,.viewAllChildren {   /* for topic page? */
   cursor:pointer;
 }
@@ -813,6 +840,7 @@ div.accordionContents.show {
 .accordionContents li {
   clear:left;
 }
+
 
 /****************************************************/
 /*                   MODULE RULES                   */
@@ -2361,12 +2389,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     background: url('../images/refresh/bread-home.png');
    }
 
-   /*** search ***/
-  .search--headerglobal.hide {
-    /* important declaration included to avoid edge cases where element is hidden by jquery in mobile view and then browser is resized - is this still needed? SP */
-    display: inline-block !important;
-    visibility: visible;
-   }
   .search--headerglobal {
     width: 215px;
     background: none;
@@ -2374,15 +2396,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     position: absolute;
     right: 32px;
     top: 1.38rem;
-    /* important declarations included to avoid edge cases where element is hidden by jquery in mobile view and then browser is resized */
-    display: inline-block !important;
-    width: auto !important;
+    display: inline-block;
   }
-  .js .search__input,
-  .js .search__submit {
-    /* important declaration included to avoid edge cases where element is hidden by jquery in mobile view and then browser is resized */
-    display: inline-block !important;
-  }
+
   .search__wrap {
     margin: 0;
     width: auto;
@@ -2554,6 +2570,18 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   .col9 .imageWrap em {
     width: 40%;
   }
+
+  /****************************************************/
+  /*  STATE RULES (indicate a javascript dependency)  */
+  /****************************************************/
+
+  .js .search.hide,
+  .js .search.hide * {
+    opacity: 1;
+    max-height: 600px;
+    transition: none;
+  }
+
 
 }/* end media query 700px*/
 
@@ -2778,6 +2806,17 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
   .col9 .image-cap em {
     width: 43.5%;
+  }
+
+  /****************************************************/
+  /*  STATE RULES (indicate a javascript dependency)  */
+  /****************************************************/
+
+  .js .headerglobal__nav.hide,
+  .js .headerglobal__nav.hide * {
+    opacity: 1;
+    max-height: 600px;
+    transition: none;
   }
 
 }/* end media query */

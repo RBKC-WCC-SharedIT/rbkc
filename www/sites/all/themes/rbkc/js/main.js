@@ -1,19 +1,19 @@
 (function($) {
 
-	var headerMob,
-			headerDesk,
-			stylePDF,
-	//	accordion,
-			addViewAllMore,
-			addViewAllElsewhere,
-			showMore,
-			checkPlaceholder,
-			wrapH2,
-			serviceList,
-			commsHeight,
-			slickSlider;
+  var headerMob,
+      headerDesk,
+      stylePDF,
+  //  accordion,
+      addViewAllMore,
+      addViewAllElsewhere,
+      showMore,
+      checkPlaceholder,
+      wrapH2,
+      serviceList,
+      commsHeight,
+      slickSlider;
 
-  // opening and closing header menus - pure css?
+  // opening and closing header menus
   function assignOpenMenu( thisButton, thisMenu, otherButton, otherMenu ) {
     $(thisButton).click(function() {
       // test to see if other menu provided (only defined when acting on two mobile menus)
@@ -35,178 +35,173 @@
         });
       }
     });
-  } //end assignOpenMenu
+  }
 
-	function wrapH2() {
+  function wrapH2() {
+    $('.content h2').each(function() {
+      if ($(this).height() > 40) {
+        $(this).css("line-height", "2rem");
+      }
+    });
+  }
 
-		$('.content h2').each(function() {
-			if ($(this).height() > 40) {
-				$(this).css("line-height", "2rem");
-			}
-		});
-	}
-
-	function stylePDF() { // styling PDF links with icon
-
-		$('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
-
-			var linkElement = $(this);
-
-			var linkText = linkElement.text();
-
-			var	linkHref =  $(this).attr('href');
-
-			var linkParent = $(this).parents("li:first, p:first");
-
-			linkParent.addClass("docLink");  // adding a class to the link's parent
-
-			$('<br>').appendTo(linkElement);
-
-			// Create the Icon with the duplicated link
-			var Icon =
-				$('<a />', {  // creating a div with class of docLink
-					'class': 'docLink-icon',
-					'href' : linkHref,
-					'role' : 'presentation',   //to hide from screen reader
-					'tabindex' : "-1", // to hide from screen reader
-				}).prependTo(linkParent);
-
-		}); // end each function
-	} // end stylePDF
-
-	// show/hide right hand column menu
-	function addViewAllMore() {
-		var childNumber = $('.related-more ul').find('li');
-			if (childNumber.length > 3) {
-					$('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-more ul');
-			}
-	}
-	function addViewAllElsewhere() {
-		var childNumber = $('.related-elsewhere ul').find('li');
-			if (childNumber.length > 3) {
-					$('<p class="related-viewall">View all</p>').attr('title', 'View other, related pages').insertAfter('.related-elsewhere ul');
-			}
-	}
-	function showMore() {
-		$(this).parent().find('li:gt(2)').slideToggle('150');
-				if ($(this).text() === "View all") {
-					$(this).text("View less").attr('title', 'View fewer links');/* Toggles the title text  */
-				}
-				else {
-					$(this).text("View all").attr('title', 'View more links');/* Toggles the title text */
-					}
-	} 	// end show/hide right hand column menu
-
-	// if broswer does not support html5 placeholder, add value to form field
-	function checkPlaceholder() {
-		if(!Modernizr.input.placeholder){
-		   $('.headerglobal-search_full_text input').val('Enter search terms...');
-		   $('.headerglobal-search_full_text input').click(function() {
-				function doOnce() {
-					$('.headerglobal-search_full_text input').val("");
-					doOnce = function() {};
-				}
-				doOnce();
-		   });
-		}
-	}
-
-	function serviceList() {
-		$('.servicelist-viewall').click(function(e) {
-			e.preventDefault();
-			if(!$(this).hasClass('viewless')) {
-				$('.servicelist-2nd').slideDown(200);
-				$('.servicelist-viewall span').text('View fewer services');
-				$(this).addClass('viewless');
-				}
-			else {
-				$('.servicelist-2nd').slideUp(200);
-				$('.servicelist-viewall span').text('View more services');
-				$(this).removeClass('viewless');
-			}
-		});
-	} // end service list
+  function stylePDF() {
+    $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
+      var linkElement = $(this);
+      var linkText = linkElement.text();
+      var linkHref =  $(this).attr('href');
+      var linkParent = $(this).parents("li:first, p:first");
+      // adding a class to the link's parent
+      linkParent.addClass("docLink");
+      $('<br>').appendTo(linkElement);
+      // Create the Icon with the duplicated link
+      var Icon =
+        $('<a />', {
+          'class': 'docLink-icon',
+          'href' : linkHref,
+          // to hide from screen reader
+          'role' : 'presentation',
+          'tabindex' : "-1"
+        }).prependTo(linkParent);
+    }); // end each function
+  } // end stylePDF
 
 
-	function commsHeight() {  //make comms panels correct height when no flexbox support
-		if  (!$('html').hasClass('flexbox')) {
-			var newsBoxHeight = $('.newsbox-news').outerHeight();
-			//console.log(newsBoxHeight);
-			var imgBoxHeight = $('.newsbox-img').outerHeight();
-			var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
-			//console.log(blogBoxHeight);
-			$('.lblog .newsbox-item ').css('height', blogBoxHeight + "px");
-		}
-	}
+  // where there are more than three items in menu add 'view all'
+  function addViewAll() {
+    var relatedMenu = document.getElementsByClassName('related')[0];
+    var lists = relatedMenu.getElementsByTagName('ul');
+    for (var i = 0, l = lists.length; i < l; i++) {
+      (function(i) {
+        var listItems = lists[i].getElementsByTagName('li');
+        if (listItems.length > 3) {
+          var parent = lists[i].parentNode;
+          var para = document.createElement("p");
+          var node = document.createTextNode("View all");
+          para.appendChild(node);
+          para.className = 'related__viewall';
+          var viewAll = parent.appendChild(para);
+        }
+      })(i);
+    }
+  }
 
-	function slickSlider() {
-		$('.local-slider').slick({
-								infinite: true,
-								speed: 300,
-								slidesToShow: 3,
-								slidesToScroll: 1,
-								autoplay: true,
-								autoplaySpeed: 4000,
-								responsive: [
-									{
-									  breakpoint: 700,
-									  settings: {
-										slidesToShow: 2,
-										swipe: true
-									  }
-									},
-									{
-									  breakpoint: 560,
-									  settings: {
-										slidesToShow: 1,
-										swipe: true,
+  function showMore() {
+    $(this).parent().find('li:gt(2)').slideToggle('150');
+        if ($(this).text() === "View all") {
+          $(this).text("View less").attr('title', 'View fewer links');/* Toggles the title text  */
+        }
+        else {
+          $(this).text("View all").attr('title', 'View more links');/* Toggles the title text */
+          }
+  }   // end show/hide right hand column menu
 
-									  }
-									}
-								  ]
-							});
-	} // end slickSlider
+  // if broswer does not support html5 placeholder, add value to form field
+  function checkPlaceholder() {
+    if(!Modernizr.input.placeholder){
+       $('.headerglobal-search_full_text input').val('Enter search terms...');
+       $('.headerglobal-search_full_text input').click(function() {
+        function doOnce() {
+          $('.headerglobal-search_full_text input').val("");
+          doOnce = function() {};
+        }
+        doOnce();
+       });
+    }
+  }
+
+  function serviceList() {
+    $('.servicelist-viewall').click(function(e) {
+      e.preventDefault();
+      if(!$(this).hasClass('viewless')) {
+        $('.servicelist-2nd').slideDown(200);
+        $('.servicelist-viewall span').text('View fewer services');
+        $(this).addClass('viewless');
+        }
+      else {
+        $('.servicelist-2nd').slideUp(200);
+        $('.servicelist-viewall span').text('View more services');
+        $(this).removeClass('viewless');
+      }
+    });
+  } // end service list
+
+
+  function commsHeight() {  //make comms panels correct height when no flexbox support
+    if  (!$('html').hasClass('flexbox')) {
+      var newsBoxHeight = $('.newsbox-news').outerHeight();
+      //console.log(newsBoxHeight);
+      var imgBoxHeight = $('.newsbox-img').outerHeight();
+      var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
+      //console.log(blogBoxHeight);
+      $('.lblog .newsbox-item ').css('height', blogBoxHeight + "px");
+    }
+  }
+
+  function slickSlider() {
+    $('.local-slider').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      responsive: [
+        {
+          breakpoint: 700,
+          settings: {
+          slidesToShow: 2,
+          swipe: true
+          }
+        },
+        {
+          breakpoint: 560,
+          settings: {
+          slidesToShow: 1,
+          swipe: true,
+
+          }
+        }
+      ]
+    });
+  } // end slickSlider
 
 
 $(document).ready(function() {
 
-	//headerMob();
-
-	//headerDesk();
-
   // assign click function to open the service menu in mobile
   assignOpenMenu( '#openMenu', '.headerglobal__nav', '#openSearch', '.search' );
+
   // assign click function to open the search in mobile
   assignOpenMenu( '#openSearch', '.search', '#openMenu', '.headerglobal__nav');
+
   //assign click function to open the service menu in desktop
   assignOpenMenu( '#openServiceMenu', '.service-menu');
 
-	stylePDF();
+  stylePDF();
 
-	accordion();
+  //accordion();
 
-	addViewAllMore();
+  addViewAll();
 
-	addViewAllElsewhere();
+  $('.related__viewall').on("click", showMore);
 
-	$('.viewAll').on("click",showMore);
+  checkPlaceholder();
 
-	LHCtrim();
+  wrapH2();
 
-	checkPlaceholder();
+  serviceList();
 
-	wrapH2();
+  commsHeight();
 
-	serviceList();
+  try {
+  slickSlider();
+  }
+  catch(e){
+    // if not on home page then we want to do nothing
+  }
 
-	commsHeight();
 
-	try	{
-	slickSlider();
-	}
-	catch(e){
-		// if not on home page then we want to do nothing
-	}
 
 }); // END DOC READY
 
