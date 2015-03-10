@@ -9,10 +9,10 @@
  */
 function feature_field_bases_taxonomy_default_vocabularies() {
   return array(
-    'site_sections' => array(
-      'name' => 'Site sections',
-      'machine_name' => 'site_sections',
-      'description' => 'Site sections.',
+    'service_hub' => array(
+      'name' => 'Service Hub',
+      'machine_name' => 'service_hub',
+      'description' => 'Service Hub.',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
