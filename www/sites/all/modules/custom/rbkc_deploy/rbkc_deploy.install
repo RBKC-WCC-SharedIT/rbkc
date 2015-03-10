@@ -214,3 +214,12 @@ function rbkc_deploy_update_7009() {
 function rbkc_deploy_update_7010() {
   module_enable(array('feature_service_sub_hub'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on Media module.
+ */
+function rbkc_deploy_update_7011() {
+  module_enable(array('media'), TRUE);
+}
