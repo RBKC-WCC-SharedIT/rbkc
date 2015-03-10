@@ -4,6 +4,7 @@ core = 7.x
 package = Features
 dependencies[] = book
 dependencies[] = feature_field_bases
+dependencies[] = file
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = strongarm:strongarm:1
