@@ -123,11 +123,13 @@ function _rbkc_navigation_book_menu(stdClass $node) {
       $menu_tree = rbkc_navigation_split_menu($menu_tree, 2);
       // These menu links are rendered as an ordered list with a start attribute
       // on the second column.
-      $start = count($menu_tree[0]) + 1;
       $content['content']['left'] = menu_tree_output($menu_tree[0]);
       $content['content']['left']['#theme_wrappers'][0] .= '_left';
-      $content['content']['right'] = menu_tree_output($menu_tree[1]);
-      $content['content']['right']['#theme_wrappers'][0] .= '_right__' . (string) $start;
+      if (isset($menu_tree[1])) {
+        $start = count($menu_tree[0]) + 1;
+        $content['content']['right'] = menu_tree_output($menu_tree[1]);
+        $content['content']['right']['#theme_wrappers'][0] .= '_right__' . (string) $start;
+      }
       break;
 
     case 'publication':
