@@ -19,3 +19,5 @@ features[variable][] = menu_parent_topic
 features[variable][] = node_options_topic
 features[variable][] = node_preview_topic
 features[variable][] = node_submitted_topic
+features[variable][] = workbench_moderation_default_state_topic
+features[variable][] = workbench_scheduler_topic
