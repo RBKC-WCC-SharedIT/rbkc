@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Contact department feature.
+ */
+
+include_once 'feature_contact_departments.features.inc';

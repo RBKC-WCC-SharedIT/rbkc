@@ -1,0 +1,7 @@
+name = Contact Departments
+description = Provides a contact department entity.
+core = 7.x
+dependencies[] = entity
+
+files[] = includes/ContactDepartmentEntity.inc
+files[] = includes/ContactDepartmentEntityController.inc

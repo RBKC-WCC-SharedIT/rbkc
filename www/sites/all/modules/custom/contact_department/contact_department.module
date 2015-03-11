@@ -1,0 +1,248 @@
+<?php
+
+/**
+ * @file
+ * Drupal hooks.
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function contact_department_entity_info() {
+  $info['contact_department'] = array(
+    'label' => t('Contact department'),
+    'entity class' => 'ContactDepartmentEntity',
+    'controller class' => 'ContactDepartmentEntityController',
+    'base table' => 'contact_departments',
+    'fieldable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+    ),
+    'bundles' => array(
+      'contact_department' => array(
+        'label' => t('Contact department'),
+        'admin' => array(
+          'path' => 'admin/structure/contact-departments',
+          'access arguments' => array('administer contact departments'),
+        ),
+      ),
+    ),
+    'module' => 'contact_department',
+    'access callback' => 'contact_department_access',
+    'label callback' => 'contact_department_label',
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function contact_department_menu() {
+  $items['admin/content/contact-departments'] = array(
+    'title' => 'Contact departments',
+    'description' => 'Manage contact departments.',
+    'page callback' => 'contact_department_overview',
+    'access arguments' => array('administer contact departments'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'includes/contact_department.admin.inc',
+  );
+
+  $items['admin/structure/contact-departments'] = array(
+    'title' => 'Contact departments',
+    'description' => 'Manage contact departments.',
+    'access arguments' => array('administer contact departments'),
+  );
+
+  $items['admin/structure/contact-departments/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['contact-department/%contact_department'] = array(
+    'title callback' => 'entity_label',
+    'title arguments' => array('contact_department', 1),
+    'page callback' => 'contact_department_view',
+    'page arguments' => array(1),
+    'access callback' => 'entity_access',
+    'access arguments' => array('view', 'contact_department', 1),
+    'file' => 'includes/contact_department.pages.inc',
+  );
+
+  $items['contact-department/add'] = array(
+    'title' => 'Add a contact department',
+    'page callback' => 'entity_ui_get_form',
+    'page arguments' => array('contact_department', NULL, 'add'),
+    'access callback' => 'entity_access',
+    'access arguments' => array('create', 'contact_department'),
+    'file' => 'includes/contact_department.pages.inc',
+  );
+
+  $items['contact-department/%contact_department/edit'] = array(
+    'title' => 'Edit',
+    'page callback' => 'entity_ui_get_form',
+    'page arguments' => array('contact_department', 1),
+    'access callback' => 'entity_access',
+    'access arguments' => array('edit', 'contact_department'),
+    'file' => 'includes/contact_department.pages.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+  );
+
+  $items['contact-department/%contact_department/delete'] = array(
+    'title' => 'Delete a contact department',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('contact_department_delete_confirm_form', 1),
+    'access callback' => 'entity_access',
+    'access arguments' => array('delete', 'contact_department', 1),
+    'file' => 'includes/contact_department.pages.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function contact_department_admin_paths() {
+  return array(
+    'contact-department/add' => TRUE,
+    'contact-department/*/edit' => TRUE,
+    'contact-department/*/delete' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function contact_department_permission() {
+  return array(
+    'administer contact departments' =>  array(
+      'title' => t('Administer contact departments'),
+      'restrict access' => TRUE,
+    ),
+    'view contact departments' => array(
+      'title' => t('View contact departments'),
+      'restrict access' => TRUE,
+    ),
+    'create contact departments' => array(
+      'title' => t('Create contact departments'),
+      'restrict access' => TRUE,
+    ),
+    'edit contact departments' => array(
+      'title' => t('Edit contact departments'),
+      'restrict access' => TRUE,
+    ),
+    'delete contact departments' => array(
+      'title' => t('Delete contact departments'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Access callback, called via entity_access().
+ *
+ * @param $op
+ * @param null $entity
+ * @param null $account
+ * @param $entity_type
+ *
+ * @return bool
+ */
+function contact_department_access($op, $entity = NULL, $account = NULL, $entity_type) {
+  global $user;
+
+  if (!isset($account)) {
+    $account = $user;
+  }
+
+  switch ($op) {
+    case 'create':
+      return user_access('create contact departments', $account);
+      break;
+
+    case 'edit':
+      return user_access('edit contact departments', $account);
+      break;
+
+    case 'view':
+      return user_access('view contact departments', $account);
+      break;
+
+    case 'delete':
+      return user_access('delete contact departments', $account);
+      break;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_load().
+ */
+function contact_department_load($id, $reset = FALSE) {
+  $entities = entity_load('contact_department', array($id), array(), $reset);
+  return $entities[$id];
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function contact_department_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Add action link to 'contact-departmennt/add' on 'admin/content/contact-departments' page.
+  if ($root_path == 'admin/content/contact-departments') {
+    $item = menu_get_item('contact-department/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      );
+    }
+  }
+}
+
+/**
+ * Label callback.
+ *
+ * @param $entity
+ * @param $entity_type
+ *
+ * @return string|void
+ */
+function contact_department_label($entity, $entity_type) {
+  if ('contact_department' !== $entity_type) {
+    return;
+  }
+
+  $label = '';
+
+  if (isset($entity->field_contact_department_name[LANGUAGE_NONE][0]['safe_value'])) {
+    $label = $entity->field_contact_department_name[LANGUAGE_NONE][0]['safe_value'];
+  }
+
+  return $label;
+}
+
+/**
+ * Implements hook_preprocess().
+ *
+ * @param $variables
+ * @param $hook
+ */
+function contact_department_preprocess(&$variables, $hook) {
+  if (isset($variables['elements']['#entity_type']) && 'contact_department' == $variables['elements']['#entity_type']) {
+    if (isset($variables['field_contact_department_name']) && isset($variables['field_contact_department_link'])) {
+      $variables['content'] = array(
+        '#theme' => 'link',
+        '#text' => t('Contact the !contact_department team', array('!contact_department' => $variables['field_contact_department_name'][0]['safe_value'])),
+        '#path' => $variables['field_contact_department_link'][0]['display_url'],
+        '#options' => array(
+          'attributes' => array('class' => 'contact-team'),
+          'html' => FALSE,
+        ),
+      );
+    }
+  }
+}
