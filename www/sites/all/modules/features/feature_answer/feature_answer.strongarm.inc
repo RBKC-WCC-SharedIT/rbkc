@@ -76,7 +76,10 @@ function feature_answer_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_answer';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_answer'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -99,6 +102,30 @@ function feature_answer_strongarm() {
   $strongarm->name = 'pathauto_node_answer_pattern';
   $strongarm->value = '[node:field_service_hub]/[node:title]';
   $export['pathauto_node_answer_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_answer';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_answer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_scheduler_answer';
+  $strongarm->value = array();
+  $export['workbench_scheduler_answer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_answer';
+  $strongarm->value = array(
+    'status' => '1',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_node_answer'] = $strongarm;
 
   return $export;
 }

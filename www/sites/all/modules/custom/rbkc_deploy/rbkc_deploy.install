@@ -229,8 +229,20 @@ function rbkc_deploy_update_7011() {
  * Implements hook_update_N().
  *
  * Rename site_sections vocabulary to service_hub.
+ *
+ * Retrospectively added the check and skip if the service hub vocabulary
+ * already exists to prevent integrity constraint violations.
+ *
+ * @see rbkc_deploy_update_7014().
  */
 function rbkc_deploy_update_7012() {
+  $service_hub_machine_name = 'service_hub';
+  $vocabularies = taxonomy_vocabulary_get_names();
+
+  if (array_key_exists($service_hub_machine_name, $vocabularies)) {
+    return t('Skipping ' . __FUNCTION__ . ' as it does not need to be run.');
+  }
+
   db_update('taxonomy_vocabulary')
     ->fields(array('name' => t('Service Hub'), 'machine_name' => 'service_hub', 'description' => 'Service Hub.'))
     ->condition('machine_name', 'site_sections')
@@ -252,5 +264,30 @@ function rbkc_deploy_update_7013() {
   foreach ($field_names as $field_name) {
     $instance = field_info_instance('node', $field_name, 'answer');
     field_delete_instance($instance, TRUE);
+  }
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * In some cases, at this point, there will two vocabularies, site sections AND
+ * service hub with the terms still against the site section vocabulary. This
+ * hook_update_N() checks for that scenario and sorts it out by moving the
+ * terms to the service hub vocabulary and deleting the site sections vocabulary.
+ */
+function rbkc_deploy_update_7014() {
+  $site_sections_machine_name = 'site_sections';
+  $service_hub_machine_name = 'service_hub';
+  $vocabularies = taxonomy_vocabulary_get_names();
+
+  if (array_key_exists($site_sections_machine_name, $vocabularies) && array_key_exists($service_hub_machine_name, $vocabularies)) {
+    $site_section_vocabulary = $vocabularies[$site_sections_machine_name];
+    $service_hub_vocabulary = $vocabularies[$service_hub_machine_name];
+    db_update('taxonomy_term_data')
+      ->fields(array('vid' => $service_hub_vocabulary->vid))
+      ->condition('vid', $site_section_vocabulary->vid)
+      ->execute();
+
+    taxonomy_vocabulary_delete($site_section_vocabulary->vid);
   }
 }

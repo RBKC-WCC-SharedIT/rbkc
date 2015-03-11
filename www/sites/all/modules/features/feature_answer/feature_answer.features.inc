@@ -19,7 +19,7 @@ function feature_answer_ctools_plugin_api($module = NULL, $api = NULL) {
 function feature_answer_node_info() {
   $items = array(
     'answer' => array(
-      'name' => t('Answer page'),
+      'name' => t('Answer'),
       'base' => 'node_content',
       'description' => t('Use this content type to create answer pages.'),
       'has_title' => '1',

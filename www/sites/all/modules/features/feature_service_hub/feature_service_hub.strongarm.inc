@@ -70,7 +70,10 @@ function feature_service_hub_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_servicehub';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_servicehub'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -86,6 +89,30 @@ function feature_service_hub_strongarm() {
   $strongarm->name = 'node_submitted_servicehub';
   $strongarm->value = 0;
   $export['node_submitted_servicehub'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_servicehub';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_servicehub'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_scheduler_servicehub';
+  $strongarm->value = array();
+  $export['workbench_scheduler_servicehub'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'xmlsitemap_settings_node_servicehub';
+  $strongarm->value = array(
+    'status' => '1',
+    'priority' => '0.5',
+  );
+  $export['xmlsitemap_settings_node_servicehub'] = $strongarm;
 
   return $export;
 }
