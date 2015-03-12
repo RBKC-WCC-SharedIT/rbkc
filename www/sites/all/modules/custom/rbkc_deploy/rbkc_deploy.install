@@ -291,3 +291,14 @@ function rbkc_deploy_update_7014() {
     taxonomy_vocabulary_delete($site_section_vocabulary->vid);
   }
 }
+
+
+/**
+ * Implements hook_update_N().
+ *
+ * Enable the Workbench Email module.
+ */
+function rbkc_deploy_update_7015() {
+  module_enable(array('workbench_email'), TRUE);
+}
+
