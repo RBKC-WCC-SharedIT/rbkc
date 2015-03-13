@@ -315,6 +315,6 @@ function rbkc_deploy_update_7016() {
  *
  * Switch on WYSIWYG module.
  */
-function rbkc_deploy_update_7016() {
+function rbkc_deploy_update_7017() {
   module_enable(array('wysiwyg'), TRUE);
 }
