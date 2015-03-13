@@ -100,7 +100,7 @@ function feature_service_sub_hub_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_subhub_pattern';
-  $strongarm->value = '[node:field_site_section]/[node:title]';
+  $strongarm->value = '';
   $export['pathauto_node_subhub_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

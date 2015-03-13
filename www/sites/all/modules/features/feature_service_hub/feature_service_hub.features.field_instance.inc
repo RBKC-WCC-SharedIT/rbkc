@@ -30,6 +30,12 @@ function feature_service_hub_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_news_stories',
@@ -65,6 +71,12 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 3,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -106,6 +118,12 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 1,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -165,6 +183,12 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 2,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
