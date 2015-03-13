@@ -2,3 +2,5 @@ name= "Bundle to csv"
 description= "Export bundle field structure to CSV."
 core=7.x
 package= "Migrate"
+configure = admin/content/migrate/migratecsv
+dependencies[] = migrate
