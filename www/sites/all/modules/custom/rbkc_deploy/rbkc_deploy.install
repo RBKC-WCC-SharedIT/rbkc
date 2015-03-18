@@ -291,3 +291,30 @@ function rbkc_deploy_update_7014() {
     taxonomy_vocabulary_delete($site_section_vocabulary->vid);
   }
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on Media module.
+ */
+function rbkc_deploy_update_7015() {
+  module_enable(array('media'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on Media WYSIWYG, Media WYSIWYG View Mode module extensions.
+ */
+function rbkc_deploy_update_7016() {
+  module_enable(array('media_wysiwyg', 'media_wysiwyg_view_mode'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on WYSIWYG module.
+ */
+function rbkc_deploy_update_7017() {
+  module_enable(array('wysiwyg'), TRUE);
+}
