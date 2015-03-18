@@ -318,3 +318,20 @@ function rbkc_deploy_update_7016() {
 function rbkc_deploy_update_7017() {
   module_enable(array('wysiwyg'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the field group module.
+ */
+function rbkc_deploy_update_7018() {
+  module_enable(array('field_group'), TRUE);
+}
+
+
+/**
+ * Switch on the linkit module.
+ */
+function rbkc_deploy_update_7019() {
+  module_enable(array('linkit'), TRUE);
+}
