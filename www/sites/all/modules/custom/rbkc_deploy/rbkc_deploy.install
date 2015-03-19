@@ -343,3 +343,11 @@ function rbkc_deploy_update_7019() {
 function rbkc_deploy_update_7020() {
   module_enable(array('short_title'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ * Switch on Workbench Email module.
+ */
+function rbkc_deploy_update_7021() {
+  module_enable(array('workbench_email'), TRUE);
+}
