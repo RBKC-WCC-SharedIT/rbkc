@@ -59,7 +59,7 @@ function feature_answer_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -122,7 +122,7 @@ function feature_answer_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -164,7 +164,57 @@ function feature_answer_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-answer-field_short_title'
+  $field_instances['node-answer-field_short_title'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please enter a short title for this content',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -173,8 +223,10 @@ function feature_answer_field_default_field_instances() {
   t('Body');
   t('Contact button');
   t('Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.');
+  t('Please enter a short title for this content');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
+  t('Short Title');
 
   return $field_instances;
 }
