@@ -319,6 +319,7 @@ function rbkc_deploy_update_7017() {
   module_enable(array('wysiwyg'), TRUE);
 }
 
+
 /**
  * Implements hook_update_N().
  * Switch on the field group module.
@@ -335,10 +336,10 @@ function rbkc_deploy_update_7019() {
   module_enable(array('linkit'), TRUE);
 }
 
-/*
+/**
+ * Implements hook_update_N().
  * Switch on Short Title module.
  */
 function rbkc_deploy_update_7020() {
   module_enable(array('short_title'), TRUE);
 }
-
