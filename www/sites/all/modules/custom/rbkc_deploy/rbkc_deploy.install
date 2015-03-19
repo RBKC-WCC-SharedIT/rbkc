@@ -292,13 +292,46 @@ function rbkc_deploy_update_7014() {
   }
 }
 
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on Media module.
+ */
+function rbkc_deploy_update_7015() {
+  module_enable(array('media'), TRUE);
+}
 
 /**
  * Implements hook_update_N().
  *
- * Enable the Workbench Email module.
+ * Switch on Media WYSIWYG, Media WYSIWYG View Mode module extensions.
  */
-function rbkc_deploy_update_7015() {
-  module_enable(array('workbench_email'), TRUE);
+function rbkc_deploy_update_7016() {
+  module_enable(array('media_wysiwyg', 'media_wysiwyg_view_mode'), TRUE);
 }
 
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on WYSIWYG module.
+ */
+function rbkc_deploy_update_7017() {
+  module_enable(array('wysiwyg'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the field group module.
+ */
+function rbkc_deploy_update_7018() {
+  module_enable(array('field_group'), TRUE);
+}
+
+
+/**
+ * Switch on the linkit module.
+ */
+function rbkc_deploy_update_7019() {
+  module_enable(array('linkit'), TRUE);
+}
