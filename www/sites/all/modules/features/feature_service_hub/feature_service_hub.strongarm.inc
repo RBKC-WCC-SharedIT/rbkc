@@ -13,6 +13,33 @@ function feature_service_hub_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_field_collection_item__field_popular_topics';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_field_collection_item__field_popular_topics'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__servicehub';
   $strongarm->value = array(
     'view_modes' => array(
@@ -28,6 +55,15 @@ function feature_service_hub_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -35,16 +71,16 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
-        ),
-        'redirect' => array(
           'weight' => '7',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '6',
         ),
+        'xmlsitemap' => array(
+          'weight' => '5',
+        ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
       ),
       'display' => array(),

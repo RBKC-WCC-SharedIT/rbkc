@@ -19,14 +19,6 @@ function feature_field_bases_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'body',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -46,14 +38,6 @@ function feature_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_asset',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -77,7 +61,6 @@ function feature_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_contact_button',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -100,21 +83,42 @@ function feature_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_news_stories'
-  $field_bases['field_news_stories'] = array(
+  // Exported field_base: 'field_external_link'
+  $field_bases['field_external_link'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_news_stories',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
+    'field_name' => 'field_external_link',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
       ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
     ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_external_link_teaser'
+  $field_bases['field_external_link_teaser'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_external_link_teaser',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -127,21 +131,13 @@ function feature_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_other_popular_content'
-  $field_bases['field_other_popular_content'] = array(
+  // Exported field_base: 'field_internal_page_link'
+  $field_bases['field_internal_page_link'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_other_popular_content',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
+    'field_name' => 'field_internal_page_link',
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -152,7 +148,11 @@ function feature_field_bases_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'answer' => 'answer',
-        'servicehub' => 'servicehub',
+        'guide' => 'guide',
+        'publication' => 'publication',
+        'servicehub' => 0,
+        'subhub' => 'subhub',
+        'topic' => 'topic',
       ),
       'view' => array(
         'args' => array(),
@@ -164,14 +164,148 @@ function feature_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
+  // Exported field_base: 'field_internal_topic_link'
+  $field_bases['field_internal_topic_link'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_internal_topic_link',
+    'indexes' => array(
+      'nid' => array(
+        0 => 'nid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'node_reference',
+    'settings' => array(
+      'referenceable_types' => array(
+        'answer' => 'answer',
+        'guide' => 'guide',
+        'publication' => 'publication',
+        'servicehub' => 0,
+        'subhub' => 0,
+        'topic' => 0,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'node_reference',
+  );
+
+  // Exported field_base: 'field_news_stories'
+  $field_bases['field_news_stories'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_news_stories',
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'field_collection',
+    'settings' => array(
+      'hide_blank_items' => 1,
+      'path' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'field_collection',
+  );
+
+  // Exported field_base: 'field_news_story_image'
+  $field_bases['field_news_story_image'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_news_story_image',
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'image',
+  );
+
+  // Exported field_base: 'field_news_story_link'
+  $field_bases['field_news_story_link'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_news_story_link',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_other_popular_content'
+  $field_bases['field_other_popular_content'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_other_popular_content',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
   // Exported field_base: 'field_popular_tasks'
   $field_bases['field_popular_tasks'] = array(
     'active' => 1,
-    'cardinality' => 3,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popular_tasks',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -197,38 +331,23 @@ function feature_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_popular_topics'
   $field_bases['field_popular_topics'] = array(
     'active' => 1,
-    'cardinality' => 6,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_popular_topics',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
-      'nid' => array(
-        0 => 'nid',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'node_reference',
+    'module' => 'field_collection',
     'settings' => array(
-      'referenceable_types' => array(
-        'answer' => 'answer',
-        'servicehub' => 'servicehub',
-      ),
-      'view' => array(
-        'args' => array(),
-        'display_name' => '',
-        'view_name' => '',
-      ),
+      'hide_blank_items' => 1,
+      'path' => '',
     ),
     'translatable' => 0,
-    'type' => 'node_reference',
+    'type' => 'field_collection',
   );
 
   // Exported field_base: 'field_service_hub'
@@ -238,14 +357,6 @@ function feature_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_service_hub',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -272,14 +383,6 @@ function feature_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_subhub_link_to_topic',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -312,35 +415,19 @@ function feature_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_topic_link',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
     'indexes' => array(
-      'nid' => array(
-        0 => 'nid',
+      'revision_id' => array(
+        0 => 'revision_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'node_reference',
+    'module' => 'field_collection',
     'settings' => array(
-      'referenceable_types' => array(
-        'answer' => 'answer',
-        'servicehub' => 0,
-        'topic' => 0,
-      ),
-      'view' => array(
-        'args' => array(),
-        'display_name' => '',
-        'view_name' => '',
-      ),
+      'hide_blank_items' => 1,
+      'path' => '',
     ),
     'translatable' => 0,
-    'type' => 'node_reference',
+    'type' => 'field_collection',
   );
 
   return $field_bases;
