@@ -71,16 +71,16 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
@@ -125,6 +125,13 @@ function feature_service_hub_strongarm() {
   $strongarm->name = 'node_submitted_servicehub';
   $strongarm->value = 0;
   $export['node_submitted_servicehub'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'short_title_enable_servicehub';
+  $strongarm->value = 1;
+  $export['short_title_enable_servicehub'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
