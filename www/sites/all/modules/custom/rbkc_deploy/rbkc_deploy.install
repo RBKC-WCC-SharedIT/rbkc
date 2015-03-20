@@ -357,3 +357,13 @@ function rbkc_deploy_update_7020() {
 function rbkc_deploy_update_7021() {
   module_enable(array('entity', 'entityreference', 'contact_department', 'feature_contact_departments'), TRUE);
 }
+
+/**
+ * Implements_hook_update_N().
+ *
+ * Remove field_contact_button.
+ */
+function rbkc_deploy_update_7022() {
+  $instance = field_info_instance('node', 'field_contact_button', 'answer');
+  field_delete_instance($instance, TRUE);
+}
