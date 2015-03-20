@@ -1,0 +1,12 @@
+name = Contact department
+description = Contact departments Feature.
+core = 7.x
+package = Features
+dependencies[] = feature_field_bases
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_instance][] = contact_department-contact_department-field_contact_department_link
+features[field_instance][] = contact_department-contact_department-field_contact_department_name
+features[views_view][] = contact_departments
+features_exclude[dependencies][entityreference] = entityreference
+features_exclude[dependencies][views] = views

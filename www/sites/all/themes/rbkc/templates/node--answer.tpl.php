@@ -3,7 +3,7 @@
                   <div class="col8">
                     <div class="content">
                       <?php
-                        hide($content['field_contact_button']);
+                        hide($content['field_contact_department']);
                         print render($content);
                        ?>
                     </div>
@@ -44,7 +44,7 @@
                       </div><!-- end related-elsewhere -->
                     </div><!-- end bordered related -->
 
-                    <?php print render($content['field_contact_button']); ?>
+                    <?php print render($content['field_contact_department']); ?>
 
                     <div id="webchatplanning">
                       <script type="text/javascript">
