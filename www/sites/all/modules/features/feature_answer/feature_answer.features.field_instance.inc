@@ -63,19 +63,22 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-answer-field_contact_button'
-  $field_instances['node-answer-field_contact_button'] = array(
+  // Exported field_instance: 'node-answer-field_contact_department'
+  $field_instances['node-answer-field_contact_department'] = array(
     'bundle' => 'answer',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.',
+    'description' => 'Start typing to select a contact department, the selected contact department name is used to generate the contact us button.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -91,37 +94,21 @@ function feature_answer_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_contact_button',
-    'label' => 'Contact button',
+    'field_name' => 'field_contact_department',
+    'label' => 'Contact department',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => 'contact-team',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'required',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
       'user_register_form' => FALSE,
-      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
       'weight' => 3,
     ),
   );
@@ -221,12 +208,12 @@ function feature_answer_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Contact button');
-  t('Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.');
+  t('Contact department');
   t('Please enter a short title for this content');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
   t('Short Title');
+  t('Start typing to select a contact department, the selected contact department name is used to generate the contact us button.');
 
   return $field_instances;
 }

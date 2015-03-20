@@ -322,6 +322,7 @@ function rbkc_deploy_update_7017() {
 
 /**
  * Implements hook_update_N().
+ *
  * Switch on the field group module.
  */
 function rbkc_deploy_update_7018() {
@@ -330,6 +331,8 @@ function rbkc_deploy_update_7018() {
 
 
 /**
+ * Implements hook_update_N().
+ *
  * Switch on the linkit module.
  */
 function rbkc_deploy_update_7019() {
@@ -338,8 +341,29 @@ function rbkc_deploy_update_7019() {
 
 /**
  * Implements hook_update_N().
+ *
  * Switch on Short Title module.
  */
 function rbkc_deploy_update_7020() {
   module_enable(array('short_title'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the entity, entity reference, contact_department and
+ * feature_contact_departments modules.
+ */
+function rbkc_deploy_update_7021() {
+  module_enable(array('entity', 'entityreference', 'contact_department', 'feature_contact_departments'), TRUE);
+}
+
+/**
+ * Implements_hook_update_N().
+ *
+ * Remove field_contact_button.
+ */
+function rbkc_deploy_update_7022() {
+  $instance = field_info_instance('node', 'field_contact_button', 'answer');
+  field_delete_instance($instance, TRUE);
 }
