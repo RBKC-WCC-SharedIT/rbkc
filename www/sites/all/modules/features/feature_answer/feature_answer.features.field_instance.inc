@@ -59,23 +59,26 @@ function feature_answer_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-answer-field_contact_button'
-  $field_instances['node-answer-field_contact_button'] = array(
+  // Exported field_instance: 'node-answer-field_contact_department'
+  $field_instances['node-answer-field_contact_department'] = array(
     'bundle' => 'answer',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.',
+    'description' => 'Start typing to select a contact department, the selected contact department name is used to generate the contact us button.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -91,38 +94,22 @@ function feature_answer_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_contact_button',
-    'label' => 'Contact button',
+    'field_name' => 'field_contact_department',
+    'label' => 'Contact department',
     'required' => 0,
     'settings' => array(
-      'absolute_url' => 1,
-      'attributes' => array(
-        'class' => 'contact-team',
-        'configurable_class' => 0,
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'required',
-      'title_label_use_field_label' => 0,
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
       'user_register_form' => FALSE,
-      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 2,
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 3,
     ),
   );
 
@@ -164,17 +151,69 @@ function feature_answer_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-answer-field_short_title'
+  $field_instances['node-answer-field_short_title'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please enter a short title for this content',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => 0,
+    'settings' => array(
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Contact button');
-  t('Fill in the title (the text that will appear on the button) and the URL if you\'d like a contact button to be displayed with this content.');
+  t('Contact department');
+  t('Please enter a short title for this content');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
+  t('Short Title');
+  t('Start typing to select a contact department, the selected contact department name is used to generate the contact us button.');
 
   return $field_instances;
 }
