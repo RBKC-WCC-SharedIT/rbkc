@@ -418,7 +418,8 @@ margin-bottom: 0 !important;
 .headerglobal {
   overflow: hidden;
   z-index: 1;
-  min-height: 71px; /* adding specific height stops the breadcrumb shifting about in desktop view */
+  /* adding specific height stops the breadcrumb shifting about in desktop view */
+  min-height: 71px;
 }
 .headerglobal__logowrap {
   height: 0;
@@ -605,7 +606,8 @@ margin-bottom: 0 !important;
   margin-right:4px;
   margin-right:0.3rem;
   font-size:13px;
-  font-size:.8125rem; /* 13/16 = .8125; */
+  /* 13/16 = .8125; */
+  font-size:.8125rem;
   line-height:18px;
   width:auto;
   list-style-position:outside;
@@ -619,10 +621,12 @@ margin-bottom: 0 !important;
   width:10px;
   height:16px;
   transition:none;
-  box-sizing: border-box; /* just for IE */
+  /* just for IE */
+  box-sizing: border-box;
 }
 .breadcrumb li:first-child + li {
-  display: block; /* only show home and root channel links in mobile */
+  /* only show home and root channel links in mobile */
+  display: block;
 }
 .breadcrumb li:first-child  a {
   text-indent: 300%;
@@ -632,7 +636,8 @@ margin-bottom: 0 !important;
   width:10px;
   height:16px;
   transition:none;
-  box-sizing: border-box; /* just for IE */
+  /* just for IE */
+  box-sizing: border-box;
 }
 .heading {
   border-bottom: 5px solid #f4d033;
@@ -807,12 +812,6 @@ a.footerglobal__contact:hover,
 .search * {
   opacity: 1;
   transition: all linear .2s;
-}
-
-
-
-.viewAll,.viewAllChildren {   /* for topic page? */
-  cursor:pointer;
 }
 
 /*** accordion styles - rewrite SP ***/
@@ -1235,7 +1234,7 @@ div.accordionContents.show {
   box-sizing: border-box;
   width:100%;
   border: solid #7F8EC7 1px;
-  padding: 0 20px 16px 20px
+  padding: 0 20px 16px 20px;
   background-color:#FFF;
   margin-bottom: 16px;
   margin-bottom: 1rem;
@@ -2620,9 +2619,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     left: -0.5rem;
     float: left;
     clear: none;
-    /* important declarations for edge cases when people hide menu in mobile view then resize browser to desktop */
-    display: block !important;
-    width: auto !important;
   }
   .headerglobal__nav li {
     display: block;
@@ -2741,11 +2737,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
-  .service-menu.hide {
-    display: block;
-    max-height: 0px;
-    transition:all ease-in 0.2s;
-  }
   .service-menu ul {
     float:left;
     width: 33.333333%;
@@ -2817,6 +2808,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     opacity: 1;
     max-height: 600px;
     transition: none;
+  }
+  .js .service-menu.hide {
+    display: block;
+    max-height: 0px;
+    transition:all ease-in 0.2s;
   }
 
 }/* end media query */
