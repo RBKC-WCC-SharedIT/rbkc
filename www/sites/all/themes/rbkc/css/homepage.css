@@ -1,90 +1,3 @@
-
-Conversation opened. 1 unread message.
-
-Skip to content
-Using Gmail with screen readers
-Oops! You are not invisible because you're logged into Google Talk from another client, device, or location that doesn't support invisibility.
-Available	abigail wilkinson
-Idle	Tamas Szabo
-Idle	tracynottraceypayne@gmail.com
-	Andrew Smith
-	andrew.smith
-	Hannah Payne
-	Payne, Tracy
-	Payne, Tracy
-	Rob O'Neill
-	sophie.payne
- 
- 
-More
- 
-1 of 8,278
- 
-Web Clip
-NYT Travel - Pursuits: In Key West, a Taste of Cuban Coffee Culture - 3 days ago
-(no subject)
-Inbox
-	x
-Sophie.Payne@rbkc.gov.uk
-	
-Attachments2:33 PM (0 minutes ago)
-		
-to me
- 
-_______________________
-Sophie Payne
-Internet Support Officer
-1st floor
-Royal Borough of Kensington and Chelsea
-Information Systems Division (ISD)
-Kensington Town Hall
-Hornton Street, London W8 7NX
-T: 020 7361 3574 
-E: SophieC.Payne@rbkc.gov.uk
-W: www.rbkc.gov.uk
- 
- 
- 
-
-
-
-Ask Nick: A conversation with the Council Leader.
-
-Cllr Nick Paget-Brown wants to know what the Council is doing well, what we can improve and hear any of your suggestions for the future.
-
-Come along to the latest Ask Nick event:
-
-Date: Thursday 5 March 2015
-Time: 6pm refreshments, starts 6.30pm
-Venue: Second Church of Christ, Scientist, Palace Gardens Terrace, W8 4RT
-Http://www.rbkc.gov.uk/asknick
-
-***********************************************************
-The Royal Borough of Kensington and Chelsea.
-This e-mail may contain information which is confidential,
-legally privileged and/or copyright protected. This e-mail
-is intended for the addressee only. If you receive this in
-error, please contact the sender and delete the material
-from your computer.
-
-************************************************************
-Attachments area
-Preview attachment homepagemodular.css
-[Style Sheet]
-	
-Click here to Reply or Forward
-6.96 GB (46%) of 15 GB used
-Manage
-©2015 Google - Terms - Privacy
-Last account activity: 41 minutes ago
-Details
-	
-	
-	sophie.payne
-Show details
-What's New
-homepagemodular.css
-
 @font-face {
 	font-family: 'icomoon';
 	src:url('Iconfonts/icomoon.eot?fu30mx');
@@ -231,7 +144,7 @@ homepagemodular.css
 	padding: 32px 16px 16px 16px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-}   
+}
 
 .brightbox h4 {
 	display: inline;
@@ -257,7 +170,7 @@ homepagemodular.css
 .purple .brightbox-pointer {
 	border-bottom: 15px solid #547BA2;
 }
- 
+
 .brightbox a:hover  .brightbox-pointer,
 .brightbox a:active  .brightbox-pointer {
 	margin-bottom: 0;
@@ -288,7 +201,7 @@ homepagemodular.css
 
 .fit-3 li,
 .fit-3 > div {
-	width: 33.3333333333333%;	
+	width: 33.3333333333333%;
 	float: left;
 }
 
@@ -306,7 +219,7 @@ homepagemodular.css
 .ribbon-home {
 	background-color: #386390;
 	background-image: url('/images/refresh/hp-header.jpg');
-	background-position: center top; 
+	background-position: center top;
 	background-repeat: no-repeat;
 	background-size: 100%;
 	border-bottom: solid #F3CF45 6px;
@@ -332,20 +245,20 @@ homepagemodular.css
 	display: flex;
 	flex-direction: column;
 }
- 
+
 .quicklinks {
 	-webkit-order: 1;
 }
- 
+
 .askus {
 	-webkit-order: 2;
-	order: 2;	
+	order: 2;
 	width: 100%;
 }
 
 .servicelist {
 	-webkit-order: 3;
-	order: 3;	
+	order: 3;
 }
 
 .newsbox {
@@ -369,7 +282,7 @@ homepagemodular.css
 .impactbox h2  {
 	padding: 8px 16px 0 16px;
 	padding: 1.5rem 1rem 0 1rem;
- 	margin-bottom: 12px;	
+ 	margin-bottom: 12px;
 }
 
 .impactbox  a {
@@ -454,13 +367,13 @@ a.servicelist-viewall:hover {
 	padding-right: 20px;
 	background-size: 12px;
 	font-size: 14px;
-	
+
 }
 
 .servicelist-viewall.viewless span {
 	background: url('/images/refresh/chevron-up-blue.png') no-repeat right 50% ;
 	background-size: 12px;
-	
+
 }
 
 
@@ -543,13 +456,13 @@ a.servicelist-viewall:hover {
 
 .hollowpointer1,
 .hollowpointer4
-{	
+{
 	display: block;
 	position: absolute;
 	height: 16px;
 	width: 50%;
 	background: #F5F5F1;
-	z-index: 40;	
+	z-index: 40;
 }
 
 .hollowpointer1 {
@@ -569,7 +482,7 @@ a.servicelist-viewall:hover {
 
 .newsbox-img  img {
 	display: block;
-	height: auto !important;	
+	height: auto !important;
 }
 
 .newsbox-img  a:hover {
@@ -631,7 +544,7 @@ a.servicelist-viewall:hover {
 
 .newsbox-items {
 	overflow: hidden;
-} 
+}
 
 .newsbox-item {
 	overflow: hidden;
@@ -677,15 +590,15 @@ a.servicelist-viewall:hover {
 .newsbox-readmore {
 	padding-bottom: 36px;
 }
- 
+
 .fadeout {
 	width: 100%;
 	height: 100px;
 	background: url('/images/refresh/fadegradient.png') repeat;
-	background: -webkit-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1); 
-	background: -o-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1); 
-	background: -moz-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1); 
-	background: linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1); 
+	background: -webkit-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
+	background: -o-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
+	background: -moz-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
+	background: linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
 	position: absolute;
 	z-index: 300;
 	left: 0;
@@ -703,7 +616,7 @@ a.servicelist-viewall:hover {
 	bottom: 16px;
 	border-bottom: transparent dotted 1px;
 }
- 
+
 .flexbox  .lblog .newsbox-items,
 .flexbox  .lblog .newsbox-item  {
 	position: relative;
@@ -719,7 +632,7 @@ a.servicelist-viewall:hover {
 	padding-top:32px;
 	padding-top: 2rem;
 	background: #fff;
-} 
+}
 
 .local h3 {
 	text-align: center;
@@ -806,7 +719,7 @@ a.servicelist-viewall:hover {
 .local-slider-item a:active .local-text h2 {
 	color: #2b5d92;
 	transition: none;
-} 
+}
 
 .localevents-date {
 	display: block;
@@ -828,11 +741,11 @@ a.servicelist-viewall:hover {
 
 .localevents-day {
 	font-size: 20px;
-}	
+}
 
 .localevents-month {
 	font-size: 13px;
-}	
+}
 
 
 
@@ -848,13 +761,13 @@ a.servicelist-viewall:hover {
 	font-size: 14px;
 }
 
-   
 
-/* Press releases and Twitter */   
+
+/* Press releases and Twitter */
 
 .presstweet {
 	padding-top: 48px;
-	padding-bottom: 24px;	
+	padding-bottom: 24px;
 }
 
 .press {
@@ -908,7 +821,7 @@ a.servicelist-viewall:hover {
 
 .fit-1-2-3 li,
 .fit-1-2-3 > div {
-	width: 50%;	
+	width: 50%;
 	float: left;
 }
 
@@ -969,7 +882,7 @@ a.servicelist-viewall:hover {
 .iconlinks-quicklinks .iconlinks-first,
 .iconlinks-quicklinks .iconlinks-last {
 	padding: 10px 16px 10px 60px;
-	background-size: 25px;	
+	background-size: 25px;
 	background-position: 1rem 50%;
 }
 a.iconlinks-quicklinks-fauxlast,
@@ -1041,11 +954,11 @@ a.iconlinks-quicklinks-fauxlast:focus {
 
 .fit-1-2-3 li,
 .fit-1-2-3 > div {
-	width: 33.3333333333333%;	
+	width: 33.3333333333333%;
 }
 
 
-.quicklinks, 
+.quicklinks,
 .servicelist {
 	padding-left: 16px;
 	padding-right: 16px;
@@ -1114,7 +1027,7 @@ a.iconlinks-quicklinks-fauxlast:focus {
 	visibility: visible;
 	transition: all linear 0.25s;
 }
-	
+
 .search--hp .search-input:focus {
 	background:#fff;
 }
@@ -1183,7 +1096,7 @@ ul.servicelist-2nd  {
 .servicelist  a:focus {
 	border-left: solid #58D2C4 6px;
 	background-color: none;
-}	
+}
 
 
 a.servicelist-last,
@@ -1241,7 +1154,7 @@ ul.servicelist-2nd  {
 	position: relative;
 	overflow: hidden;
 	width: 100%;
- 	background: #fff; 
+ 	background: #fff;
 }
 
 .brightbox-askus a,
@@ -1285,7 +1198,7 @@ ul.servicelist-2nd  {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	min-height: 125px;  /* min height stops odd display bug in ie9 at normal zoom level (still happens sometimes if you zoom) */
-}  
+}
 
 .brightbox-askus h4 {
 	display: inline;
@@ -1312,7 +1225,7 @@ ul.servicelist-2nd  {
 .purple .brightbox-askus-pointer {
 	border-bottom: 15px solid #547BA2;
 }
- 
+
 .brightbox-askus a:hover  .brightbox-askus-pointer {
 	margin-bottom: 0;
 }
@@ -1353,7 +1266,7 @@ ul.servicelist-2nd  {
 
 
 /* news items and Leader's blog */
- 
+
 .newsbox {
 	margin-left: 0;
 	margin-bottom: 32px;
@@ -1382,14 +1295,14 @@ ul.servicelist-2nd  {
 .flexbox .newsbox {
 	display: flex;
 	flex-direction: row;
-} 
+}
 
 .flexbox .lblog {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
  }
- 
+
 .flexbox  .lblog .newsbox-items,
 .flexbox  .lblog .newsbox-item  {
 	display: flex;
@@ -1422,7 +1335,7 @@ ul.servicelist-2nd  {
 
 
 
-/* Press releases and Twitter */   
+/* Press releases and Twitter */
 
 .press {
 	float: left;
@@ -1519,20 +1432,20 @@ a.iconlinks-quicklinks-fauxlast:focus {
 .brightbox-askus-left {
 	float: left;
 	width: 30%;
-} 
+}
 
 .brightbox-askus-info {
  	float: right;
 	text-align: left;
-	width: 70%; 
-}  
+	width: 70%;
+}
 
 .brightbox-askus-info {
 	padding: 32px 16px 32px 16px;
 }
 
 .brightbox-askus-pointer {
-	left: 8.5%; 
+	left: 8.5%;
 	margin-left: 0;
 }
 
@@ -1583,7 +1496,7 @@ ul.servicelist-2nd  {
 
 .quicklinks li {
 	float: none;
-}	
+}
 
 .iconlinks-quicklinks a,
 .iconlinks-quicklinks li:first-child a,
@@ -1626,7 +1539,7 @@ ul.servicelist-2nd  {
 	z-index: 1;
 	text-align: center;
 	font-family: "Optima W01", "Neue Helvetica eText W01", Arial, sans-serif;
-} 
+}
 
 .local-img {
 	z-index: 2;
@@ -1640,16 +1553,16 @@ ul.servicelist-2nd  {
 }
 
 .local-slider a h2 {
- 	color: transparent; 
+ 	color: transparent;
 	transition: all linear .5s !important;
 	font-size: 2.8rem;
 	line-height: 3.3333rem;
-	transform: scale(0.95); 
-}    
+	transform: scale(0.95);
+}
 
 .local-slider a:hover h2 {
 	 color:#2b5d92;
- 	 transform: scale(1); 
+ 	 transform: scale(1);
 }
 
 
@@ -1662,10 +1575,10 @@ ul.servicelist-2nd  {
  {
 	opacity: 0;
 	border-bottom: 0;
-	transition: all linear 0.25s; 
+	transition: all linear 0.25s;
 }
- 
- 
+
+
 } /* end media query */
 
 
@@ -1742,7 +1655,7 @@ ul.servicelist-2nd  {
 	margin-left: 0;
 }
 
-.lt-ie8 .localevents a, 
+.lt-ie8 .localevents a,
 .lt-ie8 .fit-3 a {
 	cursor: pointer;
 }
@@ -1767,7 +1680,7 @@ ul.servicelist-2nd  {
 }
 
 
- 
+
 .lt-ie9 .floatleft-700 {
 	float: left;
 }
@@ -1787,7 +1700,7 @@ ul.servicelist-2nd  {
 .lt-ie9 .fit-1-2-3 li,
 .lt-ie9 .fit-1-2-3 > div {
 	float: left;
-	width: 33.3333333333333%;	
+	width: 33.3333333333333%;
 }
 
 
@@ -1855,8 +1768,8 @@ ul.servicelist-2nd  {
 
 .lt-ie8 .search--hp .search_full_text input {
 	height: 34px;
-}	
-	
+}
+
 .lt-ie9 .search--hp .search_full_text input:focus {
 	background:#fff;
 }
@@ -1910,7 +1823,7 @@ ul.servicelist-2nd  {
 .lt-ie9 .servicelist  a:focus {
 	border-left: solid #58D2C4 6px;
 	background-color: none;
-}	
+}
 
 .lt-ie9 a.servicelist-last,
 .lt-ie9 a.servicelist-last:active,
@@ -1977,7 +1890,7 @@ background-position: 10px 50%;
 	position: relative;
 	overflow: hidden;
 	width: 100%;
- 	background: #fff; 
+ 	background: #fff;
 }
 
 .lt-ie9 .brightbox-askus a,
@@ -2021,7 +1934,7 @@ background-position: 10px 50%;
 	padding: 0 16px 32px 16px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-}  
+}
 
 .lt-ie9 .brightbox-askus h4 {
 	display: inline;
@@ -2048,7 +1961,7 @@ background-position: 10px 50%;
 .lt-ie9 .purple .brightbox-askus-pointer {
 	border-bottom: 15px solid #547BA2;
 }
- 
+
 .lt-ie9 .brightbox-askus a:hover  .brightbox-askus-pointer {
 	margin-bottom: 0;
 }
@@ -2082,7 +1995,7 @@ background-position: 10px 50%;
 
 
 /* news items and Leader's blog */
- 
+
 .lt-ie9 .newsbox {
 	margin-left: 0;
 	margin-bottom: 32px;
@@ -2092,7 +2005,7 @@ background-position: 10px 50%;
 
 .lt-ie9 .newsbox h2 {
 	background: #F3CF45;
-}	
+}
 
 
 .lt-ie9 .lblog a {
@@ -2127,7 +2040,7 @@ background-position: 10px 50%;
 }
 
 
-/* Press releases and Twitter */   
+/* Press releases and Twitter */
 
 .lt-ie9 .press {
 	float: left;
@@ -2205,20 +2118,20 @@ background-position: 10px 50%;
 .lt-ie9 .brightbox-askus-left {
 	float: left;
 	width: 30%;
-} 
+}
 
 .lt-ie9 .brightbox-askus-info {
  	float: right;
 	text-align: left;
-	width: 70%; 
-}  
+	width: 70%;
+}
 
 .lt-ie9 .brightbox-askus-info {
 	padding: 32px 16px 32px 16px;
 }
 
 .lt-ie9 .brightbox-askus-pointer {
-	left: 8.5%; 
+	left: 8.5%;
 	margin-left: 0;
 }
 
@@ -2263,7 +2176,7 @@ background-position: 10px 50%;
 .lt-ie9 .quicklinks ul,
 .lt-ie9 .quicklinks li {
 	float: none;
-}	
+}
 
 .lt-ie9 .quicklinks ul {
 	padding-left: 24px;
@@ -2278,9 +2191,9 @@ background-position: 10px 50%;
 }
 
 .lt-ie9 .iconlinks-quicklinks a {
-	padding-top: 4px; 
+	padding-top: 4px;
 	padding-right: 0;
-padding-bottom:	4px; 
+padding-bottom:	4px;
 padding-left: 38px !important;
 	background-position: 0.5rem 50%;
 }
@@ -2334,7 +2247,7 @@ padding-left: 20px !important;
 	z-index: 0;
 	text-align: center;
 	font-family: "Optima W01", "Neue Helvetica eText W01", Arial, sans-serif;
-} 
+}
 
 
 
@@ -2343,7 +2256,7 @@ padding-left: 20px !important;
 	font-size: 45px !important;
 	line-height: 64px;
 	transform: scale(0.95);
-}    
+}
 
 .lt-ie9 .local-slider a:hover + .local-text h2 {
 	 color:#2b5d92;
