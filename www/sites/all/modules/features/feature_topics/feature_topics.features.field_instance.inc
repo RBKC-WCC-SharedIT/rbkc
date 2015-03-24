@@ -256,7 +256,7 @@ function feature_topics_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
