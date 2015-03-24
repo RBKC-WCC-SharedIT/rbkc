@@ -376,3 +376,12 @@ function rbkc_deploy_update_7022() {
 function rbkc_deploy_update_7023() {
   module_enable(array('workbench_email'), TRUE);
 }
+
+/**
+ * Implements_hook_update_N().
+ * 
+ * Switch on Google Search Appliance module.
+ */
+function rbkc_deploy_update_7024() {
+  module_enable(array('google_appliance'), TRUE);
+}
