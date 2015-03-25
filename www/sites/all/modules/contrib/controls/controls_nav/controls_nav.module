@@ -1,0 +1,177 @@
+<?php
+/**
+ * @file
+ * Controls navigation - Provides a separate way of building a main navigation menu.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function controls_nav_menu() {
+  module_load_include('registry.inc', 'controls_nav');
+  return _controls_nav_menu();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function controls_nav_block_info() {
+  return array(
+    'nav' => array(
+      'info' => t('Controls navigation block'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+    'subnav' => array(
+      'info' => t('Controls navigation block (second level)'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * We use the locking mechanism to prevent two processes trying to rebuild a menu
+ * at the same time - but we only lock specific versions using the menu 'cid'
+ *
+ * This is called on every page so don't bother putting it in the registry.
+ */
+function controls_nav_block_view($delta) {
+  $block = array();
+  $menu = _controls_nav_get_menu();
+
+  switch ($delta) {
+    case 'nav':
+      foreach (element_children($menu) as $key) {
+        if ($menu[$key]['#control']['detach children']) {
+          $menu[$key]['#children'] = array();
+        }
+      }
+      break;
+    case 'subnav':
+      $new_menu = array();
+      foreach (element_children($menu) as $key) {
+        $menu[$key]['#control']['is_active'] = _controls_is_active($menu[$key]['#control']);
+        if ($menu[$key]['#control']['is_active'] && !empty($menu[$key]['#children'])) {
+          $new_menu = $menu[$key]['#children'];
+          break;
+        }
+      }
+      $menu = $new_menu;
+      break;
+  }
+  $block = array(
+    'subject' => NULL,
+    'content' => $menu,
+  );
+
+  return $block;
+}
+
+function _controls_nav_get_menu() {
+  global $user;
+  if ($user->uid==1) {
+    // Make the superuser 'cid' unique.
+    $cid = 'controls_nav:x';
+  }
+  else {
+    $cid = 'controls_nav:' . implode(':', array_keys($user->roles));
+  }
+
+  // Lock this menu cid when I can
+  while (!lock_acquire($cid)) {
+    // can't get the lock, pause for a second
+    lock_wait($cid, 1);
+  }
+  // We've got the lock, is the menu in the cache?
+  if ($cache = cache_get($cid, 'cache_controls_nav')) {
+    // Found it in the cache
+    $menu = $cache->data;
+  }
+  else {
+    // It's not in the cache so we have to rebuild it
+    module_load_include('inc', 'controls_nav');
+    $menu = _controls_nav();
+
+    cache_set($cid, $menu, 'cache_controls_nav');
+  }
+  // Everything complete, release the lock
+  lock_release($cid);
+
+  return $menu;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function controls_nav_theme() {
+  module_load_include('registry.inc', 'controls_nav');
+  return _controls_nav_theme();
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function controls_nav_flush_caches() {
+  return array('cache_controls_nav');
+}
+
+/**
+ * Implements hook_admin_menu_output_alter().
+ *
+ * Adds the slide cache flush to the admin menu
+ */
+function controls_nav_admin_menu_output_alter(&$content) {
+  module_load_include('registry.inc', 'controls_nav');
+  _controls_nav_admin_menu_output_alter($content);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function controls_nav_entity_insert($entity, $type) {
+  module_load_include('inc', 'controls_nav');
+  _controls_nav_cache_clear();
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function controls_nav_entity_update($entity, $type) {
+  module_load_include('inc', 'controls_nav');
+  _controls_nav_cache_clear();
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function controls_nav_entity_delete($entity, $type) {
+  module_load_include('inc', 'controls_nav');
+  _controls_nav_cache_clear();
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function controls_nav_node_delete($node) {
+  module_load_include('inc', 'controls_nav');
+  _controls_nav_cache_clear();
+}
+
+/**
+ * Have to put this out here, tsk.
+ */
+function _controls_nav_main_pre_render($build) {
+  $keys = element_children($build, TRUE);
+  $max = count($keys) - 1;
+  foreach ($keys as $index => $key) {
+    if ($index==0) {
+      $build[$key]['#attributes']['class'][] = 'first';
+    }
+    if ($index==$max) {
+      $build[$key]['#attributes']['class'][] = 'last';
+    }
+  }
+  return $build;
+}
+

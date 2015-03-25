@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Controls: Create content - Provides a user panel for accessing content creation pages - install.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * Create a cache to store cacheable sets of carousel slides
+ */
+function controls_cc_schema() {
+
+  $schema['cache_controls_cc'] = drupal_get_schema_unprocessed('system', 'cache');
+  $schema['cache_controls_cc']['description'] = 'Cache table for the Controls Create Content module to store cacheable items.';
+
+  return $schema;
+}

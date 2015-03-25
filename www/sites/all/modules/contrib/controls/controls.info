@@ -1,0 +1,19 @@
+name = Controls
+description = Central control module that gets data about the different sections then passes it out as needed.
+package = Controls
+core = 7.x
+
+
+; Information added by drupal.org packaging script on 2012-05-29
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "controls"
+datestamp = "1338250129"
+
+
+; Information added by drupal.org packaging script on 2013-09-22
+version = "7.x-1.0-rc1"
+core = "7.x"
+project = "controls"
+datestamp = "1379844413"
+
