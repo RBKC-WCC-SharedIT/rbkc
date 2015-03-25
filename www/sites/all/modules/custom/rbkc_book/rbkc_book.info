@@ -1,0 +1,4 @@
+name = RBKC Book
+description = Modifies the default behaviour of the core book module.
+core = 7.x
+dependencies[] = book
