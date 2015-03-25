@@ -50,8 +50,12 @@ See http://api.drupal.org/api/function/theme_field/7 for details.
 After copying this file to your theme's folder and customizing it, remove this
 HTML comment.
 -->
-
     <?php foreach ($items as $delta => $item): ?>
-      <h2><?php print render($item); ?></h2>
+
+        <p><?php //print render($item); ?>
+            <?php var_dump($item); ?>
+        </p>
+
+
     <?php endforeach; ?>
 
