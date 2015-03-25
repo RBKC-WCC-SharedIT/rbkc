@@ -394,7 +394,7 @@ function rbkc_deploy_update_7024() {
 function rbkc_deploy_update_7025() {
   module_enable(array('deeplink'), TRUE);
   variable_set(DEEPLINK_CONTENT_TYPES, array(
-    'answer'=> 'answer',
+    'answer' => 'answer',
     'guide' => 'guide',
     'publication' => 'publication',
     'servicehub' => 'servicehub',
@@ -402,7 +402,7 @@ function rbkc_deploy_update_7025() {
     'topic' => 'topic'
   ));
   variable_set(DEEPLINK_ALLOWED_CONTROLS, array(
-    'byemail'=> 'byemail',
+    'byemail' => 'byemail',
     'byuser' => 0,
   ));
   variable_set(DEEPLINK_USER_ROLES, array(
@@ -411,4 +411,13 @@ function rbkc_deploy_update_7025() {
     '2' => 0,
   ));
   variable_set(DEEPLINK_DEFAULT_EMAIL_BODY, "Hi,\n\nView [deeplink:link-absolute] at [deeplink:url-absolute] which expires on [deeplink:expires-medium].\n\nFrom Royal Borough of Kensington and Chelsea\n\n");
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the book module overrides in the rbkc_book module.
+ */
+function rbkc_deploy_update_7026() {
+  module_enable(array('rbkc_book'), TRUE);
 }
