@@ -1,0 +1,346 @@
+<?php
+/**
+ * @file
+ * Controls - Central control gets data about different sections then passes it out as needed.
+ *
+ * This is a kind of lightweight version of the CTools plugin system
+ */
+define('CONTROLS_PERM_TEMPLATE', 'use [cg]:[c]');
+
+/**
+ * Implements hook_permission().
+ */
+function controls_permission() {
+  $permissions = array();
+  $title_template = 'Allow use of [cg]: [ctitle]';
+  foreach (controls_get() as $control_group => $controls) {
+    foreach ($controls as $name => $control) {
+      if (isset($control['#permission']) && $control['#permission']) {
+        $args = array(
+          '[cg]' => $control_group,
+          '[c]' => $name,
+          '[ctitle]' => strtolower($control['title']),
+        );
+        $permissions[t(CONTROLS_PERM_TEMPLATE, $args)] = array(
+          'title' => t($title_template, $args),
+        );
+      }
+    }
+  }
+  return $permissions;
+}
+
+/**
+ * Implements hook_hook_info().
+ */
+function controls_hook_info() {
+  return array(
+    'controls_info' => array(
+      'group' => 'controls',
+    ),
+    'controls_info_alter' => array(
+      'group' => 'controls',
+    ),
+  );
+}
+
+/**
+ * Return the control data for the site
+ *
+ * If the data has not already been built or fetched,
+ * do that, then return one control or all of them.
+ *
+ * A set of controls is defined in an array structure as follows:
+ *
+ *   array(
+ *     'modulename' => array(
+ *       'controlname' => array(
+ *         '#name' => (optional) the <controlname>, set automatically
+ *         '#module' => (optional) the <modulename>, set automatically
+ *         '#default_file' => (optional) the file to load by default when
+ *                            calling functions if not otherwise specified.
+ *                            If not supplied this is set automatically to
+ *                            "<modulename>.controls.inc".
+ *         '#callbacks' => array(
+ *           'callbackname' => array(
+ *             'module' => (optional) The control the module belongs to, used
+ *                         in building the function name to call. It is
+ *                         inserted using 'modulename' if not supplied.
+ *             'function' => (optional) The function to call for this control,
+ *                           if not supplied it is constructed using the
+ *                           <module>_<controlname>_<callbackname>
+ *             'file' => (optional) The file which contains the function, it is
+ *                       stored using the array format of module_load_include()
+ *                       If not supplied "<modulename>.controls.inc" is loaded.
+ *           ),
+ *         ),
+ *       ),
+ *     ),
+ *   )
+ *
+ *   A control will usually have additional parameters depending on its purpose.
+ *
+ */
+function controls_get($control_group = NULL, $control = NULL) {
+  $controls = controls_fetch();
+  // Return the requested control_group, control, or all of them, or none if doesn't exist.
+  if (isset($control_group)) {
+    if (isset($controls[$control_group])) {
+      $control_group =& $controls[$control_group];
+      if (isset($control)) {
+        return isset($control_group[$control]) ? $control_group[$control] : array();
+      }
+      return $control_group;
+    }
+    return array();
+  }
+  return $controls;
+}
+
+function controls_fetch() {
+  // Build the key for this user (based on roles)
+  global $user;
+  $key = __FUNCTION__ . ':' . implode(':', array_keys($user->roles));
+
+  // Have we statically cached the controls,
+  // in other words have we already been here
+  $controls =& drupal_static($key);
+
+  if (!isset($controls)) {
+
+    // Lock this control key when I can, this
+    // is to avoid two instances trying to
+    // rebuild the same thing at the same time.
+    while (!lock_acquire($key)) {
+      // can't get the lock, pause for a second
+      lock_wait($key, 1);
+    }
+
+    // Nope, see if the data is in the DB cache
+    $cache = cache_get($key);
+
+    // Nope? Need to build it
+    if (!isset($cache->data)) {
+      // Fetch the raw control data
+      $raw = module_invoke_all('controls_info');
+      if (!isset($raw)) {
+        $raw = array();
+      }
+      drupal_alter('controls_info', $raw, $key);
+
+      // Now we process the whole thing to group each control
+      // and, if the control requires permission, only include
+      // it if the user's roles have permission.
+      $controls = array();
+      foreach ($raw as $module => $control_groups) {
+        $args = array();
+        foreach ($control_groups as $group_name => $control_group) {
+          // Set this up as an empty array, in case there are no
+          // allowed controls for this user.
+          if (!isset($controls[$group_name])) {
+            $controls[$group_name] = array();
+          }
+          // Start building the argument array for permission substitution
+          $args['[cg]'] = $group_name;
+          foreach ($control_group as $name => $control) {
+            $args['[c]'] = $name;
+            // Check whether this user is allowed to see this control
+            if (isset($control['#permission']) && $control['#permission']) {
+              // This control does require a permission
+              if (!user_access(t(CONTROLS_PERM_TEMPLATE, $args))) {
+                // This user doesn't have it, so skip to next.
+                continue;
+              }
+            }
+
+            // Set up the default values for the control
+            $control += array(
+              '#control_group' => $group_name,
+              '#name' => $name,
+              '#module' => $module,
+              '#default_file' => array('inc', $module, "$module.controls"),
+              '#callbacks' => array(),
+            );
+
+            $controls[$group_name][$name] = $control;
+          }
+        }
+      }
+
+      // stick it in the cache.
+      cache_set($key, $controls);
+    }
+    else {
+      // It was in the cache so set it here
+      $controls = $cache->data;
+    }
+    // Everything complete, release the lock
+    lock_release($key);
+  }
+  return $controls;
+}
+
+/**
+ * Execute a group of controls on the same data
+ */
+function controls_callback_all($callback, $control_group, array $args = array()) {
+  if (is_string($control_group)) {
+    $control_group = controls_get($control_group);
+  }
+
+  $results = array();
+  foreach (element_children($control_group) as $key) {
+    $control = $control_group[$key];
+    $args['#control_group_key'] = $key;
+
+    if (!isset($control['#callbacks']) || !is_array($control['#callbacks'])) {
+      $control['#callbacks'] = array();
+    }
+
+    // Get the next result
+    $result = controls_callback($callback, $control, $args);
+
+    // Examine the result
+    if (isset($result)) {
+      // If we have a result store it.
+      if (is_array($result)) {
+        // Merge array results
+        $results = array_merge($results, $result);
+      }
+      else {
+        // Add non-array results
+        $results[$control['#module']] = $result;
+      }
+    }
+  }
+
+  return $results;
+}
+
+/**
+ * Return the file where a control callback function is located
+ */
+function controls_callback_file($callback_name, $control) {
+  $callback = isset($control['#callbacks'][$callback_name]) ? $control['#callbacks'][$callback_name] : array();
+
+  $callback += array(
+    'file' => $control['#default_file'],
+  );
+
+  if (is_array($callback['file'])) {
+    return $callback['file'];
+  }
+
+  return array();
+}
+
+/**
+ * Check and execute a control callback
+ */
+function controls_callback($callback_name, $control, $args = array()) {
+  static $included_files = array();
+
+  $callback = isset($control['#callbacks'][$callback_name]) ? $control['#callbacks'][$callback_name] : array();
+
+  if ($callback==='') {
+    // We don't want to do the default callback
+    return NULL;
+  }
+
+  $module  = isset($callback['module']) ? $callback['module'] : $control['#module'];
+
+  $callback += array(
+    'function' => "{$module}_{$control['#control_group']}_{$control['#name']}_$callback_name",
+    'file' => $control['#default_file'],
+  );
+
+  if (is_array($callback['file'])) {
+    list($ext, $module, $filename) = $callback['file'];
+    if (!isset($included_files["$ext:$module:$filename"])) {
+      module_load_include($ext, $module, $filename);
+      $included_files["$ext:$module:$filename"] = TRUE;
+    }
+  }
+
+  // Call the function if it exists
+  $function = $callback['function'];
+  return function_exists($function) ? $function($control, $args) : NULL;
+}
+
+/**
+ * Build options for a 'select' form element
+ */
+function controls_select_options($control_group) {
+  $options = array('_none' => t('-Select-'));
+  foreach (controls_get($control_group) as $name => $control) {
+    $options[$name] = check_plain($control['#title']);
+  }
+  return $options;
+}
+
+function _controls_is_visible(array $control) {
+  $control += array('visible' => array());
+  return _controls_process_status($control['visible']);
+}
+
+function _controls_is_active(array $control) {
+  $control += array('active' => array());
+  return _controls_process_status($control['active'], FALSE);
+}
+
+function _controls_process_status(array $items = array(), $status = TRUE) {
+  static $path, $alias;
+  if (!isset($path)) {
+    $path = current_path();
+    $alias = request_path();
+  }
+
+  foreach ($items as $processor => $data) {
+    switch ($processor) {
+      case 'status':
+        $status = $data;
+        break;
+
+      case 'include':
+        $status = $status || (drupal_match_path($alias, $data) || drupal_match_path($path, $data));
+        break;
+
+      case 'exclude':
+        $status = $status || !(drupal_match_path($alias, $data) || drupal_match_path($path, $data));
+        break;
+
+      case 'entity':
+        $entity = menu_get_object($data['entity_type'], !empty($data['position'])?$data['position']:1);
+        if ($entity) {
+          list(,,$bundle) = entity_extract_ids($data['entity_type'], $entity);
+          $status = $status || in_array($bundle, $data['bundles']);
+        }
+        break;
+
+      case 'callback':
+        if (!empty($data['file'])) {
+          require_once $data['file'];
+        }
+        $function = $data['function'];
+        if (function_exists($function)) {
+          $status = $status || $function($data, $element);
+        }
+        break;
+
+      case 'OR':
+      case 'stopIfTrue':
+        if ($status) {
+          return $status;
+        }
+        break;
+
+      case 'AND':
+      case 'stopIfFalse':
+        if (!$status) {
+          return $status;
+        }
+        break;
+    }
+  }
+  return $status;
+}

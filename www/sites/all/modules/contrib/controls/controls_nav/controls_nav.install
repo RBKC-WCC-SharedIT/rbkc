@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Controls navigation - Provides a separate way of building a main navigation menu - install.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * Create a cache to store cacheable sets of carousel slides
+ */
+function controls_nav_schema() {
+
+  $schema['cache_controls_nav'] = drupal_get_schema_unprocessed('system', 'cache');
+  $schema['cache_controls_nav']['description'] = 'Cache table for the Controls Navigation module to store cacheable menus.';
+
+  return $schema;
+}

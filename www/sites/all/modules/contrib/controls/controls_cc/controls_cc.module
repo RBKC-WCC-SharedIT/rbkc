@@ -1,0 +1,139 @@
+<?php
+/**
+ * @file
+ * Controls: Create content - Provides a user panel for accessing content creation pages.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function controls_cc_menu() {
+  module_load_include('registry.inc', 'controls_cc');
+  return _controls_cc_menu();
+}
+
+/**
+ * Implements hook_permission().
+ */
+function controls_cc_permission() {
+  module_load_include('registry.inc', 'controls_cc');
+  return _controls_cc_permission();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function controls_cc_block_info() {
+  return array(
+    'cc' => array(
+      'info' => t('Controls: Create Content block'),
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * We use the locking mechanism to prevent two processes trying to rebuild a menu
+ * at the same time - but we only lock specific versions using the menu 'cid'
+ *
+ * This is called on every page so don't bother putting it in the registry.
+ */
+function controls_cc_block_view($delta) {
+  $content = array();
+
+  switch ($delta) {
+    case 'cc':
+      $content = _controls_cc_get_content();
+      break;
+  }
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
+
+function _controls_cc_get_content() {
+  global $user;
+  if ($user->uid==1) {
+    // Make the superuser 'cid' unique.
+    $cid = 'controls_cc:x';
+  }
+  else {
+    $cid = 'controls_cc:' . implode(':', array_keys($user->roles));
+  }
+
+  // Lock this menu cid when I can
+  while (!lock_acquire($cid)) {
+    // can't get the lock, pause for a second
+    lock_wait($cid, 1);
+  }
+  // We've got the lock, is the menu in the cache?
+  if ($cache = cache_get($cid, 'cache_controls_cc')) {
+    // Found it in the cache
+    $content = $cache->data;
+  }
+  else {
+    // It's not in the cache so we have to rebuild it
+    module_load_include('inc', 'controls_cc');
+    $content = _controls_cc();
+
+    cache_set($cid, $content, 'cache_controls_cc');
+  }
+  // Everything complete, release the lock
+  lock_release($cid);
+
+  return $content;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function controls_cc_theme() {
+  module_load_include('registry.inc', 'controls_cc');
+  return _controls_cc_theme();
+}
+
+/**
+ * Implements hook_flush_caches().
+ */
+function controls_cc_flush_caches() {
+  return array('cache_controls_cc');
+}
+
+/**
+ * Implements hook_admin_menu_output_alter().
+ *
+ * Adds the slide cache flush to the admin menu
+ */
+function controls_cc_admin_menu_output_alter(&$content) {
+  module_load_include('registry.inc', 'controls_cc');
+  _controls_cc_admin_menu_output_alter($content);
+}
+
+function controls_cc_set_visible(&$cc, $entity_type, $bundle, $visible) {
+  if (!isset($cc["$entity_type:$bundle"])) {
+    return;
+  }
+  $cc["$entity_type:$bundle"]['visible'] = $visible;
+}
+
+/**
+ * Implements hook_page_alter().
+ */
+function controls_cc_page_alter(&$page) {
+  $page['page_bottom']['controls_cc'] = array(
+    '#prefix' => '<div id="controls-cc"><div class="controls-cc-inner">',
+    '#suffix' => '</div></div>',
+    '#attached' => array(
+      'js' => array(
+        drupal_get_path('module', 'controls_cc') . '/controls_cc.js',
+      ),
+      'css' => array(
+        drupal_get_path('module', 'controls_cc') . '/controls_cc.css',
+      ),
+    ),
+    'content' => _controls_cc_get_content(),
+  );
+}
