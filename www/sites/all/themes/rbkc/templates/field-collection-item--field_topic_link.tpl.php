@@ -28,6 +28,7 @@
  * @see template_process()
  */
 ?>
+<!-- we won't need to keep this file (I don't think), it's just for debugging -->
 <?php //var_dump($content); ?>
 <?php print render($content);?>
 

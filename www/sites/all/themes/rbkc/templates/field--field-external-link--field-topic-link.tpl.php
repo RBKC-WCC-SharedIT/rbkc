@@ -52,9 +52,7 @@ HTML comment.
 -->
     <?php foreach ($items as $delta => $item): ?>
 
-        <p><?php //print render($item); ?>
-            <?php var_dump($item); ?>
-        </p>
+        <H2><?php print render($item); ?></H2>
 
 
     <?php endforeach; ?>
