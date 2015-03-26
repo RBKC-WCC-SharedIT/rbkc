@@ -1,4 +1,5 @@
 name = RBKC Book
 description = Modifies the default behaviour of the core book module.
+package = RBKC
 core = 7.x
 dependencies[] = book

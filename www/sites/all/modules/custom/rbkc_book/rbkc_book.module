@@ -418,3 +418,129 @@ function rbkc_menu_tree_check_access(&$tree, $node_links = array()) {
   }
   _menu_tree_check_access($tree);
 }
+
+/**
+ * Formats the menu links for the child pages of the current page.
+ *
+ * @param $book_link
+ *   A fully loaded menu link that is part of the book hierarchy.
+ *
+ * @return
+ *   HTML for the links to the child pages of the current page.
+ */
+function rbkc_book_children($book_link) {
+  $flat = rbkc_book_get_flat_menu($book_link);
+
+  $children = array();
+
+  if ($book_link['has_children']) {
+    // Walk through the array until we find the current page.
+    do {
+      $link = array_shift($flat);
+    }
+    while ($link && ($link['mlid'] != $book_link['mlid']));
+    // Continue though the array and collect the links whose parent is this page.
+    while (($link = array_shift($flat)) && $link['plid'] == $book_link['mlid']) {
+      $data['link'] = $link;
+      $data['below'] = '';
+      $children[] = $data;
+    }
+  }
+
+  if ($children) {
+    $elements = menu_tree_output($children);
+    return drupal_render($elements);
+  }
+  return '';
+}
+
+/**
+ * Gets the book menu tree for a page and returns it as a linear array.
+ *
+ * @param $book_link
+ *   A fully loaded menu link that is part of the book hierarchy.
+ *
+ * @return
+ *   A linear array of menu links in the order that the links are shown in the
+ *   menu, so the previous and next pages are the elements before and after the
+ *   element corresponding to the current node. The children of the current node
+ *   (if any) will come immediately after it in the array, and links will only
+ *   be fetched as deep as one level deeper than $book_link.
+ */
+function rbkc_book_get_flat_menu($book_link) {
+  $flat = &drupal_static(__FUNCTION__, array());
+
+  if (!isset($flat[$book_link['mlid']])) {
+    // Call menu_tree_all_data() to take advantage of the menu system's caching.
+    $tree = rbkc_menu_tree_all_data($book_link['menu_name'], $book_link, $book_link['depth'] + 1);
+    $flat[$book_link['mlid']] = array();
+    _book_flatten_menu($tree, $flat[$book_link['mlid']]);
+  }
+
+  return $flat[$book_link['mlid']];
+}
+
+/**
+ * Fetches the menu link for the previous page of the book.
+ *
+ * @param $book_link
+ *   A fully loaded menu link that is part of the book hierarchy.
+ *
+ * @return
+ *   A fully loaded menu link for the page before the one represented in
+ *   $book_link.
+ */
+function rbkc_book_prev($book_link) {
+  // If the parent is zero, we are at the start of a book.
+  if ($book_link['plid'] == 0) {
+    return NULL;
+  }
+  $flat = rbkc_book_get_flat_menu($book_link);
+  // Assigning the array to $flat resets the array pointer for use with each().
+  $curr = NULL;
+  do {
+    $prev = $curr;
+    list($key, $curr) = each($flat);
+  } while ($key && $key != $book_link['mlid']);
+
+  if ($key == $book_link['mlid']) {
+    // The previous page in the book may be a child of the previous visible link.
+    if ($prev['depth'] == $book_link['depth'] && $prev['has_children']) {
+      // The subtree will have only one link at the top level - get its data.
+      $tree = rbkc_book_menu_subtree_data($prev);
+      $data = array_shift($tree);
+      // The link of interest is the last child - iterate to find the deepest one.
+      while ($data['below']) {
+        $data = end($data['below']);
+      }
+
+      return $data['link'];
+    }
+    else {
+      return $prev;
+    }
+  }
+}
+
+/**
+ * Fetches the menu link for the next page of the book.
+ *
+ * @param $book_link
+ *   A fully loaded menu link that is part of the book hierarchy.
+ *
+ * @return
+ *   A fully loaded menu link for the page after the one represented in
+ *   $book_link.
+ */
+function rbkc_book_next($book_link) {
+  $flat = rbkc_book_get_flat_menu($book_link);
+  // Assigning the array to $flat resets the array pointer for use with each().
+  do {
+    list($key, $curr) = each($flat);
+  }
+  while ($key && $key != $book_link['mlid']);
+
+  if ($key == $book_link['mlid']) {
+    return current($flat);
+  }
+}
