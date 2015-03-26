@@ -68,7 +68,7 @@ function feature_answer_field_default_field_instances() {
     'bundle' => 'answer',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Click \'Add Items\' to select a contact department, the selected contact department name is used to generate the contact us button.',
+    'description' => 'Start typing to select a contact department, the selected contact department name is used to generate the contact us button.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -104,13 +104,15 @@ function feature_answer_field_default_field_instances() {
       'active' => 1,
       'module' => 'entityreference_view_widget',
       'settings' => array(
-        'allow_duplicates' => 0,
-        'close_modal' => 1,
-        'pass_argument' => 1,
+        'allow_duplicates' => FALSE,
+        'close_modal' => '',
+        'match_operator' => 'CONTAINS',
         'pass_arguments' => '',
-        'rendered_entity' => 0,
-        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_1',
-        'view_mode' => 'full',
+        'path' => '',
+        'rendered_entity' => FALSE,
+        'size' => 60,
+        'view' => '',
+        'view_mode' => FALSE,
       ),
       'type' => 'entityreference_view_widget',
       'weight' => 3,
@@ -212,7 +214,6 @@ function feature_answer_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Click \'Add Items\' to select a contact department, the selected contact department name is used to generate the contact us button.');
   t('Contact department');
   t('Please enter a short title for this content');
   t('Select the Service hub that this page should appear under.');
