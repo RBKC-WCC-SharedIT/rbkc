@@ -102,13 +102,19 @@ function feature_answer_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
+        'allow_duplicates' => FALSE,
+        'close_modal' => '',
         'match_operator' => 'CONTAINS',
+        'pass_arguments' => '',
         'path' => '',
+        'rendered_entity' => FALSE,
         'size' => 60,
+        'view' => '',
+        'view_mode' => FALSE,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 3,
     ),
   );

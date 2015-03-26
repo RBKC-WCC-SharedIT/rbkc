@@ -136,35 +136,28 @@ function feature_topics_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_topic_link-field_internal_topic_link'
   $field_instances['field_collection_item-field_topic_link-field_internal_topic_link'] = array(
     'bundle' => 'field_topic_link',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'node_reference',
+        'label' => 'above',
+        'module' => 'entityreference',
         'settings' => array(
-          'node_reference_view_mode' => 'top_three_topics',
+          'link' => FALSE,
         ),
-        'type' => 'node_reference_node',
-        'weight' => 0,
+        'type' => 'entityreference_label',
+        'weight' => 3,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'node_reference',
-        'settings' => array(
-          'node_reference_view_mode' => 'teaser',
-        ),
-        'type' => 'node_reference_node',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'top_three_topics' => array(
-        'label' => 'hidden',
-        'module' => 'node_reference',
-        'settings' => array(
-          'node_reference_view_mode' => 'top_three_topics',
-        ),
-        'type' => 'node_reference_node',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -177,14 +170,18 @@ function feature_topics_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'node_reference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_2',
+        'view_mode' => 'full',
       ),
-      'type' => 'node_reference_autocomplete',
-      'weight' => 1,
+      'type' => 'entityreference_view_widget',
+      'weight' => 0,
     ),
   );
 
@@ -235,6 +232,50 @@ function feature_topics_field_default_field_instances() {
       ),
       'type' => 'text_textarea_with_summary',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-topic-field_short_title'
+  $field_instances['node-topic-field_short_title'] = array(
+    'bundle' => 'topic',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -293,6 +334,7 @@ function feature_topics_field_default_field_instances() {
   t('External link teaser');
   t('Internal topic link');
   t('Select the pages for this topic');
+  t('Short Title');
   t('Topic link');
 
   return $field_instances;
