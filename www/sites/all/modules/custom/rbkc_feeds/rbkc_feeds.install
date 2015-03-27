@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks.
+ */
+
+function rbkc_feeds_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}
