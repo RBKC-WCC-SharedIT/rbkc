@@ -1,0 +1,16 @@
+name = Feed
+description = Captures the feed content type.
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = feeds
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[node][] = feed
+features[variable][] = menu_options_feed
+features[variable][] = menu_parent_feed
+features[variable][] = node_options_feed
+features[variable][] = node_preview_feed
+features[variable][] = node_submitted_feed
+features[variable][] = pathauto_node_feed_pattern
