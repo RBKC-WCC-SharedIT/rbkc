@@ -69,21 +69,12 @@
 
   // where there are more than three items in menu add 'view all'
   function addViewAll() {
-    var relatedMenu = document.getElementsByClassName('related')[0];
-    var lists = relatedMenu.getElementsByTagName('ul');
-    for (var i = 0, l = lists.length; i < l; i++) {
-      (function(i) {
-        var listItems = lists[i].getElementsByTagName('li');
-        if (listItems.length > 3) {
-          var parent = lists[i].parentNode;
-          var para = document.createElement("p");
-          var node = document.createTextNode("View all");
-          para.appendChild(node);
-          para.className = 'related__viewall';
-          var viewAll = parent.appendChild(para);
-        }
-      })(i);
-    }
+    $('.related ul').each(function() {
+      var childNumber = $(this).find('li');
+        if (childNumber.length > 3) {
+          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
+      }
+    });
   }
 
   function showMore() {
