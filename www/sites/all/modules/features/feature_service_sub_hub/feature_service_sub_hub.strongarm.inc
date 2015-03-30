@@ -38,19 +38,19 @@ function feature_service_sub_hub_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
-        ),
-        'redirect' => array(
           'weight' => '5',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '4',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '3',
         ),
       ),
       'display' => array(),

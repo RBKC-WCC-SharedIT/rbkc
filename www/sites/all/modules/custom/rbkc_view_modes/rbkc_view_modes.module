@@ -17,5 +17,12 @@ function rbkc_view_modes_entity_info_alter(&$entity_info) {
     'label' => t('View top three topics'),
     'custom settings' => TRUE,
   );
+  $entity_info['field_collection_item']['view modes']['teaser'] = array(
+    'label' => t('Teaser'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['field_collection_item']['view modes']['top_three_topics'] = array(
+    'label' => t('View top three topics'),
+    'custom settings' => TRUE,
+  );
 }
-

@@ -367,3 +367,57 @@ function rbkc_deploy_update_7022() {
   $instance = field_info_instance('node', 'field_contact_button', 'answer');
   field_delete_instance($instance, TRUE);
 }
+
+/**
+ * Implements_hook_update_N().
+ *
+ * Switch on Workbench Email module.
+ */
+function rbkc_deploy_update_7023() {
+  module_enable(array('workbench_email'), TRUE);
+}
+
+/**
+ * Implements_hook_update_N().
+ * 
+ * Switch on Google Search Appliance module.
+ */
+function rbkc_deploy_update_7024() {
+  module_enable(array('google_appliance'), TRUE);
+}
+
+/**
+ * Implements_hook_update_N().
+ *
+ * Switch on Deep Link module and set some config.
+ */
+function rbkc_deploy_update_7025() {
+  module_enable(array('deeplink'), TRUE);
+  variable_set(DEEPLINK_CONTENT_TYPES, array(
+    'answer' => 'answer',
+    'guide' => 'guide',
+    'publication' => 'publication',
+    'servicehub' => 'servicehub',
+    'subhub' => 'subhub',
+    'topic' => 'topic'
+  ));
+  variable_set(DEEPLINK_ALLOWED_CONTROLS, array(
+    'byemail' => 'byemail',
+    'byuser' => 0,
+  ));
+  variable_set(DEEPLINK_USER_ROLES, array(
+    '1' => '1',
+    '3' => '3',
+    '2' => 0,
+  ));
+  variable_set(DEEPLINK_DEFAULT_EMAIL_BODY, "Hi,\n\nView [deeplink:link-absolute] at [deeplink:url-absolute] which expires on [deeplink:expires-medium].\n\nFrom Royal Borough of Kensington and Chelsea\n\n");
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the book module overrides in the rbkc_book module.
+ */
+function rbkc_deploy_update_7026() {
+  module_enable(array('rbkc_book'), TRUE);
+}

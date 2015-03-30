@@ -24,6 +24,20 @@ function feature_topics_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 1,
       ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_external_link',
@@ -80,6 +94,20 @@ function feature_topics_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_external_link_teaser',
@@ -113,6 +141,24 @@ function feature_topics_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'top_three_topics',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'teaser',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
         'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(
@@ -192,50 +238,6 @@ function feature_topics_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-topic-field_short_title'
-  $field_instances['node-topic-field_short_title'] = array(
-    'bundle' => 'topic',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_short_title',
-    'label' => 'Short Title',
-    'required' => FALSE,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'node-topic-field_topic_link'
   $field_instances['node-topic-field_topic_link'] = array(
     'bundle' => 'topic',
@@ -247,7 +249,7 @@ function feature_topics_field_default_field_instances() {
         'label' => 'above',
         'module' => 'field_collection',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'teaser',
         ),
         'type' => 'field_collection_fields',
         'weight' => 1,
@@ -262,7 +264,7 @@ function feature_topics_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
-          'view_mode' => 'full',
+          'view_mode' => 'top_three_topics',
         ),
         'type' => 'field_collection_fields',
         'weight' => 2,
@@ -291,7 +293,6 @@ function feature_topics_field_default_field_instances() {
   t('External link teaser');
   t('Internal topic link');
   t('Select the pages for this topic');
-  t('Short Title');
   t('Topic link');
 
   return $field_instances;

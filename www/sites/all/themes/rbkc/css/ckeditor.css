@@ -1,0 +1,108 @@
+a {
+  border-bottom: 1px dotted #376697;
+}
+a:hover {
+  border-bottom: none;
+}
+h2   {
+  padding-top: 12px;
+}
+h2:first-child  {
+  padding-top: 0;
+}
+
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+ul,
+ol {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+}
+ul {
+    margin-left: 24px;
+  margin-left: 1.5rem;
+}
+ol {
+  list-style-position: outside;
+  margin-left: 24px;
+  margin-left: 1.5rem;
+  padding-left: 24px;
+  padding-left: 1.5rem;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+li {
+  /* do not change unless to 0px or 6px or 12px - fits the 12px baseline grid */
+  margin-bottom: 0;
+}
+ul > li {
+  background: url('../images/refresh/bullet_blue.png') no-repeat;
+  background-position: 2px 8px;
+  background-position: 0.3rem 0.5rem;
+  padding-left: 20px;
+  padding-left: 1.3rem;
+}
+ol > li {
+  list-style-type: decimal;
+}
+li ul,
+li ol {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+ul li ul li {
+  background: url('../images/refresh/bullet_style.png') no-repeat;
+  background-position: left 9px;
+  background-position: left 0.55rem;
+}
+
+/*** links to PDF documents - also styled by js ***/
+a[href$=".pdf"],
+a[href^="IDOC"],
+a[href*="idoc.ashx"],
+a[href$=".docx"],
+a[href$=".doc"] {
+  font-weight: bold;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height:25px;
+}
+a[href$=".pdf"],
+a[href^="IDOC"],
+a[href*="idoc.ashx"],
+a[href$=".docx"],
+a[href$=".doc"],
+a.docLink-icon,
+.content a.docLink-icon:hover {
+border-bottom: none;
+}
+a[href$=".pdf"]:hover,
+a[href^="IDOC"]:hover,
+a[href*="idoc.ashx"]:hover,
+a[href$=".docx"]:hover,
+a[href$=".doc"]:hover {
+border-bottom: dotted 1px;
+}
+
+/*** resetting PDFs within tables ***/
+td a[href$=".pdf"],
+td a[href^="IDOC"],
+td a[href*="idoc.ashx"],
+td a[href$=".docx"],
+td a[href$=".doc"] {
+  font-weight: 400;
+  font-size: 14px;
+  font-size:.875rem;
+  line-height:24px;
+  border-bottom: dotted 1px;
+}
+td a[href$=".pdf"]:hover,
+td a[href^="IDOC"]:hover,
+td a[href*="idoc.ashx"]:hover,
+td a[href$=".docx"]:hover,
+td a[href$=".doc"]:hover {
+  border-bottom: none;
+}
