@@ -16,3 +16,4 @@ regions[servicedropdown] = ServiceDropDown
 regions[content] = Content
 regions[footerlinks] = Footerlinks
 regions[govmetric] = Govmetric
+regions[search] = Search

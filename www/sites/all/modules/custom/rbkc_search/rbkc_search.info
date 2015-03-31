@@ -1,0 +1,4 @@
+name = RBKC Search
+description = Customises search.
+core = 7.x
+package = RBKC

@@ -27,13 +27,7 @@
       </nav>
 
       <?php if (!$is_front): ?>
-      <div class="search search--headerglobal hide">
-        <label>Search</label>
-        <div class="search__wrap">
-          <input class="search__input" name="Template$ctl08$sb_q_mob" type="text" id="Template_ctl08_sb_q_mob" accesskey="4" onfocus="clearField(this)" placeholder="Enter search terms..." />
-        </div>
-        <input  class="search__submit" type="submit" name="Template$ctl08$sb_btn_mob" value="Search" id="Template_ctl08_sb_btn_mob" />
-      </div><!-- end search -->
+        <?php print render($page['search']); ?>
       <?php endif; /* end if is front*/ ?>
     </div><!-- end inner padlr -->
   </div><!-- end headerGlobal -->

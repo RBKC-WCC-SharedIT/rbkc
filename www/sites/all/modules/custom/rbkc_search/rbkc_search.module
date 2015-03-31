@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Drupal hooks.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function rbkc_search_form_google_appliance_block_form_alter(&$form, &$form_state, $form_id) {
+  $form['search_keys']['#prefix'] = '<div class="search__wrap">';
+  $form['search_keys']['#suffix'] = '</div>';
+  $form['search_keys']['#attributes']['class'][] = 'search__input';
+
+  $form['actions']['submit']['#attributes']['class'][] = 'search__submit';
+}
