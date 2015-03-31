@@ -379,7 +379,7 @@ function rbkc_deploy_update_7023() {
 
 /**
  * Implements_hook_update_N().
- * 
+ *
  * Switch on Google Search Appliance module.
  */
 function rbkc_deploy_update_7024() {
@@ -476,4 +476,11 @@ function rbkc_deploy_update_7029() {
   $source = feeds_source('feed', $node->nid);
   $source->schedule();
   feeds_importer('feed')->schedule();
+}
+
+/**
+ * Switch on fe_block in features-extra.
+ */
+function rbkc_deploy_update_7030() {
+  module_enable(array('fe_block'), TRUE);
 }
