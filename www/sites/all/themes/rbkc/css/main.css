@@ -18,7 +18,7 @@
 
 html {
   /* height 100% so that footer can always be pushed to bottom of page */
-  height: 100%;
+  min-height: 100%;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
   position: relative;
@@ -29,7 +29,7 @@ body {
   color:#505a66;
   font-family: Arial, sans-serif;
   font-size:100%;
-  height: 100%;
+  min-height: 100%;
   line-height: 16px;
   /* setting explicit line height to maintain 12px baseline grid - override where necessary */
   line-height:1.5rem;
@@ -1256,7 +1256,7 @@ div.accordionContents.show {
   border-bottom: solid #FFF 14px;
 }
 
-/*** images with captions - rewrite SP ***/
+/*** images with captions ***/
 .image-cap {
   background: #fff;
   overflow: hidden;
@@ -1308,6 +1308,18 @@ div.accordionContents + h2,
 div.accordionContents + h3,
 div.accordionContents + h4 {
   clear: left;
+}
+
+/*** govmetric snippet ***/
+#govmetric {
+  line-height: initial;
+  width: 90px;
+  height: 90px;
+}
+#govmetric img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 
@@ -2175,6 +2187,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
     clear: none;
   }
 
+  /*** govmetric snippet ***/
+  #govmetric {
+  width: 120px;
+  height: 120px;
+  }
+
 } /* end media query */
 
 @media screen and (min-width: 600px) {
@@ -2571,6 +2589,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     width: 40%;
   }
 
+  /*** govmetric snippet ***/
+  #govmetric {
+  width: 146px;
+  height: 147px;
+  }
+
   /****************************************************/
   /*  STATE RULES (indicate a javascript dependency)  */
   /****************************************************/
@@ -2962,6 +2986,13 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     background: none;
   }
 
+  /*** govmetric snippet ***/
+  #govmetric.special {
+    position: absolute !important;
+    bottom: 140px !important;
+  }
+
+
 }/* end media query */
 
 
@@ -2994,6 +3025,15 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
 }/* end media query */
 
+@media only screen and (min-width: 1300px) {
+
+  /*** govmetric snippet ***/
+  #govmetric.special {
+    position: fixed !important;
+    bottom: 0 !important;
+  }
+
+}/* end media query */
 
 @media only screen and (min-width: 1600px) {
 
@@ -3404,6 +3444,12 @@ float: left;
   margin-right: 0;
   width: 960px;
   padding: 0;
+}
+
+/*** govmetric snippet ***/
+.lt-ie9 #govmetric {
+  width: 146px;
+  height: 147px;
 }
 
 /*** icon link service hub extension ***/

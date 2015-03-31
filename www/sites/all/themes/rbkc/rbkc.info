@@ -13,6 +13,6 @@ scripts[] = js/modernizr.custom.84336.js
 
 
 regions[servicedropdown] = ServiceDropDown
-regions[footerlinks] = Footerlinks
 regions[content] = Content
-
+regions[footerlinks] = Footerlinks
+regions[govmetric] = Govmetric
