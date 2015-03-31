@@ -29,7 +29,7 @@ body {
   color:#505a66;
   font-family: Arial, sans-serif;
   font-size:100%;
-  min-height: 100%;
+  height: 100%;
   line-height: 16px;
   /* setting explicit line height to maintain 12px baseline grid - override where necessary */
   line-height:1.5rem;
