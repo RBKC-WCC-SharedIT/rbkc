@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RBKC Moderation feature.
+ */
+
+include_once 'feature_rbkc_moderation.features.inc';
