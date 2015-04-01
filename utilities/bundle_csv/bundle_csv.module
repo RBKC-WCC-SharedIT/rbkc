@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @file
+ * Bundle CSV.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function bundle_csv_menu() {
+  $items = array();
+
+  $items['admin/content/migrate/migratecsv'] = array(
+    'title' => 'Create CSV template',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('generate_fields_from_migration'),
+    'access arguments' => array('administer content types'),
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  return $items;
+}
+
+/**
+ * Menu callback function for migration view page.
+ * @param $form
+ * @param $form_state
+ * @return mixed
+ */
+function generate_fields_from_migration ($form, &$form_state) {
+  $migration_list = array();
+  $available_migrations = migrate_migrations();
+  foreach ($available_migrations as $name => $migration) {
+    $migration_list[$name] = $name;
+  }
+  $form['bundles'] = array(
+    '#type' => 'select',
+    '#title' => t('Select bundles'),
+    '#options' => $migration_list,
+    '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Export',
+  );
+
+  return $form;
+}
+
+/**
+ * Submit callback for the export form.
+ * @param $form
+ * @param $form_state
+ */
+function generate_fields_from_migration_submit($form, &$form_state) {
+  $migration = Migration::getInstance($form_state['values']['bundles']);
+  $header [] = 'uuid';
+  $destination = $migration->getDestination();
+  if (method_exists($destination, 'fields')) {
+    foreach ($destination->fields($migration) as $machine_name => $description) {
+      $header [] = $machine_name;
+    }
+  }
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename=' . $form_state['values']['bundles'] . '.csv');
+
+  print implode(',', $header) ."\r\n";
+
+  drupal_exit();
+}
