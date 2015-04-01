@@ -92,7 +92,7 @@ function feature_common_wysiwyg_default_profiles() {
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
       'css_setting' => 'self',
       'css_path' => '%bsites/all/themes/rbkc/css/main.css,%bsites/all/themes/rbkc/css/ckeditor.css',
-      'css_classes' => 'NoticeMessage=p.notice-message
+      'styleSet' => 'NoticeMessage=p.notice-message
 PolicyInfo=p.policy-info
 WarningRed=p.warning-red
 WarningYellow=p.warning-yellow',
