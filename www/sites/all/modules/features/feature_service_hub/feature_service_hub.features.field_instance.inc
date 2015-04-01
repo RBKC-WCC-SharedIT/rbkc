@@ -274,22 +274,26 @@ function feature_service_hub_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_popular_topics-field_internal_page_link'
   $field_instances['field_collection_item-field_popular_topics-field_internal_page_link'] = array(
     'bundle' => 'field_popular_topics',
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Browse and select the title of a page to link to it.',
+    'description' => 'Start typing the title of a page to link to it.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
+        'label' => 'hidden',
+        'module' => 'node_reference',
         'settings' => array(
-          'link' => FALSE,
+          'node_reference_view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
+        'type' => 'node_reference_node',
+        'weight' => 0,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'teaser',
+        ),
+        'type' => 'node_reference_node',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -299,9 +303,12 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 0,
       ),
       'token' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'teaser',
+        ),
+        'type' => 'node_reference_node',
         'weight' => 0,
       ),
       'top_three_topics' => array(
@@ -320,18 +327,14 @@ function feature_service_hub_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference_view_widget',
+      'module' => 'node_reference',
       'settings' => array(
-        'allow_duplicates' => 0,
-        'close_modal' => 1,
-        'pass_argument' => 1,
-        'pass_arguments' => '',
-        'rendered_entity' => 0,
-        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_4',
-        'view_mode' => 'full',
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
       ),
-      'type' => 'entityreference_view_widget',
-      'weight' => 0,
+      'type' => 'node_reference_autocomplete',
+      'weight' => 31,
     ),
   );
 
@@ -561,53 +564,8 @@ function feature_service_hub_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-servicehub-field_short_title'
-  $field_instances['node-servicehub-field_short_title'] = array(
-    'bundle' => 'servicehub',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_short_title',
-    'label' => 'Short Title',
-    'required' => FALSE,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('Browse and select the title of a page to link to it.');
   t('Enter a short description that will appear with the external link.');
   t('External link');
   t('External link teaser');
@@ -619,7 +577,7 @@ function feature_service_hub_field_default_field_instances() {
   t('Other popular content');
   t('Popular tasks');
   t('Popular topics');
-  t('Short Title');
+  t('Start typing the title of a page to link to it.');
   t('Upload an image of 91px by 94px');
 
   return $field_instances;
