@@ -21,7 +21,7 @@ function feature_field_bases_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'External link',
-    'weight' => '1',
+    'weight' => '34',
     'children' => array(
       0 => 'field_external_link',
       1 => 'field_external_link_teaser',

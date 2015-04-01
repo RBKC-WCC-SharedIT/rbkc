@@ -194,29 +194,29 @@ function feature_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_internal_page_link',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'nid' => array(
+        0 => 'nid',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'node_reference',
     'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(),
+      'referenceable_types' => array(
+        'answer' => 'answer',
+        'guide' => 'guide',
+        'publication' => 'publication',
+        'servicehub' => 0,
+        'subhub' => 'subhub',
+        'topic' => 'topic',
       ),
-      'target_type' => 'node',
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'node_reference',
   );
 
   // Exported field_base: 'field_internal_topic_link'
@@ -227,29 +227,29 @@ function feature_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_internal_topic_link',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'nid' => array(
+        0 => 'nid',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'node_reference',
     'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(),
+      'referenceable_types' => array(
+        'answer' => 'answer',
+        'guide' => 'guide',
+        'publication' => 'publication',
+        'servicehub' => 0,
+        'subhub' => 0,
+        'topic' => 0,
       ),
-      'target_type' => 'node',
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'node_reference',
   );
 
   // Exported field_base: 'field_news_stories'
@@ -462,29 +462,28 @@ function feature_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_subhub_link_to_topic',
     'indexes' => array(
-      'target_id' => array(
-        0 => 'target_id',
+      'nid' => array(
+        0 => 'nid',
       ),
     ),
     'locked' => 0,
-    'module' => 'entityreference',
+    'module' => 'node_reference',
     'settings' => array(
-      'handler' => 'base',
-      'handler_settings' => array(
-        'behaviors' => array(
-          'views-select-list' => array(
-            'status' => 0,
-          ),
-        ),
-        'sort' => array(
-          'type' => 'none',
-        ),
-        'target_bundles' => array(),
+      'referenceable_types' => array(
+        'answer' => 0,
+        'book' => 0,
+        'servicehub' => 0,
+        'subhub' => 0,
+        'topic' => 'topic',
       ),
-      'target_type' => 'node',
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
     ),
     'translatable' => 0,
-    'type' => 'entityreference',
+    'type' => 'node_reference',
   );
 
   // Exported field_base: 'field_topic_link'

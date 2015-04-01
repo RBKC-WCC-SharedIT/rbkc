@@ -29,7 +29,7 @@ function feature_service_hub_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '2',
+          'weight' => '30',
         ),
       ),
       'display' => array(),
