@@ -477,3 +477,11 @@ function rbkc_deploy_update_7029() {
   $source->schedule();
   feeds_importer('feed')->schedule();
 }
+
+/**
+ * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
+ *
+ */
+function rbkc_deploy_update_7030() {
+  module_enable(array('feature_rbkc_moderation'), TRUE);
+}
