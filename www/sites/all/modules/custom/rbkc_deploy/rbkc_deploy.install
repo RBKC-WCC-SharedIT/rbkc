@@ -492,3 +492,10 @@ function rbkc_deploy_update_7031() {
   module_enable(array('ds', 'ds_extras'), TRUE);
   variable_set('ds_extras_field_template', TRUE);
 }
+
+/**
+ * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
+ */
+function rbkc_deploy_update_7032() {
+  module_enable(array('feature_rbkc_moderation'), TRUE);
+}
