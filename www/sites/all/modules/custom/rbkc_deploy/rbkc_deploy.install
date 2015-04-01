@@ -379,7 +379,7 @@ function rbkc_deploy_update_7023() {
 
 /**
  * Implements_hook_update_N().
- * 
+ *
  * Switch on Google Search Appliance module.
  */
 function rbkc_deploy_update_7024() {
@@ -420,4 +420,75 @@ function rbkc_deploy_update_7025() {
  */
 function rbkc_deploy_update_7026() {
   module_enable(array('rbkc_book'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the rbkc_feeds module and create the feed node for the press
+ * releases feed.
+ */
+function rbkc_deploy_update_7027() {
+  module_enable(array('feature_feed', 'feature_press_release'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the rbkc_feeds module.
+ */
+function rbkc_deploy_update_7028() {
+  module_enable(array('rbkc_feeds'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ */
+function rbkc_deploy_update_7029() {
+  $feed_url = 'http://RBKC:r8KCpub@rss.vuelio.uk.com/V2/RBKC/release';
+
+  $node = new stdClass();
+  node_object_prepare($node);
+  $node->uid = 1;
+  $node->language = LANGUAGE_NONE;
+  $node->status = 0;
+  $node->promote = 0;
+  $node->type = 'feed';
+  $node->title = 'Press release feed';
+  node_save($node);
+
+  $config = array();
+  $config['RBKCPressReleaseFeedsFetcher']['source'] = $feed_url;
+  $query = db_insert('feeds_source')
+    ->fields(array('id', 'feed_nid', 'config', 'source', 'state', 'fetcher_result', 'imported'))
+    ->values(array(
+      'id' => $node->type,
+      'feed_nid' => $node->nid,
+      'config' => serialize($config),
+      'source' => $feed_url,
+      'state' => 'b:0;',
+      'fetcher_result' =>'b:0;',
+      'imported' => 0,
+    ));
+
+  $query->execute();
+
+  $source = feeds_source('feed', $node->nid);
+  $source->schedule();
+  feeds_importer('feed')->schedule();
+}
+
+/**
+ * Switch on fe_block in features-extra.
+ */
+function rbkc_deploy_update_7030() {
+  module_enable(array('fe_block'), TRUE);
+}
+
+/**
+ * Switch on the Display Suite module and set some default config.
+ */
+function rbkc_deploy_update_7031() {
+  module_enable(array('ds', 'ds_extras'), TRUE);
+  variable_set('ds_extras_field_template', TRUE);
 }

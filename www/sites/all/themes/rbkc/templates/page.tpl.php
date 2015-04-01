@@ -99,3 +99,4 @@
     </div><!-- end footerglobal-inner -->
   </div> <!-- end footerglobal -->
 </div><!-- end outerwrap -->
+ <?php print render($page['govmetric']); ?>

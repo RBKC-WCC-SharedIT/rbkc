@@ -11,7 +11,8 @@
       wrapH2,
       serviceList,
       commsHeight,
-      slickSlider;
+      slickSlider,
+      moveGovmetric;
 
   // opening and closing header menus
   function assignOpenMenu( thisButton, thisMenu, otherButton, otherMenu ) {
@@ -69,21 +70,12 @@
 
   // where there are more than three items in menu add 'view all'
   function addViewAll() {
-    var relatedMenu = document.getElementsByClassName('related')[0];
-    var lists = relatedMenu.getElementsByTagName('ul');
-    for (var i = 0, l = lists.length; i < l; i++) {
-      (function(i) {
-        var listItems = lists[i].getElementsByTagName('li');
-        if (listItems.length > 3) {
-          var parent = lists[i].parentNode;
-          var para = document.createElement("p");
-          var node = document.createTextNode("View all");
-          para.appendChild(node);
-          para.className = 'related__viewall';
-          var viewAll = parent.appendChild(para);
-        }
-      })(i);
-    }
+    $('.related ul').each(function() {
+      var childNumber = $(this).find('li');
+        if (childNumber.length > 3) {
+          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
+      }
+    });
   }
 
   function showMore() {
@@ -166,6 +158,21 @@
     });
   } // end slickSlider
 
+  // ensuring govMetric does not obscure footer links at any viewport width
+  function moveGovmetric() {
+    //position of bottom of viewport
+    var position =  $(window).scrollTop() + $(window).height();
+
+    var docHeight = $(document).height();
+    var footerHeight = $('.footerglobal').outerHeight();
+    if( position >= (docHeight - footerHeight)) {
+      $('#govmetric').addClass('special');
+    }
+    else {
+      $('#govmetric').removeClass('special');
+    }
+  }
+
 
 $(document).ready(function() {
 
@@ -182,7 +189,11 @@ $(document).ready(function() {
 
   //accordion();
 
-  addViewAll();
+  try {
+    addViewAll();
+  }
+  catch(e){
+  }
 
   $('.related__viewall').on("click", showMore);
 
@@ -201,10 +212,29 @@ $(document).ready(function() {
     // if not on home page then we want to do nothing
   }
 
-
+  try {
+    moveGovmetric();
+  }
+  catch(e){
+  }
 
 }); // END DOC READY
 
+$( window ).scroll(function(){
+  try {
+    moveGovmetric();
+  }
+  catch(e){
+  }
+});
+
+$( window ).resize(function() {
+  try {
+    setTimeout( moveGovmetric(), 10000);
+  }
+  catch(e){
+  }
+});
 
 // script to create scrollbars and shadows on tables from http://www.456bereastreet.com/archive/201309/responsive_scrollable_tables/
 // Run on window load instead of on DOM Ready in case images or other scripts affect element widths
