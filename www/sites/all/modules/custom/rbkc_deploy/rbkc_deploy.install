@@ -600,3 +600,22 @@ function rbkc_deploy_update_7045() {
     ))
     ->execute();
 }
+
+/**
+ * Remove legacy node reference fields before moving to entity reference
+ */
+function rbkc_deploy_update_7046() {
+  // Delete troublesome fields
+  $instance = field_info_instance('field_collection_item', 'field_internal_page_link', 'field_popular_topics');
+  field_delete_instance($instance, TRUE);
+  $instance = field_info_instance('field_collection_item', 'field_internal_topic_link', 'field_topic_link');
+  field_delete_instance($instance, TRUE);
+  $instance = field_info_instance('node', 'field_subhub_link_to_topic', 'subhub');
+  field_delete_instance($instance, TRUE);
+
+  // Revert features containing effected entityreference fields
+  features_revert_module('feature_field_bases');
+  features_revert_module('feature_service_sub_hub');
+  features_revert_module('feature_topics');
+  features_revert_module('feature_service_hub');
+}
