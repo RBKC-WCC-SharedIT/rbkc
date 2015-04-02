@@ -84,7 +84,7 @@ function feature_service_sub_hub_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'node',
@@ -112,12 +112,13 @@ function feature_service_sub_hub_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'top_three_topics',
         ),
-        'type' => 'entityreference_label',
+        'type' => 'entityreference_entity_view',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -127,10 +128,14 @@ function feature_service_sub_hub_field_default_field_instances() {
         'weight' => 0,
       ),
       'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'top_three_topics',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'node',

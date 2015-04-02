@@ -278,13 +278,14 @@ function feature_service_hub_field_default_field_instances() {
     'description' => 'Browse and select the title of a page to link to it.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'teaser',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'full' => array(
         'label' => 'above',

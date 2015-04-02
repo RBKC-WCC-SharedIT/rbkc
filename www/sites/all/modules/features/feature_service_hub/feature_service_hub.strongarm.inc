@@ -25,6 +25,12 @@ function feature_service_hub_strongarm() {
       'token' => array(
         'custom_settings' => TRUE,
       ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

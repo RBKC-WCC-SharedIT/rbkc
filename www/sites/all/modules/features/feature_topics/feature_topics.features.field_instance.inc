@@ -140,13 +140,14 @@ function feature_topics_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'top_three_topics',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 3,
+        'type' => 'entityreference_entity_view',
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

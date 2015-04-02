@@ -34,6 +34,9 @@ function feature_service_sub_hub_strongarm() {
       'top_three_topics' => array(
         'custom_settings' => TRUE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
