@@ -288,9 +288,13 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 0,
       ),
       'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 0,
       ),
       'teaser' => array(
