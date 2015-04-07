@@ -72,8 +72,8 @@
   function addViewAll() {
     $('.related ul').each(function() {
       var childNumber = $(this).find('li');
-        if (childNumber.length > 3) {
-          $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
+      if (childNumber.length > 3) {
+        $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
       }
     });
   }
@@ -157,6 +157,15 @@
       ]
     });
   } // end slickSlider
+
+  // ensuring govMetric does not obscure footer links at any viewport width
+/*  function moveGovmetric() {
+    //position of bottom of viewport
+    var position =  $(window).scrollTop() + $(window).height();
+    var docHeight = $(document).height();
+    var footerHeight = $('.footerglobal').outerHeight();
+    position >= (docHeight - footerHeight) ? $('govmetric').addClass('special') : $('.govmetric').removeClass('special');
+  }*/
 
   // ensuring govMetric does not obscure footer links at any viewport width
   function moveGovmetric() {
