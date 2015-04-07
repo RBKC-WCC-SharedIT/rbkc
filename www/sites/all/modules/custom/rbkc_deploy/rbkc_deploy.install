@@ -548,3 +548,12 @@ function rbkc_deploy_update_7038() {
 function rbkc_deploy_update_7039() {
   module_enable(array('print_pdf_tcpdf'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the dblog module
+ */
+function rbkc_deploy_update_7040() {
+  module_enable(array('dblog'), TRUE);
+}
