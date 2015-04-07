@@ -18,10 +18,9 @@
 
 html {
   /* height 100% so that footer can always be pushed to bottom of page */
-  min-height: 100%;
+  height: 100%;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
-  position: relative;
 }
 
 body {
@@ -34,7 +33,6 @@ body {
   /* setting explicit line height to maintain 12px baseline grid - override where necessary */
   line-height:1.5rem;
   margin: 0;
-  position: relative;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -963,6 +961,7 @@ div.accordionContents.show {
   /* do not change - fits the 12px baseline grid */
   margin: 6px 0 5px 0;
   padding: 0 10px;
+  cursor: pointer;
 }
 .related ul {
   margin:0;
@@ -3657,6 +3656,7 @@ margin-left: 0;
   width:581px;
 }
 
+
 @media print {
   /* Print styles here SEE http://coding.smashingmagazine.com/2013/03/08/tips-tricks-print-style-sheets/ */
    body {
@@ -3841,8 +3841,6 @@ margin-left: 0;
   a[href$=".jpg"]:after {
      display:none;
   }
-
-
   .accordionContents,.js .accordion + ul {
       opacity: 1;
       position: relative;
@@ -3865,9 +3863,6 @@ margin-left: 0;
     text-decoration:underline;
     font-weight:bold;
   }
-
-
-
   .noticeMessage,.noticeMessage:before,.policyInfo,.policyInfo:before {
     border:none!important;
   }
@@ -3905,3 +3900,4 @@ margin-left: 0;
   }
 
 }
+

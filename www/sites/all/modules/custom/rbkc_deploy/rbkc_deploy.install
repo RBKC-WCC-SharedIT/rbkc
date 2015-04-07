@@ -425,10 +425,17 @@ function rbkc_deploy_update_7026() {
 /**
  * Implements hook_update_N().
  *
+ * Switch on fe_block in features-extra.
+ */
+function rbkc_deploy_update_7027() {
+  module_enable(array('fe_block'), TRUE);
+}
+
+/*
  * Switch on the rbkc_feeds module and create the feed node for the press
  * releases feed.
  */
-function rbkc_deploy_update_7027() {
+function rbkc_deploy_update_7028() {
   module_enable(array('feature_feed', 'feature_press_release'), TRUE);
 }
 
@@ -437,14 +444,14 @@ function rbkc_deploy_update_7027() {
  *
  * Switch on the rbkc_feeds module.
  */
-function rbkc_deploy_update_7028() {
+function rbkc_deploy_update_7029() {
   module_enable(array('rbkc_feeds'), TRUE);
 }
 
 /**
  * Implements hook_update_N().
  */
-function rbkc_deploy_update_7029() {
+function rbkc_deploy_update_7030() {
   $feed_url = 'http://RBKC:r8KCpub@rss.vuelio.uk.com/V2/RBKC/release';
 
   $node = new stdClass();
@@ -481,14 +488,14 @@ function rbkc_deploy_update_7029() {
 /**
  * Switch on fe_block in features-extra.
  */
-function rbkc_deploy_update_7030() {
+function rbkc_deploy_update_7031() {
   module_enable(array('fe_block'), TRUE);
 }
 
 /**
  * Switch on the Display Suite module and set some default config.
  */
-function rbkc_deploy_update_7031() {
+function rbkc_deploy_update_7032() {
   module_enable(array('ds', 'ds_extras'), TRUE);
   variable_set('ds_extras_field_template', TRUE);
 }
@@ -496,6 +503,6 @@ function rbkc_deploy_update_7031() {
 /**
  * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
  */
-function rbkc_deploy_update_7032() {
+function rbkc_deploy_update_7033() {
   module_enable(array('feature_rbkc_moderation'), TRUE);
 }
