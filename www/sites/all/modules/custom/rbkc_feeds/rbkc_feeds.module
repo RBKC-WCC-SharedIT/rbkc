@@ -36,7 +36,7 @@ function rbkc_feeds_feeds_plugins() {
         'parent' => 'FeedsFetcher',
         'class' => 'RBKCPressReleaseFeedsFetcher',
         'file' => 'RBKCPressReleaseFeedsFetcher.inc',
-        'path' => drupal_get_path('module', 'rbkc_feeds'),
+        'path' => drupal_get_path('module', 'rbkc_feeds') . '/includes',
       ),
     ),
   );
