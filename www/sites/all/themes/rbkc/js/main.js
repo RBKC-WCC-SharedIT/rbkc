@@ -69,8 +69,9 @@
 
 
   // where there are more than three items in menu add 'view all'
-  $('.related ul').each(function() {
-    var childNumber = $(this).find('li');
+  function addViewAll() {
+    $('.related ul').each(function() {
+      var childNumber = $(this).find('li');
       if (childNumber.length > 3) {
         $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
       }
