@@ -18,6 +18,7 @@ function feature_common_wysiwyg_default_profiles() {
       'default' => 1,
       'user_choose' => 0,
       'show_toggle' => 1,
+      'add_to_summaries' => 1,
       'theme' => 'advanced',
       'language' => 'en',
       'buttons' => array(
@@ -79,20 +80,21 @@ function feature_common_wysiwyg_default_profiles() {
           'break' => 1,
         ),
       ),
-      'toolbar_loc' => 'top',
-      'toolbar_align' => 'left',
-      'path_loc' => 'bottom',
-      'resizing' => 0,
-      'verify_html' => 1,
-      'preformatted' => 0,
-      'convert_fonts_to_spans' => 1,
-      'remove_linebreaks' => 1,
-      'apply_source_formatting' => 0,
-      'paste_auto_cleanup_on_paste' => 0,
+      'toolbarLocation' => 'top',
+      'resize_enabled' => 1,
+      'default_toolbar_grouping' => 0,
+      'simple_source_formatting' => 0,
+      'acf_mode' => 0,
+      'acf_allowed_content' => '',
+      'css_setting' => 'self',
+      'css_path' => '%bsites/all/themes/rbkc/css/main.css,%bsites/all/themes/rbkc/css/ckeditor.css',
+      'stylesSet' => 'WarningRed=p.warning-red
+WarningYellow=p.warning-yellow
+NoticeMessage=p.notice-message
+PolicyInfo=p.policy-info',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
-      'css_setting' => 'theme',
-      'css_path' => '',
-      'css_classes' => '',
+      'advanced__active_tab' => 'edit-css',
+      'forcePasteAsPlainText' => 0,
     ),
   );
 
