@@ -7,6 +7,7 @@
                         print render($content);
                        ?>
                     </div>
+                    <p class="print-page">Print page: <?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
                   </div><!-- end col8 -->
 
                   <div class="col4"  role="complementary">

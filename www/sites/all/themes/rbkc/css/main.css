@@ -2067,6 +2067,17 @@ ul.plainResults-list  li {
   margin: 0;
 }
 
+/*** print page links below content on some content types ***/
+.print-page {
+  text-align: right;
+  font-size: 13px;
+}
+.print-page span {
+  margin-left: 0;
+}
+
+
+
 /*** styling some Drupal markup ***/
 .content .links {
   margin-left: 0 !important;
