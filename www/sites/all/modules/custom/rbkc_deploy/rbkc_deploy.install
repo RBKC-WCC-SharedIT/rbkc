@@ -557,3 +557,23 @@ function rbkc_deploy_update_7039() {
 function rbkc_deploy_update_7040() {
   module_enable(array('dblog'), TRUE);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the diff module to allow seeing changes between revisions
+ */
+function rbkc_deploy_update_7041() {
+  module_enable(array('diff'), TRUE);
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Switch on the diff module to allow seeing changes between revisions
+ *
+ * Repeated as the diff module files were not present previously.
+ */
+function rbkc_deploy_update_7042() {
+  module_enable(array('diff'), TRUE);
+}
