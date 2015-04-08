@@ -73,6 +73,8 @@
       </div>
     </div><!-- end ribbon -->
     <?php endif; /* end if is front*/ ?>
+    <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+    <?php print render($page['help']); ?>
 
     <?php print render($page['content']); ?>
 
