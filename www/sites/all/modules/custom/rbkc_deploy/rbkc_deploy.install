@@ -486,16 +486,9 @@ function rbkc_deploy_update_7030() {
 }
 
 /**
- * Switch on print module
- */
-function rbkc_deploy_update_7031() {
-  module_enable(array('print'), TRUE);
-}
-
-/**
  * Switch on the Display Suite module and set some default config.
  */
-function rbkc_deploy_update_7032() {
+function rbkc_deploy_update_7031() {
   module_enable(array('ds', 'ds_extras'), TRUE);
   variable_set('ds_extras_field_template', TRUE);
 }
@@ -503,49 +496,55 @@ function rbkc_deploy_update_7032() {
 /**
  * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
  */
-function rbkc_deploy_update_7033() {
+function rbkc_deploy_update_7032() {
   module_enable(array('feature_rbkc_moderation'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on library
  */
-function rbkc_deploy_update_7034() {
+function rbkc_deploy_update_7033() {
   module_enable(array('libraries'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on TCPDF
+ */
+function rbkc_deploy_update_7034() {
+  module_enable(array('tcpdf'), TRUE);
+}
+
+/**
+ * Switch on TCPDF
  */
 function rbkc_deploy_update_7035() {
-  module_enable(array('pdf_version'), TRUE);
+  module_enable(array('tcpdf'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on PDF version
  */
 function rbkc_deploy_update_7036() {
-  module_enable(array('printer_friendly_pages'), TRUE);
+  module_enable(array('print_pdf'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on Printer-friendly pages
  */
 function rbkc_deploy_update_7037() {
-  module_enable(array('printer_friendly_pages'), TRUE);
+  module_enable(array('print'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on Printer-friendly pages UI
  */
 function rbkc_deploy_update_7038() {
-  module_enable(array('printer_friendly_pages_ui'), TRUE);
+  module_enable(array('print_ui'), TRUE);
 }
 
 /**
- * Switch on the libraries module.
+ * Switch on TCPDF library handler
  */
 function rbkc_deploy_update_7039() {
-  module_enable(array('tcpdf_library_handler'), TRUE);
+  module_enable(array('print_pdf_tcpdf'), TRUE);
 }
-
