@@ -514,3 +514,38 @@ function rbkc_deploy_update_7034() {
   module_enable(array('libraries'), TRUE);
 }
 
+/**
+ * Switch on the libraries module.
+ */
+function rbkc_deploy_update_7035() {
+  module_enable(array('pdf_version'), TRUE);
+}
+
+/**
+ * Switch on the libraries module.
+ */
+function rbkc_deploy_update_7036() {
+  module_enable(array('printer_friendly_pages'), TRUE);
+}
+
+/**
+ * Switch on the libraries module.
+ */
+function rbkc_deploy_update_7037() {
+  module_enable(array('printer_friendly_pages'), TRUE);
+}
+
+/**
+ * Switch on the libraries module.
+ */
+function rbkc_deploy_update_7038() {
+  module_enable(array('printer_friendly_pages_ui'), TRUE);
+}
+
+/**
+ * Switch on the libraries module.
+ */
+function rbkc_deploy_update_7039() {
+  module_enable(array('tcpdf_library_handler'), TRUE);
+}
+
