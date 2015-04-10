@@ -577,3 +577,16 @@ function rbkc_deploy_update_7041() {
 function rbkc_deploy_update_7042() {
   module_enable(array('diff'), TRUE);
 }
+
+/**
+ * Switch on the Webform module.
+ */
+function rbkc_deploy_update_7034() {
+  module_enable(array('webform'), TRUE);
+}
+/**
+ * Switch on the Webform feature.
+ */
+function rbkc_deploy_update_7035() {
+  module_enable(array('feature_webform'), TRUE);
+}

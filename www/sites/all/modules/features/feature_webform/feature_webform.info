@@ -1,0 +1,11 @@
+name = Webform
+description = Webform feature. Primarily used to create simple surveys.
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[node][] = webform
+features[variable][] = comment_webform
