@@ -1406,6 +1406,9 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
   height: auto !important;
   display: none;
 }
+.content .image-cap img {
+  display: block;
+}
 
 .content ul,
 .content ol {
