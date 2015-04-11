@@ -67,11 +67,11 @@
       </div>
     </div><!-- end ribbon -->
     <?php endif; /* end if is front*/ ?>
-    <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
-    <?php print render($page['help']); ?>
-
-    <?php print render($page['content']); ?>
-
+    <div class="middle inner padlr">
+      <?php if ($tabs = render($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
+      <?php print render($page['help']); ?>
+      <?php print render($page['content']); ?>
+    </div><!-- end middle inner -->
   </main>
 
   <div class="footerglobal deepblue" role="contentinfo">

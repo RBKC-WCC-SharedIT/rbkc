@@ -1,4 +1,3 @@
-              <div class="middle inner padlr">
                 <div class="row">
                   <div class="col8">
                     <div class="toc contrast group">
@@ -51,4 +50,3 @@
                     </div><!-- end bordered related -->
                   </div><!-- end col4 -->
                 </div><!-- end row -->
-              </div><!-- end middle innerpadded -->

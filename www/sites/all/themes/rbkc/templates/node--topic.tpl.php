@@ -1,4 +1,3 @@
-              <div class="middle inner padlr">
                 <div class="content large-text">
                   <?php
                     hide($content['field_topic_link']);
@@ -15,4 +14,3 @@
 
                   </div><!-- end topics -->
                 </div><!-- end row -->
-              </div><!-- end middle innerpadded -->
