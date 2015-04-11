@@ -1,5 +1,3 @@
-<div class="middle inner padlr">
-
   <?php print render($content['field_popular_tasks']); ?>
 
   <?php print render($content['field_popular_topics']); ?>
@@ -11,4 +9,3 @@
     <?php print render($content['field_news_stories']); ?>
 
   </div><!-- end row -->
-</div><!-- end middle innerpadded -->

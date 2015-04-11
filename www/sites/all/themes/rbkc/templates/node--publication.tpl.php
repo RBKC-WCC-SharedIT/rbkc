@@ -1,4 +1,3 @@
-              <div class="middle inner padlr">
                 <div class="row">
                   <div class="col3">
                     <div class="contrast toc">
@@ -13,4 +12,3 @@
                     <?php print render($content['book_navigation']); ?>
                   </div><!--end col 9-->
                 </div><!-- end row -->
-              </div><!-- end middle innerpadded -->
