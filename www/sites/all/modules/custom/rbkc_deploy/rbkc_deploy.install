@@ -591,8 +591,7 @@ function rbkc_deploy_update_7044() {
   module_enable(array('feature_webform'), TRUE);
 }
 
-/**
- * Switch on the rbkc_search module.
+/** Switch on the rbkc_search module.
  * Put the GSA search block in the search region.
  */
 function rbkc_deploy_update_7033() {
