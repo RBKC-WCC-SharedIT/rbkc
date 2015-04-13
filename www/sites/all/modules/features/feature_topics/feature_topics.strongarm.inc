@@ -41,16 +41,16 @@ function feature_topics_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
-        ),
-        'redirect' => array(
           'weight' => '5',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '4',
         ),
+        'xmlsitemap' => array(
+          'weight' => '3',
+        ),
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

@@ -98,4 +98,6 @@
       <p>&copy; 1998-2015 The Royal Borough of Kensington and Chelsea</p>
     </div><!-- end footerglobal-inner -->
   </div> <!-- end footerglobal -->
+  <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
+

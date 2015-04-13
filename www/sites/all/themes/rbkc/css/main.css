@@ -21,7 +21,6 @@ html {
   height: 100%;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
-  position: relative;
 }
 
 body {
@@ -34,7 +33,6 @@ body {
   /* setting explicit line height to maintain 12px baseline grid - override where necessary */
   line-height:1.5rem;
   margin: 0;
-  position: relative;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -963,6 +961,7 @@ div.accordionContents.show {
   /* do not change - fits the 12px baseline grid */
   margin: 6px 0 5px 0;
   padding: 0 10px;
+  cursor: pointer;
 }
 .related ul {
   margin:0;
@@ -1255,7 +1254,7 @@ div.accordionContents.show {
   border-bottom: solid #FFF 14px;
 }
 
-/*** images with captions - rewrite SP ***/
+/*** images with captions ***/
 .image-cap {
   background: #fff;
   overflow: hidden;
@@ -1307,6 +1306,18 @@ div.accordionContents + h2,
 div.accordionContents + h3,
 div.accordionContents + h4 {
   clear: left;
+}
+
+/*** govmetric snippet ***/
+#govmetric {
+  line-height: initial;
+  width: 90px;
+  height: 90px;
+}
+#govmetric img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 
@@ -2056,6 +2067,30 @@ ul.plainResults-list  li {
   margin: 0;
 }
 
+/*** print page links below content on some content types ***/
+.print-page {
+  text-align: right;
+  font-size: 13px;
+}
+.print-page span {
+  margin-left: 0;
+}
+
+
+
+/*** styling some Drupal markup ***/
+.content .links {
+  margin-left: 0 !important;
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+.content .links li {
+  padding: 0 !important;
+  background: none !important;
+}
+#deeplink-node-view-form {
+  margin-top: 24px;
+}
 
 /******************************************************************************************************************************************************************/
 /*                                                                     BEGIN MEDIA QUERIES                                                                        */
@@ -2172,6 +2207,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
     margin-right: 2rem;
     float:left;
     clear: none;
+  }
+
+  /*** govmetric snippet ***/
+  #govmetric {
+  width: 120px;
+  height: 120px;
   }
 
 } /* end media query */
@@ -2570,6 +2611,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     width: 40%;
   }
 
+  /*** govmetric snippet ***/
+  #govmetric {
+  width: 146px;
+  height: 147px;
+  }
+
   /****************************************************/
   /*  STATE RULES (indicate a javascript dependency)  */
   /****************************************************/
@@ -2958,6 +3005,13 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     background: none;
   }
 
+  /*** govmetric snippet ***/
+  #govmetric.special {
+    position: absolute !important;
+    bottom: 140px !important;
+  }
+
+
 }/* end media query */
 
 
@@ -2990,6 +3044,15 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
 }/* end media query */
 
+@media only screen and (min-width: 1300px) {
+
+  /*** govmetric snippet ***/
+  #govmetric.special {
+    position: fixed !important;
+    bottom: 0 !important;
+  }
+
+}/* end media query */
 
 @media only screen and (min-width: 1600px) {
 
@@ -3400,6 +3463,12 @@ float: left;
   margin-right: 0;
   width: 960px;
   padding: 0;
+}
+
+/*** govmetric snippet ***/
+.lt-ie9 #govmetric {
+  width: 146px;
+  height: 147px;
 }
 
 /*** icon link service hub extension ***/
@@ -3858,4 +3927,4 @@ margin-left: 0;
     border-bottom: none;
   }
 
-}
+

@@ -379,7 +379,7 @@ function rbkc_deploy_update_7023() {
 
 /**
  * Implements_hook_update_N().
- * 
+ *
  * Switch on Google Search Appliance module.
  */
 function rbkc_deploy_update_7024() {
