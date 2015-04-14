@@ -594,7 +594,7 @@ function rbkc_deploy_update_7044() {
 /** Switch on the rbkc_search module.
  * Put the GSA search block in the search region.
  */
-function rbkc_deploy_update_7033() {
+function rbkc_deploy_update_7045() {
   module_enable(array('rbkc_search'), TRUE);
 
   $query = db_merge('block')
