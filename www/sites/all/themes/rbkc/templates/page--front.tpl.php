@@ -283,54 +283,12 @@
               <div class="comms__news col8">
                 <div class="comms__img">
                   <h2>Latest news</h2>
+                  <!-- editable link around image -->
                     <a href="http://www.rbkc.gov.uk/council/localdemocracyandelections1.aspx">
                       <img src="<?php print base_path() . path_to_theme(); ?>/images/refresh/rbkc_crest.jpg">
                     </a>
                 </div>
                 <div class="comms__content">
-
-                  <div class="hollowpointer">
-                  <span class="hollowpointer1"></span>
-                  <div class="hollowpointer-center">
-                    <span class="hollowpointer2"></span>
-                    <span class="hollowpointer3"></span>
-                  </div>
-                  <span class="hollowpointer4"></span>
-                  </div>
-
-
-  <div class="newsbox-item">
-  <h3><a href="/council/localdemocracyandelections/generalelection.aspx">General Election -&nbsp;7 May
-  2015</a></h3>
-  <p>The statements of persons nominated for election for the
-  Kensington and the Chelsea and Fulham Constituencies have now been
-  published.....Find out more.</p>
-  </div>
-  <div class="newsbox-item">
-  <h3><a href="/newsroom-beta/allcouncilstatements/highairpollutionforecast.aspx">High Air Pollution forecast for 9 and
-  10&nbsp;April 2015</a></h3>
-  <p>There&rsquo;s no need to panic, but it&rsquo;s useful to be aware of
-  increased levels of pollution because it can worsen the symptoms of
-  conditions such as asthma, and can cause sore eyes and/or throats
-  in sensitive individuals.</p>
-  </div>
-
-
-                  <div class="newsbox-item newsbox-readmore">
-                    <h3><a href="/newsroom-beta.aspx">Visit the newsroom for more updates</a></h3>
-                  </div>
-                </div>
-              </div>
-              <div class="comms__feature">
-                  <div class="comms__img">
-                    <h2>Events</h2>
-                    <span class="comms__overlay"></span>
-
-  <a href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649">
-
-                    <img src="<?php print base_path() . path_to_theme(); ?>/images/refresh/royalride_event.jpg">
-                  </div>
-                  <div class="comms__content">
                   <div class="hollowpointer">
                     <span class="hollowpointer1"></span>
                     <div class="hollowpointer-center">
@@ -338,137 +296,178 @@
                       <span class="hollowpointer3"></span>
                     </div>
                     <span class="hollowpointer4"></span>
-                    </div>
-                  <a id="lblogLink" class="newsbox-item absolute" href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649">
-
-                    <div class="newsbox-absolute">
-
-
-  <h3><strong>Right Royal Ride on Saturday 25 April.</strong></h3>
-  <p class="MsoNormal">Organised by the Royal Borough of Kensington
-  and Chelsea and the Kensington and Chelsea Foundation the event
-  aims to raise funds for local mental health and well-being
-  charities. Anyone who can ride a bike is more than welcome to take
-  part in the cycle, which starts in Holland Park at 11am. The route
-  heads north towards the famous Portobello and Golborne Road Market,
-  on to Little Wormwood Scrubs Park before returning to Holland Park
-  at about 1pm. Meanwhile from 10am to 3pm on the sports pitches in
-  Holland Park there will be free family entertainment. Events and
-  activities include performances on stage by Doc Bowling and his
-  Blues Professors, SMART's Band, Alexandra Berglof and the
-  marvellous Sing to Live choir, compered by BBC London&rsquo;s Jumoke
-  Fashola...</p>
-
-                    </div>
-                    <span class="fadeout"><span class="fadeout-readmore linkheader">Read more</span></span>
-                  </a>
                   </div>
-              </div>
+                  <!-- repeating comms__item field -->
+                  <div class="comms__item">
+                    <!-- editable content -->
+                    <h3><a href="/council/localdemocracyandelections/generalelection.aspx">General Election -&nbsp;7 May
+                    2015</a></h3>
+                    <p>The statements of persons nominated for election for the
+                    Kensington and the Chelsea and Fulham Constituencies have now been
+                    published.....Find out more.</p>
+                  </div>
+                  <div class="comms__item">
+                    <h3><a href="/newsroom-beta/allcouncilstatements/highairpollutionforecast.aspx">High Air Pollution forecast for 9 and
+                    10&nbsp;April 2015</a></h3>
+                    <p>There&rsquo;s no need to panic, but it&rsquo;s useful to be aware of
+                    increased levels of pollution because it can worsen the symptoms of
+                    conditions such as asthma, and can cause sore eyes and/or throats
+                    in sensitive individuals.</p>
+                  </div>
+                  <div class="comms__item comms__readmore">
+                    <h3><a href="/newsroom-beta.aspx">Visit the newsroom for more updates</a></h3>
+                  </div>
+                </div><!-- end comms content -->
+              </div><!-- end comms news -->
+              <div class="comms__feature">
+                <div class="comms__img">
+                  <!-- editable header -->
+                  <h2>Events</h2>
+                  <!-- div with editable background image -->
+                  <span class="comms__overlay"></span>
+                    <!-- editable link around image -->
+                    <a href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649">
+                      <img src="<?php print base_path() . path_to_theme(); ?>/images/refresh/royalride_event.jpg">
+                    </a>
+                  </div>
+                  <div class="comms__content">
+                    <div class="hollowpointer">
+                      <span class="hollowpointer1"></span>
+                      <div class="hollowpointer-center">
+                        <span class="hollowpointer2"></span>
+                        <span class="hollowpointer3"></span>
+                      </div>
+                      <span class="hollowpointer4"></span>
+                    </div>
+                    <div id="lblogLink" class="comms__item" >
+                      <div class="comms__feature__inner">
+                        <!-- editable content -->
+                        <h3><a href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649">Right Royal Ride on Saturday 25 April.</a></h3>
+                        <p>Organised by the Royal Borough of Kensington
+                        and Chelsea and the Kensington and Chelsea Foundation the event
+                        aims to raise funds for local mental health and well-being
+                        charities. Anyone who can ride a bike is more than welcome to take
+                        part in the cycle, which starts in Holland Park at 11am. The route
+                        heads north towards the famous Portobello and Golborne Road Market,
+                        on to Little Wormwood Scrubs Park before returning to Holland Park
+                        at about 1pm. Meanwhile from 10am to 3pm on the sports pitches in
+                        Holland Park there will be free family entertainment. Events and
+                        activities include performances on stage by Doc Bowling and his
+                        Blues Professors, SMART's Band, Alexandra Berglof and the
+                        marvellous Sing to Live choir, compered by BBC London&rsquo;s Jumoke
+                        Fashola...</p>
+                      </div>
+                      <span class="fadeout">
+                        <a href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649" class="comms__readmore linkheader">Read more</a>
+                      </span>
+                    </div>
+                  </div><!-- end comms content -->
+              </div><!-- end comms feature -->
             </div>
 
 
-          </div><!-- end innerpadded  -->
+          </div><!-- end inner -->
 
           <div class="local group">
             <div class="inner">
               <h3 class="padded-mob">Local life <span class="show600">in the Royal Borough of Kensington and Chelsea</span></h3>
 
-              <div class="local-slider ">
-                  <div class="local-slider-item local-visit">
+              <div class="local__slider ">
+                  <div class="local__slider__item local-visit">
                     <a href="/subsites/visitkensingtonandchelsea.aspx">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>Visit Kensington and Chelsea</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>Visit Kensington and Chelsea</h2></span>
                     </a>
 
                   </div>
-                  <div class="local-slider-item local-city">
+                  <div class="local__slider__item local-city">
                     <a href="/subsites/citylivinglocallife.aspx">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>City Living Local Life</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>City Living Local Life</h2></span>
                     </a>
                   </div>
-                  <div class="local-slider-item local-kcc">
+                  <div class="local__slider__item local-kcc">
                     <a href="/subsites/kccentral.aspx">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>KCcentral</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>KCcentral</h2></span>
                     </a>
                   </div>
-                  <div class="local-slider-item local-museums ie-morethanthree">
+                  <!-- any item over third item must have class 'ie-morethanthree' -->
+                  <div class="local__slider__item local-museums ie-morethanthree">
                     <a href="/subsites/museums.aspx">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>Museums</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>Museums</h2></span>
                     </a>
                   </div>
-                  <div class="local-slider-item local-wild ie-morethanthree">
+                  <div class="local__slider__item local-wild ie-morethanthree">
                     <a href="/subsites/wildlife.aspx">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>Wildlife</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>Wildlife</h2></span>
                     </a>
                   </div>
-                  <div class="local-slider-item local-timemachine ie-morethanthree">
+                  <div class="local__slider__item local-timemachine ie-morethanthree">
                     <a href="https://rbkclocalstudies.wordpress.com/2014/10/23/adventure-playing-out-in-telford-road/">
-                      <span class="local-img"></span>
-                      <span class="local-text"><h2>Time Machine</h2></span>
+                      <span class="local__img"></span>
+                      <span class="local__text"><h2>Time Machine</h2></span>
                     </a>
                   </div>
               </div>
 
-            <div class="localevents colorbox">
-              <h3 class="padded-mob">Events</h3>
-              <ul class="fit-1-2-3">
-                <li>
-                  <a href="#">
-                    <span class="colorbox__left">
-                      <span class="localevents__date">
-                        <span class="localevents__day">09</span>
-                        <span class="localevents__month">Jan</span>
-                      </span>
+              <div class="localevents colorbox">
+                <h3 class="padded-mob">Events</h3>
+                <ul class="fit-1-2-3">
+                  <li>
+                    <a href="#">
+                      <span class="colorbox__left">
+                        <span class="localevents__date">
+                          <span class="localevents__day">09</span>
+                          <span class="localevents__month">Jan</span>
+                        </span>
 
-                    </span>
-                    <span class="colorbox__content">
-                      <h4>Toddlers nursery rhymes Notting Hill Library</h4>
-                      <p>1 Pembridge Square</p>
-                    </span>
-                    <span class="colorbox__pointer"></span>
-                  </a>
-                </li>
-                <li>
-                  <a class="purple" href="#">
-                    <span class="colorbox__left">
-                      <span class="localevents__date">
-                        <span class="localevents__day">11</span>
-                        <span class="localevents__month">Jan</span>
+                      </span>
+                      <span class="colorbox__content">
+                        <h4>Toddlers nursery rhymes Notting Hill Library</h4>
+                        <p>1 Pembridge Square</p>
                       </span>
                       <span class="colorbox__pointer"></span>
-                    </span>
-                    <span class="colorbox__content">
-                      <h4>Portobello Road Market festivities </h4>
-                      <p>Portobello Road Markets</p>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="colorbox__left">
-                      <span class="localevents__date">
-                        <span class="localevents__day">15</span>
-                        <span class="localevents__month">Jan</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="purple" href="#">
+                      <span class="colorbox__left">
+                        <span class="localevents__date">
+                          <span class="localevents__day">11</span>
+                          <span class="localevents__month">Jan</span>
+                        </span>
+                        <span class="colorbox__pointer"></span>
                       </span>
-                      <span class="colorbox__pointer"></span>
-                    </span>
-                    <span class="colorbox__content">
-                      <h4>Winter Tree Walk: The Basics</h4>
-                      <p>Holland Park</p>
-                    </span>
-                  </a>
-                </li>
-              </ul>
+                      <span class="colorbox__content">
+                        <h4>Portobello Road Market festivities </h4>
+                        <p>Portobello Road Markets</p>
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="colorbox__left">
+                        <span class="localevents__date">
+                          <span class="localevents__day">15</span>
+                          <span class="localevents__month">Jan</span>
+                        </span>
+                        <span class="colorbox__pointer"></span>
+                      </span>
+                      <span class="colorbox__content">
+                        <h4>Winter Tree Walk: The Basics</h4>
+                        <p>Holland Park</p>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
               </div> <!-- end local events -->
 
               <!--<h3 class="padded-mob"><a href="http://www.rbkc.gov.uk/events/default/default.asp">See upcoming events in the Royal Borough</a></h3>-->
 
-
-            </div><!-- end innerNoPadding -->
+            </div><!-- end inner -->
           </div><!-- end local -->
 
           <div class="presstweet">
@@ -476,8 +475,14 @@
                 <div class="twitter newsmedia">
                   <h3 class="twitter-ie">Find us on Twitter</h3>
                   <div class="twitter-header"></div>
-                      <a                  class="twitter-timeline"                  data-theme="light"                  data-chrome="noheader nofooter transparent noscrollbar"                   data-tweet-limit="3"                  data-link-color="#386390"                 width="300"                 href="https://twitter.com/RBKC"                   data-widget-id="563284834471403521">Tweets by @RBKC</a>
-
+                      <a  class="twitter-timeline"
+                          data-theme="light"
+                          data-chrome="noheader nofooter transparent noscrollbar"
+                          data-tweet-limit="3"
+                          data-link-color="#386390"
+                          width="300"
+                          href="https://twitter.com/RBKC"
+                          data-widget-id="563284834471403521">Tweets by @RBKC</a>
                 </div>
 
                 <div class="press newsmedia content">
@@ -490,11 +495,10 @@
 
                     <p class="smallest-text"><a href="http://www.geograph.org.uk/photo/1700705" target="_blank">High Street Kensington Station image</a> &copy; Copyright Ruth Sharville</p>
                   </div>
-
-                </div>
-              </div><!-- end middle -->
-            </div>
-          </div>
+                </div><!-- end press -->
+              </div><!-- end inner -->
+            </div><!-- end presstweet -->
+          </div><!-- end middle -->
       </main>
 
 
