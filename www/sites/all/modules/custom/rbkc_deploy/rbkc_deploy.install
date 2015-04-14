@@ -581,12 +581,12 @@ function rbkc_deploy_update_7042() {
 /**
  * Switch on the Webform module.
  */
-function rbkc_deploy_update_7034() {
+function rbkc_deploy_update_7043() {
   module_enable(array('webform'), TRUE);
 }
 /**
  * Switch on the Webform feature.
  */
-function rbkc_deploy_update_7035() {
+function rbkc_deploy_update_7044() {
   module_enable(array('feature_webform'), TRUE);
 }
