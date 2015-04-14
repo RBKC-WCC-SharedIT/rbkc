@@ -131,7 +131,7 @@
   }
 
   function slickSlider() {
-    $('.local-slider').slick({
+    $('.local__slider').slick({
       infinite: true,
       speed: 300,
       slidesToShow: 3,
