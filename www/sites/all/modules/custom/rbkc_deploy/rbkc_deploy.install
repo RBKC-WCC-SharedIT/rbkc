@@ -579,12 +579,6 @@ function rbkc_deploy_update_7042() {
 }
 
 /**
- * Switch on the Webform module.
- */
-function rbkc_deploy_update_7043() {
-  module_enable(array('webform'), TRUE);
-}
-/**
  * Switch on the Webform feature.
  */
 function rbkc_deploy_update_7044() {
