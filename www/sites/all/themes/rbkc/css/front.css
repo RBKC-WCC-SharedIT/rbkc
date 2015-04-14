@@ -1,15 +1,13 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('Iconfonts/icomoon.eot?fu30mx');
-	src:url('Iconfonts/icomoon.eot?#iefixfu30mx') format('embedded-opentype'),
-		url('Iconfonts/icomoon.woff?fu30mx') format('woff'),
-		url('Iconfonts/icomoon.ttf?fu30mx') format('truetype'),
-		url('Iconfonts/icomoon.svg?fu30mx#icomoon') format('svg');
+	src:url('../Fonts/Iconfonts/icomoon.eot?fu30mx');
+	src:url('../Fonts/Iconfonts/icomoon.eot?#iefixfu30mx') format('embedded-opentype'),
+		url('../Fonts/Iconfonts/icomoon.woff?fu30mx') format('woff'),
+		url('../Fonts/Iconfonts/icomoon.ttf?fu30mx') format('truetype'),
+		url('../Fonts/Iconfonts/icomoon.svg?fu30mx#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
-
-
 [class^="icon-"], [class*=" icon-"] {
 	font-family: 'icomoon';
 	speak: none;
@@ -18,76 +16,23 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-.icon-phone:before {
-	content: "\e601";
-}
-
-.icon-chevron-right2:before {
-	content: "\e604";
-}
-
-.icon-chevron-left2:before {
-	content: "\e606";
-}
-
-.icon-chevron-up:before {
-	content: "\e603";
-}
-
 .icon-twitter:before {
-	content: "\e605";
+	content: "\e615";
 }
-
+.icon-phone:before {
+	content: "\f038";
+}
 .icon-envelope:before {
-	content: "\e600";
+	content: "\e616";
 }
-
-
 
 /****************************************************/
-/*    RESETTING TO BE IN LINE WITH MODULAR CSS      */
+/*                  LAYOUT RULES                    */
 /****************************************************/
-
-
-
-.contrast {  /* white box with green border - don't all have rounded corners*/
-	background-color:#FFFFFF;
-	border: 1px solid #6ed5c9;
-}
-
-.bordered {   /* grey bordered box - all have rounded corners*/
-	border: solid #D3D3D1 1px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.innerNoPadding .bordered {
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-}
-
-.chevronlist li {
-	background: url('/images/refresh/list-chevron.png') 0 0.5em no-repeat;
-	color:#2B5D92;
-	font-weight: normal;
-	list-style-type:none;
-	margin-bottom: 6px;
-	padding-left:15px;
-}
-
-
-
-.outerWrapper {
-	max-width: 100%;
-}
 
 .show400,
 .show600,
@@ -96,99 +41,36 @@
 	visibility: hidden;
 }
 
-.padlrmob {
-	padding: 0 16px;
+/* changing the order of elements in mobile */
+.flexbox .order-homepage {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
 }
-
-
-
-
-/****************************************************/
-/*    END RESETTING TO BE IN LINE WITH MODULAR CSS      */
-/****************************************************/
-
-/* begin new reusable styles */
-
-.brightbox {
-	background: #fff;
-	overflow: hidden;
+.quicklinks {
+	-webkit-order: 1;
+	order: 1;
 }
-
-.brightbox a {
-	display: block;
-	min-height: 128px;
-	position: relative;
-	overflow: hidden;
+.cust-serv {
+	-webkit-order: 2;
+	order: 2;
 	width: 100%;
-	border-bottom: solid 8px #F0D240;
-	font-size: 14px;
 }
-
-.brightbox li:first-child a  {
-	border-top: solid #ddd 1px;
+.servicelist {
+	-webkit-order: 3;
+	order: 3;
 }
-
-.brightbox .purple {
-	border-bottom: solid 8px #547BA2;
+.comms {
+	-webkit-order: 4;
+	order: 4;
 }
-
-.brightbox-left {
-	float: left;
-	width: 30%;
-}
-
-.brightbox-info {
-	display: block;
-	float: right;
-	width: 70%;
-	padding: 32px 16px 16px 16px;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.brightbox h4 {
-	display: inline;
-	color: #2b5d92;
-}
-
-.brightbox p {
-	margin-top: 6px;
-	color: #505a66;
-}
-
-.brightbox-pointer {
-	position: absolute;
-	bottom: 0;
-	left: 8.5%;
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-bottom: 15px solid #F0D240;
-	margin-bottom: -6px;
-	transition: all linear .25s;
-}
-
-.purple .brightbox-pointer {
-	border-bottom: 15px solid #547BA2;
-}
-
-.brightbox a:hover  .brightbox-pointer,
-.brightbox a:active  .brightbox-pointer {
-	margin-bottom: 0;
-}
-
-.brightbox a:hover  h4,
-.brightbox a:active  h4 {
-	border-bottom: dotted 1px;
-}
-
 
 /* fit-1-2-3: three boxes in one column in mobile, two boxes on one row in tablet, three boxes on one row in desktop */
 /* fit-3: three boxes in one row */
-
 .fit-1-2-3 {
 	margin-bottom: 0;
 }
-
 .fit-3 li,
 .fit-3 > div,
 .fit-1-2-3 li,
@@ -198,7 +80,6 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 .fit-3 li,
 .fit-3 > div {
 	width: 33.3333333333333%;
@@ -206,30 +87,16 @@
 }
 
 
-/* Begin homepage-specific styles */
+/****************************************************/
+/*               MAJOR ELEMENT RULES                */
+/****************************************************/
 
-.heading-hp {
-	display: none;
-}
-
+/* search - what is this? */
 .js .search--hp input {
     display: block;
 }
 
-.ribbon-home {
-	background-color: #386390;
-	background-image: url('/images/refresh/hp-header.jpg');
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	border-bottom: solid #F3CF45 6px;
-	display: none;
-}
-
-
-
-/* extended search box */
-
+/* search box for home page */
 .search--hp {
 	margin: 0;
 	padding: 32px 16px;
@@ -237,180 +104,170 @@
 	box-sizing: border-box;
 }
 
-
-
-/* changing the order of elements in mobile */
-
-.flexbox .flexcontents {
-	display: flex;
-	flex-direction: column;
+/* heading */
+.heading__h1 {
+	display: none;
 }
 
-.quicklinks {
-	-webkit-order: 1;
-}
+/****************************************************/
+/*                   MODULE RULES                   */
+/****************************************************/
 
-.askus {
-	-webkit-order: 2;
-	order: 2;
-	width: 100%;
-}
-
-.servicelist {
-	-webkit-order: 3;
-	order: 3;
-}
-
-.newsbox {
-	-webkit-order: 4;
-	order: 4;
-}
-
-
-/* bordered elements within impact box will always have white background */
-
-.impactbox .bordered,
-.impactbox .bordered-700 {
+/* white boxes with green border-top on home page */
+.impact__inner {
 	background: #fff;
 }
-
-.impactbox li {
-	list-style-type: none;
+.impact li:last-child {
+	border-bottom: 0;
 }
-
-
-.impactbox h2  {
+.impact h2  {
 	padding: 8px 16px 0 16px;
 	padding: 1.5rem 1rem 0 1rem;
  	margin-bottom: 12px;
 }
-
-.impactbox  a {
+.impact  a {
 	display: block;
 }
 
-
 /* quicklinks (I need to...) */
-
-.impactbox--quicklinks {
+.quicklinks {
 	border-top: solid #58D2C4 4px;
 }
 
-.impactbox--quicklinks .bordered {
-	border-bottom: 0px;
-}
-
-.impactbox--quicklinks ul {
-	margin-bottom: 0;
-}
-
-.quicklinks .lasta,
-.quicklinks .lasta:hover,
-.quicklinks .lasta:focus,
-.quicklinks .lasta:active {
-	border-bottom: 0;
-}
-
-
-
 /* --- List of services --- */
-
-.servicelist ul {
-	margin-bottom: 0;
-}
-
-.servicelist-viewall:hover,
-.servicelist-viewall:active {
-	text-decoration: underline;
-}
-
 .servicelist a {
 	font-size: 18px;
 	padding: 0.6rem 0 0.6rem 16px;
 	border-bottom: solid #ddd 1px;
 }
-
-a.servicelist-1st-item {
+.servicelist .first {
 	padding-top: 1.5rem;
 }
-
 .servicelist a:hover,
 .servicelist a:active {
 	background: #F4FCFB;
 	border-bottom: #58D2C4 solid 1px;
 }
-
-.servicelist-desc {
+.servicelist__desc {
 	display: block;
 	font-size: 13px;
 	color:#505a66;
 }
-
-a.servicelist-viewall {
+a.servicelist__viewall {
 	display: block;
 	border: 0;
 	background: none;
 	margin: 0;
-	width: 100%;
 	padding: 0.6rem 1rem 2rem 1rem;
 	text-align: left;
 	cursor: pointer;
 }
-
-
-a.servicelist-viewall:hover {
-	border-bottom: 0;
+.servicelist__viewall:hover,
+.servicelist__viewall:active {
+  text-decoration: underline;
+  border-bottom: 0;
 }
-
-.servicelist-viewall span {
-	background: url('/images/refresh/chevron-down-blue.png') no-repeat right 50% ;
+.servicelist__viewall span {
+	background: url('../images/refresh/chevron-down-blue.png') no-repeat right 50% ;
 	padding-right: 20px;
 	background-size: 12px;
 	font-size: 14px;
-
 }
-
-.servicelist-viewall.viewless span {
-	background: url('/images/refresh/chevron-up-blue.png') no-repeat right 50% ;
+.servicelist__viewall.viewless span {
+	background: url('../images/refresh/chevron-up-blue.png') no-repeat right 50% ;
 	background-size: 12px;
+}
 
+/* white boxes with colourful borders as used on the home page */
+.colorbox {
+	background: #fff;
+	overflow: hidden;
+}
+.colorbox a {
+	display: block;
+	min-height: 128px;
+	position: relative;
+	overflow: hidden;
+	border-bottom: solid 8px #F0D240;
+	font-size: 14px;
+}
+.colorbox li:first-child a  {
+	border-top: solid #ddd 1px;
+}
+.colorbox .purple {
+	border-bottom: solid 8px #547BA2;
+}
+.colorbox__left {
+	float: left;
+	width: 30%;
+}
+.colorbox__content {
+	display: block;
+	float: right;
+	width: 70%;
+	padding: 32px 16px 16px 16px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.colorbox h4 {
+	display: inline;
+	color: #2b5d92;
+}
+.colorbox p {
+	margin-top: 6px;
+	color: #505a66;
+}
+.colorbox__pointer {
+	position: absolute;
+	bottom: 0;
+	left: 8.5%;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 15px solid #F0D240;
+	margin-bottom: -6px;
+	transition: all linear .25s;
+}
+.purple .colorbox__pointer {
+	border-bottom: 15px solid #547BA2;
+}
+.colorbox a:hover  .colorbox__pointer,
+.colorbox a:active  .colorbox__pointer {
+	margin-bottom: 0;
+}
+.colorbox a:hover  h4,
+.colorbox a:active  h4 {
+	border-bottom: dotted 1px;
 }
 
 
-/* tweet us, email us and chat boxes - creating a different instance of brightbox style to display differently in mobile */
-
-.brightbox-askus  {
+/* tweet us, email us and chat boxes - creating a different instance of colorbox style to display differently in mobile */
+.cust-serv {
 	padding: 48px 0 24px 0;
 	overflow: hidden;
 	background: #182837;
 }
-
-.brightbox-askus li {
+.cust-serv li {
 	text-align: center;
 }
-
-.brightbox-askus  p {
+.cust-serv  p {
 	display: none;
 }
-
-.brightbox-askus  a,
-.brightbox-askus  a  h3 {
+.cust-serv a,
+.cust-serv a h3 {
 	color: #fff;
 	transition:all .25s linear 0s;
 }
-
-.brightbox-askus  a:hover,
-.brightbox-askus  a:active,
-.brightbox-askus  a:hover h3,
-.brightbox-askus  a:active h3 {
+.cust-serv a:hover,
+.cust-serv a:active,
+.cust-serv a:hover h3,
+.cust-serv a:active h3 {
 	color: #58D2C4;
 	border-bottom: 0;
 }
-
-.askus .icon-envelope,
-.askus .icon-chat,
-.askus .icon-twitter,
-.askus .icon-phone {
+.cust-serv .icon-envelope,
+.cust-serv .icon-chat,
+.cust-serv .icon-twitter,
+.cust-serv .icon-phone {
 	font-size: 55px;
 }
 
@@ -425,7 +282,7 @@ a.servicelist-viewall:hover {
 	left: -78.5%;
 	z-index: 30;
 }
-.lblog .hollowpointer {
+.comms__feature .hollowpointer {
 	left: -78.5%;
 }
 
@@ -472,39 +329,37 @@ a.servicelist-viewall:hover {
 	right: -15px;
 }
 
-.newsbox {
+.comms {
 	margin-bottom: 24px;
 }
 
-.newsbox-img {
+.comms__img {
 	position: relative;
 }
-
-.newsbox-img  img {
+.comms__img  img {
 	display: block;
 	height: auto !important;
+  opacity: 1;
+  transition: 0.3s;
 }
-
-.newsbox-img  a:hover {
+.comms__img  a:hover img {
 	opacity: 0.8;
 }
-
-.newsbox-news img {
+.comms__news img {
 	width: 100% !important;
 }
-
-.lblog .newsbox-img {
+.comms__feature .comms__img {
 	overflow: hidden;
 }
 
-.lblog img {
+.comms__feature img {
 	width: 50% !important;
 	float: right;
 	position: relative;
 	z-index: 1;
 }
 
-.lblog-overlay {
+.comms__overlay {
 	display: block;
 	width: 56%;
 	position: absolute;
@@ -512,16 +367,16 @@ a.servicelist-viewall:hover {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	background: url('/images/refresh/lblog-overlay.png') no-repeat;
+	background: url('../images/refresh/comms__overlay.png') no-repeat;
 	background-size: 100%;
 }
 
-.newsbox-img p {
+.comms__img p {
 	margin: 0;
 	padding: 0;
 }
 
-.newsbox-img h2 {
+.comms__img h2 {
 	position: absolute;
 	z-index: 40;
 	top: 0;
@@ -535,14 +390,14 @@ a.servicelist-viewall:hover {
 
 
 
-.lblog a:hover h3,
-.lblog a:active h3,
-.lblog a:hover .fadeout-readmore,
-.lblog a:active .fadeout-readmore {
+.comms__feature a:hover h3,
+.comms__feature a:active h3,
+.comms__feature a:hover .fadeout-readmore,
+.comms__feature a:active .fadeout-readmore {
 	border-bottom: dotted 1px;
 }
 
-.newsbox-items {
+.comms__content {
 	overflow: hidden;
 }
 
@@ -566,7 +421,7 @@ a.servicelist-viewall:hover {
 	padding-right: 0;
 }
 
-.lblog .newsbox-item {
+.comms__feature .newsbox-item {
 	position: relative;
 }
 
@@ -583,7 +438,7 @@ a.servicelist-viewall:hover {
 	margin-bottom: 0;
 }
 
-.newsbox-items {
+.comms__content {
 	margin-top: -15px;
 }
 
@@ -594,7 +449,7 @@ a.servicelist-viewall:hover {
 .fadeout {
 	width: 100%;
 	height: 100px;
-	background: url('/images/refresh/fadegradient.png') repeat;
+	background: url('../images/refresh/fadegradient.png') repeat;
 	background: -webkit-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
 	background: -o-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
 	background: -moz-linear-gradient(rgba(245, 245, 241, 0),#F5F5F1 50%,#F5F5F1);
@@ -617,8 +472,8 @@ a.servicelist-viewall:hover {
 	border-bottom: transparent dotted 1px;
 }
 
-.flexbox  .lblog .newsbox-items,
-.flexbox  .lblog .newsbox-item  {
+.flexbox  .comms__feature .comms__content,
+.flexbox  .comms__feature .newsbox-item  {
 	position: relative;
 	overflow:hidden;
 }
@@ -666,37 +521,37 @@ a.servicelist-viewall:hover {
 }
 
 .local-visit .local-img {
-	background: url('/images/refresh/visit_kc.jpg') no-repeat;
+	background: url('../images/refresh/visit_kc.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
 
 .local-city .local-img {
-	background: url('/images/refresh/city_living.jpg')  no-repeat;
+	background: url('../images/refresh/city_living.jpg')  no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
 
 .local-kcc .local-img {
-	background: url('/images/refresh/kc_central.jpg') no-repeat;
+	background: url('../images/refresh/kc_central.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
 
 .local-museums .local-img {
-	background: url('/images/refresh/leighton_hs.jpg') no-repeat;
+	background: url('../images/refresh/leighton_hs.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
 
 .local-wild .local-img {
-	background: url('/images/refresh/wildlife.jpg') no-repeat;
+	background: url('../images/refresh/wildlife.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
 
 .local-timemachine .local-img {
-	background: url('/images/refresh/timemachine.jpg') no-repeat;
+	background: url('../images/refresh/timemachine.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
@@ -721,7 +576,7 @@ a.servicelist-viewall:hover {
 	transition: none;
 }
 
-.localevents-date {
+.localevents__date {
 	display: block;
 	width: 45px;
 	height: 60px;
@@ -735,15 +590,15 @@ a.servicelist-viewall:hover {
 	margin: 27px auto 0 auto;
 }
 
-.localevents-date span {
+.localevents__date span {
 	display: block;
 }
 
-.localevents-day {
+.localevents__day {
 	font-size: 20px;
 }
 
-.localevents-month {
+.localevents__month {
 	font-size: 13px;
 }
 
@@ -768,6 +623,7 @@ a.servicelist-viewall:hover {
 .presstweet {
 	padding-top: 48px;
 	padding-bottom: 24px;
+	overflow: hidden;
 }
 
 .press {
@@ -809,7 +665,6 @@ a.servicelist-viewall:hover {
 .local-slider-item {
 	position: relative;
 }
-
 .local-text {
 	padding: 1rem 0.2rem;
 }
@@ -819,82 +674,75 @@ a.servicelist-viewall:hover {
 	font-weight: 700;
 }
 
+/* fit boxes */
 .fit-1-2-3 li,
 .fit-1-2-3 > div {
 	width: 50%;
 	float: left;
 }
+.fit-1-2-3 li:last-child  {
+	display: none !important;
+}
 
-.brightbox a  {
+
+/* colorbox */
+.colorbox a  {
 	border-top: solid #ddd 1px;
 }
-
-.brightbox li:first-child a  {
+.colorbox li:first-child a  {
 	border-right: solid #ddd 1px;
 }
-
-.flexbox .brightbox ul,
-.flexbox .brightbox li {
+.flexbox .colorbox ul,
+.flexbox .colorbox li {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-align-items: stretch;
 	align-items: stretch;
 }
-
-.flexbox .brightbox a {
+.flexbox .colorbox a {
+	display: -webkit-flex;
 	display: flex;
+  width: 100%;
 }
-.fit-1-2-3 li:last-child  {
-	display: none;
-}
+
 
 } /* end media query */
 
 
 @media only screen and (min-width: 600px) { /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* look at these again ? */
+	.show600 {
+		position:static;
+		visibility: visible;
+	}
 
-.show600 {
-	position:static;
-	visibility: visible;
-}
+	.servicelist__desc {
+		display: inline;
+		padding-left: 8px;
+	}
 
-.servicelist-desc {
-	display: inline;
-	padding-left: 8px;
-}
-
-
-/* quicklinks (I need to...) ( do so many of these styles need to be extended iconlinks classes ?)*/
-
-.quicklinks ul {
-	width: 50%;
-	float: left;
-	padding: 0 16px;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.iconlinks-quicklinks {
-	padding-bottom: 16px;
-}
-
-.iconlinks-quicklinks a,
-.iconlinks-quicklinks .iconlinks-first,
-.iconlinks-quicklinks .iconlinks-last {
-	padding: 10px 16px 10px 60px;
-	background-size: 25px;
-	background-position: 1rem 50%;
-}
-a.iconlinks-quicklinks-fauxlast,
-a.iconlinks-quicklinks-fauxlast:active,
-a.iconlinks-quicklinks-fauxlast:hover,
-a.iconlinks-quicklinks-fauxlast:focus {
-	border-bottom: 0;
-}
-
-.quicklinks-2nd {
-	float: right;
-}
+	/* quicklinks (I need to...) ( do so many of these styles need to be extended iconlinks classes ?)*/
+	.quicklinks__list-two,
+	.quicklinks__list-one {
+		width: 50%;
+		float: left;
+		padding: 0 16px 16px 16px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.quicklinks a,
+	.quicklinks .first,
+	.quicklinks .last {
+		padding: 10px 16px 10px 60px;
+		background-size: 25px;
+		background-position: 1rem 50%;
+	}
+	.quicklinks li:last-child a{
+		border-bottom: 0;
+	}
+	.quicklinks__list-two {
+		float: right;
+	}
 
 } /* end media query */
 
@@ -902,37 +750,39 @@ a.iconlinks-quicklinks-fauxlast:focus {
 @media only screen and (min-width: 700px) { /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
-
-.padlrmob {
+.show700 {
+	position:static;
+	visibility: visible;
+}
+.padded-mob {
 	padding: 0;
 }
 
-.bordered-700 {   /* grey bordered box - all have rounded corners*/
+.impact__inner {   /* grey bordered box - all have rounded corners*/
 	border: solid #D3D3D1 1px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
 
-.innerNoPadding .bordered {
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-
-.ribbon-home,
-.heading-hp {
+.heading__h1 {
 	display: block;
 }
 
-.flexbox .flexcontents {
+.flexbox .order-homepage {
 	display: block;
 }
 
-.ribbon-home {
+.ribbon--hp {
 	width: 100%;
 	position: absolute;
-	height: 540px;
+	height: 450px;
+	background-color: #386390;
+	background-image: url('../images/refresh/hp-header.jpg');
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-bottom: solid #F3CF45 6px;
 }
 
 .floatleft-700 {
@@ -947,8 +797,8 @@ a.iconlinks-quicklinks-fauxlast:focus {
 	padding: 0 1rem;
 }
 
-.headerglobal-openmenu,
-.headerglobal-nav.hp {
+.headerglobal__open,
+.headerglobal__nav {
 	display: none !important;
 }
 
@@ -956,62 +806,25 @@ a.iconlinks-quicklinks-fauxlast:focus {
 .fit-1-2-3 > div {
 	width: 33.3333333333333%;
 }
-
-
-.quicklinks,
-.servicelist {
-	padding-left: 16px;
-	padding-right: 16px;
+.fit-1-2-3 li:last-child {
+  display: block !important;
 }
 
-
-.impactbox {
-	background: #fff;
-	border-top: solid #58D2C4 12px;
-	-webkit-border-radius:3px;
-	-moz-border-radius:3px;
-	border-radius:3px;
-	position: relative;
-	list-style-type: none;
-	margin-bottom: 2rem;
-}
-
-.impactbox h2 {
-	padding: 0.5rem 1rem 0 1rem;
-	font-size: 20px;
-	margin: 0;
-}
-
-.impactbox  a {
-	font-size: 16px;
-}
-
-.impactbox .bordered-700 {
-	margin-top: -5px;
-	border-top: solid #fff 1px;
-}
 
 
 /* search box in desktop view */
-
 .search--hp {
-	display: block !important;
-	position: static;
-	width: 100% !important;
+	width: 100%;
 	margin: 6px 0px 24px 0px;
 	padding: 0 80px 1rem 80px;
-	overflow: hidden;
 	background: none;
 }
-
-.search--hp .search-wrap {
+.search--hp .search__wrap {
 	float: left;
 	width: 100%;
 	margin-right: -56px;
 }
-
-
-.search--hp .search-input {
+.search--hp .search__wrap input {
 	background:rgba(255, 255, 255, 0.8);
 	padding: 4px 4px 4px 16px;
 	color: #386390 ;
@@ -1019,7 +832,6 @@ a.iconlinks-quicklinks-fauxlast:focus {
 	font-size: 18px;
 	height: 56px;
 	border: solid #ddd 1px;
-	font-family: arial, sans-serif;
 	margin-right: 56px;
 	width:100%;
 	-moz-box-sizing: border-box;
@@ -1027,21 +839,11 @@ a.iconlinks-quicklinks-fauxlast:focus {
 	visibility: visible;
 	transition: all linear 0.25s;
 }
-
-.search--hp .search-input:focus {
+.search--hp .search__wrap input:focus {
 	background:#fff;
 }
-
-.search--hp  input :-moz-placeholder,
-.search--hp  input ::-moz-placeholder ,
-.search--hp  input :-ms-input-placeholder,
-.search--hp  input ::-webkit-input-placeholder {
-	color: #000 ;
-	 opacity: 1 !important;
-}
-
-.search--hp .search-submit {
-	background: #88898a url('/images/refresh/search-hp.png') center no-repeat;
+.search--hp .search__submit {
+	background: #88898a url('../images/refresh/search-hp.png') center no-repeat;
 	border: 0;
 	border-left: solid #ddd 1px;
 	background-size: cover;
@@ -1054,8 +856,7 @@ a.iconlinks-quicklinks-fauxlast:focus {
 	white-space: nowrap;
 	overflow: hidden;
 }
-
-.search--hp .search-submit:hover {
+.search--hp .search__submit:hover {
 	border-left: solid #ddd 1px;
 	background-color: #58D2C4;
 	background-position: center;
@@ -1063,253 +864,253 @@ a.iconlinks-quicklinks-fauxlast:focus {
 }
 
 
-/* --- List of services --- */
-
-ul.servicelist-1st  {
-	float: left;
+/* impact boxes */
+.impact {
+	background: #fff;
+	border-top: solid #58D2C4 12px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	position: relative;
+	list-style-type: none;
+	margin-bottom: 2rem;
+}
+.impact h2 {
+	padding: 0.5rem 1rem 0 1rem;
+	font-size: 20px;
+	margin: 0;
+}
+.impact  a {
+	font-size: 16px;
+}
+.impact .impact__inner {
+	margin-top: -5px;
+	border-top: solid #fff 1px;
 }
 
-ul.servicelist-2nd  {
-	float: right;
+.quicklinks,
+.servicelist {
+	padding-right: 16px;
+	padding-left: 16px;
+}
+
+/* --- List of services --- */
+.servicelist__list-one,
+.servicelist__list-two  {
+	width: 50%;
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 1rem 2rem;
 	display: block !important; /* important class to override edge cases where jquery hides element (should change to css animations to avoid having to do this really) */
 }
-
-.impactbox-services a:hover {
-	border-bottom: solid #ddd 1px;
-	background: 0;
+.servicelist li {
+	background: url('../images/refresh/chevron-right-lightgrey.svg') right 50% no-repeat;
+	background-size: 20px;
 }
-
 .servicelist a {
 	border-left: solid #fff 6px;
 	padding: 10px;
 	position: relative;
 }
-
-.servicelist li {
-	background: url('/images/refresh/chevron-right-lightgrey.svg') right 50% no-repeat;
-	background-size: 20px;
-}
-
-
-.servicelist  a:hover,
-.servicelist  a:active,
-.servicelist  a:focus {
+.servicelist a:hover,
+.servicelist a:active,
+.servicelist a:focus {
 	border-left: solid #58D2C4 6px;
-	background-color: none;
+	border-bottom: solid #ddd 1px ;
+	background: none;
 }
-
-
-a.servicelist-last,
-a.servicelist-last:active,
-a.servicelist-last:focus {
-	border-bottom: 0 !important;
+.servicelist li:last-child a {
+	border-bottom: 0;
 }
-
-a.servicelist-viewall {
+a.servicelist__viewall,
+.servicelist__desc {
 	display: none;
 }
 
-.servicelist ul {
-	width: 50%;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 1rem 2rem;
-}
-
-
-
 /* quicklinks (I need to...) */
-
-.iconlinks-quicklinks {
+.quicklinks {
 	padding-bottom: 0;
+	border-top: 0;
 }
-
-.impactbox--quicklinks .bordered-700 {
+.quicklinks .impact__inner {
 	border-bottom: solid 1px #d3d3d1;
 }
 
-ul.quicklinks-1st,
-ul.servicelist-1st  {
+/* lists in desktop */
+.quicklinks__list-one,
+.servicelist__list-one  {
 	padding: 16px 16px 16px 32px;
 }
-ul.quicklinks-2nd,
-ul.servicelist-2nd  {
+.quicklinks__list-two,
+.servicelist__list-two  {
 	padding: 16px 32px 16px 16px;
 }
 
 
-/* tweet us, email us and chat boxes - brightbox styles kick in */
-
-.brightbox-askus {
-	padding: 0 16px;
-	background: none;
-	margin-bottom: 32px;
+.cust-serv {
+  background: none;
+  padding: 0;
 }
 
-.brightbox-askus a {
-	display: block;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	min-height: 128px;
-	position: relative;
-	overflow: hidden;
-	width: 100%;
- 	background: #fff;
+/* tweet us, email us and chat boxes - colorbox styles kick in */
+/* some styles need to be repeated for the customer services boxes which are styled as colorboxes only in desktop */
+.colorbox-700 {
+  padding: 0 16px;
+  background: none;
+  margin-bottom: 32px;
 }
-
-.brightbox-askus a,
-.brightbox-askus a:hover {
-	border-bottom: solid 8px #F0D240;
-	color: #2b5d92;
+.colorbox-700 a {
+  min-height: 128px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
 }
-
-.brightbox-askus  a  h3,
-.brightbox-askus  a:hover h3 {
-	display: inline;
-	color: #2b5d92;
-	margin-bottom: 12px;
+.colorbox-700 a,
+.colorbox-700 a:hover {
+  border-bottom: solid 8px #F0D240;
+  color: #2b5d92;
 }
-
-.brightbox-askus  a:hover h3 {
-	border-bottom: dotted 1px;
+.colorbox-700 a h3,
+.colorbox-700 a:hover h3 {
+  display: inline;
+  color: #2b5d92;
+  margin-bottom: 12px;
 }
-
-.brightbox-askus  a  {
-	border-top: solid #ddd 1px;
+.colorbox-700 a:hover h3 {
+  border-bottom: dotted 1px;
 }
-
-.brightbox-askus  p {
-	display: block;
-	margin-bottom: 0;
+.colorbox-700 a  {
+  border-top: solid #ddd 1px;
 }
-
-.brightbox-askus .purple,
-.brightbox-askus .purple:hover {
-	border-bottom: solid 8px #547BA2;
+.colorbox-700 p {
+  display: block;
+  margin-bottom: 0;
 }
-
-.brightbox-askus-left {
-	width: 100%;
+.colorbox-700 .purple,
+.colorbox-700 .purple:hover {
+  border-bottom: solid 8px #547BA2;
 }
-
-.brightbox-askus-info {
-	display: block;
-	padding: 0 16px 32px 16px;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	min-height: 125px;  /* min height stops odd display bug in ie9 at normal zoom level (still happens sometimes if you zoom) */
+.colorbox-700__left {
+  width: 100%;
 }
-
-.brightbox-askus h4 {
-	display: inline;
-	color: #2b5d92;
+.colorbox-700__content {
+  display: block;
+  padding: 0 16px 32px 16px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 125px;  /* min height stops odd display bug in ie9 at normal zoom level (still happens sometimes if you zoom) */
 }
-
-.brightbox-askus p {
-	margin-top: 6px;
-	color: #505a66;
+.colorbox-700 h4 {
+  display: inline;
+  color: #2b5d92;
 }
-
-.brightbox-askus-pointer {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	margin-left: -20px;
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-bottom: 15px solid #F0D240;
-	margin-bottom: -6px;
-	transition: all linear .25s;
+.colorbox-700 p {
+  margin-top: 6px;
+  color: #505a66;
 }
-
-.purple .brightbox-askus-pointer {
-	border-bottom: 15px solid #547BA2;
+.colorbox-700__pointer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #F0D240;
+  margin-bottom: -6px;
+  transition: all linear .25s;
 }
-
-.brightbox-askus a:hover  .brightbox-askus-pointer {
-	margin-bottom: 0;
+.purple .colorbox-700__pointer {
+  border-bottom: 15px solid #547BA2;
 }
-
-.brightbox-askus a:hover  h4 {
-	border-bottom: dotted 1px;
+.colorbox-700 a:hover .colorbox-700__pointer {
+  margin-bottom: 0;
 }
-
-.brightbox-askus a,
-.brightbox a {
-	border-right: solid #ddd 1px;
+.colorbox-700 a:hover  h4 {
+  border-bottom: dotted 1px;
 }
-
-.brightbox-askus li:last-child a,
-.brightbox li:last-child a  {
-	border-right: 0;
+.colorbox-700 a,
+.colorbox a {
+  border-right: solid #ddd 1px;
 }
-
-.brightbox-askus-icon {
-	font-size: 2.8rem !important;
-	display: inline-block;
-	padding-top: 2rem;
+.colorbox-700 li:last-child a,
+.colorbox li:last-child a  {
+  border-right: 0;
 }
-
-.flexbox .brightbox-askus ul,
-.flexbox .brightbox-askus li {
-	display: flex;
-	align-items: stretch;
+.colorbox-700__left {
+  font-size: 2.8rem !important;
+  display: inline-block;
+  padding-top: 2rem;
 }
-
-.brightbox li:last-child  {
-	display: block;
+.flexbox .colorbox-700 ul,
+.flexbox .colorbox-700 li {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  align-items: stretch;
 }
-
-.flexbox .brightbox li:last-child  {
-	display: flex;
+.colorbox-700 li:last-child  {
+  display: block;
+}
+.flexbox .colorbox li:last-child,
+.flexbox .colorbox-700 li:last-child  {
+  display: -webkit-flex;
+  display: flex !important;
 }
 
 
 /* news items and Leader's blog */
-
-.newsbox {
+.comms {
 	margin-left: 0;
 	margin-bottom: 32px;
 	margin-bottom: 2rem;
 	background: #F5F5F1;
 }
 
-.newsbox-news .hollowpointer {
+.comms__news .hollowpointer {
 	left: -84.5%;
 }
 
-.lblog {
+.comms__feature {
 	display: block;
 	float: right;
 	width: 35.417%;
 }
 
-.lblog-overlay {
+.comms__overlay {
 	display: none;
 }
 
-.lblog img {
+.comms__feature img {
 	width: 100% !important;
 }
 
-.flexbox .newsbox {
+.flexbox .comms {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-direction: row;
 	flex-direction: row;
 }
 
-.flexbox .lblog {
+.flexbox .comms__feature {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex-direction: column;
 	flex-direction: column;
+	-webkit-flex: 1;
 	flex: 1;
  }
 
-.flexbox  .lblog .newsbox-items,
-.flexbox  .lblog .newsbox-item  {
+.flexbox  .comms__feature .comms__content,
+.flexbox  .comms__feature .newsbox-item  {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-flex: 1;
 	flex: 1;
 }
 
-.flexbox  .lblog .hollowpointer {
+.flexbox  .comms__feature .hollowpointer {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1364,7 +1165,7 @@ ul.servicelist-2nd  {
 }
 
 .twitter-header {
-	background: url('/images/refresh/twitter_logo_blue.png') no-repeat;
+	background: url('../images/refresh/twitter_logo_blue.png') no-repeat;
 	background-size: 30px;
 	padding: 15px;
 	margin-bottom: 10px;
@@ -1377,74 +1178,78 @@ ul.servicelist-2nd  {
 
 @media only screen and (min-width: 900px) {  /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
+.ribbon--hp {
+	width: 100%;
+	position: absolute;
+	height: 600px;
+}
 
-.impactbox  a {
+.impact a {
 	font-size: 15px;
 }
 
 
 /* --- List of services --- */
-
 .servicelist {
-    padding-right: 0;
+	/* non-standard grid settings */
+  padding-right: 0;
+  width: 64.583%;
+  float:left;
+  position:relative;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
 /* quicklinks (I need to...) */
-
 .quicklinks {
+	/* non-standard grid settings */
 	padding-left: 0;
+	float: right;
+  width: 29.167%;
+  position:relative;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 6.25%;
 }
-
-.iconlinks-quicklinks a,
-.iconlinks-quicklinks li:first-child a,
-.iconlinks-quicklinks li:last-child a {
+.quicklinks__list-one,
+.quicklinks__list-two {
+	float: none;
+	width: auto;
+}
+.quicklinks__list-one {
+	padding: 1rem 1.5rem 0 1.5rem;
+}
+.quicklinks__list-two {
+	padding: 0 1.5rem 1rem 1.5rem;
+}
+.quicklinks a,
+.quicklinks li:first-child a,
+.quicklinks li:last-child a {
 	padding: 10px 0 10px 28px;
 	background-size: 16px;
 	background-position: 0 50%;
 }
-
-ul.quicklinks-1st,
-ul.quicklinks-2nd {
-	float: none;
-	width: auto;
-}
-
-ul.quicklinks-1st {
-	padding: 1rem 1.5rem 0 1.5rem;
-}
-ul.quicklinks-2nd {
-	padding: 0 1.5rem 1rem 1.5rem;
-}
-
-a.iconlinks-quicklinks-fauxlast {
-	border-bottom: solid #ddd 1px !important;
-}
-a.iconlinks-quicklinks-fauxlast:active,
-a.iconlinks-quicklinks-fauxlast:hover,
-a.iconlinks-quicklinks-fauxlast:focus {
-	border-bottom: solid #58D2C4 1px;
+.quicklinks__list-one li:last-child a {
+	border-bottom: solid #ddd 1px;
 }
 
 
 /* tweet us, email us and chat boxes */
-
-.brightbox-askus-left {
-	float: left;
-	width: 30%;
+.colorbox-700 {
+  padding: 0;
 }
-
-.brightbox-askus-info {
+.colorbox-700__left {
+	width: 30%;
+  float: left;
+}
+.colorbox-700__content {
  	float: right;
 	text-align: left;
 	width: 70%;
+  padding: 32px 16px 32px 16px;
 }
-
-.brightbox-askus-info {
-	padding: 32px 16px 32px 16px;
-}
-
-.brightbox-askus-pointer {
+.colorbox-700__pointer {
 	left: 8.5%;
 	margin-left: 0;
 }
@@ -1459,8 +1264,7 @@ a.iconlinks-quicklinks-fauxlast:focus {
 
 .quicklinks,
 .servicelist,
-.ask,
-.brightbox-askus {
+.ask {
 	padding-left:0;
 	padding-right: 0;
 }
@@ -1478,10 +1282,16 @@ a.iconlinks-quicklinks-fauxlast:focus {
 @media only screen and (min-width: 1100px) { /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
+.ribbon--hp {
+	width: 100%;
+	position: absolute;
+	height: 540px;
+}
+
 /* --- List of services --- */
 
-ul.servicelist-1st,
-ul.servicelist-2nd  {
+ul.servicelist__list-one,
+ul.servicelist__list-two {
 	padding: 16px 32px;
 }
 
@@ -1493,14 +1303,12 @@ ul.servicelist-2nd  {
 
 
 /* quicklinks (I need to...) */
-
 .quicklinks li {
 	float: none;
 }
-
-.iconlinks-quicklinks a,
-.iconlinks-quicklinks li:first-child a,
-.iconlinks-quicklinks li:last-child a {
+.quicklinks a,
+.quicklinks li:first-child a,
+.quicklinks li:last-child a {
 	padding: 0.25rem 0 0.25rem 38px;
 	background-size: 16px;
 	background-position: 0.5rem 50%;
@@ -1547,8 +1355,11 @@ ul.servicelist-2nd  {
 
 
 .flexbox .local-text {
+	display: -webkit-flex;
 	display: flex;
+	-webkit-justify-content: center;
 	justify-content: center; /* align horizontal */
+	-webkit-align-items: center;
 	align-items: center; /* align vertical */
 }
 
@@ -1585,7 +1396,7 @@ ul.servicelist-2nd  {
 
 @media only screen and (min-width: 1700px) { /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
-.ribbon-home {
+.ribbon--hp {
 	background-position: center 40%;
 }
 
@@ -1631,22 +1442,28 @@ ul.servicelist-2nd  {
 
 
 
-.lt-ie9 .hide700  {
+.lt-ie9 .servicelist__desc  {
 	display: none;
 }
 
+
+
+.lt-ie9 .show700 {
+	position:static;
+	visibility: visible;
+}
 
 .lt-ie9 .padded-mob {
 	padding: 0;
 }
 
-.lt-ie9 .bordered-700 {   /* grey bordered box - all have rounded corners*/
+.lt-ie9 .impact__inner {   /* grey bordered box - all have rounded corners*/
 	border: solid #D3D3D1 1px;
 }
 
 
-.lt-ie9 .ribbon-home,
-.lt-ie9 .heading-h1-hp {
+.lt-ie9 .ribbon--hp,
+.lt-ie9 .heading__h1 {
 	display: block;
 }
 
@@ -1660,19 +1477,19 @@ ul.servicelist-2nd  {
 	cursor: pointer;
 }
 
-.lt-ie8 .brightbox-askus-left,
-.lt-ie8 .brightbox-left {
+.lt-ie8 .colorbox-askus-left,
+.lt-ie8 .colorbox__left {
 	width: 20px;
 	height: 0;
 }
 
-.lt-ie8 .localevents-date {
+.lt-ie8 .localevents__date {
 	margin-left: 15px !important;
 }
 
 
 
-.lt-ie9 .ribbon-home {
+.lt-ie9 .ribbon--hp {
 	width: 100%;
 	position: absolute;
 	height: 540px;
@@ -1692,7 +1509,7 @@ ul.servicelist-2nd  {
 	padding: 0 16px;
 }
 
-.lt-ie9 .headerglobal-openmenu,
+.lt-ie9 .openMenu,
 .lt-ie9 .menu-hp {
 	display: none !important;
 }
@@ -1707,10 +1524,10 @@ ul.servicelist-2nd  {
 
 
 .lt-ie9 .quicklinks a {
-	background-image: url('/images/refresh/iconlinks-small.png');
+	background-image: url('../images/refresh/iconlinks-small.png');
 }
 
-.lt-ie9 .impactbox {
+.lt-ie9 .impact {
 	background: #fff;
 	border-top: solid #58D2C4 12px;
 	position: relative;
@@ -1720,7 +1537,7 @@ ul.servicelist-2nd  {
 
 
 
-.lt-ie9 .impactbox .bordered-700 {
+.lt-ie9 .impact .impact__inner {
 	margin-top: -5px;
 	border-top: solid #fff 1px;
 }
@@ -1738,18 +1555,18 @@ ul.servicelist-2nd  {
 	overflow: hidden;
 }
 
-/* .lt-ie8 .search--hp {
+/* .lt-ie8 .search-ask {
 	width: 70% !important;
 }
  */
-.lt-ie9 .search--hp .search-wrap {
+.lt-ie9 .search--hp .search__wrap {
 	float: left;
 	width: 100%;
 	margin-right: -56px;
 }
 
 
-.lt-ie9 .search--hp .search-input {
+.lt-ie9 .search--hp .search__input {
 	background:rgba(255, 255, 255, 0.8);
 	padding: 16px 4px 4px 16px;
 	color: #386390 ;
@@ -1766,16 +1583,16 @@ ul.servicelist-2nd  {
 	transition: all linear 0.25s;
 }
 
-.lt-ie8 .search--hp .search_full_text input {
+.lt-ie8 .search--hp .search__input {
 	height: 34px;
 }
 
-.lt-ie9 .search--hp .search_full_text input:focus {
+.lt-ie9 .search--hp .search__input:focus {
 	background:#fff;
 }
 
-.lt-ie9 .search--hp .search-submit {
-	background: #88898a url('/images/refresh/search--hp-ie.png') center no-repeat !important;
+.lt-ie9 .search--hp .search__submit {
+	background: #88898a url('../images/refresh/search-hp-ie.png') center no-repeat !important;
 	border: 0;
 	border-left: solid #ddd 1px;
 	background-size: cover;
@@ -1789,25 +1606,25 @@ ul.servicelist-2nd  {
 	overflow: hidden;
 }
 
-.lt-ie9 .search--hp .search-submit:hover {
+.lt-ie9 .search--hp .submit:hover {
 	border-left: solid #ddd 1px;
-	background: #58D2C4 url('/images/refresh/search--hp-ie.png') center no-repeat !important;
+	background: #58D2C4 url('../images/refresh/search-hp-ie.png') center no-repeat !important;
 	cursor: pointer;
 }
 
 
 /* --- List of services --- */
 
-.lt-ie9 ul.servicelist-1st  {
+.lt-ie9 ul.servicelist__list-one  {
 	float: left;
 }
 
-.lt-ie9 ul.servicelist-2nd  {
+.lt-ie9 ul.servicelist__list-two  {
 	float: right;
 	display: block !important; /* important class to override edge cases where jquery hides element (should change to css animations to avoid having to do this really) */
 }
 
-.lt-ie9 .impactbox-services a:hover {
+.lt-ie9 .services a:hover {
 	border-bottom: solid #ddd 1px;
 	background: 0;
 }
@@ -1831,7 +1648,7 @@ ul.servicelist-2nd  {
 	border-bottom: 0 !important;
 }
 
-.lt-ie9 a.servicelist-viewall {
+.lt-ie9 a.servicelist__viewall {
 	display: none;
 }
 
@@ -1854,7 +1671,7 @@ ul.servicelist-2nd  {
 	padding-bottom: 0;
 }
 
-.lt-ie9 .impactbox--quicklinks .bordered-700 {
+.lt-ie9 .impact-quicklinks .impact__inner {
 	border-bottom: solid 1px #d3d3d1;
 }
 
@@ -1863,8 +1680,8 @@ ul.servicelist-2nd  {
 	padding: 16px 16px 16px 32px;
 	margin: 0;
 }
-.lt-ie9 ul.quicklinks-2nd,
-.lt-ie9 ul.servicelist-2nd  {
+.lt-ie9 ul.quicklinks__list-one,
+.lt-ie9 ul.servicelist__list-two  {
 	padding: 16px 32px 16px 16px;
 	margin: 0;
 }
@@ -1874,15 +1691,15 @@ background-position: 10px 50%;
 
 }
 
-/* tweet us, email us and chat boxes - brightbox styles kick in */
+/* tweet us, email us and chat boxes - colorbox styles kick in */
 
-.lt-ie9 .brightbox-askus {
+.lt-ie9 .colorbox-askus {
 	padding: 0 16px;
 	background: none;
 	margin-bottom: 32px;
 }
 
-.lt-ie9 .brightbox-askus a {
+.lt-ie9 .colorbox-askus a {
 	display: block;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -1893,60 +1710,60 @@ background-position: 10px 50%;
  	background: #fff;
 }
 
-.lt-ie9 .brightbox-askus a,
-.lt-ie9 .brightbox-askus a:hover {
+.lt-ie9 .colorbox-askus a,
+.lt-ie9 .colorbox-askus a:hover {
 	border-bottom: solid 8px #F0D240;
 	color: #2b5d92;
 }
 
-.lt-ie9 .brightbox-askus  a  h3,
-.lt-ie9 .brightbox-askus  a:hover h3 {
+.lt-ie9 .colorbox-askus  a  h3,
+.lt-ie9 .colorbox-askus  a:hover h3 {
 	display: inline;
 	color: #2b5d92;
 	margin-bottom: 12px;
 }
 
-.lt-ie9 .brightbox-askus  a:hover h3 {
+.lt-ie9 .colorbox-askus  a:hover h3 {
 	border-bottom: dotted 1px;
 }
 
-.lt-ie9 .brightbox  a,
-.lt-ie9 .brightbox-askus  a  {
+.lt-ie9 .colorbox  a,
+.lt-ie9 .colorbox-askus  a  {
 	border-top: solid #ddd 1px;
 }
 
-.lt-ie9 .brightbox-askus  p {
+.lt-ie9 .colorbox-askus  p {
 	display: block;
 	margin-bottom: 0;
 }
 
-.lt-ie9 .brightbox-askus .purple,
-.lt-ie9 .brightbox-askus .purple:hover {
+.lt-ie9 .colorbox-askus .purple,
+.lt-ie9 .colorbox-askus .purple:hover {
 	border-bottom: solid 8px #547BA2;
 }
 
-.lt-ie9 .brightbox-askus-left {
+.lt-ie9 .colorbox-askus-left {
 	width: 100%;
 }
 
-.lt-ie9 .brightbox-askus-info {
+.lt-ie9 .colorbox-askus-info {
 	display: block;
 	padding: 0 16px 32px 16px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-.lt-ie9 .brightbox-askus h4 {
+.lt-ie9 .colorbox-askus h4 {
 	display: inline;
 	color: #2b5d92;
 }
 
-.lt-ie9 .brightbox-askus p {
+.lt-ie9 .colorbox-askus p {
 	margin-top: 6px;
 	color: #505a66;
 }
 
-.lt-ie9 .brightbox-askus-pointer {
+.lt-ie9 .colorbox-askus-pointer {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
@@ -1958,29 +1775,29 @@ background-position: 10px 50%;
 	transition: all linear .25s;
 }
 
-.lt-ie9 .purple .brightbox-askus-pointer {
+.lt-ie9 .purple .colorbox-askus-pointer {
 	border-bottom: 15px solid #547BA2;
 }
 
-.lt-ie9 .brightbox-askus a:hover  .brightbox-askus-pointer {
+.lt-ie9 .colorbox-askus a:hover  .colorbox-askus-pointer {
 	margin-bottom: 0;
 }
 
-.lt-ie9 .brightbox-askus a:hover  h4 {
+.lt-ie9 .colorbox-askus a:hover  h4 {
 	border-bottom: dotted 1px;
 }
 
-.lt-ie9 .brightbox-askus a,
-.lt-ie9 .brightbox a {
+.lt-ie9 .colorbox-askus a,
+.lt-ie9 .colorbox a {
 	border-right: solid #ddd 1px;
 }
 
-.lt-ie9 .brightbox-askus li:last-child a,
-.lt-ie9 .brightbox li:last-child a  {
+.lt-ie9 .colorbox-askus li:last-child a,
+.lt-ie9 .colorbox li:last-child a  {
 	border-right: 0;
 }
 
-.lt-ie9 .brightbox-askus-icon {
+.lt-ie9 .colorbox-askus-icon {
 	font-size: 55px !important;
 	display: inline-block;
 	padding-top: 32px;
@@ -1988,7 +1805,7 @@ background-position: 10px 50%;
 
 
 
-.lt-ie9 .brightbox li:last-child  {
+.lt-ie9 .colorbox li:last-child  {
 	display: block;
 }
 
@@ -1996,19 +1813,19 @@ background-position: 10px 50%;
 
 /* news items and Leader's blog */
 
-.lt-ie9 .newsbox {
+.lt-ie9 .comms {
 	margin-left: 0;
 	margin-bottom: 32px;
 	margin-bottom: 2rem;
 	background: #F5F5F1;
 }
 
-.lt-ie9 .newsbox h2 {
+.lt-ie9 .comms h2 {
 	background: #F3CF45;
 }
 
 
-.lt-ie9 .lblog a {
+.lt-ie9 .comms__feature a {
 	border-bottom: 0 !important;
 }
 
@@ -2016,21 +1833,21 @@ background-position: 10px 50%;
 	border-bottom: 0;
 }
 
-.lt-ie9 .newsbox p {
+.lt-ie9 .comms p {
 	margin-bottom: 0 !important;
 }
 
-.lt-ie9 .lblog {
+.lt-ie9 .comms__feature {
 	display: block;
 	float: right;
 	width: 35.417%;
 }
 
-.lt-ie9 .lblog-overlay {
+.lt-ie9 .comms__overlay {
 	display: none;
 }
 
-.lt-ie9 .lblog img {
+.lt-ie9 .comms__feature img {
 	width: 100% !important;
 }
 
@@ -2073,7 +1890,7 @@ background-position: 10px 50%;
 }
 
 .lt-ie9 .twitter-header {
-	background: url('/images/refresh/twitter_logo_blue.png') left no-repeat;
+	background: url('../images/refresh/twitter_logo_blue.png') left no-repeat;
 	padding: 15px 30px 15px 15px;
 	margin-bottom: 10px;
 	float: left;
@@ -2086,7 +1903,7 @@ background-position: 10px 50%;
 }
 
 
-.lt-ie9 .impactbox  a {
+.lt-ie9 .impact  a {
 	font-size: 15px;
 }
 
@@ -2105,8 +1922,8 @@ background-position: 10px 50%;
 }
 
 
-.lt-ie9 ul.quicklinks-1st,
-.lt-ie9 ul.quicklinks-2nd {
+.lt-ie9 ul.quicklinks__list-one,
+.lt-ie9 ul.quicklinks__list-two {
 	float: none;
 	width: auto;
 }
@@ -2115,22 +1932,22 @@ background-position: 10px 50%;
 
 /* tweet us, email us and chat boxes */
 
-.lt-ie9 .brightbox-askus-left {
+.lt-ie9 .colorbox-askus-left {
 	float: left;
 	width: 30%;
 }
 
-.lt-ie9 .brightbox-askus-info {
+.lt-ie9 .colorbox-askus-info {
  	float: right;
 	text-align: left;
 	width: 70%;
 }
 
-.lt-ie9 .brightbox-askus-info {
+.lt-ie9 .colorbox-askus-info {
 	padding: 32px 16px 32px 16px;
 }
 
-.lt-ie9 .brightbox-askus-pointer {
+.lt-ie9 .colorbox-askus-pointer {
 	left: 8.5%;
 	margin-left: 0;
 }
@@ -2141,7 +1958,7 @@ background-position: 10px 50%;
 .lt-ie9 .quicklinks,
 .lt-ie9 .servicelist,
 .lt-ie9 .ask,
-.lt-ie9 .brightbox-askus {
+.lt-ie9 .colorbox-askus {
 	padding-left:0;
 	padding-right: 0;
 }
@@ -2160,8 +1977,8 @@ background-position: 10px 50%;
 
 /* --- List of services --- */
 
-.lt-ie9 ul.servicelist-1st,
-.lt-ie9 ul.servicelist-2nd  {
+.lt-ie9 ul.servicelist__list-one,
+.lt-ie9 ul.servicelist__list-two  {
 	padding: 16px 32px;
 }
 
@@ -2183,10 +2000,10 @@ background-position: 10px 50%;
 	padding-right: 24px;
 }
 
-.lt-ie9 .quicklinks-1st {
+.lt-ie9 .quicklinks__list-one {
 	padding-bottom: 0 !important;
 }
-.lt-ie9 .quicklinks-2nd {
+.lt-ie9 .quicklinks__list-two {
 	padding-top: 0 !important;
 }
 
@@ -2203,67 +2020,14 @@ padding-left: 20px !important;
 
 /* Local life in the Royal Borough of Kensington and Chelsea */
 
-.lt-ie9 .local {
-	background: #fff;
-	clear: both;
-	padding-bottom: 48px;
-}
 
-
-
-.lt-ie9 .local-slider-item {
-	position: relative;
-}
-
-.lt-ie8 .local-slider-item {
-	margin-bottom: 32px;
-}
-
-.lt-ie8 .local-slider-item {
-	width: 33.333%;
-	float: left;
-}
-
-.lt-ie8 .local-slider-item {
-	height: 320px;
-}
 
 .lt-ie8 .ie-morethanthree {
 	display: none;
 }
 
-.lt-ie9 .local-text {
-	padding: 16px 4px;
-}
 
-.lt-ie9 .local-text {
-	position: absolute;
-	right: 0;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	padding: 16px;
-	background: #F3CF45 !important;
-	z-index: 0;
-	text-align: center;
-	font-family: "Optima W01", "Neue Helvetica eText W01", Arial, sans-serif;
-}
-
-
-
-.lt-ie9 .local-text h2 {
-	padding-top: 16px;
-	font-size: 45px !important;
-	line-height: 64px;
-	transform: scale(0.95);
-}
-
-.lt-ie9 .local-slider a:hover + .local-text h2 {
-	 color:#2b5d92;
-	 visibility: visible;
-	 transform: scale(1);
-}
-
+/*   */
 .lt-ie9 .local-slider {
 	background: #fff;
 }
@@ -2272,22 +2036,57 @@ padding-left: 20px !important;
 	z-index: 2;
 }
 
-.lt-ie9 .local-slider a:hover,
-.lt-ie9 .local-visit a:hover,
-.lt-ie9 .local-city a:hover,
-.lt-ie9 .local-kcc a:hover,
-.lt-ie9 .local-museums a:hover,
-.lt-ie9 .local-wild a:hover
- {
-	height: 0;
-	border-bottom: 0;
-	background: none;
+.lt-ie9  .local-slider a {
+	width: 100%;
+	padding-bottom: 100%;
+}
+
+.lt-ie9 .local-text,
+.lt-ie9 .local-img {
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.lt-ie9 .local-text {
+	padding: 16px 32px;
+	background: #F3CF45;
+	z-index: 1;
+	text-align: center;
+	font-family: "Optima W01", "Neue Helvetica eText W01", Arial, sans-serif;
+}
+
+.lt-ie9 .local-img {
+	z-index: 2;
 }
 
 
-.lt-ie9 .ribbon-home {
+.lt-ie9 .local-slider a h2 {
+ 	color: transparent;
+	font-size: 45px;
+	line-height: 60px;
+}
+
+.lt-ie9 .local-slider a:hover h2 {
+	 color:#2b5d92;
+}
+
+
+.lt-ie9 .local-slider a:hover .local-img,
+.lt-ie9 .local-visit a:hover .local-img,
+.lt-ie9 .local-city a:hover .local-img,
+.lt-ie9 .local-kcc a:hover .local-img,
+.lt-ie9 .local-museums a:hover .local-img,
+.lt-ie9 .local-wild a:hover.local-img
+ {
+	z-index: -1;
+	border-bottom: 0;
+}
+
+
+.lt-ie9 .ribbon--hp {
 	background-position: center 40%;
 }
-
-
 
