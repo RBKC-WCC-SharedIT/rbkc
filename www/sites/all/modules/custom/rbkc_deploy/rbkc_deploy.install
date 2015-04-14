@@ -577,3 +577,26 @@ function rbkc_deploy_update_7041() {
 function rbkc_deploy_update_7042() {
   module_enable(array('diff'), TRUE);
 }
+
+/**
+ * Switch on the Webform feature.
+ */
+function rbkc_deploy_update_7044() {
+  module_enable(array('feature_webform'), TRUE);
+}
+
+/** Switch on the rbkc_search module.
+ * Put the GSA search block in the search region.
+ */
+function rbkc_deploy_update_7045() {
+  module_enable(array('rbkc_search'), TRUE);
+
+  $query = db_merge('block')
+    ->key(array('module' => 'google_appliance', 'delta' => 'ga_block_search_form', 'theme' => 'rbkc'))
+    ->fields(array(
+      'status' => 1,
+      'region' => 'search',
+      'pages' => '',
+    ))
+    ->execute();
+}
