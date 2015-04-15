@@ -252,3 +252,9 @@ function rbkc_file_icon($variables) {
   return '<p>hi</p><img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
 }
 
+function rbkc_css_alter(&$css) {
+  $exclude = array(
+    'modules/system/system.menus.css' => FALSE,
+  );
+  $css = array_diff_key($css, $exclude);
+}
