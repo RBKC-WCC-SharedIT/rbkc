@@ -162,7 +162,7 @@ a.servicelist__viewall {
 .servicelist__viewall:hover,
 .servicelist__viewall:active {
   text-decoration: underline;
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 .servicelist__viewall span {
 	background: url('../images/refresh/chevron-down-blue.png') no-repeat right 50% ;
@@ -718,8 +718,8 @@ a.servicelist__viewall {
   }
 
   /* header elements */
-  .headerglobal__open,
-  .headerglobal__nav {
+  .headerglobal--hp .headerglobal__open,
+  .headerglobal--hp .headerglobal__nav {
     display: none !important;
   }
 
@@ -834,7 +834,9 @@ a.servicelist__viewall {
   	background: url('../images/refresh/chevron-right-lightgrey.svg') right 50% no-repeat;
   	background-size: 20px;
   }
-  .servicelist a {
+  .servicelist a,
+  .servicelist .first,
+  .servicelist .first {
   	border-left: solid #fff 6px;
   	padding: 10px;
   	position: relative;
@@ -1109,6 +1111,11 @@ a.servicelist__viewall {
     position:relative;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+  }
+  .servicelist .first,
+  .servicelist .first {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   }
 
   /* quicklinks (I need to...) */
@@ -1681,7 +1688,7 @@ background-position: 10px 50%;
 	border-right: 0;
 }
 
-.lt-ie9 .colorbox-askus-icon {
+.lt-ie9 .cust-serv__icon {
 	font-size: 55px !important;
 	display: inline-block;
 	padding-top: 32px;

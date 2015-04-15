@@ -103,16 +103,16 @@
   }
 
   function serviceList() {
-    $('.servicelist-viewall').click(function(e) {
+    $('.servicelist__viewall').click(function(e) {
       e.preventDefault();
       if(!$(this).hasClass('viewless')) {
-        $('.servicelist-2nd').slideDown(200);
-        $('.servicelist-viewall span').text('View fewer services');
+        $('.servicelist__list-two').slideDown(200);
+        $('.servicelist__viewall span').text('View fewer services');
         $(this).addClass('viewless');
         }
       else {
-        $('.servicelist-2nd').slideUp(200);
-        $('.servicelist-viewall span').text('View more services');
+        $('.servicelist__list-two').slideUp(200);
+        $('.servicelist__viewall span').text('View more services');
         $(this).removeClass('viewless');
       }
     });

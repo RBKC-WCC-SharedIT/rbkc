@@ -1,5 +1,5 @@
 <div class="outerwrap">
-  <div class="headerglobal greyblue" role="banner">
+  <div class="headerglobal headerglobal--hp greyblue" role="banner">
     <div class="inner padlr">
 
       <div class="inner headerglobal__logowrap">
@@ -15,8 +15,8 @@
       </button>
 
       <nav role="navigation">
-        <ul class="headerglobal__nav headerglobal__nav--hp hide lightlinks" id="nav1">
-          <li class="hide800"><a href="http://www.rbkc.gov.uk/services.aspx" title="Council Services">Services</a></li>
+        <ul class="headerglobal__nav hide lightlinks" id="nav1">
+          <li class="hide800"><a href="#services" title="Council Services">Services</a></li>
           <li class="show800 headerglobal__openservices" id="openServiceMenu">
           <button type="button">Services<span class="element-invisible">Open a <a href="#nav2">full list of services below</a></span></button>
           </li>
@@ -68,7 +68,7 @@
             </div>
             </div>
 
-            <div class="servicelist">
+            <div class="servicelist" id="services">
             <!--  <div class="impact impact-services"> -->
               <div class="impact">
                 <div class="impact__inner group">
@@ -236,7 +236,7 @@
                 <li>
                   <a href="https://twitter.com/intent/tweet?screen_name=RBKC_CS">
                     <span class="colorbox-700__left">
-                      <span class="colorbox-askus-icon ask-twitter icon-twitter">
+                      <span class="icon-twitter">
                       </span>
                       <span class="colorbox-700__pointer"></span>
                     </span>
@@ -251,7 +251,7 @@
                   <a class="purple" href="https://www.eforms.rbkc.gov.uk/default.aspx/RenderForm/?F.Name=FoXT6rvnp4J">
                     <span class="colorbox-700__left">
 
-                      <span class="colorbox-askus-icon ask-twitter icon-envelope">
+                      <span class="icon-envelope">
                       </span>
 
                       <span class="colorbox-700__pointer"></span>
@@ -265,7 +265,7 @@
                 <li>
                   <a href="http://www.rbkc.gov.uk/contactus/telephoneandemail.aspx">
                     <span class="colorbox-700__left">
-                      <span class="colorbox-askus-icon ask-twitter icon-phone">
+                      <span class="icon-phone">
                       </span>
                       <span class="colorbox-700__pointer"></span>
                     </span>
@@ -339,7 +339,7 @@
                       </div>
                       <span class="hollowpointer4"></span>
                     </div>
-                    <div id="lblogLink" class="comms__item" >
+                    <div class="comms__item" >
                       <div class="comms__feature__inner">
                         <!-- editable content -->
                         <h3><a href="http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6649">Right Royal Ride on Saturday 25 April.</a></h3>
