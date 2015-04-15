@@ -202,7 +202,7 @@ a.servicelist__viewall {
 	display: block;
 	float: right;
 	width: 70%;
-	padding: 32px 16px 16px 16px;
+	padding: 24px 16px 16px 16px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
@@ -211,7 +211,7 @@ a.servicelist__viewall {
 	color: #2b5d92;
 }
 .colorbox p {
-	margin-top: 6px;
+	margin: 6px 0 0 0;
 	color: #505a66;
 }
 .colorbox__pointer {
@@ -471,70 +471,58 @@ a.servicelist__viewall {
 .local__slider__item a:active {
 	border-bottom: 0;
 }
-
-
 .local__img {
 	display: block;
 	width: 100%;
 	padding-bottom: 100%;
 }
-
 .local-visit .local__img {
 	background: url('../images/refresh/visit_kc.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local-city .local__img {
 	background: url('../images/refresh/city_living.jpg')  no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local-kcc .local__img {
 	background: url('../images/refresh/kc_central.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local-museums .local__img {
 	background: url('../images/refresh/leighton_hs.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local-wild .local__img {
 	background: url('../images/refresh/wildlife.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local-timemachine .local__img {
 	background: url('../images/refresh/timemachine.jpg') no-repeat;
 	background-size: cover;
 	transition: all linear .5s;
 }
-
 .local__text {
 	background: #132940;
 	text-align: center;
 	display: block;
 	padding: 1rem 3rem;
 }
-
 .local__text h2 {
 	color: #fff;
 	font-size: 20px;
 	font-weight: normal;
 	margin-bottom: 0;
 }
-
 .local__slider__item a:hover .local__text h2,
 .local__slider__item a:active .local__text h2 {
 	color: #2b5d92;
 	transition: none;
 }
-
 .localevents__date {
 	display: block;
 	width: 45px;
@@ -548,52 +536,39 @@ a.servicelist__viewall {
 	padding-top: 10px;
 	margin: 27px auto 0 auto;
 }
-
 .localevents__date span {
 	display: block;
 }
-
 .localevents__day {
 	font-size: 20px;
 }
-
 .localevents__month {
 	font-size: 13px;
 }
 
-
-
 /* events panel */
-
 .localevents-more {
 	text-align: right;
 	padding: 6px 16px 6px 0;
 }
-
 .localevents-more a {
 	padding-right: 16px;
 	font-size: 14px;
 }
 
-
-
 /* Press releases and Twitter */
-
 .presstweet {
 	padding-top: 48px;
 	padding-bottom: 24px;
 	overflow: hidden;
 }
-
 .press {
 	padding: 0 32px 0 16px;
 }
-
 .press .date {
 	font-size: 13px;
 	display: block;
 }
-
 .twitter,
 .twitter-ie {
 	display: none;
@@ -784,7 +759,6 @@ a.servicelist__viewall {
   	overflow: hidden;
   }
   .search--hp .search__submit:hover {
-  	border-left: solid #ddd 1px;
   	background-color: #58D2C4;
   	background-position: center;
   	cursor: pointer;
@@ -933,7 +907,7 @@ a.servicelist__viewall {
     padding: 0 16px 32px 16px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    min-height: 125px;  /* min height stops odd display bug in ie9 at normal zoom level (still happens sometimes if you zoom) */
+    min-height: 105px;  /* min height stops odd display bug in ie9 at normal zoom level (still happens sometimes if you zoom) */
   }
   .colorbox-700 h4 {
     display: inline;
@@ -1294,65 +1268,19 @@ a.servicelist__viewall {
 } /* end media query */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .lt-ie9 .servicelist__desc  {
 	display: none;
 }
-
-
-
 .lt-ie9 .show700 {
 	position:static;
 	visibility: visible;
 }
-
 .lt-ie9 .padded-mob {
 	padding: 0;
 }
-
 .lt-ie9 .impact__inner {   /* grey bordered box - all have rounded corners*/
 	border: solid #D3D3D1 1px;
 }
-
-
 .lt-ie9 .ribbon--hp,
 .lt-ie9 .heading__h1 {
 	display: block;
@@ -1362,62 +1290,45 @@ a.servicelist__viewall {
 .lt-ie8 .fit-1-2-3  {
 	margin-left: 0;
 }
-
 .lt-ie8 .localevents a,
 .lt-ie8 .fit-3 a {
 	cursor: pointer;
 }
-
 .lt-ie8 .colorbox-askus-left,
 .lt-ie8 .colorbox__left {
 	width: 20px;
 	height: 0;
 }
-
 .lt-ie8 .localevents__date {
 	margin-left: 15px !important;
 }
-
-
-
 .lt-ie9 .ribbon--hp {
 	width: 100%;
 	position: absolute;
 	height: 540px;
 	left: 0;
 }
-
-
-
 .lt-ie9 .floatleft-700 {
 	float: left;
 }
 .lt-ie9 .floatright-700 {
 	float: right;
 }
-
 .lt-ie9 .inner-padded-desk {
 	padding: 0 16px;
 }
-
 .lt-ie9 .openMenu,
 .lt-ie9 .menu-hp {
 	display: none !important;
 }
-
 .lt-ie9 .fit-1-2-3 li,
 .lt-ie9 .fit-1-2-3 > div {
 	float: left;
 	width: 33.3333333333333%;
 }
-
-
-
-
 .lt-ie9 .quicklinks a {
 	background-image: url('../images/refresh/iconlinks-small.png');
 }
-
 .lt-ie9 .impact {
 	background: #fff;
 	border-top: solid #58D2C4 12px;
@@ -1425,17 +1336,11 @@ a.servicelist__viewall {
 	list-style-type: none;
 	margin-bottom: 32px;
 }
-
-
-
 .lt-ie9 .impact .impact__inner {
 	margin-top: -5px;
 	border-top: solid #fff 1px;
 }
-
-
 /* search box in desktop view */
-
 .lt-ie9 .search--hp {
 	position: static;
 	display: block !important;
@@ -1445,18 +1350,11 @@ a.servicelist__viewall {
 	padding: 0 0 16px 0;
 	overflow: hidden;
 }
-
-/* .lt-ie8 .search-ask {
-	width: 70% !important;
-}
- */
 .lt-ie9 .search--hp .search__wrap {
 	float: left;
 	width: 100%;
 	margin-right: -56px;
 }
-
-
 .lt-ie9 .search--hp .search__input {
 	background:rgba(255, 255, 255, 0.8);
 	padding: 16px 4px 4px 16px;
@@ -1473,15 +1371,12 @@ a.servicelist__viewall {
 	visibility: visible;
 	transition: all linear 0.25s;
 }
-
 .lt-ie8 .search--hp .search__input {
 	height: 34px;
 }
-
 .lt-ie9 .search--hp .search__input:focus {
 	background:#fff;
 }
-
 .lt-ie9 .search--hp .search__submit {
 	background: #88898a url('../images/refresh/search-hp-ie.png') center no-repeat !important;
 	border: 0;
@@ -1496,76 +1391,59 @@ a.servicelist__viewall {
 	white-space: nowrap;
 	overflow: hidden;
 }
-
 .lt-ie9 .search--hp .submit:hover {
 	border-left: solid #ddd 1px;
 	background: #58D2C4 url('../images/refresh/search-hp-ie.png') center no-repeat !important;
 	cursor: pointer;
 }
-
-
 /* --- List of services --- */
-
 .lt-ie9 ul.servicelist__list-one  {
 	float: left;
 }
-
 .lt-ie9 ul.servicelist__list-two  {
 	float: right;
 	display: block !important; /* important class to override edge cases where jquery hides element (should change to css animations to avoid having to do this really) */
 }
-
 .lt-ie9 .services a:hover {
 	border-bottom: solid #ddd 1px;
 	background: 0;
 }
-
 .lt-ie9 .servicelist a {
 	border-left: solid #fff 6px;
 	padding: 4px 10px;
 	position: relative;
 }
-
 .lt-ie9 .servicelist  a:hover,
 .lt-ie9 .servicelist  a:active,
 .lt-ie9 .servicelist  a:focus {
 	border-left: solid #58D2C4 6px;
 	background-color: none;
 }
-
 .lt-ie9 a.servicelist-last,
 .lt-ie9 a.servicelist-last:active,
 .lt-ie9 a.servicelist-last:focus {
 	border-bottom: 0 !important;
 }
-
 .lt-ie9 a.servicelist__viewall {
 	display: none;
 }
-
 .lt-ie9 .servicelist ul {
 	width: 50%;
 	box-sizing: border-box;
 	padding: 16px 32px;
 }
-
 .lt-ie8 .servicelist ul {
 	margin: 0;
 	padding: 0;
 	width: 245px;
 	}
-
-
 /* quicklinks (I need to...) */
-
 .lt-ie9 .iconlinks-quicklinks {
 	padding-bottom: 0;
 }
-
 .lt-ie9 .impact-quicklinks .impact__inner {
 	border-bottom: solid 1px #d3d3d1;
 }
-
 .lt-ie9 ul.quicklinks-1st,
 .lt-ie9 ul.servicelist-1st  {
 	padding: 16px 16px 16px 32px;
@@ -1576,21 +1454,16 @@ a.servicelist__viewall {
 	padding: 16px 32px 16px 16px;
 	margin: 0;
 }
-
 .lt-ie8 .quicklinks a {
 background-position: 10px 50%;
-
 }
-
 /* tweet us, email us and chat boxes - colorbox styles kick in */
-
 .lt-ie9 .colorbox-askus {
 	padding: 0 16px;
 	background: none;
 	margin-bottom: 32px;
 }
-
-.lt-ie9 .colorbox-askus a {
+.lt-ie9 .colorbox-700 a {
 	display: block;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -1600,61 +1473,50 @@ background-position: 10px 50%;
 	width: 100%;
  	background: #fff;
 }
-
-.lt-ie9 .colorbox-askus a,
-.lt-ie9 .colorbox-askus a:hover {
+.lt-ie9 .colorbox-700 a,
+.lt-ie9 .colorbox-700 a:hover {
 	border-bottom: solid 8px #F0D240;
 	color: #2b5d92;
 }
-
-.lt-ie9 .colorbox-askus  a  h3,
-.lt-ie9 .colorbox-askus  a:hover h3 {
+.lt-ie9 .colorbox-700  a  h3,
+.lt-ie9 .colorbox-700  a:hover h3 {
 	display: inline;
 	color: #2b5d92;
 	margin-bottom: 12px;
 }
-
-.lt-ie9 .colorbox-askus  a:hover h3 {
+.lt-ie9 .colorbox-700  a:hover h3 {
 	border-bottom: dotted 1px;
 }
-
 .lt-ie9 .colorbox  a,
-.lt-ie9 .colorbox-askus  a  {
+.lt-ie9 .colorbox-700  a  {
 	border-top: solid #ddd 1px;
 }
-
-.lt-ie9 .colorbox-askus  p {
+.lt-ie9 .colorbox-700  p {
 	display: block;
 	margin-bottom: 0;
 }
-
-.lt-ie9 .colorbox-askus .purple,
-.lt-ie9 .colorbox-askus .purple:hover {
+.lt-ie9 .colorbox-700 .purple,
+.lt-ie9 .colorbox-700 .purple:hover {
 	border-bottom: solid 8px #547BA2;
 }
-
-.lt-ie9 .colorbox-askus-left {
+.lt-ie9 .colorbox-700-left {
 	width: 100%;
 }
-
-.lt-ie9 .colorbox-askus-info {
+.lt-ie9 .colorbox-700-info {
 	display: block;
 	padding: 0 16px 32px 16px;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
-.lt-ie9 .colorbox-askus h4 {
+.lt-ie9 .colorbox-700 h4 {
 	display: inline;
 	color: #2b5d92;
 }
-
-.lt-ie9 .colorbox-askus p {
+.lt-ie9 .colorbox-700 p {
 	margin-top: 6px;
 	color: #505a66;
 }
-
-.lt-ie9 .colorbox-askus-pointer {
+.lt-ie9 .colorbox-700__pointer {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
@@ -1665,91 +1527,65 @@ background-position: 10px 50%;
 	margin-bottom: -6px;
 	transition: all linear .25s;
 }
-
-.lt-ie9 .purple .colorbox-askus-pointer {
+.lt-ie9 .purple .colorbox-700__pointer {
 	border-bottom: 15px solid #547BA2;
 }
-
-.lt-ie9 .colorbox-askus a:hover  .colorbox-askus-pointer {
+.lt-ie9 .colorbox-700 a:hover  .colorbox-700__pointer {
 	margin-bottom: 0;
 }
-
-.lt-ie9 .colorbox-askus a:hover  h4 {
+.lt-ie9 .colorbox-700 a:hover  h4 {
 	border-bottom: dotted 1px;
 }
-
-.lt-ie9 .colorbox-askus a,
+.lt-ie9 .colorbox-700 a,
 .lt-ie9 .colorbox a {
 	border-right: solid #ddd 1px;
 }
-
-.lt-ie9 .colorbox-askus li:last-child a,
+.lt-ie9 .colorbox-700 li:last-child a,
 .lt-ie9 .colorbox li:last-child a  {
 	border-right: 0;
 }
-
 .lt-ie9 .cust-serv__icon {
 	font-size: 55px !important;
 	display: inline-block;
 	padding-top: 32px;
 }
-
-
-
 .lt-ie9 .colorbox li:last-child  {
 	display: block;
 }
-
-
-
 /* news items and Leader's blog */
-
 .lt-ie9 .comms {
 	margin-left: 0;
 	margin-bottom: 32px;
 	margin-bottom: 2rem;
 	background: #F5F5F1;
 }
-
 .lt-ie9 .comms h2 {
 	background: #F3CF45;
 }
-
-
 .lt-ie9 .comms__feature a {
 	border-bottom: 0 !important;
 }
-
 .lt-ie9 .comms__news .comms__readmore {
 	border-bottom: 0;
 }
-
 .lt-ie9 .comms p {
 	margin-bottom: 0 !important;
 }
-
 .lt-ie9 .comms__feature {
 	display: block;
 	float: right;
 	width: 35.417%;
 }
-
 .lt-ie9 .comms__overlay {
 	display: none;
 }
-
 .lt-ie9 .comms__feature img {
 	width: 100% !important;
 }
-
-
 .lt-ie9 .comms__news .comms__readmore {
 	padding-bottom: 16px;
 }
-
-
 /* Press releases and Twitter */
-
 .lt-ie9 .press {
 	float: left;
 	width: 66.5%;
@@ -1758,7 +1594,6 @@ background-position: 10px 50%;
 	padding-right: 1rem;
 	padding-right: 16px;
 }
-
 .lt-ie9 .twitter {
 	display: block;
 	float: right;
@@ -1771,81 +1606,57 @@ background-position: 10px 50%;
 	width: 33.333333% !important;
 	padding-right: 16px;
 }
-
 .lt-ie8 .twitter {
 	width: 285px !important;
 }
-
 .lt-ie9 #twitter-widget-0 {
 	width: 100% !important;
 }
-
 .lt-ie9 .twitter-header {
 	background: url('../images/refresh/twitter_logo_blue.png') left no-repeat;
 	padding: 15px 30px 15px 15px;
 	margin-bottom: 10px;
 	float: left;
 }
-
-
 .lt-ie8 .hollowpointer {
 	background: #F5F5F1;
 	margin-bottom: 5px;
 }
-
-
 .lt-ie9 .impact  a {
 	font-size: 15px;
 }
-
-
 /* --- List of services --- */
-
 .lt-ie9 .servicelist {
     padding-right: 0;
 }
-
-
 /* quicklinks (I need to...) */
-
 .lt-ie9 .quicklinks {
 	padding-left: 0;
 }
-
-
 .lt-ie9 ul.quicklinks__list-one,
 .lt-ie9 ul.quicklinks__list-two {
 	float: none;
 	width: auto;
 }
-
-
-
 /* tweet us, email us and chat boxes */
 
 .lt-ie9 .colorbox-askus-left {
 	float: left;
 	width: 30%;
 }
-
 .lt-ie9 .colorbox-askus-info {
  	float: right;
 	text-align: left;
 	width: 70%;
 }
-
 .lt-ie9 .colorbox-askus-info {
 	padding: 32px 16px 32px 16px;
 }
-
 .lt-ie9 .colorbox-askus-pointer {
 	left: 8.5%;
 	margin-left: 0;
 }
-
-
 /* elements lose custom padding for desktop view */
-
 .lt-ie9 .quicklinks,
 .lt-ie9 .servicelist,
 .lt-ie9 .ask,
@@ -1864,40 +1675,31 @@ background-position: 10px 50%;
 .lt-ie9 .twitter-ie {
 	display: block;
 }
-
-
 /* --- List of services --- */
-
 .lt-ie9 ul.servicelist__list-one,
 .lt-ie9 ul.servicelist__list-two  {
 	padding: 16px 32px;
 }
-
 .lt-ie9 .servicelist a {
 	border-left: solid #fff 6px;
 	padding: 0.25rem 0 0.25rem 10px;
 	position: relative;
 }
-
-
 /* quicklinks (I need to...) */
 .lt-ie9 .quicklinks ul,
 .lt-ie9 .quicklinks li {
 	float: none;
 }
-
 .lt-ie9 .quicklinks ul {
 	padding-left: 24px;
 	padding-right: 24px;
 }
-
 .lt-ie9 .quicklinks__list-one {
 	padding-bottom: 0 !important;
 }
 .lt-ie9 .quicklinks__list-two {
 	padding-top: 0 !important;
 }
-
 .lt-ie9 .iconlinks-quicklinks a {
 	padding-top: 4px;
 	padding-right: 0;
@@ -1908,30 +1710,20 @@ padding-left: 38px !important;
 .lt-ie8 .iconlinks-quicklinks a {
 padding-left: 20px !important;
 }
-
 /* Local life in the Royal Borough of Kensington and Chelsea */
-
-
-
 .lt-ie8 .ie-morethanthree {
 	display: none;
 }
-
-
-/*   */
 .lt-ie9 .local__slider {
 	background: #fff;
 }
-
 .lt-ie9 .local__slider a {
 	z-index: 2;
 }
-
 .lt-ie9  .local__slider a {
 	width: 100%;
 	padding-bottom: 100%;
 }
-
 .lt-ie9 .local__text,
 .lt-ie9 .local__img {
 	position: absolute;
@@ -1940,7 +1732,6 @@ padding-left: 20px !important;
 	top: 0;
 	bottom: 0;
 }
-
 .lt-ie9 .local__text {
 	padding: 16px 32px;
 	background: #F3CF45;
@@ -1948,36 +1739,27 @@ padding-left: 20px !important;
 	text-align: center;
 	font-family: "Optima W01", "Neue Helvetica eText W01", Arial, sans-serif;
 }
-
 .lt-ie9 .local__img {
 	z-index: 2;
 }
-
-
 .lt-ie9 .local__slider a h2 {
  	color: transparent;
 	font-size: 45px;
 	line-height: 60px;
 }
-
 .lt-ie9 .local__slider a:hover h2 {
 	 color:#2b5d92;
 }
-
-
 .lt-ie9 .local__slider a:hover .local__img,
 .lt-ie9 .local-visit a:hover .local__img,
 .lt-ie9 .local-city a:hover .local__img,
 .lt-ie9 .local-kcc a:hover .local__img,
 .lt-ie9 .local-museums a:hover .local__img,
 .lt-ie9 .local-wild a:hover.local__img
- {
+{
 	z-index: -1;
 	border-bottom: 0;
 }
-
-
 .lt-ie9 .ribbon--hp {
 	background-position: center 40%;
 }
-
