@@ -61,21 +61,65 @@ function feature_service_sub_hub_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subhub-field_subhub_link_to_topic'
-  $field_instances['node-subhub-field_subhub_link_to_topic'] = array(
+  // Exported field_instance: 'node-subhub-field_short_title'
+  $field_instances['node-subhub-field_short_title'] = array(
     'bundle' => 'subhub',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'node_reference',
-        'settings' => array(
-          'node_reference_view_mode' => 'top_three_topics',
-        ),
-        'type' => 'node_reference_node',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_short_title',
+    'label' => 'Short Title',
+    'required' => FALSE,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'node-subhub-field_subhub_link_to_topic'
+  $field_instances['node-subhub-field_subhub_link_to_topic'] = array(
+    'bundle' => 'subhub',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'view_mode' => 'top_three_topics',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -85,30 +129,35 @@ function feature_service_sub_hub_field_default_field_instances() {
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
-        'module' => 'node_reference',
+        'module' => 'entityreference',
         'settings' => array(
-          'node_reference_view_mode' => 'top_three_topics',
+          'links' => 0,
+          'view_mode' => 'top_three_topics',
         ),
-        'type' => 'node_reference_node',
+        'type' => 'entityreference_entity_view',
         'weight' => 1,
       ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subhub_link_to_topic',
-    'label' => 'Link to topic',
+    'label' => 'Link To Topic',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'node_reference',
+      'module' => 'entityreference_view_widget',
       'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
+        'allow_duplicates' => 0,
+        'close_modal' => 1,
+        'pass_argument' => 1,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_2',
+        'view_mode' => 'full',
       ),
-      'type' => 'node_reference_autocomplete',
+      'type' => 'entityreference_view_widget',
       'weight' => 3,
     ),
   );
@@ -116,7 +165,8 @@ function feature_service_sub_hub_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('Link to topic');
+  t('Link To Topic');
+  t('Short Title');
 
   return $field_instances;
 }
