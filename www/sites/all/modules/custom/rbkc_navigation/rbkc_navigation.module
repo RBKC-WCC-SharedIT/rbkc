@@ -175,7 +175,7 @@ function _rbkc_navigation_level_up_menu_links(array $menu_links) {
 function _rbkc_navigation_pdf_menu_link($field_name, stdClass $node) {
   $menu_link = array();
 
-  if (!isset($node->{$field_name})) {
+  if (!isset($node->{$field_name}[LANGUAGE_NONE][0])) {
     return $menu_link;
   }
 
