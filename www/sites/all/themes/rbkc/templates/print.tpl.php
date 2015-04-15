@@ -95,7 +95,7 @@
     <div class="print-breadcrumb"><?php print theme('print_breadcrumb', array('node' => $node)); ?></div>
     <hr class="print-hr" />
     <?php if (!isset($node->type)): ?>
-      <h1 class="print-title"><?php print $print_title; ?></h
+      <h1 class="print-title"><?php print $print_title; ?></h1>
     <?php endif; ?>
     <div class="print-content">
     <h1><?php print $title; ?></h1>
