@@ -33,13 +33,7 @@
         <div class="inner group">
              <h1 class="heading__h1 heading__h1--hp">Welcome to the Royal Borough</h1>
 
-              <div class="search search--hp">
-                <label>Search</label>
-                <div class="search__wrap">
-                  <input class="search__input" name="Template$ctl08$sb_q_mob" type="text" id="Template_ctl08_sb_q_mob" accesskey="4" onfocus="clearField(this)" placeholder="Enter search terms..." />
-                </div>
-                <input  class="search__submit" type="submit" name="Template$ctl08$sb_btn_mob" value="Search" id="Template_ctl08_sb_btn_mob" />
-            </div><!-- end search -->
+              <?php print render($page['search']); ?>
         </div>
 
         <div class="middle middle--hp">
