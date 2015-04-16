@@ -102,16 +102,6 @@ function feature_common_views_default_views() {
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
 
-  /* Display: Contact Department */
-  $handler = $view->new_display('entityreference_view_widget', 'Contact Department', 'entityreference_view_widget_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-
   /* Display: Link to topic */
   $handler = $view->new_display('entityreference_view_widget', 'Link to topic', 'entityreference_view_widget_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
