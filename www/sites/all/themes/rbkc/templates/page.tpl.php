@@ -26,9 +26,9 @@
         </ul><!-- end menu -->
       </nav>
 
-        <div class="search search--headerglobal hide">
+      <?php if (!$is_front): ?>
         <?php print render($page['search']); ?>
-        </div>
+      <?php endif; /* end if is front*/ ?>
     </div><!-- end inner padlr -->
   </div><!-- end headerGlobal -->
 
