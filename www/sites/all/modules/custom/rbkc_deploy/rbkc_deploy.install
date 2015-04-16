@@ -619,10 +619,3 @@ function rbkc_deploy_update_7046() {
   features_revert_module('feature_topics');
   features_revert_module('feature_service_hub');
 }
-
-/**
- * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
- */
-function rbkc_deploy_update_7047() {
-  module_enable(array('feature_rbkc_moderation'), TRUE);
-}
