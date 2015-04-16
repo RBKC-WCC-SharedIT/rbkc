@@ -182,7 +182,7 @@ function feature_common_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_logo_url';
-  $strongarm->value = '/sites/default/files/rbkc-logo.png';
+  $strongarm->value = '/sites/all/themes/rbkc/images/rbkc-logo.png';
   $export['print_logo_url'] = $strongarm;
 
   $strongarm = new stdClass();
