@@ -229,7 +229,7 @@ function rbkc_file_link($variables) {
     $options['attributes']['title'] = check_plain($file->filename);
   }
 
-  return '<p>hello</p><span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
+  return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
 }
 
 /**
@@ -249,7 +249,7 @@ function rbkc_file_icon($variables) {
 
   $mime = check_plain($file->filemime);
   $icon_url = file_icon_url($file, $icon_directory);
-  return '<p>hi</p><img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
+  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
 }
 
 function rbkc_css_alter(&$css) {
