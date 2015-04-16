@@ -2365,6 +2365,13 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
 }
 
+/* desktop screens will be landscape so we need another query to cover them */
+@media only screen and (min-width: 601px) and (min-device-width: 800px) {
+  .content img {
+    display: block;
+  }
+}
+
 @media only screen and (min-width: 700px) {
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 
