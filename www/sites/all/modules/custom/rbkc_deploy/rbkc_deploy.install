@@ -582,7 +582,9 @@ function rbkc_deploy_update_7042() {
  * Switch on the Webform feature.
  */
 function rbkc_deploy_update_7044() {
+  /* Obsolete due to creation of survey content type based on Webform module
   module_enable(array('feature_webform'), TRUE);
+  */
 }
 
 /** Switch on the rbkc_search module.
@@ -618,4 +620,25 @@ function rbkc_deploy_update_7046() {
   features_revert_module('feature_service_sub_hub');
   features_revert_module('feature_topics');
   features_revert_module('feature_service_hub');
+}
+
+/**
+ * Switch on the rbkc_moderation module includes new moderation view, roles and permissions.
+ */
+function rbkc_deploy_update_7047() {
+  module_enable(array('feature_rbkc_moderation'), TRUE);
+}
+
+/**
+ * Switch on the Webform module.
+ */
+function rbkc_deploy_update_7048() {
+  module_enable(array('webform'), TRUE);
+}
+
+/**
+ * Switch on the Survey feature.
+ */
+function rbkc_deploy_update_7049() {
+  module_enable(array('feature_survey'), TRUE);
 }
