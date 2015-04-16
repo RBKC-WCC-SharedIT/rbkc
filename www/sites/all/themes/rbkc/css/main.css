@@ -562,6 +562,13 @@ margin-bottom: 0 !important;
   display: none;
 }
 
+/*** quick fix for search to remove Drupal classes - remove when markup removed ***/
+.form-item,
+.form-actions {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
 /**********  begin expanded mobile search   *********/
 .search--headerglobal,
 .search--hp {
