@@ -61,7 +61,6 @@
       </div>
     </div><!-- end ribbon -->
 
-    <?php endif; /* end if is front*/ ?>
     <div class="middle inner padlr">
       <?php if ($tabs = render($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
       <?php print render($page['help']); ?>
