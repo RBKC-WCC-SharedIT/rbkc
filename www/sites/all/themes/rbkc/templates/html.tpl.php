@@ -44,7 +44,7 @@
  */
 ?>
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head profile="<?php print $grddl_profile; ?>">

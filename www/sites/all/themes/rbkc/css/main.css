@@ -82,7 +82,6 @@ a {
   text-decoration:none;
   transition:all .25s linear 0s;
 }
-
 a:hover {
   border-bottom: 1px dotted #376697;
 }
@@ -672,6 +671,9 @@ margin-bottom: 0 !important;
  /* do not change - fits the 12px baseline grid */
   padding-top: 30px;
 }
+.middle--hp {
+  padding-top: 0;
+}
 
 /***  begin footer ***/
 .footerglobal {
@@ -874,11 +876,13 @@ div.accordionContents.show {
   padding-bottom: 2rem;
   padding-bottom: 32px;
   background-position: 1rem 35%;
-  border-bottom: solid #58d2c4 1px;
 }
 .iconlinks--top-tasks {
   margin-bottom: 36px;
   margin-bottom: 2.25rem;
+}
+.iconlinks--top-tasks .last {
+  border-bottom: solid #58d2c4 1px;
 }
 
 /***  secondary info on service hub page ***/
@@ -2489,9 +2493,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     width: 1px; /* since clip is not reliable we need that too */
     overflow: hidden; /* since clip is not reliable we also need that */
   }
-  .hide700 {
-    display: none !important;
-  }
   .show700 {
     position: static !important;
     clip: 0;
@@ -2983,36 +2984,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
 }/* end media query */
 
-@media only screen and (min-width: 900px) {
-
-  /*** grid exceptions ***/
-  .col4-900 {
-     margin-left: 6.25%;
-     width: 29.167%;
-     float:left;
-     position:relative;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
-  }
-  .col8-900 {
-     margin-left: 6.25%;
-     width: 64.583%;
-     float:left;
-     position:relative;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
-  }
-  .col-right-900 {
-    float: right;
-  }
-  .col-hasmargin-900 {
-    margin-left: 6.25% !important;
-  }
-  .col-nomargin-900 {
-    margin-left: 0 !important;
-  }
-
-} /* end media query */
 
 @media only screen and (min-width: 960px) {
 

@@ -16,7 +16,7 @@
 
       <nav role="navigation">
         <ul class="headerglobal__nav hide lightlinks" id="nav1">
-          <li class="hide800"><a href="http://www.rbkc.gov.uk/services.aspx" title="Council Services">Services</a></li>
+          <li class="hide800"><a href="<?php print $front_page; ?>#services" title="Council Services">Services</a></li>
           <li class="show800 headerglobal__openservices" id="openServiceMenu">
           <button type="button">Services<span class="element-invisible">Open a <a href="#nav2">full list of services below</a></span></button>
           </li>
@@ -26,19 +26,15 @@
         </ul><!-- end menu -->
       </nav>
 
-      <?php if (!$is_front): ?>
-        <?php print render($page['search']); ?>
-      <?php endif; /* end if is front*/ ?>
+      <?php print render($page['search']); ?>
+
     </div><!-- end inner padlr -->
   </div><!-- end headerGlobal -->
 
-  <?php if (!$is_front): ?>
   <div class="service-menu hide lightlinks blueblack" role="navigation">
     <div class="inner padlr">
       <nav role="navigation">
-
         <?php print render($page['servicedropdown']); ?>
-
       </nav>
 
       <div class="service-menu__close">
@@ -46,11 +42,9 @@
       </div>
     </div><!-- end inner padlr -->
   </div><!-- end serviceMenu -->
-  <?php endif; /* end if is front*/ ?>
 
   <main role="main">
 
-    <?php if (!$is_front): ?>
     <div class="ribbon">
        <?php if ($breadcrumb): ?>
        <div class="inner breadcrumb lightlinks">
@@ -66,12 +60,13 @@
            <h1 class='heading__h1 <?php if (strlen($title) > 56) { print "long";} ?>'> <?php print $title; ?> </h1>
       </div>
     </div><!-- end ribbon -->
-    <?php endif; /* end if is front*/ ?>
+
     <div class="middle inner padlr">
       <?php if ($tabs = render($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
       <?php print render($page['help']); ?>
       <?php print render($page['content']); ?>
     </div><!-- end middle inner -->
+
   </main>
 
   <div class="footerglobal deepblue" role="contentinfo">
