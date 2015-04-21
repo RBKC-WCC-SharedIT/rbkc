@@ -642,3 +642,10 @@ function rbkc_deploy_update_7048() {
 function rbkc_deploy_update_7049() {
   module_enable(array('feature_survey'), TRUE);
 }
+
+/**
+ * Switch on the Smart Trim feature.
+ */
+function rbkc_deploy_update_7050() {
+  module_enable(array('smart_trim'), TRUE);
+}
