@@ -258,3 +258,12 @@ function rbkc_css_alter(&$css) {
   );
   $css = array_diff_key($css, $exclude);
 }
+
+/**
+ * Implements hook_form_FORMID_alter().
+ * See https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_form_FORM_ID_alter/7
+ */
+function rbkc_form_google_appliance_block_form_alter(&$form, &$form_state) {
+  // Add placeholder text to the Google Appliance search form.
+  $form['search_keys']['#attributes']['placeholder'] = t('Enter search terms…');
+}
