@@ -7,7 +7,12 @@
 
                     <div class="content group">
                       <?php
+                        // Render the body field.
                         print render($content['body']);
+                        // Hide the book navigation as we're displaying that later.
+                        hide($content['book_navigation']);
+                        // Render the rest of the node, including links added by various modules.
+                        print render($content);
                       ?>
                     </div><!-- end content -->
 
