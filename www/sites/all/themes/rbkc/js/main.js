@@ -88,17 +88,14 @@
           }
   }   // end show/hide right hand column menu
 
+
   // if broswer does not support html5 placeholder, add value to form field
   function checkPlaceholder() {
     if(!Modernizr.input.placeholder){
-       $('.headerglobal-search_full_text input').val('Enter search terms...');
-       $('.headerglobal-search_full_text input').click(function() {
-        function doOnce() {
-          $('.headerglobal-search_full_text input').val("");
-          doOnce = function() {};
-        }
-        doOnce();
-       });
+      $('.search__input').val('Enter search terms...');
+      $('.search__input').one("click", function() {
+        $(this).val("");
+      });
     }
   }
 
