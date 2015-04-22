@@ -6,6 +6,7 @@ dependencies[] = book
 dependencies[] = feature_field_bases
 dependencies[] = features
 dependencies[] = file
+dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = text
 features[ctools][] = strongarm:strongarm:1
