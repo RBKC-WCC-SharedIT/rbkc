@@ -32,10 +32,7 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
 
     $this->addFieldMapping('status', 'status');
 
-    $this->addFieldMapping('field_service_hub', 'field_service_hub');
-//    $this->addUnmigratedDestinations(array('field_service_hub:source_type'));
-//    $this->addFieldMapping('field_service_hub:create_term')->defaultValue('field_service_hub:create_term');
-//    $this->addFieldMapping('field_service_hub:ignore_case')->defaultValue(TRUE);
+    $this->addFieldMapping('field_service_hub', 'path')->callbacks(array(self, 'resolveServiceHubTerm'));
 
     $this->addFieldMapping('field_short_title', 'field_short_title');
     $this->addFieldMapping('field_short_title:language')->defaultValue(LANGUAGE_NONE);
@@ -48,7 +45,6 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
       return FALSE;
     }
 
-    $row->field_service_hub = self::resolveServiceHubTerm($row->path);
     $row->contact_department_html = $this->extractNodeFromXML($row->body, 'contactbutton');
   }
 
@@ -83,7 +79,7 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
       $term = array_shift($terms);
     }
 
-    if (!is_object($term)) {
+    if (!isset($term) && !is_object($term)) {
       $term = new stdClass();
       $term->vid = $vocabulary->vid;
       $term->name = $term_name;
