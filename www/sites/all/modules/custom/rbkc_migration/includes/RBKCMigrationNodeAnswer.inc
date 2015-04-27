@@ -38,6 +38,12 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     $this->addFieldMapping('field_short_title:language')->defaultValue(LANGUAGE_NONE);
 
     $this->addFieldMapping('field_contact_department', 'contact_department_html')->callbacks(array($this, 'resolveContactDepartment'));
+
+    $this->addFieldMapping('metatag_title', 'metatag_title');
+    $this->addFieldMapping('metatag_description', 'metatag_description');
+    $this->addFieldMapping('metatag_keywords', 'metatag_keywords');
+
+    $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
   }
 
   public function prepareRow($row) {
@@ -46,6 +52,10 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     }
 
     $row->contact_department_html = $this->extractNodeFromXML($row->body, 'contactbutton');
+  }
+
+  protected static function transformCreatedDate($date) {
+    return strtotime($date);
   }
 
   protected static function resolveServiceHubTerm($path) {

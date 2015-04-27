@@ -11,7 +11,7 @@ class RBKCBaseNodeMigration extends Migration {
 
     $this->map = new MigrateSQLMap($this->machineName,
       array(
-        'uuid' => array(
+        'p_page_id' => array(
           'type' => 'int',
           'unsigned' => TRUE,
           'not null' => TRUE,
@@ -23,7 +23,6 @@ class RBKCBaseNodeMigration extends Migration {
 
     $this->addSimpleMappings(array(
       'title',
-      'created',
       'changed',
       'promote',
       'sticky',
