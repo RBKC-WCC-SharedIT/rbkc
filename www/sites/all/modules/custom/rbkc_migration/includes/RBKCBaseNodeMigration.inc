@@ -40,12 +40,54 @@ class RBKCBaseNodeMigration extends Migration {
   }
 
   public function prepareRow($row) {
-    $row->body_html = $this->extractNodeFromXML($row->body, 'content');
+    $row->body_html = self::extractNodeFromXML($row->body, 'content');
+    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
     return TRUE;
   }
 
   public function complete($entity, stdClass $row) {
     $this->handleRedirect($entity, $row);
+  }
+
+  protected function transformSourceLinkTokens($html) {
+    $result = preg_replace_callback('/ILINK\|(\d+),\|/i', array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
+
+    if (is_null($result)) {
+      syslog(LOG_WARNING, 'An error occurred whilst attempting to transform a legacy internal link.');
+      return $html;
+    }
+
+    return $result;
+  }
+
+  protected function generateNodeLinkFromSourceLinkToken(array $ilink) {
+    $page_id = (int) $ilink[1];
+
+    $nid = db_select('migrate_map_rbkcmigrationnodeanswer', 'm')
+      ->fields('m', array('destid1'))
+      ->condition('sourceid1', $page_id)
+      ->execute()
+      ->fetchField();
+
+
+    if (FALSE === $nid) {
+      if (FALSE === method_exists($this, 'createNodeStub')) {
+        syslog(LOG_WARNING, 'Missing a createNodeStub method.');
+        return $ilink[0];
+      }
+
+      $node = $this->createNodeStub($page_id);
+      $nid = $node->nid;
+
+      if ($nid) {
+        $data_row = new stdClass();
+        $data_row->p_page_id = $page_id;
+        $this->map->saveIDMapping($data_row, array($nid),
+          MigrateMap::STATUS_NEEDS_UPDATE, $this->defaultRollbackAction);
+      }
+    }
+
+    return '/node/' . $nid;
   }
 
   public function handleRedirect($entity, stdClass $row) {
@@ -65,7 +107,7 @@ class RBKCBaseNodeMigration extends Migration {
     }
   }
 
-  public function extractNodeFromXML($xml, $node) {
+  public static function extractNodeFromXML($xml, $node) {
     $content = '';
 
     if (empty($xml)) {

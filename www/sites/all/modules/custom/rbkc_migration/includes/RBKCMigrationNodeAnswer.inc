@@ -166,4 +166,16 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
 
     return (int) $contact_department->id;
   }
+
+  protected function createNodeStub($source_id) {
+    $node = new stdClass();
+    $node->title = t('Stub for @id', array('@id' => $source_id));
+    $node->body[LANGUAGE_NONE][0]['value'] = t('Stub body');
+    $node->language = LANGUAGE_NONE;
+    $node->type = 'answer';
+    $node->uid = 1;
+    $node->status = 0;
+    node_save($node);
+    return $node;
+  }
 }
