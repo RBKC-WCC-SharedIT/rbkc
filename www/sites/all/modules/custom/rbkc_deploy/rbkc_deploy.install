@@ -686,3 +686,10 @@ function rbkc_deploy_update_7054() {
     'survey' => 'survey',
   ));
 }
+
+/**
+ * Switch on the entity token module.
+ */
+function rbkc_deploy_update_7055() {
+  module_enable(array('entity_token'), TRUE);
+}
