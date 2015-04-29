@@ -649,3 +649,10 @@ function rbkc_deploy_update_7049() {
 function rbkc_deploy_update_7050() {
   module_enable(array('smart_trim'), TRUE);
 }
+
+/**
+ * Switch on the Admin UI module.
+ */
+function rbkc_deploy_update_7051() {
+  module_enable(array('admin_ui'), TRUE);
+}
