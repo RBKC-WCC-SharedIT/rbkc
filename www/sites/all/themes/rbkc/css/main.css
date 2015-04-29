@@ -2158,6 +2158,7 @@ ul.plainResults-list  li {
   background: none !important;
 }
 #deeplink-node-view-form {
+  clear: both;
   margin-top: 24px;
 }
 .workbench-info-block {

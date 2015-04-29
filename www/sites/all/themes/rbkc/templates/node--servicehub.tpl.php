@@ -9,3 +9,7 @@
     <?php print render($content['field_news_stories']); ?>
 
   </div><!-- end row -->
+  <?php
+  // Render the rest of the node, including links added by various modules.
+  print render($content);
+  ?>
