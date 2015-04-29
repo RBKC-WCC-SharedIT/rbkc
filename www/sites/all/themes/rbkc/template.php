@@ -252,9 +252,13 @@ function rbkc_file_icon($variables) {
   return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
 }
 
+/**
+ * Implements hook_css_alter().
+ */
 function rbkc_css_alter(&$css) {
   $exclude = array(
     'modules/system/system.menus.css' => FALSE,
+    'sites/all/modules/contrib/scald/modules/library/dnd/css/editor-global.css' => FALSE,
   );
   $css = array_diff_key($css, $exclude);
 }
