@@ -1,0 +1,4 @@
+name = RBKC Front End
+description = Front-end related code that cannot be triggered from the theme layer.
+core = 7.x
+package = RBKC
