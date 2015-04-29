@@ -19,6 +19,10 @@ function rbkc_migration_migrate_api() {
       ),
     ),
     'migrations' => array(
+      'RBKCMigrationSourceCSV' => array(
+        'class_name' => 'RBKCMigrationSourceCSV',
+        'group_name' => 'rbkc',
+      ),
       'RBKCMigrationNodeAnswer' => array(
         'class_name' => 'RBKCMigrationNodeAnswer',
         'group_name' => 'rbkc',

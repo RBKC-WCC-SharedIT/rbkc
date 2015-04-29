@@ -101,6 +101,11 @@ class RBKCBaseNodeMigration extends Migration {
       }
 
       $node = $this->createNodeStub($page_id);
+
+      if (is_null($node)) {
+        return $ilink[0];
+      }
+
       $nid = $node->nid;
 
       if ($nid) {
@@ -149,6 +154,24 @@ class RBKCBaseNodeMigration extends Migration {
     return $content;
   }
 
+  protected static function templateLookUp($page_id) {
+    $page_id = (int) $page_id;
+
+    $template = db_select('rbkc_migration_source', 's')
+      ->fields('s', array('template'))
+      ->condition('p_page_id', $page_id)
+      ->execute()
+      ->fetchField();
+
+    if (FALSE === $template) {
+      syslog(LOG_WARNING, sprintf('Unable to retrieve the template for %d', $page_id));
+      return NULL;
+    }
+
+    syslog(LOG_DEBUG, sprintf('Looking up template for %s', $template));
+    return self::resolveTemplateMapping($template);
+  }
+
   protected static function resolveTermMapping($key) {
     $mappings = array(
       'parkingtransportandstreets' => 'Parking, transports and streets',
@@ -183,5 +206,41 @@ class RBKCBaseNodeMigration extends Migration {
     );
 
     return array_key_exists($key, $mappings) ? $mappings[$key] : $key;
+  }
+
+  protected static function resolveTemplateMapping($key) {
+    switch ($key) {
+      case 'rf-answer-planning':
+      case 'rf-answer-generic':
+      case 'rf-plain-content':
+        return 'answer';
+        break;
+
+      case 'rf-landing-planning':
+        return 'subhub';
+        break;
+
+      case 'rf-pub-child':
+      case 'rf-pub-parent':
+      case 'rf-pub-planning':
+        return 'publication';
+        break;
+
+      case 'rf-servicehub':
+        return 'servicehub';
+        break;
+
+      case 'rf-topic-planning':
+        return 'topic';
+        break;
+
+      case 'rf-guide-single-page-planning':
+      case 'rf-guidepage-planning':
+        return 'guide';
+        break;
+
+      default:
+        return NULL;
+    }
   }
 }

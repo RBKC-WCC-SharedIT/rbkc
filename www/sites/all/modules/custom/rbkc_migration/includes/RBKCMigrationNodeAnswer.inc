@@ -11,13 +11,13 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
 
     $this->description = t('Import of answer content.');
 
-    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCMigrationNodeAnswer.csv';
+    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
     $columns = array();
     $options = array(
       'enclosure' => '$',
       'delimiter' => ',',
       'header_rows' => 1,
-      'embedded_newlines' => TRUE
+      'embedded_newlines' => TRUE,
     );
 
     $this->source = new MigrateSourceCSV($source, $columns, $options);
@@ -46,7 +46,14 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
   }
 
+
+
   public function prepareRow($row) {
+    $row->template = trim($row->template);
+    if ('rf-answer-planning' !== $row->template && 'rf-answer-generic' !== $row->template) {
+      return FALSE;
+    }
+
     if (FALSE == parent::prepareRow($row)) {
       return FALSE;
     }
@@ -168,11 +175,18 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
   }
 
   protected function createNodeStub($source_id) {
+    $node_type = self::templateLookUp($source_id);
+
+    if (is_null($node_type)) {
+      syslog(LOG_WARNING, sprintf('Template lookup returned a non-string value for %d.', $source_id));
+      return NULL;
+    }
+
     $node = new stdClass();
     $node->title = t('Stub for @id', array('@id' => $source_id));
     $node->body[LANGUAGE_NONE][0]['value'] = t('Stub body');
     $node->language = LANGUAGE_NONE;
-    $node->type = 'answer';
+    $node->type = $node_type;
     $node->uid = 1;
     $node->status = 0;
     node_save($node);
