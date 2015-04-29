@@ -49,8 +49,32 @@ class RBKCBaseNodeMigration extends Migration {
     $this->handleRedirect($entity, $row);
   }
 
+  /**
+   * Find and replace occurrences of ILINK's in the source data.
+   *
+   * Regular expression pattern should match the following strings capturing
+   * only the link id (the integer after the first pipe) but matching everything
+   * up to the final pipe:
+   *
+   * ILINK|18052,|
+   * ILINK|16495,,WWI_website|
+   * ILINK|17933,_blank|
+   * ILINK|7271,,space|
+   * ILINK|7462,,fridges|
+   * ILINK|16377,,online_rewals|
+   * ILINK|16444,,Oxford_reference_online|
+   * ILINK|16414,,Library_of_the_month|
+   * ILINK|10106,,almostcompletedHLTAwhatnext?|
+   * ILINK|9219,_blank,Whousesservice|
+   *
+   * @param $html
+   * @return mixed
+   */
   protected function transformSourceLinkTokens($html) {
-    $result = preg_replace_callback('/ILINK\|(\d+),\|/i', array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
+    $modifiers = 'i';
+    $delimiter = '/';
+    $pattern = $delimiter . 'ILINK\|(\d+),(?:[,|_]{1}[a-zA-Z0-9_?,]+)?\|' . $delimiter . $modifiers;
+    $result = preg_replace_callback($pattern, array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
 
     if (is_null($result)) {
       syslog(LOG_WARNING, 'An error occurred whilst attempting to transform a legacy internal link.');
@@ -82,8 +106,7 @@ class RBKCBaseNodeMigration extends Migration {
       if ($nid) {
         $data_row = new stdClass();
         $data_row->p_page_id = $page_id;
-        $this->map->saveIDMapping($data_row, array($nid),
-          MigrateMap::STATUS_NEEDS_UPDATE, $this->defaultRollbackAction);
+        $this->map->saveIDMapping($data_row, array($nid), MigrateMap::STATUS_NEEDS_UPDATE, $this->defaultRollbackAction);
       }
     }
 
