@@ -184,11 +184,12 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
  * @param type $vars
  */
 function rbkc_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'teaser') {
+  if ($vars['view_mode'] == 'teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
   }
-  if($vars['view_mode'] == 'top_three_topics') {
+
+  if ($vars['view_mode'] == 'top_three_topics') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__top';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__top';
   }
