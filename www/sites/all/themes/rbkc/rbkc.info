@@ -19,3 +19,7 @@ regions[content] = Content
 regions[footerlinks] = Footerlinks
 regions[govmetric] = Govmetric
 regions[search] = Search
+
+breakpoints[wide] = (min-width: 851px)
+breakpoints[narrow] = (min-width: 560px)
+breakpoints[mobile] = (min-width: 0px)
