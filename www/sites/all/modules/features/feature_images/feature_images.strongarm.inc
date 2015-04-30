@@ -31,6 +31,13 @@ function feature_images_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'dnd_context_default';
+  $strongarm->value = 'full';
+  $export['dnd_context_default'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'dnd_modal_height';
   $strongarm->value = '0.8';
   $export['dnd_modal_height'] = $strongarm;

@@ -48,6 +48,7 @@ features[taxonomy][] = scald_authors
 features[taxonomy][] = scald_tags
 features[variable][] = breakpoints_multipliers
 features[variable][] = dnd_callback_url
+features[variable][] = dnd_context_default
 features[variable][] = dnd_modal_height
 features[variable][] = dnd_modal_width
 features[variable][] = field_bundle_settings_scald_atom__image
