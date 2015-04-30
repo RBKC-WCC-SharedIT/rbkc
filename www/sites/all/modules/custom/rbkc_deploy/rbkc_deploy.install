@@ -656,3 +656,11 @@ function rbkc_deploy_update_7050() {
 function rbkc_deploy_update_7051() {
   module_enable(array('admin_ui'), TRUE);
 }
+
+/**
+ * Switch on feature_images and dependencies. Switch off the media modules.
+ */
+function rbkc_deploy_update_7052() {
+  module_enable(array('feature_images'), TRUE);
+  module_disable(array('file_entity', 'media', 'media_wysiwyg', 'media_wysiwyg_view_mode'));
+}
