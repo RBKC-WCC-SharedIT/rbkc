@@ -671,3 +671,18 @@ function rbkc_deploy_update_7052() {
 function rbkc_deploy_update_7053() {
   module_enable(array('scald_file'), TRUE);
 }
+
+/**
+ * Add deeplink to survey content type.
+ */
+function rbkc_deploy_update_7054() {
+  variable_set(DEEPLINK_CONTENT_TYPES, array(
+    'answer' => 'answer',
+    'guide' => 'guide',
+    'publication' => 'publication',
+    'servicehub' => 'servicehub',
+    'subhub' => 'subhub',
+    'topic' => 'topic',
+    'survey' => 'survey',
+  ));
+}
