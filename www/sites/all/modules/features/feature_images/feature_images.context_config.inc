@@ -61,19 +61,15 @@ function feature_images_default_scald_context_config() {
   $context_config->context = 'sdl_library_item';
   $context_config->transcoder = array(
     'image' => array(
-      '*' => 'style-medium',
+      '*' => 'style-Library',
     ),
   );
   $context_config->player = array(
     'image' => array(
       '*' => 'default',
-      'settings' => array(),
     ),
   );
-  $context_config->data = array(
-    'width' => '',
-    'height' => '',
-  );
+  $context_config->data = array();
   $export['sdl_library_item'] = $context_config;
 
   $context_config = new stdClass();
