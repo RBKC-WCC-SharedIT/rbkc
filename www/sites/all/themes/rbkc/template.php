@@ -144,6 +144,20 @@ function rbkc_preprocess_field(&$variables, $hook) {
     return;
   }
 
+  if ('field_external_link' === $element['#field_name']) {
+    if ($node = menu_get_object()) {
+      switch ($node->type) {
+        case 'topic':
+          $variables['theme_hook_suggestions'][] = 'field__field_external_link__field_topic_link__topic';
+          break;
+
+        case 'subhub':
+          $variables['theme_hook_suggestions'][] = 'field__field_external_link__field_topic_link__subhub';
+          break;
+      }
+    }
+  }
+
   if ('field_popular_tasks' !== $element['#field_name']) {
     return;
   }
