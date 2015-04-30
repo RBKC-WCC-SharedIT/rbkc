@@ -53,25 +53,25 @@ function feature_images_image_default_styles() {
   $styles['rbkc_breakpoints_theme_rbkc_mobile_1x'] = array(
     'label' => 'rbkc_breakpoints_theme_rbkc_mobile_1x',
     'effects' => array(
-      4 => array(
-        'name' => 'manualcrop_crop',
+      8 => array(
+        'name' => 'manualcrop_auto_reuse',
         'data' => array(
-          'width' => '',
-          'height' => '',
-          'keepproportions' => 0,
-          'reuse_crop_style' => '',
-          'style_name' => 'manual_crop',
+          'style_priority' => array(
+            0 => 'manual_crop',
+          ),
+          'apply_all_effects' => 0,
+          'fallback_style' => '',
         ),
-        'weight' => 0,
+        'weight' => -10,
       ),
-      5 => array(
+      7 => array(
         'name' => 'image_scale',
         'data' => array(
           'width' => 400,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
@@ -80,25 +80,26 @@ function feature_images_image_default_styles() {
   $styles['rbkc_breakpoints_theme_rbkc_narrow_1x'] = array(
     'label' => 'rbkc_breakpoints_theme_rbkc_narrow_1x',
     'effects' => array(
-      3 => array(
-        'name' => 'manualcrop_crop',
+      5 => array(
+        'name' => 'manualcrop_auto_reuse',
         'data' => array(
-          'width' => '',
-          'height' => '',
-          'keepproportions' => 0,
-          'reuse_crop_style' => '',
-          'style_name' => 'manual_crop',
+          'style_priority' => array(
+            0 => 'rbkc_breakpoints_theme_rbkc_mobile_1x',
+            1 => 'manual_crop',
+          ),
+          'apply_all_effects' => 0,
+          'fallback_style' => '',
         ),
-        'weight' => 0,
+        'weight' => -10,
       ),
-      6 => array(
+      4 => array(
         'name' => 'image_scale',
         'data' => array(
           'width' => 600,
           'height' => '',
           'upscale' => 0,
         ),
-        'weight' => 2,
+        'weight' => -9,
       ),
     ),
   );
@@ -108,13 +109,15 @@ function feature_images_image_default_styles() {
     'label' => 'rbkc_breakpoints_theme_rbkc_wide_1x',
     'effects' => array(
       2 => array(
-        'name' => 'manualcrop_crop',
+        'name' => 'manualcrop_auto_reuse',
         'data' => array(
-          'width' => '',
-          'height' => '',
-          'keepproportions' => 0,
-          'reuse_crop_style' => '',
-          'style_name' => 'manual_crop',
+          'style_priority' => array(
+            0 => 'rbkc_breakpoints_theme_rbkc_narrow_1x',
+            1 => 'rbkc_breakpoints_theme_rbkc_mobile_1x',
+            2 => 'manual_crop',
+          ),
+          'apply_all_effects' => 0,
+          'fallback_style' => '',
         ),
         'weight' => 0,
       ),
