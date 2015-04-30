@@ -664,3 +664,10 @@ function rbkc_deploy_update_7052() {
   module_enable(array('feature_images'), TRUE);
   module_disable(array('file_entity', 'media', 'media_wysiwyg', 'media_wysiwyg_view_mode'));
 }
+
+/**
+ * Switch on scald_file module.
+ */
+function rbkc_deploy_update_7053() {
+  module_enable(array('scald_file'), TRUE);
+}
