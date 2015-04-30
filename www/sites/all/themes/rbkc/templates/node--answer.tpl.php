@@ -3,12 +3,13 @@
                     <div class="content">
                       <?php
                         hide($content['field_contact_department']);
+                        hide($content['deeplink_form']);
                         print render($content);
                        ?>
 
                     </div>
                     <p class="print-page">Print page: <?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
-
+                    <?php print render($content['deeplink_form']); ?>
                   </div><!-- end col8 -->
 
                   <div class="col4"  role="complementary">
