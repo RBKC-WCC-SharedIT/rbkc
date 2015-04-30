@@ -7,15 +7,11 @@
                   </div><!--end col 3-->
                   <div class="col9">
                     <div class="content">
-                      <?php
-                      // Render the body field.
-                      print render($content['body']);
-                      // Hide the book navigation as we're displaying that later.
-                      hide($content['book_navigation']);
-                      // Render the rest of the node, including links added by various modules.
-                      print render($content);
-                      ?>
+                      <?php print render($content['body']); ?>
                     </div><!-- end content -->
-                    <?php print render($content['book_navigation']); ?>
+                    <?php
+                      print render($content['book_navigation']);
+                      print render($content['deeplink_form']);
+                    ?>
                   </div><!--end col 9-->
                 </div><!-- end row -->
