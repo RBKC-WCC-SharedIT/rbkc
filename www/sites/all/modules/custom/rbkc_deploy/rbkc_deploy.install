@@ -693,3 +693,34 @@ function rbkc_deploy_update_7054() {
 function rbkc_deploy_update_7055() {
   module_enable(array('entity_token'), TRUE);
 }
+
+/**
+ * Switch on simple hierarchical select module.
+ */
+function rbkc_deploy_update_7056() {
+  module_enable(array('shs'), TRUE);
+}
+
+/**
+ * Create topic, tag, action and user vocabularies.
+ */
+function rbkc_deploy_update_7057() {
+  $vocabulary_machine_names = array(
+    'topic',
+    'tag',
+    'action',
+    'user'
+  );
+
+  $vocabularies = taxonomy_vocabulary_get_names();
+
+  foreach ($vocabulary_machine_names as $vocabulary_machine_name) {
+    if (array_key_exists($vocabulary_machine_name, $vocabularies)) {
+      continue;
+    }
+
+    db_insert('taxonomy_vocabulary')
+      ->fields(array('name' => t(ucfirst($vocabulary_machine_name)), 'machine_name' => $vocabulary_machine_name, 'description' => ucfirst($vocabulary_machine_name) . '.'))
+      ->execute();
+  }
+}
