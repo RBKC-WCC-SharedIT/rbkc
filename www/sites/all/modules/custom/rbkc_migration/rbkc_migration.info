@@ -1,0 +1,17 @@
+name = RBKC Migration
+description = Imports CSV files
+package = RBKC
+core = 7.x
+
+dependencies[] = migrate
+files[] = rbkc_migration.migrate.inc
+files[] = includes/RBKCMigrationSourceCSV.inc
+files[] = includes/RBKCBaseNodeMigration.inc
+files[] = includes/RBKCMigrationNodeAnswer.inc
+files[] = includes/RBKCMigrationNodeGuide.inc
+files[] = includes/RBKCMigrationNodePublication.inc
+files[] = includes/RBKCMigrationNodeServicehub.inc
+files[] = includes/RBKCMigrationNodeSubhub.inc
+files[] = includes/RBKCMigrationNodeTopic.inc
+files[] = includes/RBKCMigrationEntityContactDepartments.inc
+files[] = handlers/MigrateRBKCHandler.inc

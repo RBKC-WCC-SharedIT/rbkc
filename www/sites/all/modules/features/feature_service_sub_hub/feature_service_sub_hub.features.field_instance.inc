@@ -80,6 +80,55 @@ function feature_service_sub_hub_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-subhub-field_service_hub'
+  $field_instances['node-subhub-field_service_hub'] = array(
+    'bundle' => 'subhub',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the Service hub that this page should appear under.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_service_hub',
+    'label' => 'Service hub',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'shs',
+      'settings' => array(
+        'shs' => array(
+          'create_new_levels' => 0,
+          'create_new_terms' => 0,
+          'force_deepest' => 0,
+          'node_count' => 0,
+        ),
+      ),
+      'type' => 'taxonomy_shs',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-subhub-field_short_title'
   $field_instances['node-subhub-field_short_title'] = array(
     'bundle' => 'subhub',
@@ -188,6 +237,8 @@ function feature_service_sub_hub_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Link To Topic');
+  t('Select the Service hub that this page should appear under.');
+  t('Service hub');
   t('Short Title');
 
   return $field_instances;

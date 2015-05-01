@@ -58,6 +58,18 @@ function feature_service_hub_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'manualcrop_crop_info' => TRUE,
+        'manualcrop_default_crop_area' => TRUE,
+        'manualcrop_enable' => FALSE,
+        'manualcrop_inline_crop' => FALSE,
+        'manualcrop_instant_crop' => FALSE,
+        'manualcrop_instant_preview' => TRUE,
+        'manualcrop_keyboard' => TRUE,
+        'manualcrop_maximize_default_crop_area' => FALSE,
+        'manualcrop_require_cropping' => array(),
+        'manualcrop_styles_list' => array(),
+        'manualcrop_styles_mode' => 'include',
+        'manualcrop_thumblist' => FALSE,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -257,6 +269,9 @@ function feature_service_hub_field_default_field_instances() {
     'label' => 'External link teaser',
     'required' => 0,
     'settings' => array(
+      'context' => '',
+      'dnd_enabled' => 0,
+      'mee_enabled' => 0,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -566,6 +581,55 @@ function feature_service_hub_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-servicehub-field_service_hub'
+  $field_instances['node-servicehub-field_service_hub'] = array(
+    'bundle' => 'servicehub',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the Service hub that this page should appear under.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_service_hub',
+    'label' => 'Service hub',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'shs',
+      'settings' => array(
+        'shs' => array(
+          'create_new_levels' => 0,
+          'create_new_terms' => 0,
+          'force_deepest' => 0,
+          'node_count' => 0,
+        ),
+      ),
+      'type' => 'taxonomy_shs',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-servicehub-field_short_title'
   $field_instances['node-servicehub-field_short_title'] = array(
     'bundle' => 'servicehub',
@@ -597,6 +661,9 @@ function feature_service_hub_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => FALSE,
     'settings' => array(
+      'context' => '',
+      'dnd_enabled' => 0,
+      'mee_enabled' => 0,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -624,6 +691,8 @@ function feature_service_hub_field_default_field_instances() {
   t('Other popular content');
   t('Popular tasks');
   t('Popular topics');
+  t('Select the Service hub that this page should appear under.');
+  t('Service hub');
   t('Short Title');
   t('Upload an image of 91px by 94px');
 

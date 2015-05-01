@@ -34,6 +34,9 @@ function feature_answer_strongarm() {
       'print' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -41,16 +44,16 @@ function feature_answer_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
+          'weight' => '9',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '12',
         ),
       ),
       'display' => array(),
@@ -100,7 +103,7 @@ function feature_answer_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_answer_pattern';
-  $strongarm->value = '[node:field_service_hub]/[node:title]';
+  $strongarm->value = '[node:field-service-hub:parents:join-path]/[node:title]';
   $export['pathauto_node_answer_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

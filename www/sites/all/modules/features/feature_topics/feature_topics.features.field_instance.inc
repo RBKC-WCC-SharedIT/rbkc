@@ -267,6 +267,55 @@ function feature_topics_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-topic-field_service_hub'
+  $field_instances['node-topic-field_service_hub'] = array(
+    'bundle' => 'topic',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the Service hub that this page should appear under.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_service_hub',
+    'label' => 'Service hub',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'shs',
+      'settings' => array(
+        'shs' => array(
+          'create_new_levels' => 0,
+          'create_new_terms' => 0,
+          'force_deepest' => 0,
+          'node_count' => 0,
+        ),
+      ),
+      'type' => 'taxonomy_shs',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-topic-field_short_title'
   $field_instances['node-topic-field_short_title'] = array(
     'bundle' => 'topic',
@@ -368,7 +417,9 @@ function feature_topics_field_default_field_instances() {
   t('External link');
   t('External link teaser');
   t('Internal topic link');
+  t('Select the Service hub that this page should appear under.');
   t('Select the pages for this topic');
+  t('Service hub');
   t('Short Title');
   t('Topic link');
 

@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ *
+ * Drupal installation and update hooks.
+ */
+
+function rbkc_migration_schema() {
+  $schema = array();
+
+  $table_name = 'rbkc_migration_source';
+
+  $schema[$table_name]['description'] = 'The page_id and template source data.';
+
+  $schema[$table_name]['fields'] = array(
+    'p_page_id' => array(
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+    'p_parent_id' => array(
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+    'p_top_id' => array(
+      'type' => 'int',
+      'not null' => TRUE,
+      'default' => 0,
+    ),
+    'template' => array(
+      'type' => 'varchar',
+      'not null' => TRUE,
+      'length' => 255,
+      'default' => '',
+    ),
+  );
+
+  $schema[$table_name]['primary key'] = array('p_page_id');
+
+  return $schema;
+}
