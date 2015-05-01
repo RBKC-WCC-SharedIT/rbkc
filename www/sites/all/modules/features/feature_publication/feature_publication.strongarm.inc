@@ -31,6 +31,12 @@ function feature_publication_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

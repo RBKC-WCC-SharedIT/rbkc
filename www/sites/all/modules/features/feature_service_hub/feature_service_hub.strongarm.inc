@@ -77,16 +77,16 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
       ),
       'display' => array(),
