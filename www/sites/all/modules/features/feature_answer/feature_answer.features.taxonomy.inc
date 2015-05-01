@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * feature_field_bases.features.taxonomy.inc
+ * feature_answer.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function feature_field_bases_taxonomy_default_vocabularies() {
+function feature_answer_taxonomy_default_vocabularies() {
   return array(
     'action' => array(
       'name' => 'Action',
@@ -15,14 +15,6 @@ function feature_field_bases_taxonomy_default_vocabularies() {
       'description' => 'Action.',
       'hierarchy' => 0,
       'module' => '',
-      'weight' => 0,
-    ),
-    'service_hub' => array(
-      'name' => 'Service Hub',
-      'machine_name' => 'service_hub',
-      'description' => 'Service Hub.',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
       'weight' => 0,
     ),
     'tag' => array(

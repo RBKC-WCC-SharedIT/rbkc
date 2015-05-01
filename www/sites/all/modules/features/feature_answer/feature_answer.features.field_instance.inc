@@ -90,6 +90,49 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-answer-field_action'
+  $field_instances['node-answer-field_action'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select an action with which to tag this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_action',
+    'label' => 'Action',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-answer-field_contact_department'
   $field_instances['node-answer-field_contact_department'] = array(
     'bundle' => 'answer',
@@ -179,10 +222,10 @@ function feature_answer_field_default_field_instances() {
       'module' => 'shs',
       'settings' => array(
         'shs' => array(
-          'create_new_levels' => FALSE,
-          'create_new_terms' => FALSE,
-          'force_deepest' => FALSE,
-          'node_count' => FALSE,
+          'create_new_levels' => 0,
+          'create_new_terms' => 0,
+          'force_deepest' => 0,
+          'node_count' => 0,
         ),
       ),
       'type' => 'taxonomy_shs',
@@ -243,15 +286,155 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-answer-field_tag'
+  $field_instances['node-answer-field_tag'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Start typing to find an existing tag or add a new one.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tag',
+    'label' => 'Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-answer-field_topic'
+  $field_instances['node-answer-field_topic'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Choose a topic with which to tag this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_topic',
+    'label' => 'Topic',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-answer-field_user'
+  $field_instances['node-answer-field_user'] = array(
+    'bundle' => 'answer',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select a user with which to tag this page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_user',
+    'label' => 'User',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Action');
   t('Begin typing the name of the department to show suggestions, the selected contact department name is used to generate the contact us button.');
   t('Body');
+  t('Choose a topic with which to tag this page.');
   t('Contact department');
   t('Please enter a short title for this content');
+  t('Select a user with which to tag this page.');
+  t('Select an action with which to tag this page.');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
   t('Short Title');
+  t('Start typing to find an existing tag or add a new one.');
+  t('Tag');
+  t('Topic');
+  t('User');
 
   return $field_instances;
 }
