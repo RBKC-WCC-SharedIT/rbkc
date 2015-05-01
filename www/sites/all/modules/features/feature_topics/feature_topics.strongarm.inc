@@ -34,6 +34,9 @@ function feature_topics_strongarm() {
       'top_three_topics' => array(
         'custom_settings' => TRUE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
