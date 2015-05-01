@@ -10,6 +10,7 @@ dependencies[] = feature_field_bases
 dependencies[] = features
 dependencies[] = link
 dependencies[] = options
+dependencies[] = shs
 dependencies[] = smart_trim
 dependencies[] = strongarm
 dependencies[] = text
