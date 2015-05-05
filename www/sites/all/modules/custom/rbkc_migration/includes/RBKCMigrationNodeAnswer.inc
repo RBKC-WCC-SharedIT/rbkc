@@ -59,6 +59,7 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     }
 
     $row->contact_department_html = $this->extractNodeFromXML($row->body, 'contactbutton');
+    return TRUE;
   }
 
   protected static function transformCreatedDate($date) {

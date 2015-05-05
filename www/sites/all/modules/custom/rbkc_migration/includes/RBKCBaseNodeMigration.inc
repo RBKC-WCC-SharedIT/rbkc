@@ -174,7 +174,7 @@ class RBKCBaseNodeMigration extends Migration {
 
   protected static function resolveTermMapping($key) {
     $mappings = array(
-      'parkingtransportandstreets' => 'Parking, transports and streets',
+      'parkingtransportandstreets' => 'Parking, transport and streets',
       'binsandrecycling' => 'Bins and recycling',
       'planningandbuildingcontrol' => 'Planning and building control',
       'planningandconservation' => 'Planning and building control',
