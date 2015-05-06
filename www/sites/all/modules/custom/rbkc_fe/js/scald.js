@@ -5,14 +5,16 @@
   Drupal.theme.scaldEmbed = function(atom, context, options) {
     context = context ? context : Drupal.settings.dnd.contextDefault;
     var classname = 'image-cap dnd-atom-wrapper';
+    var floatclass = '';
+
     classname += ' type-' + atom.meta.type;
     classname += ' context-' + context;
     if (atom.meta.align && atom.meta.align != 'none') {
       classname += ' atom-align-' + atom.meta.align;
-      classname += ' float' + atom.meta.align;
+      floatclass = ' float' + atom.meta.align;
     }
 
-    var output = '<div class="' + classname + '"><div class="dnd-drop-wrapper image-cap__pic">' + atom.contexts[context] + '</div>';
+    var output = '<div class="' + classname + '"><div class="dnd-drop-wrapper image-cap__pic' + floatclass + '">' + atom.contexts[context] + '</div>';
     if (atom.meta.legend) {
       output += '<div class="image-cap__text dnd-legend-wrapper">' + atom.meta.legend + '</div>';
     }
