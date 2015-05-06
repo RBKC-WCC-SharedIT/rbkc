@@ -12,7 +12,7 @@
       classname += ' float' + atom.meta.align;
     }
 
-    var output = '<div class="' + classname + '"><div class="dnd-drop-wrapper">' + atom.contexts[context] + '</div>';
+    var output = '<div class="' + classname + '"><div class="dnd-drop-wrapper image-cap__pic">' + atom.contexts[context] + '</div>';
     if (atom.meta.legend) {
       output += '<div class="image-cap__text dnd-legend-wrapper">' + atom.meta.legend + '</div>';
     }
