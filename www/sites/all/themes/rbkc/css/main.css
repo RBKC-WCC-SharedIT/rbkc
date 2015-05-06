@@ -1275,14 +1275,14 @@ div.accordionContents.show {
   padding: 0;
   font-size: 13px;
 }
-.image-cap img {
+.image-cap__pic {
   width: 100%;
   height: auto;
   position: static;
   visibility: visible;
   margin: 0;
 }
-.image-cap em {
+.image-cap__text {
   display: inline-block;
   font-size: 13px;
   line-height: 1.3rem;
@@ -1290,6 +1290,9 @@ div.accordionContents.show {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-style: normal;
+}
+.image-cap__text p {
+  margin: 0;
 }
 
 /*** accordion static styles - rewrite SP ***/
@@ -1413,7 +1416,7 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
   height: auto !important;
   display: none;
 }
-.content .image-cap img {
+.content .image-cap__pic {
   display: block;
 }
 
@@ -2165,6 +2168,11 @@ ul.plainResults-list  li {
   margin-bottom: 24px !important;
 }
 
+/* images with captions shown */
+.image-cap__pic img {
+    display: block !important;
+}
+
 
 /******************************************************************************************************************************************************************/
 /*                                                                     BEGIN MEDIA QUERIES                                                                        */
@@ -2198,6 +2206,9 @@ only screen and (                min-resolution: 2dppx) {
     margin-left: 0;
     margin-right: 0;
   }
+  .image-cap__pic img {
+    width: 100% !important;
+  }
 
 }/* end media query*/
 
@@ -2208,21 +2219,6 @@ only screen and (                min-resolution: 2dppx) {
     margin-left: 0.5rem;
     margin-right: 8px;
     margin-right: 0.5rem;
-  }
-
-  .image-cap {
-    text-align: left;
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 0;
-  }
-
-  .image-cap img {
-    width: 70%;
-  }
-
-  .image-cap em {
-    width: 30%;
   }
 
 }/* end media query */
@@ -2289,6 +2285,20 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
   height: 120px;
   }
 
+  /*** image with caption ***/
+  .image-cap {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0;
+  }
+  .image-cap__pic {
+    width: 60%;
+  }
+  .image-cap__text {
+    width: 40%;
+  }
+
 } /* end media query */
 
 @media screen and (min-width: 600px) {
@@ -2337,11 +2347,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
   }
 
   /*** image with caption ***/
-  .image-cap img {
-    width: 60%;
+  .image-cap__pic {
+    width: 70%;
   }
-  .image-cap em {
-    width: 40%;
+  .image-cap__text {
+    width: 30%;
   }
 
   /*** forms ***/
@@ -2681,17 +2691,15 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
 
   /*** image with caption ***/
-  .image-cap img {
+  .col8 .image-cap__pic,
+  .col8 .image-cap__text {
+      width: 100%;
+  }
+  .col9 .image-cap__pic {
     /* col8 container assumed as default (is content area on answer page, guide page) */
-    width: 70%;
-  }
-  .image-cap em {
-    width: 30%;
-  }
-  .col9 .imageWrap img {
     width: 60%;
   }
-  .col9 .imageWrap em {
+  .col9 .image-cap__text {
     width: 40%;
   }
 
@@ -2719,6 +2727,21 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 @media only screen and (min-width: 736px){
   .content img {
     display: block;
+  }
+
+  /*** image with caption ***/
+  .col8 .image-cap__pic {
+      width: 60%;
+  }
+  .col8 .image-cap__text {
+      width: 40%;
+  }
+  .col9 .image-cap__pic {
+    /* col8 container assumed as default (is content area on answer page, guide page) */
+    width: 70%;
+  }
+  .col9 .image-cap__text {
+    width: 30%;
   }
 }
 
@@ -2923,20 +2946,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     color: #fff;
   }
 
-  /*** image with caption ***/
-  .image-cap img {
-    width: 60%;
-  }
-  .image-cap em {
-    width: 40%;
-  }
-  .col9 .image-cap img {
-    width: 56.5%;
-  }
-  .col9 .image-cap em {
-    width: 43.5%;
-  }
-
   /*** tabs ***/
   .tabs ul {
       padding-left: 16px;
@@ -2985,6 +2994,16 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
 }/* end media query */
 
+
+@media only screen and (min-width: 850px) {
+  /*** image with caption ***/
+  .col8 .image-cap__pic {
+    width: 70%;
+  }
+  .col8 .image-cap__text {
+    width: 30%;
+  }
+}
 
 @media only screen and (min-width: 960px) {
 
@@ -3685,7 +3704,7 @@ margin-bottom: 16px;
 }
 
 /*** image with caption ***/
-.lt-ie9 .image-cap img {
+.lt-ie9 .image-cap__pic {
   width: 60%;
 }
 .lt-ie9 .image-cap  em {
