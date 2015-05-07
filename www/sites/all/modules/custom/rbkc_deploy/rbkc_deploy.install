@@ -724,3 +724,10 @@ function rbkc_deploy_update_7057() {
       ->execute();
   }
 }
+
+/**
+ * Switch on summary settings module.
+ */
+function rbkc_deploy_update_7058() {
+  module_enable(array('summary_settings'), TRUE);
+}
