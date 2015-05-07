@@ -12,6 +12,12 @@ function feature_answer_field_default_field_instances() {
 
   // Exported field_instance: 'node-answer-body'
   $field_instances['node-answer-body'] = array(
+    'accessibility_content' => 1,
+    'accessibility_content_block_submit' => array(
+      'moderate' => 'moderate',
+      'severe' => 'severe',
+      'suggestion' => 0,
+    ),
     'bundle' => 'answer',
     'default_value' => NULL,
     'deleted' => 0,
