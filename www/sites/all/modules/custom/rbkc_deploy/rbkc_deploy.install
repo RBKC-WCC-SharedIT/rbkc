@@ -727,6 +727,12 @@ function rbkc_deploy_update_7057() {
 }
 
 /**
+ * Switch on the accessibility checking modules.
+ */
+function rbkc_deploy_update_7058() {
+  module_enable(array('accessibility', 'accessibility_content', 'accessibility_wysiwyg'), TRUE);
+}
+/**
  * Switch on summary settings module.
  */
 function rbkc_deploy_update_7058() {
