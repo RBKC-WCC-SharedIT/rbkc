@@ -731,3 +731,10 @@ function rbkc_deploy_update_7057() {
 function rbkc_deploy_update_7058() {
   module_enable(array('summary_settings'), TRUE);
 }
+
+/**
+ * Switch on spelling suggestions (GSA).
+ */
+function rbkc_deploy_update_7059() {
+  variable_set('google_appliance_spelling_suggestions', '1');
+}
