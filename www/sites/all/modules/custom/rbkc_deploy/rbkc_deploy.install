@@ -738,3 +738,10 @@ function rbkc_deploy_update_7058() {
 function rbkc_deploy_update_7059() {
   variable_set('google_appliance_spelling_suggestions', '1');
 }
+
+/**
+ * Switch on feature_roles_permissions.
+ */
+function rbkc_deploy_update_7060() {
+  module_enable(array('feature_roles_permissions'), TRUE);
+}
