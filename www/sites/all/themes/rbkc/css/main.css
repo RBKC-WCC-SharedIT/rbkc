@@ -2687,6 +2687,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   .col8 .image-cap__pic,
   .col8 .image-cap__text {
       width: 100%;
+      text-align: center;
   }
   .col9 .image-cap__pic {
     /* col8 container assumed as default (is content area on answer page, guide page) */
@@ -2728,6 +2729,7 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
   .col8 .image-cap__text {
       width: 40%;
+      text-align: left;
   }
   .col9 .image-cap__pic {
     /* col8 container assumed as default (is content area on answer page, guide page) */
