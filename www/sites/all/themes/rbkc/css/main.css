@@ -1378,16 +1378,29 @@ div.accordionContents + h4 {
   border-bottom: 0;
   border-radius: 0 0 3px 3px;
 }
-
 .tabs a:hover {
   background: #CFD0CB;
   border: solid #CFD0CB 1px;
 }
-
 .tabs .active a {
   background: transparent;
   border: solid #CFD0CB 1px;
   color:#000;
+}
+
+/* images with captions shown */
+.image-cap__pic img {
+    display: block !important;
+    width: 100% !important;
+}
+
+/*** print page links below content on some content types ***/
+.print-page {
+  text-align: right;
+  font-size: 13px;
+}
+.print-page span {
+  margin-left: 0;
 }
 
 /******************************************************/
@@ -2139,17 +2152,6 @@ ul.plainResults-list  li {
   margin: 0;
 }
 
-/*** print page links below content on some content types ***/
-.print-page {
-  text-align: right;
-  font-size: 13px;
-}
-.print-page span {
-  margin-left: 0;
-}
-
-
-
 /*** styling some Drupal markup ***/
 .content .links {
   margin-left: 0 !important;
@@ -2167,12 +2169,6 @@ ul.plainResults-list  li {
 .workbench-info-block {
   margin-bottom: 24px !important;
 }
-
-/* images with captions shown */
-.image-cap__pic img {
-    display: block !important;
-}
-
 
 /******************************************************************************************************************************************************************/
 /*                                                                     BEGIN MEDIA QUERIES                                                                        */
@@ -2205,9 +2201,6 @@ only screen and (                min-resolution: 2dppx) {
   .image-cap {
     margin-left: 0;
     margin-right: 0;
-  }
-  .image-cap__pic img {
-    width: 100% !important;
   }
 
 }/* end media query*/
