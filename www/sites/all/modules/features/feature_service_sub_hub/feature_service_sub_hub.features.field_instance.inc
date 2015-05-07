@@ -65,6 +65,7 @@ function feature_service_sub_hub_field_default_field_instances() {
         'profile' => '',
       ),
       'mee_enabled' => 0,
+      'summary_display' => 'required',
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -73,6 +74,7 @@ function feature_service_sub_hub_field_default_field_instances() {
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
+        'summary_display' => 'default',
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
