@@ -416,6 +416,14 @@ function rbkc_menu_tree_check_access(&$tree, $node_links = array()) {
       }
     }
   }
+
+  // Change link title_callback to t. This prevents node_page_title() getting
+  // called with the nid being passed as a node object (which causes a notice).
+  foreach (array_keys($tree) as $key) {
+    $tree[$key]['link']['title_callback'] = 't';
+    unset($tree[$key]['link']['title_arguments']);
+  }
+
   _menu_tree_check_access($tree);
 }
 
