@@ -218,7 +218,7 @@ function feature_topics_field_default_field_instances() {
         'settings' => array(
           'more_link' => 0,
           'more_text' => 'Read more',
-          'summary_handler' => 'full',
+          'summary_handler' => 'trim',
           'trim_length' => 220,
           'trim_options' => array(
             'text' => 'text',

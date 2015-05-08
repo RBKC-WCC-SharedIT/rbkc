@@ -30,7 +30,7 @@ function feature_service_sub_hub_field_default_field_instances() {
         'settings' => array(
           'more_link' => 0,
           'more_text' => 'Read more',
-          'summary_handler' => 'full',
+          'summary_handler' => 'trim',
           'trim_length' => 220,
           'trim_options' => array(
             'text' => 'text',
@@ -43,9 +43,19 @@ function feature_service_sub_hub_field_default_field_instances() {
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'trim',
+          'trim_length' => 220,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
     ),
