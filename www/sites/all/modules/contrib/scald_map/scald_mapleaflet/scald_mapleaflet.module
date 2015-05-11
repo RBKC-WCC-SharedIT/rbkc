@@ -1,0 +1,116 @@
+<?php
+/**
+ * @file
+ * Scald leaflet map player is a Scald Atom Player for maps.
+ */
+/**
+ * Implements hook_scald_player().
+ */
+function scald_mapleaflet_scald_player() {
+  return array(
+    'leafletmap' => array(
+      'name' => 'Leaflet map',
+      'description' => 'Leaflet player for map atoms.',
+      'type' => array('map'),
+    ));
+}
+/**
+ * Implements hook_scald_prerender().
+ */
+function scald_mapleaflet_scald_prerender($atom, $context, $options, $mode) {
+  if ($mode == 'player') {
+    $scald_geo = field_get_items('scald_atom', $atom, 'scald_geo');
+    if (!empty($scald_geo)) {
+      $zoomlevel = _scald_map_extract_zoomlevel($options);
+      $atom->rendered->player = theme('scald_mapleaflet_render',
+        array(
+          'vars' => array(
+            'context' => $context,
+            'id' => $atom->sid,
+            'zoomlevel' => $zoomlevel,
+          ),
+        )
+      );
+    }
+  }
+}
+/**
+ * Implements hook_menu().
+ */
+function scald_mapleaflet_menu() {
+  $items = array();
+  $items['scald/mapleaflet/render/%'] = array(
+    'page callback' => '_scald_mapleaflet_render_callback',
+    'page arguments' => array(3, 4),
+    'access arguments' => array('access content'),
+    'delivery callback' => '_scald_mapleaflet_content_callback',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+/**
+ * Implements hook_theme().
+ */
+function scald_mapleaflet_theme() {
+  return array(
+    'scald_mapleaflet_render' => array(
+      'variables' => array(
+        'vars' => NULL,
+      ),
+      'template' => 'scald-mapleaflet-render',
+    ),
+  );
+}
+/**
+ * Renders a map based on the atom referenced.
+ */
+function _scald_mapleaflet_render_callback($entity_id, $zoomlevel = NULL) {
+  if (!is_numeric($entity_id)) {
+    return '';
+  }
+  $atoms = entity_load('scald_atom', array($entity_id), array(), FALSE);
+  if (!empty($atoms)) {
+    $atom = reset($atoms);
+    $scald_geo = field_get_items('scald_atom', $atom, 'scald_geo');
+    if (!empty($scald_geo)) {
+      $mapzoom = _scald_map_extract_zoomlevel(array('zoomlevel' => $zoomlevel));
+      $build = field_view_value('scald_atom', $atom, 'scald_geo', $scald_geo[0], array(
+        'label' => 'hidden',
+        'type' => 'geofield_leaflet',
+        'settings' => array(
+          'leaflet_map' => 'OSM Mapnik',
+          'height' => '400',
+          'zoom' => array(
+            'initialZoom' => $mapzoom,
+          ),
+          'popup' => array(
+            'show' => TRUE,
+            'text' => check_plain($atom->title),
+          ),
+        ),
+      ));
+      return render($build);
+    }
+  }
+  return '';
+}
+/**
+ * Delivery callback for the leaflet map atom.
+ */
+function _scald_mapleaflet_content_callback($page_callback_result) {
+  print '<!DOCTYPE html>';
+  print '<html><head><title>OSM Mapnik</title>';
+  print '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+  print drupal_get_js();
+  print drupal_get_css();
+  print '</head><body>';
+  if (empty($page_callback_result)) {
+    print t('Atom not available');
+  }
+  else {
+    print $page_callback_result;
+  }
+  drupal_page_footer();
+  print '</body></html>';
+}
+?>
