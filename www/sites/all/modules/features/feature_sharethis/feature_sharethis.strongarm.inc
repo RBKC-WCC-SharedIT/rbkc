@@ -22,7 +22,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_answer_options'] = $strongarm;
 
@@ -30,7 +29,7 @@ function feature_sharethis_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sharethis_button_option';
-  $strongarm->value = 'stbc_button';
+  $strongarm->value = 'stbc_large';
   $export['sharethis_button_option'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -52,7 +51,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_feed_options'] = $strongarm;
 
@@ -68,7 +66,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_guide_options'] = $strongarm;
 
@@ -100,6 +97,7 @@ function feature_sharethis_strongarm() {
     'subhub' => 0,
     'survey' => 0,
     'topic' => 0,
+    'webform' => 0,
   );
   $export['sharethis_node_types'] = $strongarm;
 
@@ -108,8 +106,8 @@ function feature_sharethis_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'sharethis_option_extras';
   $strongarm->value = array(
-    'Google Plus One:plusone' => 'Google Plus One:plusone',
-    'Facebook Like:fblike' => 'Facebook Like:fblike',
+    'Google Plus One:plusone' => 0,
+    'Facebook Like:fblike' => 0,
   );
   $export['sharethis_option_extras'] = $strongarm;
 
@@ -146,7 +144,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_press_release_options'] = $strongarm;
 
@@ -162,7 +159,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_publication_options'] = $strongarm;
 
@@ -185,7 +181,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_servicehub_options'] = $strongarm;
 
@@ -208,7 +203,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_subhub_options'] = $strongarm;
 
@@ -224,7 +218,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_survey_options'] = $strongarm;
 
@@ -240,7 +233,6 @@ function feature_sharethis_strongarm() {
     'diff_standard' => 0,
     'top_three_topics' => 0,
     'token' => 0,
-    'revision' => 0,
   );
   $export['sharethis_topic_options'] = $strongarm;
 
