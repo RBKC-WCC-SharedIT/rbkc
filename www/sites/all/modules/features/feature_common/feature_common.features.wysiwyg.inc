@@ -72,8 +72,8 @@ function feature_common_wysiwyg_default_profiles() {
           'Scayt' => 1,
           'About' => 1,
         ),
-        'dnd' => array(
-          'dnd' => 1,
+        'dndck4' => array(
+          'dndck4' => 1,
         ),
         'drupal' => array(
           'break' => 1,
