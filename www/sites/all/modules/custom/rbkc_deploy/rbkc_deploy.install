@@ -745,3 +745,11 @@ function rbkc_deploy_update_7059() {
 function rbkc_deploy_update_7060() {
   module_enable(array('feature_roles_permissions'), TRUE);
 }
+
+/**
+ * Enable and configure scald_maps .
+ */
+function rbkc_deploy_update_7061() {
+  module_enable(array('scald_map'), TRUE);
+  features_revert_module('feature_common');
+}
