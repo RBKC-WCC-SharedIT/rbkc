@@ -748,6 +748,13 @@ function rbkc_deploy_update_7060() {
 }
 
 /**
+ * Enable and configure scald_maps .
+ */
+function rbkc_deploy_update_7061() {
+  module_enable(array('scald_map'), TRUE);
+  features_revert_module('feature_common');
+}
+/**
  * Switch on the ShareThis module.
  */
 function rbkc_deploy_update_7061() {
