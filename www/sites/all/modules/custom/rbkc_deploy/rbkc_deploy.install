@@ -644,6 +644,7 @@ function rbkc_deploy_update_7049() {
 }
 
 /**
+<<<<<<< HEAD
  * Switch on the Smart Trim feature.
  */
 function rbkc_deploy_update_7050() {
@@ -744,4 +745,18 @@ function rbkc_deploy_update_7059() {
  */
 function rbkc_deploy_update_7060() {
   module_enable(array('feature_roles_permissions'), TRUE);
+}
+
+/**
+ * Switch on the ShareThis module.
+ */
+function rbkc_deploy_update_7061() {
+  module_enable(array('ShareThis'), TRUE);
+}
+
+/**
+ * Switch on the ShareThis feature.
+ */
+function rbkc_deploy_update_7062() {
+  module_enable(array('feature_sharethis'), TRUE);
 }

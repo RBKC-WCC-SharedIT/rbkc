@@ -56,7 +56,14 @@ function feature_answer_strongarm() {
           'weight' => '12',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'default' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__answer'] = $strongarm;

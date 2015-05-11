@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ShareThis feature.
+ */
+
+include_once 'feature_sharethis.features.inc';
