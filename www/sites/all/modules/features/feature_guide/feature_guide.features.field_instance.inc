@@ -12,6 +12,12 @@ function feature_guide_field_default_field_instances() {
 
   // Exported field_instance: 'node-guide-body'
   $field_instances['node-guide-body'] = array(
+    'accessibility_content' => 1,
+    'accessibility_content_block_submit' => array(
+      'moderate' => 0,
+      'severe' => 0,
+      'suggestion' => 0,
+    ),
     'bundle' => 'guide',
     'default_value' => NULL,
     'deleted' => 0,
