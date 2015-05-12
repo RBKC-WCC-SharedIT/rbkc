@@ -12,6 +12,12 @@ function feature_publication_field_default_field_instances() {
 
   // Exported field_instance: 'node-publication-body'
   $field_instances['node-publication-body'] = array(
+    'accessibility_content' => 1,
+    'accessibility_content_block_submit' => array(
+      'moderate' => 0,
+      'severe' => 0,
+      'suggestion' => 0,
+    ),
     'bundle' => 'publication',
     'default_value' => NULL,
     'deleted' => 0,

@@ -14,8 +14,8 @@ function feature_answer_field_default_field_instances() {
   $field_instances['node-answer-body'] = array(
     'accessibility_content' => 1,
     'accessibility_content_block_submit' => array(
-      'moderate' => 'moderate',
-      'severe' => 'severe',
+      'moderate' => 0,
+      'severe' => 0,
       'suggestion' => 0,
     ),
     'bundle' => 'answer',
