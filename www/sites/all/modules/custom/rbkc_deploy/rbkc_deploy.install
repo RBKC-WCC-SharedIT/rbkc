@@ -760,3 +760,11 @@ function rbkc_deploy_update_7061() {
 function rbkc_deploy_update_7062() {
   module_enable(array('feature_sharethis'), TRUE);
 }
+
+/**
+ * Enable and configure scald_maps .
+ */
+function rbkc_deploy_update_7063() {
+  module_enable(array('scald_map'), TRUE);
+  features_revert_module('feature_common');
+}

@@ -1,0 +1,23 @@
+diff --git a/www/sites/all/modules/contrib/scald/modules/library/dnd/dnd.module b/www/sites/all/modules/contrib/scald/modules/library/dnd/dnd.module
+index 0494560..96d1595 100644
+--- a/www/sites/all/modules/contrib/scald/modules/library/dnd/dnd.module
++++ b/www/sites/all/modules/contrib/scald/modules/library/dnd/dnd.module
+@@ -267,8 +267,18 @@ function dnd_wysiwyg_plugin($editor, $version) {
+         ),
+         'load' => TRUE,
+       );
++      $plugins['dndck4'] = array(
++        'path' => drupal_get_path('module', 'dnd') . '/plugins/dndck4',
++        'filename' => 'plugin.js',
++        'buttons' => array(
++          'dndck4' => t('Scald DnD integration dndck4 - CKEditor 4 widgets'),
++        ),
++        'load' => TRUE,
++      );
+       break;
+   }
++  $disable = (version_compare($version, '4.3.0') >= 0 ? 'dnd' : 'dndck4');
++  unset($plugins[$disable]);
+ 
+   return $plugins;
+ }
