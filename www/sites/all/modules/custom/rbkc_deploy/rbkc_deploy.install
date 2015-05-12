@@ -775,3 +775,10 @@ function rbkc_deploy_update_7063() {
 function rbkc_deploy_update_7064() {
   module_enable(array('accessibility', 'accessibility_content', 'accessibility_wysiwyg'), TRUE);
 }
+
+/**
+ * Switch on the aggregator module.
+ */
+function rbkc_deploy_update_7065() {
+  module_enable(array('aggregator'), TRUE);
+}
