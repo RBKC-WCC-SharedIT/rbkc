@@ -293,6 +293,55 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-answer-field_show_more_in_links'
+  $field_instances['node-answer-field_show_more_in_links'] = array(
+    'bundle' => 'answer',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if you want to display "More in" links on this page. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_show_more_in_links',
+    'label' => 'Show more in links',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-answer-field_tag'
   $field_instances['node-answer-field_tag'] = array(
     'bundle' => 'answer',
@@ -427,6 +476,7 @@ function feature_answer_field_default_field_instances() {
   t('Action');
   t('Begin typing the name of the department to show suggestions, the selected contact department name is used to generate the contact us button.');
   t('Body');
+  t('Check this box if you want to display "More in" links on this page. ');
   t('Choose a topic with which to tag this page.');
   t('Contact department');
   t('Please enter a short title for this content');
@@ -435,6 +485,7 @@ function feature_answer_field_default_field_instances() {
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
   t('Short Title');
+  t('Show more in links');
   t('Start typing to find an existing tag or add a new one.');
   t('Tag');
   t('Topic');

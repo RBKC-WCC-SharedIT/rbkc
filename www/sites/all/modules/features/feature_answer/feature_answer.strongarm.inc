@@ -37,6 +37,9 @@ function feature_answer_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -44,16 +47,16 @@ function feature_answer_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
       ),
       'display' => array(
