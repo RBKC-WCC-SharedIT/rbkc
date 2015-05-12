@@ -29,6 +29,13 @@ function feature_common_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'mee_store_format';
+  $strongarm->value = 'embed_div';
+  $export['mee_store_format'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'print_comments';
   $strongarm->value = 0;
   $export['print_comments'] = $strongarm;
