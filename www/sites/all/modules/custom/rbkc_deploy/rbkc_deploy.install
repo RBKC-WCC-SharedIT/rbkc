@@ -727,12 +727,6 @@ function rbkc_deploy_update_7057() {
 }
 
 /**
- * Switch on the accessibility checking modules.
- */
-function rbkc_deploy_update_7058() {
-  module_enable(array('accessibility', 'accessibility_content', 'accessibility_wysiwyg'), TRUE);
-}
-/**
  * Switch on summary settings module.
  */
 function rbkc_deploy_update_7058() {
@@ -773,4 +767,11 @@ function rbkc_deploy_update_7062() {
 function rbkc_deploy_update_7063() {
   module_enable(array('scald_map'), TRUE);
   features_revert_module('feature_common');
+}
+
+/**
+ * Switch on the accessibility checking modules.
+ */
+function rbkc_deploy_update_7064() {
+  module_enable(array('accessibility', 'accessibility_content', 'accessibility_wysiwyg'), TRUE);
 }
