@@ -782,3 +782,10 @@ function rbkc_deploy_update_7064() {
 function rbkc_deploy_update_7065() {
   module_enable(array('aggregator'), TRUE);
 }
+
+/**
+ * Switch on the RBKC related content module.
+ */
+function rbkc_deploy_update_7066() {
+  module_enable(array('rbkc_related_content'), TRUE);
+}
