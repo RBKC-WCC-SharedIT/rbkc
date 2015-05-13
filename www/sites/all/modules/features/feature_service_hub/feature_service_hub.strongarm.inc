@@ -89,7 +89,18 @@ function feature_service_hub_strongarm() {
           'weight' => '10',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__servicehub'] = $strongarm;

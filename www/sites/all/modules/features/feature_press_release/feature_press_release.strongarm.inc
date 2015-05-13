@@ -34,7 +34,18 @@ function feature_press_release_strongarm() {
           'weight' => '2',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__press_release'] = $strongarm;
