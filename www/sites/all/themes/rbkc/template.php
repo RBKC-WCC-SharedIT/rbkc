@@ -111,6 +111,47 @@ function rbkc_menu_link(array $variables) {
 }
 
 /**
+ * Add class to menu ul.
+ */
+function rbkc_menu_tree__drop_down_service_menu($variables) {
+  return '<ul class="servicelist__list-one">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Add class to menu ul.
+ */
+function rbkc_menu_tree__menu_i_need_to($variables) {
+  return '<ul class="quicklinks__list-one">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Implements theme_menu_link
+ */
+function rbkc_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  $element['#localized_options']['html'] = TRUE;
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+
+  /**
+   * Add menu item's description below the menu title
+   * Source: fusiondrupalthemes.com/forum/using-fusion/descriptions-under-main-menu
+   */
+  if ($element['#original_link']['menu_name'] == "drop-down-service-menu" && isset($element['#localized_options']['attributes']['title'])){
+    $element['#title'] .= '<span class="servicelist__desc">' . $element['#localized_options']['attributes']['title'] . '</span>';
+  }
+  if ($element['#original_link']['menu_name'] == "menu-i-need-to" && isset($element['#localized_options']['attributes']['title'])){
+    unset($element['#attributes']['class']);
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
  * Override theme_menu_link for the publication table of contents.
  *
  * @param $variables
