@@ -789,3 +789,10 @@ function rbkc_deploy_update_7065() {
 function rbkc_deploy_update_7066() {
   module_enable(array('rbkc_related_content'), TRUE);
 }
+
+/**
+ * Switch on the Views Arguments Extras module.
+ */
+function rbkc_deploy_update_7067() {
+  module_enable(array('views_arguments_extras'), TRUE);
+}
