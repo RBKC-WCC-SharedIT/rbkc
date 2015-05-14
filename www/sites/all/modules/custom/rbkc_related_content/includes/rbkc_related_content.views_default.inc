@@ -33,20 +33,6 @@ function rbkc_related_content_views_default_views() {
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Relationship: Content: Taxonomy terms on node */
-  $handler->display->display_options['relationships']['term_node_tid']['id'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['table'] = 'node';
-  $handler->display->display_options['relationships']['term_node_tid']['field'] = 'term_node_tid';
-  $handler->display->display_options['relationships']['term_node_tid']['required'] = TRUE;
-  $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
-    'topic' => 'topic',
-    'scald_authors' => 0,
-    'scald_tags' => 0,
-    'action' => 0,
-    'service_hub' => 0,
-    'tag' => 0,
-    'user' => 0,
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -62,6 +48,17 @@ function rbkc_related_content_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'field';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['field'] = 'content_taxonomy::field_service_hub';
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['tid']['reduce_duplicates'] = TRUE;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -72,16 +69,6 @@ function rbkc_related_content_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['nid']['not'] = TRUE;
-  /* Contextual filter: Content: Nid */
-  $handler->display->display_options['arguments']['nid_1']['id'] = 'nid_1';
-  $handler->display->display_options['arguments']['nid_1']['table'] = 'node';
-  $handler->display->display_options['arguments']['nid_1']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid_1']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid_1']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid_1']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid_1']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid_1']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid_1']['not'] = TRUE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';

@@ -50,7 +50,7 @@ function rbkc_related_content_is_answer_page(stdClass $node) {
 
 function rbkc_related_content_embed_more(stdClass $node) {
   if ($node->field_show_more_in_links[LANGUAGE_NONE][0]['value']) {
-    $node->content['rbkc_related_content']['more_in']['#markup'] = views_embed_view('rbkc_related_content_more');
+    $node->content['rbkc_related_content']['more_in']['#markup'] = trim(views_embed_view('rbkc_related_content_more'));
   }
 }
 
