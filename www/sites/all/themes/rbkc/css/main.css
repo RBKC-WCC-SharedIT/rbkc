@@ -2971,6 +2971,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     z-index: 900;
   }
 
+  /*** tags ***/
+  .field-name-field-tag {
+    padding-bottom: 30px;
+  }
+
   /****************************************************/
   /*  STATE RULES (indicate a javascript dependency)  */
   /****************************************************/
