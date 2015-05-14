@@ -62,7 +62,7 @@ function feature_answer_strongarm() {
       'display' => array(
         'sharethis' => array(
           'default' => array(
-            'weight' => '1',
+            'weight' => '2',
             'visible' => TRUE,
           ),
           'teaser' => array(

@@ -155,7 +155,7 @@ function feature_answer_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -202,7 +202,7 @@ function feature_answer_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -251,7 +251,7 @@ function feature_answer_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -350,10 +350,14 @@ function feature_answer_field_default_field_instances() {
     'description' => 'Start typing to find an existing tag or add a new one.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
+        'label' => 'inline',
+        'module' => 'ds',
+        'settings' => array(
+          'taxonomy_term_link' => 1,
+          'taxonomy_term_separator' => ', ',
+        ),
+        'type' => 'ds_taxonomy_separator',
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -368,9 +372,10 @@ function feature_answer_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_tag',
-    'label' => 'Tag',
+    'label' => 'Tags',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -398,7 +403,7 @@ function feature_answer_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -487,7 +492,7 @@ function feature_answer_field_default_field_instances() {
   t('Short Title');
   t('Show more in links');
   t('Start typing to find an existing tag or add a new one.');
-  t('Tag');
+  t('Tags');
   t('Topic');
   t('User');
 
