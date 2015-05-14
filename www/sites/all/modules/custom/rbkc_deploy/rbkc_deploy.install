@@ -796,3 +796,10 @@ function rbkc_deploy_update_7066() {
 function rbkc_deploy_update_7067() {
   module_enable(array('views_arguments_extras'), TRUE);
 }
+
+/**
+ * Switch on the add to head module.
+ */
+function rbkc_deploy_update_7068() {
+  module_enable(array('add_to_head'), TRUE);
+}

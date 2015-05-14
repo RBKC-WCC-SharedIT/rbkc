@@ -1,0 +1,129 @@
+<?php
+
+/**
+ * @file
+ * Add To Head allows abritrary insertion of code into the head of the page
+ * based on path selection.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function add_to_head_menu() {
+  $items = array();
+
+  $items['admin/config/development/add-to-head'] = array(
+    'title' => 'Add To Head',
+    'description' => 'Configure <em>Add To Head</em>.',
+    'page callback' => 'add_to_head_overview',
+    'file' => 'add_to_head.admin.inc',
+    'access arguments' => array('administer add to head'),
+  );
+
+  $items['admin/config/development/add-to-head/add'] = array(
+    'title' => 'Add New Profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('add_to_head_add_profile'),
+    'file' => 'add_to_head.admin.inc',
+    'access arguments' => array('administer add to head'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/development/add-to-head/%add_to_head_profile'] = array(
+    'title' => 'Edit Profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('add_to_head_edit_profile', 4),
+    'file' => 'add_to_head.admin.inc',
+    'access arguments' => array('administer add to head'),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/development/add-to-head/%add_to_head_profile/delete'] = array(
+    'title' => 'Delete Profile',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('add_to_head_delete_profile_confirm', 4),
+    'file' => 'add_to_head.admin.inc',
+    'access arguments' => array('administer add to head'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Implements hook_forms().
+ */
+function add_to_head_forms($form_id, $arg) {
+  return array(
+    'add_to_head_add_profile' => array(
+      'callback' => 'add_to_head_edit_profile',
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_permission().
+ */
+function add_to_head_permission() {
+  return array(
+    'administer add to head' =>  array(
+      'title' => t('Administer add to head'),
+      'description' => t('Insert code into the head of the page based on path selection.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+
+/**
+ * Argument load handler for %add_to_head_profile URL placeholders
+ */
+function add_to_head_profile_load($arg) {
+  $settings = variable_get('add_to_head_profiles', array());
+  return isset($settings[$arg]) ? $settings[$arg] : FALSE;
+}
+
+
+/**
+ * Implements hook_process_html().
+ * This is used to inject any code onto the appropriate pages.
+ */
+function add_to_head_process_html(&$vars) {
+  $settings = variable_get('add_to_head_profiles', array());
+
+  $output = array();
+
+  foreach ($settings as $profile) {
+    if (empty($profile['paths'])) {
+      $page_match = TRUE;
+    }
+    else {
+      // NOTE: This code is "borrowed" from block_list().
+      $path = drupal_get_path_alias($_GET['q']);
+
+      // Compare with the internal and path alias (if any).
+      $page_match = drupal_match_path($path, $profile['paths']);
+      if ($path != $_GET['q']) {
+        $page_match = $page_match || drupal_match_path($_GET['q'], $profile['paths']);
+      }
+
+      // When $profile['path_visibility'] has a value of 0, the block is displayed on
+      // all pages except those listed in $block->pages. When set to 1, it
+      // is displayed only on those pages listed in $block->pages.
+      $page_match = !($profile['path_visibility'] xor $page_match);
+    }
+
+    if ($page_match) {
+      $output[] = array(
+        '#markup' => $profile['code'],
+        '#suffix' => "\n",
+      );
+    }
+  }
+
+  if (!empty($output)) {
+    $vars[$profile['scope']] .= drupal_render($output);
+  }
+}
