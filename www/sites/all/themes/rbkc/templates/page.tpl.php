@@ -50,7 +50,9 @@
        <div class="inner breadcrumb lightlinks">
           <ol>
             <li><a href="<?php print $front_page; ?>" title="Home page" >Home page</a></li>
-            <li><a href="#" title="#" >Service area link goes here</a></li>
+            <?php if (isset($service_area_link)): ?>
+            <li><?php print $service_area_link; ?></li>
+            <?php endif; ?>
             <li><?php print $title; ?></li>
            </ol>
        </div><!-- end inner breadcrumb-->
