@@ -22,6 +22,9 @@ function feature_press_release_strongarm() {
       'top_three_topics' => array(
         'custom_settings' => TRUE,
       ),
+      'teaser_small' => array(
+        'custom_settings' => TRUE,
+      ),
       'full' => array(
         'custom_settings' => FALSE,
       ),
@@ -72,6 +75,10 @@ function feature_press_release_strongarm() {
           'default' => array(
             'weight' => '10',
             'visible' => TRUE,
+          ),
+          'teaser_small' => array(
+            'weight' => '3',
+            'visible' => FALSE,
           ),
         ),
       ),
