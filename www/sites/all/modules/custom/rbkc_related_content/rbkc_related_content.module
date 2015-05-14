@@ -112,6 +112,7 @@ function rbkc_related_content_embed_also(stdClass $node) {
 
   $links = array();
 
+  $count = 0;
   foreach ($popular_topics as $popular_topic) {
     $entity = field_collection_item_load($popular_topic['value']);
     if ($entity->revision_id != $popular_topic['revision_id']) {
@@ -134,10 +135,13 @@ function rbkc_related_content_embed_also(stdClass $node) {
     $node_url = 'node/' . $target_id;
     $node_title = check_plain($target_node->title);
 
-    $links[] = array(
+    $key = ($count >= 3) ? 'hide ' . $count : $count;
+    $links[$key] = array(
       'title' => $node_title,
       'href' => $node_url,
     );
+
+    $count++;
   }
 
   if (!$links) {
