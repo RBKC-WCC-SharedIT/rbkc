@@ -54,24 +54,22 @@ function rbkc_related_content_embed_more(stdClass $node) {
   }
 }
 
-function rbkc_related_content_embed_also(stdClass $node) {
+function rbkc_related_content_get_service_area_node(stdClass $node) {
   if (!isset($node->field_service_hub[LANGUAGE_NONE][0]['tid'])) {
-    return;
+    return NULL;
   }
 
   $tid = $node->field_service_hub[LANGUAGE_NONE][0]['tid'];
-
   $parents = taxonomy_get_parents_all($tid);
 
   if (!$parents) {
-    return;
+    return NULL;
   }
 
   $parent = array_pop($parents);
 
   $parent_name = $parent->name;
   $menu_name = 'drop-down-service-menu';
-
   $links = db_select('menu_links', 'ml', array('fetch' => PDO::FETCH_ASSOC))
     ->fields('ml')
     ->condition('ml.menu_name', $menu_name)
@@ -84,13 +82,11 @@ function rbkc_related_content_embed_also(stdClass $node) {
   }
 
   $menu_link = array_pop($links);
-
   if (!($menu_link['link_path'])) {
-    return;
+    return NULL;
   }
 
   $link_path = $menu_link['link_path'];
-
   if (FALSE === strpos($link_path, 'node/')) {
     return;
   }
@@ -98,11 +94,16 @@ function rbkc_related_content_embed_also(stdClass $node) {
   $nid = (int) str_replace('node/', '', $link_path);
 
   if ($nid == $node->nid) {
-    return;
+    return NULL;
   }
 
-  $parent_node = node_load($nid);
+  $service_area_node = node_load($nid);
 
+  return $service_area_node;
+}
+
+function rbkc_related_content_embed_also(stdClass $node) {
+  $parent_node = rbkc_related_content_get_service_area_node($node);
   if (!isset($parent_node->field_popular_topics[LANGUAGE_NONE]) || empty($parent_node->field_popular_topics[LANGUAGE_NONE])) {
     return;
   }
