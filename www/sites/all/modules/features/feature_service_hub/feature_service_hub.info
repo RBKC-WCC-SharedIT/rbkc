@@ -21,7 +21,6 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = linkit:linkit_profiles:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[field_base][] = field_review_date
 features[field_instance][] = field_collection_item-field_news_stories-field_news_story_image
 features[field_instance][] = field_collection_item-field_news_stories-field_news_story_link
 features[field_instance][] = field_collection_item-field_popular_topics-field_external_link

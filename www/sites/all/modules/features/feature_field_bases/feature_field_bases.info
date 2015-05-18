@@ -35,6 +35,7 @@ features[field_base][] = field_news_story_link
 features[field_base][] = field_other_popular_content
 features[field_base][] = field_popular_tasks
 features[field_base][] = field_popular_topics
+features[field_base][] = field_review_date
 features[field_base][] = field_service_hub
 features[field_base][] = field_short_title
 features[field_base][] = field_show_more_in_links
