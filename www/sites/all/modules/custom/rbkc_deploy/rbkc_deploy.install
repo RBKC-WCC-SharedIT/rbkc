@@ -644,7 +644,6 @@ function rbkc_deploy_update_7049() {
 }
 
 /**
-<<<<<<< HEAD
  * Switch on the Smart Trim feature.
  */
 function rbkc_deploy_update_7050() {
