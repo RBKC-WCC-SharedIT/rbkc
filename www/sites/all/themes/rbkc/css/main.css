@@ -590,6 +590,20 @@ margin-bottom: 0 !important;
   padding: 2rem 1rem;
 }
 
+.related-search-terms ul li {
+  display: inline;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.related-search-terms ul li:after {
+  content: ","
+}
+
+.related-search-terms ul li.last:after {
+  content: ""
+}
+
 .ribbon {
   background: #386390 url('../images/refresh/header-image3.jpg') center center no-repeat;
 }

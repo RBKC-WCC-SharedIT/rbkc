@@ -827,3 +827,18 @@ function rbkc_deploy_update_7069() {
     ->condition('theme', $region)
     ->execute();
 }
+
+/**
+ * Set the visibility of the ga_related_searches block.
+ */
+function rbkc_deploy_update_7070() {
+  $delta = 'ga_related_searches';
+  $region = 'rbkc';
+
+  db_update('block')
+    ->fields(array('visibility' => 1, 'pages' => 'gsearch/*'))
+    ->condition('module', 'google_appliance')
+    ->condition('delta', $delta)
+    ->condition('theme', $region)
+    ->execute();
+}
