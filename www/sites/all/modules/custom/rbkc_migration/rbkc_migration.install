@@ -9,10 +9,9 @@
 function rbkc_migration_schema() {
   $schema = array();
 
+  // The source data from Alterian for lookup purposes.
   $table_name = 'rbkc_migration_source';
-
   $schema[$table_name]['description'] = 'The page_id and template source data.';
-
   $schema[$table_name]['fields'] = array(
     'p_page_id' => array(
       'type' => 'int',
@@ -36,8 +35,43 @@ function rbkc_migration_schema() {
       'default' => '',
     ),
   );
-
   $schema[$table_name]['primary key'] = array('p_page_id');
 
+  // Documents look up table.
+  $table_name = 'rbkc_migration_documents';
+  $schema[$table_name]['description'] = 'The document mapping table allowing us to map from GUI to file name on disk.';
+  $schema[$table_name]['fields'] = [
+    'did' => array(
+      'type' => 'serial',
+      'unsigned' => TRUE,
+      'not null' => TRUE,
+    ),
+    'gui' => [
+      'type' => 'varchar',
+      'not null' => TRUE,
+      'length' => 255,
+      'default' => '',
+    ],
+    'filename' => [
+      'type' => 'varchar',
+      'not null' => TRUE,
+      'length' => 255,
+      'default' => '',
+    ],
+  ];
+  $schema[$table_name]['primary key'] = array('did');
+
+
   return $schema;
+}
+
+/**
+ * Create a table to hold the documents lookup data.
+ */
+function rbkc_migration_update_7000() {
+  $schema = rbkc_migration_schema();
+  $table_name = 'rbkc_migration_documents';
+  if (!db_table_exists($table_name)) {
+    db_create_table($table_name, $schema[$table_name]);
+  }
 }

@@ -42,6 +42,7 @@ class RBKCBaseNodeMigration extends Migration {
   public function prepareRow($row) {
     $row->body_html = self::extractNodeFromXML($row->body, 'content');
     $row->body_html = $this->transformSourceLinkTokens($row->body_html);
+    $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
     return TRUE;
   }
 
@@ -116,6 +117,49 @@ class RBKCBaseNodeMigration extends Migration {
     }
 
     return '/node/' . $nid;
+  }
+
+  /**
+   * Find and replace occurrences of IDOC's in the source data.
+   *
+   * Regular expression pattern should match the following strings capturing
+   * only the document gui (the string that looks like a hash) but matching
+   * everything up to the final pipe:
+   *
+   * IDOC|{336da895-43dc-44d5-ad00-7f5867dfa87a},-1,33|
+   *
+   * @param $html
+   * @return mixed
+   */
+  protected function transformSourceDocumentTokens($html) {
+    $modifiers = 'i';
+    $delimiter = '/';
+    $pattern = $delimiter . '(?:IDOC\|{){1}([0-9a-zA-Z-]+)(?:}[,0-9-]+\|){1}' . $delimiter . $modifiers;
+    $result = preg_replace_callback($pattern, array($this, 'generateDocumentLinkFromSourceDocumentToken'), $html);
+
+    if (is_null($result)) {
+      syslog(LOG_WARNING, 'An error occurred whilst attempting to transform a legacy internal link.');
+      return $html;
+    }
+
+    return $result;
+  }
+
+  protected function generateDocumentLinkFromSourceDocumentToken(array $idoc) {
+    $gui = $idoc[1];
+
+    $filename = db_select('rbkc_migration_documents', 'd')
+      ->fields('d', array('filename'))
+      ->condition('gui', $gui)
+      ->execute()
+      ->fetchField();
+
+    if (FALSE === $filename) {
+      syslog(LOG_WARNING, sprintf('Unable to retrieve a row for a gui of %s.', $gui));
+      return $idoc[0];
+    }
+
+    return rawurlencode($filename);
   }
 
   public function handleRedirect($entity, stdClass $row) {
