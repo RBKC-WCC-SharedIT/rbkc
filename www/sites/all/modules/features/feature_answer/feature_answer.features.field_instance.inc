@@ -191,10 +191,73 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-answer-field_review_date'
+  $field_instances['node-answer-field_review_date'] = array(
+    'bundle' => 'answer',
+    'deleted' => 0,
+    'description' => 'Please set the date editors should review this content.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_review_date',
+    'label' => 'Review Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-answer-field_service_hub'
   $field_instances['node-answer-field_service_hub'] = array(
     'bundle' => 'answer',
-    'default_value' => NULL,
+    'default_value' => array(),
     'deleted' => 0,
     'description' => 'Select the Service hub that this page should appear under.',
     'display' => array(
@@ -485,6 +548,8 @@ function feature_answer_field_default_field_instances() {
   t('Choose a topic with which to tag this page.');
   t('Contact department');
   t('Please enter a short title for this content');
+  t('Please set the date editors should review this content.');
+  t('Review Date');
   t('Select a user with which to tag this page.');
   t('Select an action with which to tag this page.');
   t('Select the Service hub that this page should appear under.');
