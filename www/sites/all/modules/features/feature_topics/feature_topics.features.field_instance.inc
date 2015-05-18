@@ -275,6 +275,69 @@ function feature_topics_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-topic-field_review_date'
+  $field_instances['node-topic-field_review_date'] = array(
+    'bundle' => 'topic',
+    'deleted' => 0,
+    'description' => 'Please set the date editors should review this content.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_repeat_rule' => 'show',
+        ),
+        'type' => 'date_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_review_date',
+    'label' => 'Review Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-topic-field_service_hub'
   $field_instances['node-topic-field_service_hub'] = array(
     'bundle' => 'topic',
@@ -320,7 +383,7 @@ function feature_topics_field_default_field_instances() {
         ),
       ),
       'type' => 'taxonomy_shs',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -425,6 +488,8 @@ function feature_topics_field_default_field_instances() {
   t('External link');
   t('External link teaser');
   t('Internal topic link');
+  t('Please set the date editors should review this content.');
+  t('Review Date');
   t('Select the Service hub that this page should appear under.');
   t('Select the pages for this topic');
   t('Service hub');
