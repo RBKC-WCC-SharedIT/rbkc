@@ -8,7 +8,6 @@ dependencies[] = feeds
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[field_base][] = field_review_date
 features[field_instance][] = node-feed-field_review_date
 features[node][] = feed
 features[variable][] = field_bundle_settings_node__feed
