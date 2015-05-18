@@ -803,3 +803,27 @@ function rbkc_deploy_update_7067() {
 function rbkc_deploy_update_7068() {
   module_enable(array('add_to_head'), TRUE);
 }
+
+/**
+ * Put the GSA ga_related_searches block in the content region.
+ */
+function rbkc_deploy_update_7069() {
+  $delta = 'ga_related_searches';
+  $region = 'rbkc';
+
+  $query = db_merge('block')
+    ->key(array('module' => 'google_appliance', 'delta' => $delta, 'theme' => $region))
+    ->fields(array(
+      'status' => 1,
+      'region' => 'content',
+      'pages' => '',
+    ))
+    ->execute();
+
+  db_update('block')
+    ->fields(array('weight' => -5))
+    ->condition('module', 'google_appliance')
+    ->condition('delta', $delta)
+    ->condition('theme', $region)
+    ->execute();
+}

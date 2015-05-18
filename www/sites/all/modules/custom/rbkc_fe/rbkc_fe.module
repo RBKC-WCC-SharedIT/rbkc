@@ -8,3 +8,10 @@ function rbkc_fe_form_node_form_alter(&$form, &$form_state) {
   // into the textarea at the time of edit rather than at the time of rendering.
   $form['#attached']['js'][] = drupal_get_path('module', 'rbkc_fe') . '/js/scald.js';
 }
+
+/**
+ * Implements hook_block_view_MODULE_DELTA_alter().
+ */
+function rbkc_fe_block_view_google_appliance_ga_related_searches_alter(&$data, $block) {
+  $data['content'] = '<div class="related-search-terms">' . $data['content'] . '</div>';
+}
