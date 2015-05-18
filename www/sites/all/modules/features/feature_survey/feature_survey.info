@@ -11,6 +11,7 @@ dependencies[] = text
 dependencies[] = webform
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
+features[field_instance][] = node-survey-field_review_date
 features[field_instance][] = node-survey-field_service_hub
 features[field_instance][] = node-survey-field_short_title
 features[node][] = survey
