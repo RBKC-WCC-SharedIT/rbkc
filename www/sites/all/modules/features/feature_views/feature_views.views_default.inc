@@ -238,18 +238,32 @@ function feature_views_views_default_views() {
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    4 => 0,
+  );
   /* Filter criterion: Content: Review Date (field_review_date) */
   $handler->display->display_options['filters']['field_review_date_value']['id'] = 'field_review_date_value';
   $handler->display->display_options['filters']['field_review_date_value']['table'] = 'field_data_field_review_date';
   $handler->display->display_options['filters']['field_review_date_value']['field'] = 'field_review_date_value';
   $handler->display->display_options['filters']['field_review_date_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_review_date_value']['group'] = 1;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Content Type';
@@ -262,12 +276,6 @@ function feature_views_views_default_views() {
     5 => 0,
     4 => 0,
   );
-  /* Filter criterion: Content: Review Date (field_review_date) */
-  $handler->display->display_options['filters']['field_review_date_value_1']['id'] = 'field_review_date_value_1';
-  $handler->display->display_options['filters']['field_review_date_value_1']['table'] = 'field_data_field_review_date';
-  $handler->display->display_options['filters']['field_review_date_value_1']['field'] = 'field_review_date_value';
-  $handler->display->display_options['filters']['field_review_date_value_1']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_review_date_value_1']['default_date'] = 'now';
 
   /* Display: Editorial Review */
   $handler = $view->new_display('page', 'Editorial Review', 'page_1');
