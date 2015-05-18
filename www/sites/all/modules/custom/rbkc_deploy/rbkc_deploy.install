@@ -644,7 +644,6 @@ function rbkc_deploy_update_7049() {
 }
 
 /**
-<<<<<<< HEAD
  * Switch on the Smart Trim feature.
  */
 function rbkc_deploy_update_7050() {
@@ -832,6 +831,9 @@ function rbkc_deploy_update_7069() {
  * Set the visibility of the ga_related_searches block.
  */
 function rbkc_deploy_update_7070() {
+  $delta = 'ga_related_searches';
+  $region = 'rbkc';
+
   db_update('block')
     ->fields(array('visibility' => 1, 'pages' => 'gsearch/*'))
     ->condition('module', 'google_appliance')
