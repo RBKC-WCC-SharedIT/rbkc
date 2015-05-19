@@ -848,3 +848,10 @@ function rbkc_deploy_update_7070() {
 function rbkc_deploy_update_7071() {
   module_enable(array('feature_views'), TRUE);
 }
+
+/**
+ * Switch on the wysiwyg_tpr module.
+ */
+function rbkc_deploy_update_7072() {
+  module_enable(array('wysiwyg_tpr'), TRUE);
+}
