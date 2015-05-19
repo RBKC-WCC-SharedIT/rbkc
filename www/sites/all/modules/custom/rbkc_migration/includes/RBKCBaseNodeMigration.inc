@@ -146,6 +146,7 @@ class RBKCBaseNodeMigration extends Migration {
   }
 
   protected function generateDocumentLinkFromSourceDocumentToken(array $idoc) {
+    $path_to_idocs = '/wamdocs/';
     $gui = $idoc[1];
 
     $filename = db_select('rbkc_migration_documents', 'd')
@@ -159,7 +160,7 @@ class RBKCBaseNodeMigration extends Migration {
       return $idoc[0];
     }
 
-    return rawurlencode($filename);
+    return $path_to_idocs . rawurlencode($filename);
   }
 
   public function handleRedirect($entity, stdClass $row) {
