@@ -279,7 +279,7 @@ function feature_topics_field_default_field_instances() {
   $field_instances['node-topic-field_review_date'] = array(
     'bundle' => 'topic',
     'deleted' => 0,
-    'description' => 'Please set the date editors should review this content.',
+    'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -306,7 +306,7 @@ function feature_topics_field_default_field_instances() {
     'label' => 'Review Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -480,7 +480,7 @@ function feature_topics_field_default_field_instances() {
   t('External link');
   t('External link teaser');
   t('Internal topic link');
-  t('Please set the date editors should review this content.');
+  t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select the Service hub that this page should appear under.');
   t('Select the pages for this topic');

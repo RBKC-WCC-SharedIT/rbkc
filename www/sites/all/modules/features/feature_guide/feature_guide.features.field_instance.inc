@@ -144,7 +144,7 @@ function feature_guide_field_default_field_instances() {
   $field_instances['node-guide-field_review_date'] = array(
     'bundle' => 'guide',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -171,7 +171,7 @@ function feature_guide_field_default_field_instances() {
     'label' => 'Review Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -425,6 +425,7 @@ function feature_guide_field_default_field_instances() {
   t('Action');
   t('Body');
   t('Choose a topic with which to tag this page.');
+  t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select a user with which to tag this page.');
   t('Select an action with which to tag this page.');
