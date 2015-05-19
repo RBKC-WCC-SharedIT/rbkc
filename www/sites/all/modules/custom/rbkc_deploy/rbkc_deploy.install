@@ -843,6 +843,12 @@ function rbkc_deploy_update_7070() {
 }
 
 /**
+ * Switch on the wysiwyg_tpr module.
+ */
+function rbkc_deploy_update_7071() {
+  module_enable(array('wysiwyg_tpr'), TRUE);
+}
+/**
  * Switch on the feature_views feature.
  */
 function rbkc_deploy_update_7071() {
