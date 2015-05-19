@@ -70,6 +70,9 @@ function feature_service_hub_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -98,6 +101,10 @@ function feature_service_hub_strongarm() {
           'top_three_topics' => array(
             'weight' => '10',
             'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
           ),
         ),
       ),

@@ -841,3 +841,10 @@ function rbkc_deploy_update_7070() {
     ->condition('theme', $region)
     ->execute();
 }
+
+/**
+ * Switch on the feature_views feature.
+ */
+function rbkc_deploy_update_7071() {
+  module_enable(array('feature_views'), TRUE);
+}

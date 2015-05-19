@@ -136,7 +136,62 @@ function feature_guide_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-guide-field_review_date'
+  $field_instances['node-guide-field_review_date'] = array(
+    'bundle' => 'guide',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_review_date',
+    'label' => 'Review Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 8,
     ),
   );
 
@@ -185,7 +240,7 @@ function feature_guide_field_default_field_instances() {
         ),
       ),
       'type' => 'taxonomy_shs',
-      'weight' => 8,
+      'weight' => 3,
     ),
   );
 
@@ -277,7 +332,7 @@ function feature_guide_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 12,
+      'weight' => 5,
     ),
   );
 
@@ -319,7 +374,7 @@ function feature_guide_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 4,
     ),
   );
 
@@ -361,7 +416,7 @@ function feature_guide_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 7,
     ),
   );
 
@@ -370,6 +425,7 @@ function feature_guide_field_default_field_instances() {
   t('Action');
   t('Body');
   t('Choose a topic with which to tag this page.');
+  t('Review Date');
   t('Select a user with which to tag this page.');
   t('Select an action with which to tag this page.');
   t('Select the Service hub that this page should appear under.');
