@@ -149,7 +149,7 @@ function feature_publication_field_default_field_instances() {
   $field_instances['node-publication-field_review_date'] = array(
     'bundle' => 'publication',
     'deleted' => 0,
-    'description' => 'Please set the date editors should review this content.',
+    'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -176,7 +176,7 @@ function feature_publication_field_default_field_instances() {
     'label' => 'Review Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -300,7 +300,7 @@ function feature_publication_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Body');
   t('PDF');
-  t('Please set the date editors should review this content.');
+  t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');

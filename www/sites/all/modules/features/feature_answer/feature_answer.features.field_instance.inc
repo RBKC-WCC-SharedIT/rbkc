@@ -195,7 +195,7 @@ function feature_answer_field_default_field_instances() {
   $field_instances['node-answer-field_review_date'] = array(
     'bundle' => 'answer',
     'deleted' => 0,
-    'description' => 'Please set the date editors should review this content.',
+    'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -222,7 +222,7 @@ function feature_answer_field_default_field_instances() {
     'label' => 'Review Date',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -540,7 +540,7 @@ function feature_answer_field_default_field_instances() {
   t('Choose a topic with which to tag this page.');
   t('Contact department');
   t('Please enter a short title for this content');
-  t('Please set the date editors should review this content.');
+  t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select a user with which to tag this page.');
   t('Select an action with which to tag this page.');
