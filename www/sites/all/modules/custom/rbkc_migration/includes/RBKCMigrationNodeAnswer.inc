@@ -11,17 +11,6 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
 
     $this->description = t('Import of answer content.');
 
-    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
-    $columns = array();
-    $options = array(
-      'enclosure' => '$',
-      'delimiter' => ',',
-      'header_rows' => 1,
-      'embedded_newlines' => TRUE,
-    );
-
-    $this->source = new MigrateSourceCSV($source, $columns, $options);
-
     $destination = 'answer';
     $this->destination = new MigrateDestinationNode($destination);
 

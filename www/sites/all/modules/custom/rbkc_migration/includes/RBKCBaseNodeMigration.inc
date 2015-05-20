@@ -9,6 +9,17 @@ class RBKCBaseNodeMigration extends Migration {
   public function __construct(array $arguments) {
     parent::__construct($arguments);
 
+    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
+    $columns = array();
+    $options = array(
+      'enclosure' => '$',
+      'delimiter' => ',',
+      'header_rows' => 1,
+      'embedded_newlines' => TRUE,
+    );
+
+    $this->source = new MigrateSourceCSV($source, $columns, $options);
+
     $this->map = new MigrateSQLMap($this->machineName,
       array(
         'p_page_id' => array(
