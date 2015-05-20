@@ -855,3 +855,10 @@ function rbkc_deploy_update_7071() {
 function rbkc_deploy_update_7072() {
   module_enable(array('wysiwyg_tpr'), TRUE);
 }
+
+/**
+ * Switch on the wysiwyg_tpr module.
+ */
+function rbkc_deploy_update_7073() {
+  module_enable(array('wysiwyg_tools_plus'), TRUE);
+}
