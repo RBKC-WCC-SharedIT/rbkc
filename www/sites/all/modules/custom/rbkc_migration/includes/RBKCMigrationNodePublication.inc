@@ -36,4 +36,21 @@ class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
 
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
   }
+
+  public function prepareRow($row) {
+    $row->template = trim($row->template);
+
+    if ('rf-pub-parent' !== $row->template && 'rf-pub-child' !== $row->template) {
+      return FALSE;
+    }
+
+    if (FALSE == parent::prepareRow($row)) {
+      return FALSE;
+    }
+
+    $row->body_html = self::extractNodeFromXML($row->body, 'content');
+    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
+    $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
+    return TRUE;
+  }
 }

@@ -54,13 +54,6 @@ class RBKCBaseNodeMigration extends Migration {
     $this->addFieldMapping('uid')->defaultValue(1);
   }
 
-  public function prepareRow($row) {
-    $row->body_html = self::extractNodeFromXML($row->body, 'content');
-    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
-    $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
-    return TRUE;
-  }
-
   public function complete($entity, stdClass $row) {
     $this->handleRedirect($entity, $row);
   }

@@ -43,8 +43,6 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
   }
 
-
-
   public function prepareRow($row) {
     $row->template = trim($row->template);
     if ('rf-answer-planning' !== $row->template && 'rf-answer-generic' !== $row->template) {
@@ -56,6 +54,9 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     }
 
     $row->contact_department_html = $this->extractNodeFromXML($row->body, 'contactbutton');
+    $row->body_html = self::extractNodeFromXML($row->body, 'content');
+    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
+    $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
     return TRUE;
   }
 
