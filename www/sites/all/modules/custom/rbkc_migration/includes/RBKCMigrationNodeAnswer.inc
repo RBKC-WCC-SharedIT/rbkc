@@ -59,58 +59,6 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     return TRUE;
   }
 
-  protected static function transformCreatedDate($date) {
-    return strtotime($date);
-  }
-
-  protected static function resolveServiceHubTerm($path) {
-    if (!$path) {
-      return array();
-    }
-
-    if (FALSE === strpos($path, '/')) {
-      return array();
-    }
-
-    $parts = explode('/', $path);
-    array_pop($parts);
-
-    $vocabulary_name = 'service_hub';
-    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
-    if (FALSE === $vocabulary) {
-      return array();
-    }
-
-    return self::recurseServiceHubTerms($parts, $vocabulary);
-  }
-
-  protected static function recurseServiceHubTerms(array $parts, stdClass $vocabulary, stdClass $parent = NULL) {
-    $part = array_shift($parts);
-
-    $term_name = static::resolveTermMapping($part);
-
-    $terms = taxonomy_get_term_by_name($term_name, $vocabulary->machine_name);
-    if (count($terms)) {
-      $term = array_shift($terms);
-    }
-
-    if (!isset($term) && !is_object($term)) {
-      $term = new stdClass();
-      $term->vid = $vocabulary->vid;
-      $term->name = $term_name;
-      if (!is_null($parent)) {
-        $term->parent = $parent->tid;
-      }
-      taxonomy_term_save($term);
-    }
-
-    if (count($parts)) {
-      return self::recurseServiceHubTerms($parts, $vocabulary, $term);
-    }
-
-    return $term->name;
-  }
-
   protected function resolveContactDepartment($contact_button_html) {
     if (!$contact_button_html) {
       return NULL;
