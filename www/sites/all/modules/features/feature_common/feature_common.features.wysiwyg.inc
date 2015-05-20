@@ -76,6 +76,8 @@ function feature_common_wysiwyg_default_profiles() {
           'dndck4' => 1,
         ),
         'drupal' => array(
+          'accordion' => 1,
+          'accordion_header' => 1,
           'break' => 1,
         ),
       ),
