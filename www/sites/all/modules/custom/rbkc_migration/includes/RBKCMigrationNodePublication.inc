@@ -3,7 +3,11 @@
 /**
  * @file
  *
- * Migrate insights.
+ * Migrate publication parent and child pages.
+ */
+
+/**
+ * Class RBKCMigrationNodePublication
  */
 class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
   public function __construct(array $arguments) {

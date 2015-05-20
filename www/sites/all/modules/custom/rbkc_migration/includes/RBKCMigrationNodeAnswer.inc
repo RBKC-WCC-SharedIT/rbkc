@@ -3,7 +3,15 @@
 /**
  * @file
  *
- * Migrate insights.
+ * Migrate answer pages.
+ */
+
+/**
+ * Class RBKCMigrationNodeAnswer
+ *
+ * This migration creates stubs for internal links (ILINK's) it encounters,
+ * the content type of the stub is determined by looking up the Alterian
+ * template and mapping that against our content types.
  */
 class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
   public function __construct(array $arguments) {

@@ -3,7 +3,11 @@
 /**
  * @file
  *
- * Migrate answer pages.
+ * Base node migration class.
+ */
+
+/**
+ * Class RBKCBaseNodeMigration
  */
 class RBKCBaseNodeMigration extends Migration {
   public function __construct(array $arguments) {
