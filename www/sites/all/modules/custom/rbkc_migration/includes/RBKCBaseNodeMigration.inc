@@ -348,4 +348,29 @@ class RBKCBaseNodeMigration extends Migration {
 
     return $term->name;
   }
+
+  protected function createNodeStub($source_id) {
+    $node_type = self::templateLookUp($source_id);
+
+    if (is_null($node_type)) {
+      syslog(LOG_WARNING, sprintf('Template lookup returned a non-string value for %d.', $source_id));
+      return NULL;
+    }
+
+    $node = new stdClass();
+    $node->title = t('Stub for @id', array('@id' => $source_id));
+    if (self::contentTypeHasBody($node_type)) {
+      $node->body[LANGUAGE_NONE][0]['value'] = t('Stub body');
+    }
+    $node->language = LANGUAGE_NONE;
+    $node->type = $node_type;
+    $node->uid = 1;
+    $node->status = 0;
+    node_save($node);
+    return $node;
+  }
+
+  protected static function contentTypeHasBody($type) {
+    return (is_null(field_info_instance('node', 'body', $type))) ? FALSE : TRUE;
+  }
 }
