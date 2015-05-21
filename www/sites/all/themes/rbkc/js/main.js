@@ -118,12 +118,12 @@
 
   function commsHeight() {  //make comms panels correct height when no flexbox support
     if  (!$('html').hasClass('flexbox')) {
-      var newsBoxHeight = $('.newsbox-news').outerHeight();
+      var newsBoxHeight = $('.comms__news').outerHeight();
       //console.log(newsBoxHeight);
-      var imgBoxHeight = $('.newsbox-img').outerHeight();
+      var imgBoxHeight = $('.comms__img').outerHeight();
       var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
       //console.log(blogBoxHeight);
-      $('.lblog .newsbox-item ').css('height', blogBoxHeight + "px");
+      $('.comms__feature .comms__item').css('height', blogBoxHeight + "px");
     }
   }
 
@@ -138,18 +138,17 @@
       responsive: [
         {
           breakpoint: 700,
-          settings: {
-          slidesToShow: 2,
-          swipe: true
-          }
+					settings: {
+						slidesToShow: 2,
+						swipe: true
+					}
         },
         {
           breakpoint: 560,
           settings: {
-          slidesToShow: 1,
-          swipe: true,
-
-          }
+						slidesToShow: 1,
+						swipe: true
+					}
         }
       ]
     });
