@@ -349,7 +349,7 @@ class RBKCBaseNodeMigration extends Migration {
     return $term->name;
   }
 
-  protected function createNodeStub($source_id) {
+  protected function createNodeStub($source_id, array $properties = NULL) {
     $node_type = self::templateLookUp($source_id);
 
     if (is_null($node_type)) {
@@ -366,6 +366,13 @@ class RBKCBaseNodeMigration extends Migration {
     $node->type = $node_type;
     $node->uid = 1;
     $node->status = 0;
+
+    if (!is_null($properties)) {
+      foreach ($properties as $key => $value) {
+        $node->{$key} = $value;
+      }
+    }
+
     node_save($node);
     return $node;
   }
