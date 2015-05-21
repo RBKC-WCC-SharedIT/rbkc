@@ -820,31 +820,15 @@ a.footerglobal__contact:hover,
 }
 
 /*** accordion styles - rewrite SP ***/
-.accordion.close {
-background-image:  url('../images/refresh/accordion_close_icon.png');
-display: visible;
-}
-/* initially hides content.  Can't have a specific class as accordion element classes are added automatically for editors using  */
-.js .accordion + ul,
-.js .accordion + div {
-  position:absolute;
-  visibility:hidden;
-}
-ul.accordionContents.show,
-div.accordionContents.show {
-  position: static;
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s, opacity 0.4s linear;
-}
-.accordionContents {
-  opacity: 0;
-  padding: 0;
-}
-.accordionContents li {
-  clear:left;
-}
 
+.acc-head .collapsed {
+  background-image:  url('../images/refresh/accordion_open_icon.png');
+  padding-left: 20px;
+}
+.acc-head .expanded {
+  background-image:  url('../images/refresh/accordion_close_icon.png');
+  padding-left: 20px;
+}
 
 /****************************************************/
 /*                   MODULE RULES                   */
