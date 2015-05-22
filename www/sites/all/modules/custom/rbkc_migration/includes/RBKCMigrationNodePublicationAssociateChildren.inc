@@ -103,7 +103,8 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
 
     foreach ($linked_page_ids as $page_id) {
       if ($nid = self::lookupDestinationIDWrapper($page_id)) {
-        $this->children + array($parent_nid => $page_id);
+        syslog(LOG_WARNING, sprintf('Adding an entry into the children array, key (nid) is %s and page_id is %s', $parent_nid, $page_id));
+        $this->children[$nid] = $page_id;
       }
     }
 
@@ -144,7 +145,9 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
   }
 
   protected function lookupDestinationIDWrapper($p_page_id) {
-    $map = $this->getMap();
+    $migrations = migrate_migrations();
+    $publication_migration = $migrations['RBKCMigrationNodePublication'];
+    $map = $publication_migration->getMap();
     $result = $map->lookupDestinationID(array($p_page_id));
     if (is_null($result)) {
       syslog(LOG_WARNING, sprintf('Failed to find a destination nid for the ilink: %s whilst associating book children pages.', $p_page_id));
