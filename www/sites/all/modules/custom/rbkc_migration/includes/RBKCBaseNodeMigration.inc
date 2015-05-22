@@ -217,7 +217,7 @@ class RBKCBaseNodeMigration extends Migration {
       ->fetchField();
 
     if (FALSE === $template) {
-      syslog(LOG_WARNING, sprintf('Unable to retrieve the template for %d', $page_id));
+      syslog(LOG_WARNING, sprintf('No row in the source data for p_page_id = %d', $page_id));
       return NULL;
     }
 
@@ -353,7 +353,6 @@ class RBKCBaseNodeMigration extends Migration {
     $node_type = self::templateLookUp($source_id);
 
     if (is_null($node_type)) {
-      syslog(LOG_WARNING, sprintf('Template lookup returned a non-string value for %d.', $source_id));
       return NULL;
     }
 
