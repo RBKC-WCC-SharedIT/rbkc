@@ -47,6 +47,7 @@ features[variable][] = menu_parent_servicehub
 features[variable][] = node_options_servicehub
 features[variable][] = node_preview_servicehub
 features[variable][] = node_submitted_servicehub
+features[variable][] = pathauto_node_servicehub_pattern
 features[variable][] = short_title_enable_servicehub
 features[variable][] = workbench_moderation_default_state_servicehub
 features[variable][] = workbench_scheduler_servicehub
