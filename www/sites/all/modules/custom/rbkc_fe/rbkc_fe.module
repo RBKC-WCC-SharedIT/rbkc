@@ -17,3 +17,109 @@ function rbkc_fe_block_view_google_appliance_ga_related_searches_alter(&$data, $
     $data['content'] = '<div class="related-search-terms"><p>' . t('Related search phrases:') . '</p>' . $data['content'] . '</div>';
   }
 }
+
+/**
+ * Implements hook_scald_contexts().
+ */
+function rbkc_fe_scald_contexts() {
+  return array(
+    'image_with_caption' => array(
+      'title'           => t('Image with Caption'),
+      'description'     => t('Render an image with a caption below.'),
+      'render_language' => 'XHTML',
+      'parseable'       => TRUE,
+      'hidden'          => FALSE,
+      'formats'    => array(
+        'image' => array('*'),
+      ),
+      'type_format' => array(
+        'image' => array('transcoder' => 'group-rbkc'),
+      ),
+    ),
+    'image_without_caption' => array(
+      'title'           => t('Image without Caption'),
+      'description'     => t('Render an image without a caption.'),
+      'render_language' => 'XHTML',
+      'parseable'       => TRUE,
+      'hidden'          => FALSE,
+      'formats'    => array(
+        'image' => array('*'),
+      ),
+      'type_format' => array(
+        'image' => array('transcoder' => 'style-inline_image'),
+      ),
+    ),
+    'file_with_size' => array(
+      'title'           => t('File with Size'),
+      'description'     => t('Render a file including its size.'),
+      'render_language' => 'XHTML',
+      'parseable'       => TRUE,
+      'hidden'          => FALSE,
+      'formats'    => array(
+        'file' => array('*'),
+      )
+    ),
+  );
+}
+
+/**
+ * Implements hook_scald_wysiwyg_context_list_alter().
+ */
+function rbkc_fe_scald_wysiwyg_context_list_alter(&$contexts) {
+  foreach ($contexts as $context => $type) {
+    if($context != 'image') {
+      unset($contexts[$context]['image_with_caption']);
+      unset($contexts[$context]['image_without_caption']);
+    }
+    if($context != 'file') {
+      unset($contexts[$context]['file_with_size']);
+    }
+  }
+}
+
+/**
+ * Implements hook_scald_player().
+ */
+function rbkc_fe_scald_player() {
+  return array(
+    'image_with_caption' => array(
+      'name' => 'Image with Caption',
+      'description' => 'Player for image with caption',
+      'type' => array('image'),
+      'settings' => array(
+        'classes' => '',
+        'caption' => '[atom:title], by [atom:author]',
+      ),
+    ),
+    'image_without_caption' => array(
+      'name' => 'Image without Caption',
+      'description' => 'Player for image without caption',
+      'type' => array('image'),
+      'settings' => array(
+        'classes' => '',
+        'caption' => '[atom:title], by [atom:author]',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_scald_render().
+ */
+function rbkc_fe_scald_render($atom, $context, $options, $mode) {
+  switch($context) {
+    case 'image_without_caption':
+      $output = $atom->rendered->player;
+    break;
+    case 'image_with_caption':
+      $output = '<div class="image-cap dnd-atom-wrapper type-image context-full" contenteditable="false">';
+      $output .= $atom->rendered->player;
+      $output .= '<div class="image-cap__text dnd-legend-wrapper" contenteditable="true"><div class="meta">' . $atom->field_image_caption['und'][0]['safe_value'] . '</div>';
+      $output .= '</div></div>';
+    break;
+    case 'file_with_size':
+      $output = '<a class="docLink-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '<br></a> [' . substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1) . '] (File size ' . format_size($atom->base_entity->filesize) . ')';
+    break;
+  }
+  return $output;
+}
