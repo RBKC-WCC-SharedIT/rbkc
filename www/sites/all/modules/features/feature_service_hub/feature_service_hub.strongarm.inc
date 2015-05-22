@@ -73,6 +73,9 @@ function feature_service_hub_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'link_field' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -103,7 +106,7 @@ function feature_service_hub_strongarm() {
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '10',
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),

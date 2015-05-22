@@ -130,6 +130,16 @@
 .quicklinks {
   border-top: solid #58D2C4 4px;
 }
+.quicklinks__list-one li:first-child a {
+  padding-top: 24px;
+  padding-top: 2rem;
+  background-position: 1rem 60%;
+}
+.quicklinks__list-two li:last-child a {
+  padding-bottom: 2rem;
+  padding-bottom: 32px;
+  background-position: 1rem 35%;
+}
 
 /* --- List of services --- */
 .servicelist a {
@@ -636,38 +646,38 @@ a.servicelist__viewall {
 
 @media only screen and (min-width: 600px) {
 
-  .show600 {
-    position:static;
-    visibility: visible;
-  }
+	.show600 {
+		position:static;
+		visibility: visible;
+	}
 
-  .servicelist__desc {
-    display: inline;
-    padding-left: 8px;
-  }
+	.servicelist__desc {
+		display: inline;
+		padding-left: 8px;
+	}
 
-  /* quicklinks (I need to...) ( do so many of these styles need to be extended iconlinks classes ?)*/
-  .quicklinks__list-two,
-  .quicklinks__list-one {
-    width: 50%;
-    float: left;
-    padding: 0 16px 16px 16px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .quicklinks a,
-  .quicklinks .first,
-  .quicklinks .last {
-    padding: 10px 16px 10px 60px;
-    background-size: 25px;
-    background-position: 1rem 50%;
-  }
-  .quicklinks li:last-child a{
-    border-bottom: 0;
-  }
-  .quicklinks__list-two {
-    float: right;
-  }
+	/* quicklinks (I need to...) ( do so many of these styles need to be extended iconlinks classes ?)*/
+	.quicklinks__list-two,
+	.quicklinks__list-one {
+		width: 50%;
+		float: left;
+		padding: 0 16px 16px 16px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.quicklinks a,
+  .quicklinks__list-one li:first-child a,
+	.quicklinks__list-two li:last-child a {
+		padding: 10px 16px 10px 60px;
+		background-size: 25px;
+		background-position: 1rem 50%;
+	}
+	.quicklinks li:last-child a {
+		border-bottom: 0;
+	}
+	.quicklinks__list-two {
+		float: right;
+	}
 
 } /* end media query */
 

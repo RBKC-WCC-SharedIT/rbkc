@@ -207,6 +207,11 @@ function rbkc_preprocess_node(&$vars) {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__top';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__top';
   }
+
+  if ($vars['view_mode'] == 'link_field') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__link';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__link';
+  }
 }
 
 /**
