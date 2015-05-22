@@ -849,21 +849,19 @@ a.footerglobal__contact:hover,
   background-color: #f4fcfb;
   border-bottom: solid #58d2c4 1px;
 }
-.iconlinks .first {
-  padding-top: 24px;
-  padding-top: 2rem;
-  background-position: 1rem 60%;
-}
-.iconlinks .last {
-  padding-bottom: 2rem;
-  padding-bottom: 32px;
-  background-position: 1rem 35%;
-}
 .iconlinks--top-tasks {
   margin-bottom: 36px;
   margin-bottom: 2.25rem;
 }
-.iconlinks--top-tasks .last {
+.iconlinks--top-tasks li:first-child a {
+  padding-top: 24px;
+  padding-top: 2rem;
+  background-position: 1rem 60%;
+}
+.iconlinks--top-tasks li:last-child a {
+  padding-bottom: 2rem;
+  padding-bottom: 32px;
+  background-position: 1rem 35%;
   border-bottom: solid #58d2c4 1px;
 }
 
@@ -2559,8 +2557,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
   /*** service hub modules ***/
   .iconlinks--top-tasks a,
-  .iconlinks--top-tasks .first,
-  .iconlinks--top-tasks .last {
+  .iconlinks--top-tasks li:first-child a,
+  .iconlinks--top-tasks li:last-child a {
     border: solid #58d2c4 1px;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
