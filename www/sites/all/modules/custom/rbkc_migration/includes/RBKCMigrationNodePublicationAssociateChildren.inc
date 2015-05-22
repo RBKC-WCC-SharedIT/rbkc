@@ -73,7 +73,7 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     }
 
     $this->children = array();
-    $this->gatherChidren($row->body, $parent_nid);
+    $this->gatherChildren($row->body, $parent_nid);
     reset($this->children);
 
     foreach (array_keys($this->children) as $child_nid) {
