@@ -10,6 +10,49 @@
 function feature_images_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'scald_atom-image-field_image_caption'
+  $field_instances['scald_atom-image-field_image_caption'] = array(
+    'bundle' => 'image',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'scald_atom',
+    'field_name' => 'field_image_caption',
+    'label' => 'Image Caption',
+    'required' => 0,
+    'settings' => array(
+      'context' => 'debug',
+      'context_default' => 'full',
+      'dnd_enabled' => 0,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'mee_enabled' => 0,
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 34,
+    ),
+  );
+
   // Exported field_instance: 'scald_atom-image-scald_authors'
   $field_instances['scald_atom-image-scald_authors'] = array(
     'bundle' => 'image',
@@ -19,9 +62,8 @@ function feature_images_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 1,
       ),
     ),
@@ -52,9 +94,8 @@ function feature_images_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 2,
       ),
     ),
@@ -172,6 +213,7 @@ function feature_images_field_default_field_instances() {
   t('Authors');
   t('Homepage of the Author');
   t('Image');
+  t('Image Caption');
   t('Tags');
   t('URL');
 
