@@ -76,9 +76,11 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     $this->gatherChildren($row->body, $parent_nid);
     reset($this->children);
 
+    $weight = 1;
     foreach (array_keys($this->children) as $child_nid) {
       if ($parent_nid !== $child_nid) {
-        self::setParent($child_nid, $parent_nid);
+        self::setParent($child_nid, $parent_nid, $weight);
+        $weight++;
       }
     }
 
@@ -158,9 +160,10 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     return $nid;
   }
 
-  public static function setParent($child_nid, $parent_nid) {
+  public static function setParent($child_nid, $parent_nid, $weight) {
     $node = node_load($child_nid);
     $node->book['bid'] = $parent_nid;
+    $node->book['weight'] = $weight;
     node_save($node);
   }
 
