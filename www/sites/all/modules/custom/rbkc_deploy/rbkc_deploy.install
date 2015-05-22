@@ -862,3 +862,12 @@ function rbkc_deploy_update_7072() {
 function rbkc_deploy_update_7073() {
   module_enable(array('wysiwyg_tools_plus'), TRUE);
 }
+
+/**
+ * Resolve can't change field type issue.
+ */
+function rbkc_deploy_update_7074() {
+  field_delete_field('field_other_popular_content');
+  field_delete_field('field_popular_tasks');
+  features_revert();
+}
