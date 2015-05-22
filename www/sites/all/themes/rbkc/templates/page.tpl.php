@@ -131,7 +131,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getTitle() + getHub());
 //-->
 </script>
 
-<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php if (isset($service_area_link)): ?><?php print $statHub."."; ?><?php endif; ?><?php print $statTitle; ?>" width="1" height="1" alt="" /></div>
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php if (isset($service_area_link)): ?><?php print "$statHub.'.'"; ?><?php endif; ?><?php print $statTitle; ?>" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
