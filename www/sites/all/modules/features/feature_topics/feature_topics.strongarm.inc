@@ -120,6 +120,13 @@ function feature_topics_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_pattern';
+  $strongarm->value = '[node:field-service-hub:parents:join-path]/[node:title]';
+  $export['pathauto_node_topic_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'short_title_enable_topic';
   $strongarm->value = 1;
   $export['short_title_enable_topic'] = $strongarm;
