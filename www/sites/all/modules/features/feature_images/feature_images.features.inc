@@ -31,6 +31,21 @@ function feature_images_ctools_plugin_api($module = NULL, $api = NULL) {
 function feature_images_image_default_styles() {
   $styles = array();
 
+  // Exported image style: inline_image.
+  $styles['inline_image'] = array(
+    'label' => 'Inline Image',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 165,
+          'height' => 150,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: manual_crop.
   $styles['manual_crop'] = array(
     'label' => 'Manual Crop',
