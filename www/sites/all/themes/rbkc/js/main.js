@@ -2,7 +2,6 @@
 
   var headerMob,
       headerDesk,
-      stylePDF,
   //  accordion,
       addViewAllMore,
       addViewAllElsewhere,
@@ -45,28 +44,6 @@
       }
     });
   }
-
-  function stylePDF() {
-    $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
-      var linkElement = $(this);
-      var linkText = linkElement.text();
-      var linkHref =  $(this).attr('href');
-      var linkParent = $(this).parents("li:first, p:first");
-      // adding a class to the link's parent
-      linkParent.addClass("docLink");
-      $('<br>').appendTo(linkElement);
-      // Create the Icon with the duplicated link
-      var Icon =
-        $('<a />', {
-          'class': 'docLink-icon',
-          'href' : linkHref,
-          // to hide from screen reader
-          'role' : 'presentation',
-          'tabindex' : "-1"
-        }).prependTo(linkParent);
-    }); // end each function
-  } // end stylePDF
-
 
   // where there are more than three items in menu add 'view all'
   function addViewAll() {
@@ -189,8 +166,6 @@ $(document).ready(function() {
 
   //assign click function to open the service menu in desktop
   assignOpenMenu( '#openServiceMenu', '.service-menu');
-
-  stylePDF();
 
   //accordion();
 

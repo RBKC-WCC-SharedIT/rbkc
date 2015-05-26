@@ -118,7 +118,7 @@ function rbkc_fe_scald_render($atom, $context, $options, $mode) {
       $output .= '</div></div>';
     break;
     case 'file_with_size':
-      $output = '<a class="docLink-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '<br></a> [' . substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1) . '] (File size ' . format_size($atom->base_entity->filesize) . ')';
+      $output = '<a class="docLink-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '</a><br> [' . substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1) . '] (File size ' . format_size($atom->base_entity->filesize) . ')';
     break;
   }
   return $output;
