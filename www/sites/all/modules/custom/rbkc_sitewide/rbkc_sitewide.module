@@ -92,3 +92,27 @@ function rbkc_sitewide_default_page_manager_handlers() {
   return rbkc_sitewide_get_ctools_exportables('page_manager_handlers', 'handler');
 }
 
+
+function rbkc_sitewide_theme($existing, $type, $theme, $path) {
+  return array(
+    'rbkc_feature_comms' => array(
+      'variables' => array(
+        'comms_label' => NULL,
+        'comms_image' => NULL,
+        'comms_title' => NULL,
+        'comms_body' => NULL,
+        'comms_link' => NULL
+      ),
+      'template' => 'rbkc-feature-comms',
+    ),
+    'rbkc_news_comms' => array(
+      'variables' => array(
+        'comms_label' => NULL,
+        'comms_image' => NULL,
+        'comms_link' => NULL,
+        'comms_items' => NULL
+      ),
+      'template' => 'rbkc-news-comms',
+    ),
+  );
+}
