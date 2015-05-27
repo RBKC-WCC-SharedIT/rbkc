@@ -46,11 +46,11 @@
   }
 
   // where there are more than three items in menu add 'view all'
-  function addViewAll() {
-    $('.related ul').each(function() {
+  $.fn.addViewAll = function() {
+    this.each(function() {
       var childNumber = $(this).find('li');
       if (childNumber.length > 3) {
-        $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
+        $('<p class="view-all">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
       }
     });
   }
@@ -59,10 +59,12 @@
     $(this).parent().find('li:gt(2)').slideToggle('150');
         if ($(this).text() === "View all") {
           $(this).text("View less").attr('title', 'View fewer links');/* Toggles the title text  */
+          $(this).addClass('open');
         }
         else {
           $(this).text("View all").attr('title', 'View more links');/* Toggles the title text */
-          }
+          $(this).removeClass('open');
+        }
   }   // end show/hide right hand column menu
 
 
@@ -170,12 +172,13 @@ $(document).ready(function() {
   //accordion();
 
   try {
-    addViewAll();
+    $('.related ul').addViewAll();
+    $('.sub-hub-topic ul').addViewAll();
   }
   catch(e){
   }
 
-  $('.related__viewall').on("click", showMore);
+  $('.view-all').on("click", showMore);
 
   checkPlaceholder();
 

@@ -66,7 +66,7 @@ function feature_topics_strongarm() {
             'visible' => FALSE,
           ),
           'top_three_topics' => array(
-            'weight' => '10',
+            'weight' => '5',
             'visible' => FALSE,
           ),
           'default' => array(

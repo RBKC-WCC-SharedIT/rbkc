@@ -134,43 +134,6 @@ function rbkc_menu_tree__book_toc_publication(&$variables) {
   return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
 }
 
-/**
- * Implements template_preprocess_field().
- */
-function rbkc_preprocess_field(&$variables, $hook) {
-  $element = $variables['element'];
-
-  if (!isset($element['#field_name'])) {
-    return;
-  }
-
-  if ('field_external_link' === $element['#field_name']) {
-    if ($node = menu_get_object()) {
-      switch ($node->type) {
-        case 'topic':
-          $variables['theme_hook_suggestions'][] = 'field__field_external_link__field_topic_link__topic';
-          break;
-
-        case 'subhub':
-          $variables['theme_hook_suggestions'][] = 'field__field_external_link__field_topic_link__subhub';
-          break;
-      }
-    }
-  }
-
-  if ('field_popular_tasks' !== $element['#field_name']) {
-    return;
-  }
-
-  if (!empty($variables['items'][0])) {
-    $variables['items'][0]['#element']['attributes']['class'] = 'first';
-  }
-
-  $last_index = (count($variables['items'])) - 1;
-  if (!empty($variables['items'][$last_index])) {
-    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
-  }
-}
 
 /**
  * Override menu link variables.
@@ -290,4 +253,29 @@ function rbkc_css_alter(&$css) {
 function rbkc_form_google_appliance_block_form_alter(&$form, &$form_state) {
   // Add placeholder text to the Google Appliance search form.
   $form['search_keys']['#attributes']['placeholder'] = t('Enter search terms…');
+}
+
+
+/**
+ * Implements template_preprocess_field().
+ */
+function rbkc_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  if (!isset($element['#field_name'])) {
+    return;
+  }
+
+  if ('field_popular_tasks' !== $element['#field_name']) {
+    return;
+  }
+
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['#element']['attributes']['class'] = 'first';
+  }
+
+  $last_index = (count($variables['items'])) - 1;
+  if (!empty($variables['items'][$last_index])) {
+    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
+  }
 }

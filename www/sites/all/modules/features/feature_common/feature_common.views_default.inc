@@ -95,6 +95,9 @@ function feature_common_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'answer' => 'answer',
+    'guide' => 'guide',
+    'publication' => 'publication',
     'topic' => 'topic',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -200,6 +203,17 @@ function feature_common_views_default_views() {
     1 => 0,
     3 => 0,
   );
+
+  /* Display: Curated topics */
+  $handler = $view->new_display('entityreference_view_widget', 'Curated topics', 'entityreference_view_widget_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['display_description'] = 'List of content available to sub hub pages';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $export['rbkc_entity_reference_utility'] = $view;
 
   return $export;
