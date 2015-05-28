@@ -10,6 +10,59 @@
 function feature_service_hub_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'field_collection_item-field_news_stories-field_internal_page_link'
+  $field_instances['field_collection_item-field_news_stories-field_internal_page_link'] = array(
+    'bundle' => 'field_news_stories',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_internal_page_link',
+    'label' => 'News story internal page',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference_view_widget',
+      'settings' => array(
+        'allow_duplicates' => 0,
+        'close_modal' => 0,
+        'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => 0,
+        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_5',
+        'view_mode' => 'full',
+      ),
+      'type' => 'entityreference_view_widget',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_news_stories-field_news_story_image'
   $field_instances['field_collection_item-field_news_stories-field_news_story_image'] = array(
     'bundle' => 'field_news_stories',
@@ -74,7 +127,7 @@ function feature_service_hub_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 31,
+      'weight' => 1,
     ),
   );
 
@@ -83,7 +136,7 @@ function feature_service_hub_field_default_field_instances() {
     'bundle' => 'field_news_stories',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Link to an external page',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -105,9 +158,10 @@ function feature_service_hub_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_news_story_link',
-    'label' => 'News story link',
+    'label' => 'News story external link',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -142,7 +196,7 @@ function feature_service_hub_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 32,
+      'weight' => 3,
     ),
   );
 
@@ -191,7 +245,7 @@ function feature_service_hub_field_default_field_instances() {
         'pass_argument' => 1,
         'pass_arguments' => '',
         'rendered_entity' => 0,
-        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_4',
+        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_5',
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
@@ -371,7 +425,7 @@ function feature_service_hub_field_default_field_instances() {
         'pass_argument' => 1,
         'pass_arguments' => '',
         'rendered_entity' => 0,
-        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_4',
+        'view' => 'rbkc_entity_reference_utility|entityreference_view_widget_5',
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
@@ -933,8 +987,9 @@ function feature_service_hub_field_default_field_instances() {
   t('Link to an external page');
   t('Link to an internal page');
   t('News stories');
+  t('News story external link');
   t('News story image');
-  t('News story link');
+  t('News story internal page');
   t('Other popular content');
   t('Please set the date and time editors should review this content.');
   t('Popular tasks');

@@ -101,16 +101,18 @@ function feature_common_views_default_views() {
     'topic' => 'topic',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-
-  /* Display: Link to topic */
-  $handler = $view->new_display('entityreference_view_widget', 'Link to topic', 'entityreference_view_widget_2');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
 
   /* Display: Internal Topic Link */
   $handler = $view->new_display('entityreference_view_widget', 'Internal Topic Link', 'entityreference_view_widget_3');
@@ -151,9 +153,21 @@ function feature_common_views_default_views() {
     'publication' => 'publication',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
 
-  /* Display: Internal Page Link */
-  $handler = $view->new_display('entityreference_view_widget', 'Internal Page Link', 'entityreference_view_widget_4');
+  /* Display: Internal Service Hub Link */
+  $handler = $view->new_display('entityreference_view_widget', 'Internal Service Hub Link', 'entityreference_view_widget_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -202,12 +216,24 @@ function feature_common_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
+    4 => 0,
   );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
 
-  /* Display: Curated topics */
-  $handler = $view->new_display('entityreference_view_widget', 'Curated topics', 'entityreference_view_widget_1');
+  /* Display: Internal Sub Hub link */
+  $handler = $view->new_display('entityreference_view_widget', 'Internal Sub Hub link', 'entityreference_view_widget_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'List of content available to sub hub pages';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+
+  /* Display: Internal link to any content type */
+  $handler = $view->new_display('entityreference_view_widget', 'Internal link to any content type', 'entityreference_view_widget_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';

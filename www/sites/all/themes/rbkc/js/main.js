@@ -46,10 +46,10 @@
   }
 
   // where there are more than three items in menu add 'view all'
-  $.fn.addViewAll = function() {
+  $.fn.addViewAll = function(numItems) {
     this.each(function() {
       var childNumber = $(this).find('li');
-      if (childNumber.length > 3) {
+      if (childNumber.length > numItems) {
         $('<p class="view-all">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
       }
     });
@@ -172,8 +172,8 @@ $(document).ready(function() {
   //accordion();
 
   try {
-    $('.related ul').addViewAll();
-    $('.sub-hub-topic ul').addViewAll();
+    $('.related ul').addViewAll(3);
+    $('.sub-hub-topic ul').addViewAll(3);
   }
   catch(e){
   }
