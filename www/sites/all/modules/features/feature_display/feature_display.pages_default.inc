@@ -52,7 +52,22 @@ function feature_display_default_page_manager_pages() {
       'top' => NULL,
       'content' => NULL,
       'bottom' => NULL,
-      'local_life' => NULL,
+      'local_life' => array(
+        'region_wrapper' => array(
+          'type' => '',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'separator' => array(
+          'active' => 0,
+          'element_type' => '',
+          'show_css' => 0,
+          'element_class' => '',
+        ),
+      ),
       'presstweet' => NULL,
       'menu' => array(
         'region_wrapper' => array(
@@ -93,6 +108,9 @@ function feature_display_default_page_manager_pages() {
     'comms' => array(
       'style' => 'planer',
     ),
+    'local_life' => array(
+      'style' => 'planer',
+    ),
   );
   $display->cache = array();
   $display->title = '';
@@ -100,21 +118,36 @@ function feature_display_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-df55d36d-a80b-45fa-94ca-d344b02e807d';
+    $pane->pid = 'new-36dc1e0c-d520-49f4-a52c-d26184b0df52';
     $pane->panel = 'comms';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'rbkc_news-panel_pane_1';
+    $pane->type = 'news_comms';
+    $pane->subtype = 'news_comms';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'comms_label' => 'Latest news',
+      'comms_image' => '193',
+      'itemone_title' => 'Portobello and Golborne Market celebrate 150 years of trading',
+      'itemone_body' => 'Come along to Portobello and Golborne Market on Saturday 30 May to join in the official anniversary celebration of the world famous market.',
+      'itemone_link' => 'http://www.rbkc.gov.uk/pressrelease/pressreleasepage.aspx?id=6679%20%20',
+      'itemtwo_title' => 'Bank holiday parking restrictions',
+      'itemtwo_body' => 'On bank holidays and public holidays, pay and display parking is free and anyone can park on a resident permit bay.',
+      'itemtwo_link' => 'http://www.rbkc.gov.uk/parkingtransportandstreets/parking/bankholidays.aspx',
+      'itemthree_title' => '',
+      'itemthree_body' => '',
+      'itemthree_link' => '',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => array(
         'element_wrapper' => array(
-          'type' => 'div',
+          'type' => '',
           'add_default_classes' => 0,
-          'class_enable' => 1,
-          'class' => 'comms__news col8',
+          'class_enable' => 0,
+          'class' => '',
           'attributes_enable' => 0,
           'attributes' => '',
         ),
@@ -141,25 +174,39 @@ function feature_display_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = 'df55d36d-a80b-45fa-94ca-d344b02e807d';
-    $display->content['new-df55d36d-a80b-45fa-94ca-d344b02e807d'] = $pane;
-    $display->panels['comms'][0] = 'new-df55d36d-a80b-45fa-94ca-d344b02e807d';
+    $pane->uuid = '36dc1e0c-d520-49f4-a52c-d26184b0df52';
+    $display->content['new-36dc1e0c-d520-49f4-a52c-d26184b0df52'] = $pane;
+    $display->panels['comms'][0] = 'new-36dc1e0c-d520-49f4-a52c-d26184b0df52';
     $pane = new stdClass();
-    $pane->pid = 'new-eec23489-e099-464d-9b7c-a3ab5f971927';
+    $pane->pid = 'new-c1bd0c3f-e4d0-44d2-8036-fad5f521f362';
     $pane->panel = 'comms';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'rbkc_events-panel_pane_1';
+    $pane->type = 'feature_comms';
+    $pane->subtype = 'feature_comms';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'comms_label' => 'Leader\'s blog',
+      'comms_image' => '185',
+      'comms_title' => 'Plenty of ways to stimulate my grey matter',
+      'comms_body' => '<p class="MsoNormal">I started the year with a resolution to get
+fitter and thankfully that’s in hand as you can see from my recent
+blog ‘Taking the plunge’.</p><p>So, buoyed by progress made on the physical front, my thoughts
+turned to what I could do for a mental workout. Fortunately I
+haven’t had to look far to find plenty of ways to stimulate the
+grey matter.</p>',
+      'comms_link' => 'https://rbkcleadersblog.wordpress.com/',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => array(
         'element_wrapper' => array(
-          'type' => 'div',
+          'type' => '',
           'add_default_classes' => 0,
-          'class_enable' => 1,
-          'class' => 'comms__feature',
+          'class_enable' => 0,
+          'class' => '',
           'attributes_enable' => 0,
           'attributes' => '',
         ),
@@ -186,9 +233,9 @@ function feature_display_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $pane->uuid = 'eec23489-e099-464d-9b7c-a3ab5f971927';
-    $display->content['new-eec23489-e099-464d-9b7c-a3ab5f971927'] = $pane;
-    $display->panels['comms'][1] = 'new-eec23489-e099-464d-9b7c-a3ab5f971927';
+    $pane->uuid = 'c1bd0c3f-e4d0-44d2-8036-fad5f521f362';
+    $display->content['new-c1bd0c3f-e4d0-44d2-8036-fad5f521f362'] = $pane;
+    $display->panels['comms'][1] = 'new-c1bd0c3f-e4d0-44d2-8036-fad5f521f362';
     $pane = new stdClass();
     $pane->pid = 'new-0fa0c162-891a-4732-a915-505e19e098ad';
     $pane->panel = 'content';
@@ -224,7 +271,33 @@ function feature_display_default_page_manager_pages() {
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => NULL,
+      'settings' => array(
+        'element_wrapper' => array(
+          'type' => '',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'element_title' => array(
+          'type' => '',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'element_content' => array(
+          'type' => '',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+      ),
+      'style' => 'planer',
     );
     $pane->css = array();
     $pane->extras = array();
