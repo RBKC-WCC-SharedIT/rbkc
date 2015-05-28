@@ -871,3 +871,10 @@ function rbkc_deploy_update_7074() {
   field_delete_field('field_popular_tasks');
   features_revert();
 }
+
+/**
+ * Resolve can't change field type issue.
+ */
+function rbkc_deploy_update_7075() {
+  module_enable(array('linkit_picker'), TRUE);
+}
