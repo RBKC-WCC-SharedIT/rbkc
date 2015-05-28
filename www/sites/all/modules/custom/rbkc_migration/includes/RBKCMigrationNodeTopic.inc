@@ -19,27 +19,25 @@ class RBKCMigrationNodeTopic extends RBKCBaseNodeMigration {
     $this->description = t('Import of topic content.');
 
     $destination = 'topic';
-    $this->destination = new migratedestinationnode($destination);
+    $this->destination = new MigrateDestinationNode($destination);
 
-    $this->addfieldmapping('body', 'body_html');
-    $this->addfieldmapping('body:summary', 'body:summary');
-    $this->addfieldmapping('body:format')->defaultvalue('full_html');
-    $this->addfieldmapping('body:language')->defaultvalue(language_none);
+    $this->addFieldMapping('body', 'body_html');
+    $this->addFieldMapping('body:summary', 'body:summary');
+    $this->addFieldMapping('body:format')->defaultValue('full_html');
+    $this->addFieldMapping('body:language')->defaultValue(LANGUAGE_NONE);
 
-    $this->addfieldmapping('status', 'status');
+    $this->addFieldMapping('status', 'status');
 
-    $this->addfieldmapping('field_service_hub', 'path')->callbacks(array(self, 'resolveservicehubterm'));
+    $this->addFieldMapping('field_service_hub', 'path')->callbacks(array(self, 'resolveservicehubterm'));
 
-    $this->addfieldmapping('field_short_title', 'field_short_title');
-    $this->addfieldmapping('field_short_title:language')->defaultvalue(language_none);
+    $this->addFieldMapping('field_short_title', 'field_short_title');
+    $this->addFieldMapping('field_short_title:language')->defaultValue(LANGUAGE_NONE);
 
-    $this->addfieldmapping('metatag_title', 'metatag_title');
-    $this->addfieldmapping('metatag_description', 'metatag_description');
-    $this->addfieldmapping('metatag_keywords', 'metatag_keywords');
+    $this->addFieldMapping('metatag_title', 'metatag_title');
+    $this->addFieldMapping('metatag_description', 'metatag_description');
+    $this->addFieldMapping('metatag_keywords', 'metatag_keywords');
 
-    $this->addfieldmapping('created', 'created')->callbacks(array(self, 'transformcreateddate'));
-
-    // field_topic_link (field collection) http://rbkc.vm/admin/structure/field-collections/field-topic-link/fields
+    $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformcreateddate'));
   }
 
   public function prepareRow($row) {
@@ -55,11 +53,6 @@ class RBKCMigrationNodeTopic extends RBKCBaseNodeMigration {
     $row->body_html = self::extractNodeFromXML($row->body, 'content');
     $row->body_html = $this->transformSourceLinkTokens($row->body_html);
     $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
-    self::processTopicText($row);
     return TRUE;
-  }
-
-  protected static function processTopicText($row) {
-    $topic_text = self::extractNodeFromXML($row->body, 'topictext');
   }
 }

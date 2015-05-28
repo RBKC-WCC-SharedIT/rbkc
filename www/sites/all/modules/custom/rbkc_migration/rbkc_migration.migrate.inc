@@ -51,6 +51,10 @@ function rbkc_migration_migrate_api() {
         'class_name' => 'RBKCMigrationNodeTopic',
         'group_name' => 'rbkc',
       ),
+      'RBKCMigrationNodeTopicFieldTopicLink' => array(
+        'class_name' => 'RBKCMigrationNodeTopicFieldTopicLink',
+        'group_name' => 'rbkc',
+      ),
       'RBKCMigrationEntityContactDepartments' => array(
         'class_name' => 'RBKCMigrationEntityContactDepartments',
         'group_name' => 'rbkc',

@@ -14,6 +14,7 @@ files[] = includes/RBKCMigrationNodePublication.inc
 files[] = includes/RBKCMigrationNodeServicehub.inc
 files[] = includes/RBKCMigrationNodeSubhub.inc
 files[] = includes/RBKCMigrationNodeTopic.inc
+files[] = includes/RBKCMigrationNodeTopicFieldTopicLink.inc
 files[] = includes/RBKCMigrationEntityContactDepartments.inc
 files[] = includes/RBKCMigrationNodePublicationAssociateChildren.inc
 files[] = handlers/MigrateRBKCHandler.inc

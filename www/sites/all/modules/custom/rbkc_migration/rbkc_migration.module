@@ -2,6 +2,14 @@
 
 /**
  * @file
- *
- * Purposely empty.
  */
+
+// Traits alone in files referenced in .info files don't seem to get loaded.
+require_once(drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'RBKCMigrationCommon.inc');
+
+///**
+// * Implements hook_node_insert().
+// */
+//function rbkc_migration_node_insert($node) {
+//  print_r($node); die();
+//}
