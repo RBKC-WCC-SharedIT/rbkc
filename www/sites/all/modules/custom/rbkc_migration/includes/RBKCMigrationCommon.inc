@@ -7,6 +7,25 @@
  */
 
 trait RBKCMigrationCommon {
+  public static function extractNodeFromXML($xml, $node) {
+    $content = '';
+
+    if (empty($xml)) {
+      return $content;
+    }
+
+    try {
+      $xml = new SimpleXMLElement($xml);
+    }
+    catch (Exception $e) {
+      syslog(LOG_ERR, sprintf('Failed to load source XML as SimpleXMLElement when looking for %s: %s', $node, $e->getMessage()));
+      return $content;
+    }
+
+    $content = (string) $xml->content->{$node};
+    return $content;
+  }
+
   protected function transformSourceLinkTokens($html) {
     $modifiers = 'i';
     $delimiter = '/';
