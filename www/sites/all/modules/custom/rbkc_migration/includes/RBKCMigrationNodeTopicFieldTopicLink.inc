@@ -23,7 +23,7 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
     $this->description = t('Migrate the internal and external topic links for the topic pages.');
     $this->dependencies = array('RBKCMigrationNodeTopic');
 
-    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
+    $source = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR .'RBKCFullPageTable.csv';
     $columns = array();
     $options = array(
       'enclosure' => '$',
@@ -38,17 +38,15 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
     $destination_key = MigrateDestinationNode::getKeySchema();
     $this->map = new MigrateSQLMap($this->machineName, $source_key, $destination_key);
 
-    $this->destination = new MigrateDestinationFieldCollection('field_topic_link', array('host_entity_type' => 'node'));
+    $this->destination = new RBKCMigrateDestinationFieldCollection('field_topic_link', array('host_entity_type' => 'node'));
 
-    $this->addFieldMapping('host_entity_id', 'RBKCMigrationNodeTopic')->sourceMigration('RBKCMigrationNodeTopic');
-
-    // Internal links field_internal_topic_link (entity reference)
-    // External links field_external_link (link) and field_external_link_teaser (long text)
-    $this->addSimpleMappings(array('field_external_link'));
-    $this->addSimpleMappings(array('field_external_link_teaser'));
-    $this->addSimpleMappings(array('field_internal_topic_link'));
+    $this->addFieldMapping('host_entity_id', 'p_page_id')->sourceMigration('RBKCMigrationNodeTopic');
+    $this->addSimpleMappings(array('field_collections'));
   }
 
+  /**
+   * Initialise the DomCrawler.
+   */
   protected function initCrawler() {
     $parts = array('lib', 'DomCrawler', 'Crawler.php');
     require_once(drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $parts));
@@ -56,11 +54,37 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
   }
 
   public function prepareRow($row) {
+    $row->template = trim($row->template);
+    if ('rf-topic-planning' !== $row->template) {
+      return FALSE;
+    }
+
+    if (FALSE == parent::prepareRow($row)) {
+      return FALSE;
+    }
+
     $this->crawler->clear();
     $this->processTopicText($row, $this->crawler);
+
+    if (empty($row->field_collections)) {
+      return FALSE;
+    }
+
+    return TRUE;
   }
 
-  protected function processTopicText($row, \Symfony\Component\DomCrawler\Crawler $crawler) {
+  /**
+   * Process the blob of HTML that is H2's, links and content and transform it
+   * into internal entity reference links or external links (with a teaser) all
+   * in a field collection for good measure.
+   *
+   * Using DomCrawler here as it makes more effort to the parse the input than
+   * SimpleXMLElement does.
+   *
+   * @param \stdClass $row
+   * @param \Symfony\Component\DomCrawler\Crawler $crawler
+   */
+  protected function processTopicText(stdClass $row, \Symfony\Component\DomCrawler\Crawler $crawler) {
     $topic_text = self::extractNodeFromXML($row->body, 'topictext');
     $crawler->add($topic_text);
 
@@ -91,24 +115,38 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
       return;
     }
 
-    $internal_link_delta = 0;
-    $external_link_delta = 0;
+    $delta = 0;
     foreach ($topics as $topic) {
       if (!isset($topic['title']) || !isset($topic['href'])) {
         continue;
       }
 
       if (FALSE === strpos($topic['href'], 'ILINK')) {
-        $row->field_external_link[LANGUAGE_NONE][$external_link_delta]['url'] = $topic['href'];
-        $row->field_external_link[LANGUAGE_NONE][$external_link_delta]['title'] = $topic['title'];
-        $row->field_external_link_teaser[LANGUAGE_NONE][$external_link_delta]['value'] = implode('', array_values($topic['content']));
-        $external_link_delta++;
+        if (!is_string($topic['href'])) {
+          continue;
+        }
+
+        $row->field_collections[$delta]['field_external_link'][LANGUAGE_NONE][0]['url'] = $topic['href'];
+        $row->field_collections[$delta]['field_external_link'][LANGUAGE_NONE][0]['title'] = $topic['title'];
+
+        $row->field_collections[$delta]['field_external_link_teaser'][LANGUAGE_NONE][0]['value'] = implode('', array_values($topic['content']));
+        $delta++;
       }
       else {
         $href = $this->transformSourceLinkTokens($topic['href']);
+
+        if (FALSE !== strpos($href, 'ILINK')) {
+          continue;
+        }
+
         $target_id = str_replace('/node/', '', $href);
-        $row->field_internal_topic_link[LANGUAGE_NONE][$internal_link_delta]['target_id'] = $target_id;
-        $internal_link_delta++;
+
+        if (!$target_id) {
+          continue;
+        }
+
+        $row->field_collections[$delta]['field_internal_topic_link'][LANGUAGE_NONE][0]['target_id'] = $target_id;
+        $delta++;
       }
     }
   }

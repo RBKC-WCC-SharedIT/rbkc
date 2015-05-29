@@ -5,6 +5,7 @@ core = 7.x
 
 dependencies[] = migrate
 files[] = rbkc_migration.migrate.inc
+files[] = includes/RBKCMigrateDestinationFieldCollection.inc
 files[] = includes/RBKCMigrationSourceCSV.inc
 files[] = includes/RBKCMigrationSourceDocumentsCSV.inc
 files[] = includes/RBKCBaseNodeMigration.inc
