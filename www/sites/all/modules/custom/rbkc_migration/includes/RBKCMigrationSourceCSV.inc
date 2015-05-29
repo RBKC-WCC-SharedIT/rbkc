@@ -29,6 +29,8 @@ class RBKCMigrationSourceCSV extends Migration {
     $this->addFieldMapping('p_parent_id', 'p_parent_id');
     $this->addFieldMapping('p_top_id', 'p_top_id');
     $this->addFieldMapping('template', 'template');
+    $this->addFieldMapping('body', 'body');
+    $this->addFieldMapping('url', 'path');
 
     $source_key = array(
       'p_page_id' => array(

@@ -3,24 +3,21 @@
 /**
  * @file
  *
- * Migrate insights.
+ * Migrate answer pages.
+ */
+
+/**
+ * Class RBKCMigrationNodeAnswer
+ *
+ * This migration creates stubs for internal links (ILINK's) it encounters,
+ * the content type of the stub is determined by looking up the Alterian
+ * template and mapping that against our content types.
  */
 class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
   public function __construct(array $arguments) {
     parent::__construct($arguments);
 
     $this->description = t('Import of answer content.');
-
-    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
-    $columns = array();
-    $options = array(
-      'enclosure' => '$',
-      'delimiter' => ',',
-      'header_rows' => 1,
-      'embedded_newlines' => TRUE,
-    );
-
-    $this->source = new MigrateSourceCSV($source, $columns, $options);
 
     $destination = 'answer';
     $this->destination = new MigrateDestinationNode($destination);
@@ -46,8 +43,6 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
   }
 
-
-
   public function prepareRow($row) {
     $row->template = trim($row->template);
     if ('rf-answer-planning' !== $row->template && 'rf-answer-generic' !== $row->template) {
@@ -59,58 +54,10 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     }
 
     $row->contact_department_html = $this->extractNodeFromXML($row->body, 'contactbutton');
-  }
-
-  protected static function transformCreatedDate($date) {
-    return strtotime($date);
-  }
-
-  protected static function resolveServiceHubTerm($path) {
-    if (!$path) {
-      return array();
-    }
-
-    if (FALSE === strpos($path, '/')) {
-      return array();
-    }
-
-    $parts = explode('/', $path);
-    array_pop($parts);
-
-    $vocabulary_name = 'service_hub';
-    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
-    if (FALSE === $vocabulary) {
-      return array();
-    }
-
-    return self::recurseServiceHubTerms($parts, $vocabulary);
-  }
-
-  protected static function recurseServiceHubTerms(array $parts, stdClass $vocabulary, stdClass $parent = NULL) {
-    $part = array_shift($parts);
-
-    $term_name = static::resolveTermMapping($part);
-
-    $terms = taxonomy_get_term_by_name($term_name, $vocabulary->machine_name);
-    if (count($terms)) {
-      $term = array_shift($terms);
-    }
-
-    if (!isset($term) && !is_object($term)) {
-      $term = new stdClass();
-      $term->vid = $vocabulary->vid;
-      $term->name = $term_name;
-      if (!is_null($parent)) {
-        $term->parent = $parent->tid;
-      }
-      taxonomy_term_save($term);
-    }
-
-    if (count($parts)) {
-      return self::recurseServiceHubTerms($parts, $vocabulary, $term);
-    }
-
-    return $term->name;
+    $row->body_html = self::extractNodeFromXML($row->body, 'content');
+    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
+    $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
+    return TRUE;
   }
 
   protected function resolveContactDepartment($contact_button_html) {
@@ -172,24 +119,5 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     }
 
     return (int) $contact_department->id;
-  }
-
-  protected function createNodeStub($source_id) {
-    $node_type = self::templateLookUp($source_id);
-
-    if (is_null($node_type)) {
-      syslog(LOG_WARNING, sprintf('Template lookup returned a non-string value for %d.', $source_id));
-      return NULL;
-    }
-
-    $node = new stdClass();
-    $node->title = t('Stub for @id', array('@id' => $source_id));
-    $node->body[LANGUAGE_NONE][0]['value'] = t('Stub body');
-    $node->language = LANGUAGE_NONE;
-    $node->type = $node_type;
-    $node->uid = 1;
-    $node->status = 0;
-    node_save($node);
-    return $node;
   }
 }

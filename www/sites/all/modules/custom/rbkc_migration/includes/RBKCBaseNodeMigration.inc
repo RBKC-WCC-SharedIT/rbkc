@@ -3,11 +3,26 @@
 /**
  * @file
  *
- * Migrate answer pages.
+ * Base node migration class.
+ */
+
+/**
+ * Class RBKCBaseNodeMigration
  */
 class RBKCBaseNodeMigration extends Migration {
   public function __construct(array $arguments) {
     parent::__construct($arguments);
+
+    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
+    $columns = array();
+    $options = array(
+      'enclosure' => '$',
+      'delimiter' => ',',
+      'header_rows' => 1,
+      'embedded_newlines' => TRUE,
+    );
+
+    $this->source = new MigrateSourceCSV($source, $columns, $options);
 
     $this->map = new MigrateSQLMap($this->machineName,
       array(
@@ -37,12 +52,6 @@ class RBKCBaseNodeMigration extends Migration {
     ));
 
     $this->addFieldMapping('uid')->defaultValue(1);
-  }
-
-  public function prepareRow($row) {
-    $row->body_html = self::extractNodeFromXML($row->body, 'content');
-    $row->body_html = $this->transformSourceLinkTokens($row->body_html);
-    return TRUE;
   }
 
   public function complete($entity, stdClass $row) {
@@ -118,6 +127,50 @@ class RBKCBaseNodeMigration extends Migration {
     return '/node/' . $nid;
   }
 
+  /**
+   * Find and replace occurrences of IDOC's in the source data.
+   *
+   * Regular expression pattern should match the following strings capturing
+   * only the document gui (the string that looks like a hash) but matching
+   * everything up to the final pipe:
+   *
+   * IDOC|{336da895-43dc-44d5-ad00-7f5867dfa87a},-1,33|
+   *
+   * @param $html
+   * @return mixed
+   */
+  protected function transformSourceDocumentTokens($html) {
+    $modifiers = 'i';
+    $delimiter = '/';
+    $pattern = $delimiter . '(?:IDOC\|{){1}([0-9a-zA-Z-]+)(?:}[,0-9-]+\|){1}' . $delimiter . $modifiers;
+    $result = preg_replace_callback($pattern, array($this, 'generateDocumentLinkFromSourceDocumentToken'), $html);
+
+    if (is_null($result)) {
+      syslog(LOG_WARNING, 'An error occurred whilst attempting to transform a legacy internal link.');
+      return $html;
+    }
+
+    return $result;
+  }
+
+  protected function generateDocumentLinkFromSourceDocumentToken(array $idoc) {
+    $path_to_idocs = '/wamdocs/';
+    $gui = $idoc[1];
+
+    $filename = db_select('rbkc_migration_documents', 'd')
+      ->fields('d', array('filename'))
+      ->condition('gui', $gui)
+      ->execute()
+      ->fetchField();
+
+    if (FALSE === $filename) {
+      syslog(LOG_WARNING, sprintf('Unable to retrieve a row for a gui of %s.', $gui));
+      return $idoc[0];
+    }
+
+    return $path_to_idocs . rawurlencode($filename);
+  }
+
   public function handleRedirect($entity, stdClass $row) {
     if (!empty($row->path)) {
       $redirect = new stdClass();
@@ -164,7 +217,7 @@ class RBKCBaseNodeMigration extends Migration {
       ->fetchField();
 
     if (FALSE === $template) {
-      syslog(LOG_WARNING, sprintf('Unable to retrieve the template for %d', $page_id));
+      syslog(LOG_WARNING, sprintf('No row in the source data for p_page_id = %d', $page_id));
       return NULL;
     }
 
@@ -174,7 +227,7 @@ class RBKCBaseNodeMigration extends Migration {
 
   protected static function resolveTermMapping($key) {
     $mappings = array(
-      'parkingtransportandstreets' => 'Parking, transports and streets',
+      'parkingtransportandstreets' => 'Parking, transport and streets',
       'binsandrecycling' => 'Bins and recycling',
       'planningandbuildingcontrol' => 'Planning and building control',
       'planningandconservation' => 'Planning and building control',
@@ -242,5 +295,88 @@ class RBKCBaseNodeMigration extends Migration {
       default:
         return NULL;
     }
+  }
+
+  protected static function transformCreatedDate($date) {
+    return strtotime($date);
+  }
+
+  protected static function resolveServiceHubTerm($path) {
+    if (!$path) {
+      return array();
+    }
+
+    if (FALSE === strpos($path, '/')) {
+      return array();
+    }
+
+    $parts = explode('/', $path);
+    array_pop($parts);
+
+    $vocabulary_name = 'service_hub';
+    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
+    if (FALSE === $vocabulary) {
+      return array();
+    }
+
+    return self::recurseServiceHubTerms($parts, $vocabulary);
+  }
+
+  protected static function recurseServiceHubTerms(array $parts, stdClass $vocabulary, stdClass $parent = NULL) {
+    $part = array_shift($parts);
+
+    $term_name = static::resolveTermMapping($part);
+
+    $terms = taxonomy_get_term_by_name($term_name, $vocabulary->machine_name);
+    if (count($terms)) {
+      $term = array_shift($terms);
+    }
+
+    if (!isset($term) && !is_object($term)) {
+      $term = new stdClass();
+      $term->vid = $vocabulary->vid;
+      $term->name = $term_name;
+      if (!is_null($parent)) {
+        $term->parent = $parent->tid;
+      }
+      taxonomy_term_save($term);
+    }
+
+    if (count($parts)) {
+      return self::recurseServiceHubTerms($parts, $vocabulary, $term);
+    }
+
+    return $term->name;
+  }
+
+  protected function createNodeStub($source_id, array $properties = NULL) {
+    $node_type = self::templateLookUp($source_id);
+
+    if (is_null($node_type)) {
+      return NULL;
+    }
+
+    $node = new stdClass();
+    $node->title = t('Stub for @id', array('@id' => $source_id));
+    if (self::contentTypeHasBody($node_type)) {
+      $node->body[LANGUAGE_NONE][0]['value'] = t('Stub body');
+    }
+    $node->language = LANGUAGE_NONE;
+    $node->type = $node_type;
+    $node->uid = 1;
+    $node->status = 0;
+
+    if (!is_null($properties)) {
+      foreach ($properties as $key => $value) {
+        $node->{$key} = $value;
+      }
+    }
+
+    node_save($node);
+    return $node;
+  }
+
+  protected static function contentTypeHasBody($type) {
+    return (is_null(field_info_instance('node', 'body', $type))) ? FALSE : TRUE;
   }
 }

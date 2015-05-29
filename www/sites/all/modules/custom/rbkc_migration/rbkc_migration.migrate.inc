@@ -19,6 +19,10 @@ function rbkc_migration_migrate_api() {
       ),
     ),
     'migrations' => array(
+      'RBKCMigrationSourceDocumentsCSV' => array(
+        'class_name' => 'RBKCMigrationSourceDocumentsCSV',
+        'group_name' => 'rbkc',
+      ),
       'RBKCMigrationSourceCSV' => array(
         'class_name' => 'RBKCMigrationSourceCSV',
         'group_name' => 'rbkc',
@@ -49,6 +53,10 @@ function rbkc_migration_migrate_api() {
       ),
       'RBKCMigrationEntityContactDepartments' => array(
         'class_name' => 'RBKCMigrationEntityContactDepartments',
+        'group_name' => 'rbkc',
+      ),
+      'RBKCMigrationNodePublicationAssociateChildren' => array(
+        'class_name' => 'RBKCMigrationNodePublicationAssociateChildren',
         'group_name' => 'rbkc',
       ),
     ),
