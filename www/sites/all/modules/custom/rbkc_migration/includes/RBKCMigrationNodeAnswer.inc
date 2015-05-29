@@ -1,12 +1,6 @@
 <?php
 
 /**
- * @file
- *
- * Migrate answer pages.
- */
-
-/**
  * Class RBKCMigrationNodeAnswer
  *
  * This migration creates stubs for internal links (ILINK's) it encounters,
@@ -14,10 +8,25 @@
  * template and mapping that against our content types.
  */
 class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
+  use RBKCMigrationCommon;
+  use RBKCMigrationHandleRedirect;
+
   public function __construct(array $arguments) {
     parent::__construct($arguments);
 
-    $this->description = t('Import of answer content.');
+    $this->description = t('Import answer pages.');
+    $this->dependencies = array('RBKCMigrationSourceContentCSV', 'RBKCMigrationSourceDocumentsCSV');
+
+    $source = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'RBKCSource' . 'Answer' . '.csv';
+
+    $columns = array();
+    $options = array(
+      'enclosure' => '$',
+      'delimiter' => ',',
+      'header_rows' => 1,
+      'embedded_newlines' => TRUE,
+    );
+    $this->source = new MigrateSourceCSV($source, $columns, $options);
 
     $destination = 'answer';
     $this->destination = new MigrateDestinationNode($destination);
@@ -26,29 +35,18 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     $this->addFieldMapping('body:summary', 'body:summary');
     $this->addFieldMapping('body:format')->defaultValue('full_html');
     $this->addFieldMapping('body:language')->defaultValue(LANGUAGE_NONE);
-
     $this->addFieldMapping('status', 'status');
-
-    $this->addFieldMapping('field_service_hub', 'path')->callbacks(array(self, 'resolveServiceHubTerm'));
-
+    $this->addFieldMapping('field_service_hub', 'path')->callbacks(array(self, 'callbackResolveServiceHubTerm'));
     $this->addFieldMapping('field_short_title', 'field_short_title');
     $this->addFieldMapping('field_short_title:language')->defaultValue(LANGUAGE_NONE);
-
-    $this->addFieldMapping('field_contact_department', 'contact_department_html')->callbacks(array($this, 'resolveContactDepartment'));
-
+    $this->addFieldMapping('field_contact_department', 'contact_department_html')->callbacks(array($this, 'callbackResolveContactDepartment'));
     $this->addFieldMapping('metatag_title', 'metatag_title');
     $this->addFieldMapping('metatag_description', 'metatag_description');
     $this->addFieldMapping('metatag_keywords', 'metatag_keywords');
-
-    $this->addFieldMapping('created', 'created')->callbacks(array(self, 'transformCreatedDate'));
+    $this->addFieldMapping('created', 'created')->callbacks(array(self, 'callbackTransformCreatedDate'));
   }
 
   public function prepareRow($row) {
-    $row->template = trim($row->template);
-    if ('rf-answer-planning' !== $row->template && 'rf-answer-generic' !== $row->template) {
-      return FALSE;
-    }
-
     if (FALSE == parent::prepareRow($row)) {
       return FALSE;
     }
@@ -60,7 +58,7 @@ class RBKCMigrationNodeAnswer extends RBKCBaseNodeMigration {
     return TRUE;
   }
 
-  protected function resolveContactDepartment($contact_button_html) {
+  protected function callbackResolveContactDepartment($contact_button_html) {
     if (!$contact_button_html) {
       return NULL;
     }

@@ -10,7 +10,7 @@ function rbkc_migration_schema() {
   $schema = array();
 
   // The source data from Alterian for lookup purposes.
-  $table_name = 'rbkc_migration_source';
+  $table_name = 'rbkc_migration_content';
   $schema[$table_name]['description'] = 'The page_id and template source data.';
   $schema[$table_name]['fields'] = array(
     'p_page_id' => array(

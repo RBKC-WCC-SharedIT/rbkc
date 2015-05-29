@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Field collection migration for the topic page migration.
- *
  * Class RBKCMigrationNodeTopicFieldTopicLink
+ *
+ * Field collection migration for the topic page migration, this is the second
+ * half of the two pass migration for topic pages.
  */
 
-class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
+class RBKCMigrationNodeTopicFieldTopicLink extends RBKCBaseNodeMigration {
   use RBKCMigrationCommon;
 
   /**
@@ -21,9 +22,9 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
     $this->initCrawler();
 
     $this->description = t('Migrate the internal and external topic links for the topic pages.');
-    $this->dependencies = array('RBKCMigrationNodeTopic');
+    $this->dependencies = array('RBKCMigrationSourceContentCSV', 'RBKCMigrationSourceDocumentsCSV', 'RBKCMigrationNodeTopic');
 
-    $source = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR .'RBKCFullPageTable.csv';
+    $source = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'RBKCSource' . 'Topic' . '.csv';
     $columns = array();
     $options = array(
       'enclosure' => '$',
@@ -31,12 +32,7 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
       'header_rows' => 1,
       'embedded_newlines' => TRUE,
     );
-
     $this->source = new MigrateSourceCSV($source, $columns, $options);
-
-    $source_key = array('p_page_id' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'alias' => 'import'));
-    $destination_key = MigrateDestinationNode::getKeySchema();
-    $this->map = new MigrateSQLMap($this->machineName, $source_key, $destination_key);
 
     $this->destination = new RBKCMigrateDestinationFieldCollection('field_topic_link', array('host_entity_type' => 'node'));
 
@@ -54,11 +50,6 @@ class RBKCMigrationNodeTopicFieldTopicLink extends Migration {
   }
 
   public function prepareRow($row) {
-    $row->template = trim($row->template);
-    if ('rf-topic-planning' !== $row->template) {
-      return FALSE;
-    }
-
     if (FALSE == parent::prepareRow($row)) {
       return FALSE;
     }
