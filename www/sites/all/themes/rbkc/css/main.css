@@ -2547,10 +2547,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     padding: 0;
     right: 0;
     background: #fff url('../images/refresh/search_submit_30px.png') no-repeat;
-    position:static;
-    float:right;
-    margin: 0;
-    left: 0;
+    position: absolute;
+    right: 16px;
   }
   .search--headerglobal .search__submit:hover {
   background-position: center -31px;
@@ -3310,24 +3308,6 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 /*** for header in IE ***/
 .lt-ie9 .headerglobal .logo {
   background:transparent url('../images/refresh/rbkc_logo_ie8.png') 0 0 no-repeat;
-}
-
-/* twitter logo - blue */
-.btbird {
-  background: url('../images/refresh/btbird.svg') 0 0 no-repeat;
-}
-/* twitter logo - white */
-.wtbird {
-  background: url('../images/refresh/wtbird.svg') 0 0 no-repeat;
-}
-
-/* white facebook icon, F alone, no box */
-.wficon {
-  background: url('../images/refresh/wficon.svg') 0 0 no-repeat;
-}
-/* white youtube icon */
-.wytube {
-  background: url('../images/refresh/wytube.svg') 0 0 no-repeat;
 }
 
 /****************************************************/
