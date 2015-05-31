@@ -48,7 +48,7 @@ trait RBKCMigrationCommon {
   protected function transformSourceLinkTokens($html) {
     $modifiers = 'i';
     $delimiter = '/';
-    $pattern = $delimiter . 'ILINK\|(\d+),(?:[,|_]{1}[a-zA-Z0-9_?,]+)?\|' . $delimiter . $modifiers;
+    $pattern = $delimiter . 'ILINK\|(\d+),([_a-zA-Z]*)(?:,)*([a-zA-Z0-9\?]*)\|' . $delimiter . $modifiers;
     $result = preg_replace_callback($pattern, array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
 
     if (is_null($result)) {
@@ -99,7 +99,13 @@ trait RBKCMigrationCommon {
       return $result;
     }
 
-    return drupal_get_path_alias('node/' . $result);
+    $anchor = '';
+    if (!empty($ilink[3])) {
+      $anchor = '#' . $ilink[3];
+      return $anchor;
+    }
+
+    return '/' . drupal_get_path_alias('node/' . $result);
   }
 
   protected function generateNidFromSourceLinkToken(array $ilink) {
