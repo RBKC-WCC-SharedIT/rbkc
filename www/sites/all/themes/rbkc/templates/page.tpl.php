@@ -94,11 +94,7 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
-<div id="sitestat"
-data-page="<?php $title = strtolower($title); $statTitle = preg_replace("/[\s_]/", "-", $title); print $statTitle; ?>"
-data-hub="<?php if (isset($service_area_link)): ?>
-            <?php $service_area_link = strtolower($service_area_link); $statHub = preg_replace("/[\s_]/", "-", $service_area_link); print $statHub; ?>
-          <?php endif; ?> ">
+<div id="sitestat" data-page="page-name" data-hub="hub-name" data-sub="sub-name" >
 
 <script type="text/javascript">
  //<!-- Begin Sitestat4 Loadingtime1 code -->
@@ -108,17 +104,30 @@ ns_loadingtime1=(new Date()).getTime();
 <!-- Begin Sitestat4 code -->
 <script type="text/javascript">
 
-function getTitle() {
-var stats = document.getElementById('sitestat');
-return stats.dataset.page;
-};
 function getHub() {
-var stats = document.getElementById('sitestat');
-var hub = stats.dataset.hub;
-  if (hub !== " ") {
-    return hub + ".";
+  var stats = document.getElementById('sitestat');
+  if (stats.hasAttribute("data-hub")) {
+    return stats.dataset.hub + ".";
+  }
+  else {
+    return "";
   }
 };
+function getSub() {
+  var stats = document.getElementById('sitestat');
+  if (stats.hasAttribute("data-sub")) {
+    return stats.dataset.sub + ".";
+  }
+  else {
+    return "";
+  }
+};
+function getTitle() {
+  var stats = document.getElementById('sitestat');
+  return stats.dataset.page;
+};
+
+console.log("http://uk.sitestat.com/rbkc/rbkc/s?" + getHub() + getSub() + getTitle() + ".page");
 
 <!--
 function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
@@ -127,11 +136,11 @@ ns_0=(ns_0.lastIndexOf('/')==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf('/')
 if(ns_0.length>0)ns_l+='&amp;ns_referrer='+escape(ns_0);
 if(document.images){ns_1=new Image();ns_1.src=ns_l;}else
 document.write('<img src="'+ns_l+'" width="1" height="1" alt="" />');}
-sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getTitle() + getHub());
+sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getHub() + getSub() + getTitle() + ".page" );
 //-->
 </script>
 
-<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php if (isset($service_area_link)): ?><?php print "$statHub.'.'"; ?><?php endif; ?><?php print $statTitle; ?>" width="1" height="1" alt="" /></div>
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?hub-name.sub-name.page-name.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
