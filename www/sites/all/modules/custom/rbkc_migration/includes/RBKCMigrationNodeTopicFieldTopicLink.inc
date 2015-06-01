@@ -124,13 +124,11 @@ class RBKCMigrationNodeTopicFieldTopicLink extends RBKCBaseNodeMigration {
         $delta++;
       }
       else {
-        $href = $this->transformSourceLinkTokens($topic['href']);
+        $target_id = $this->transformSourceLinkTokens($topic['href'], FALSE);
 
-        if (FALSE !== strpos($href, 'ILINK')) {
+        if (FALSE !== strpos($target_id, 'ILINK')) {
           continue;
         }
-
-        $target_id = str_replace('/node/', '', $href);
 
         if (!$target_id) {
           continue;

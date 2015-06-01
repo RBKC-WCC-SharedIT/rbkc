@@ -45,11 +45,17 @@ trait RBKCMigrationCommon {
    * @param $html
    * @return mixed
    */
-  protected function transformSourceLinkTokens($html) {
+  protected function transformSourceLinkTokens($html, $path = TRUE) {
     $modifiers = 'i';
     $delimiter = '/';
     $pattern = $delimiter . 'ILINK\|(\d+),([_a-zA-Z]*)(?:,)*([a-zA-Z0-9\?]*)\|' . $delimiter . $modifiers;
-    $result = preg_replace_callback($pattern, array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
+
+    if ($path) {
+      $result = preg_replace_callback($pattern, array($this, 'generateNodeLinkFromSourceLinkToken'), $html);
+    }
+    else {
+      $result = preg_replace_callback($pattern, array($this, 'generateNidFromSourceLinkToken'), $html);
+    }
 
     if (is_null($result)) {
       syslog(LOG_WARNING, 'An error occurred whilst attempting to transform a legacy internal link.');
