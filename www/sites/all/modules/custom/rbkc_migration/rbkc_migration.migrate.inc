@@ -23,40 +23,28 @@ function rbkc_migration_migrate_api() {
         'class_name' => 'RBKCMigrationSourceDocumentsCSV',
         'group_name' => 'rbkc',
       ),
-      'RBKCMigrationSourceCSV' => array(
-        'class_name' => 'RBKCMigrationSourceCSV',
+      'RBKCMigrationSourceContentCSV' => array(
+        'class_name' => 'RBKCMigrationSourceContentCSV',
         'group_name' => 'rbkc',
       ),
       'RBKCMigrationNodeAnswer' => array(
         'class_name' => 'RBKCMigrationNodeAnswer',
         'group_name' => 'rbkc',
       ),
-      'RBKCMigrationNodeGuide' => array(
-        'class_name' => 'RBKCMigrationNodeGuide',
-        'group_name' => 'rbkc',
-      ),
       'RBKCMigrationNodePublication' => array(
         'class_name' => 'RBKCMigrationNodePublication',
         'group_name' => 'rbkc',
       ),
-      'RBKCMigrationNodeServicehub' => array(
-        'class_name' => 'RBKCMigrationNodeServicehub',
-        'group_name' => 'rbkc',
-      ),
-      'RBKCMigrationNodeSubhub' => array(
-        'class_name' => 'RBKCMigrationNodeSubhub',
+      'RBKCMigrationNodePublicationAssociateChildren' => array(
+        'class_name' => 'RBKCMigrationNodePublicationAssociateChildren',
         'group_name' => 'rbkc',
       ),
       'RBKCMigrationNodeTopic' => array(
         'class_name' => 'RBKCMigrationNodeTopic',
         'group_name' => 'rbkc',
       ),
-      'RBKCMigrationEntityContactDepartments' => array(
-        'class_name' => 'RBKCMigrationEntityContactDepartments',
-        'group_name' => 'rbkc',
-      ),
-      'RBKCMigrationNodePublicationAssociateChildren' => array(
-        'class_name' => 'RBKCMigrationNodePublicationAssociateChildren',
+      'RBKCMigrationNodeTopicFieldTopicLink' => array(
+        'class_name' => 'RBKCMigrationNodeTopicFieldTopicLink',
         'group_name' => 'rbkc',
       ),
     ),

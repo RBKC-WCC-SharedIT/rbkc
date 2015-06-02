@@ -1,16 +1,15 @@
 <?php
 
 /**
- * @file
- * The RBKCMigrationNodePublication migrates all publication pages, this
- * migration is a helper that should be run after to associated child book
- * publication pages with their parent book node.
- */
-
-/**
  * Class RBKCMigrationNodePublicationAssociateChildren
+ *
+ * RBKCMigrationNodePublication migrates all publication pages, this migration
+ * is a helper that should be run after to associated child book publication
+ * pages with their parent book node.
  */
-class RBKCMigrationNodePublicationAssociateChildren extends Migration {
+class RBKCMigrationNodePublicationAssociateChildren extends RBKCBaseMigration {
+  use RBKCMigrationCommon;
+
   private $children = array();
 
   public function __construct(array $arguments) {
@@ -19,8 +18,9 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     $this->systemOfRecord = migration::DESTINATION;
 
     $this->description = t('Iterate over publication parent pages and associate their children.');
+    $this->dependencies = array('RBKCMigrationSourceContentCSV', 'RBKCMigrationSourceDocumentsCSV', 'RBKCMigrationNodePublication');
 
-    $source = drupal_get_path('module', 'rbkc_migration') . '/data/RBKCFullPageTable.csv';
+    $source = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'RBKCSource' . 'Publication' . '.csv';
     $columns = array();
     $options = array(
       'enclosure' => '$',
@@ -28,8 +28,10 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
       'header_rows' => 1,
       'embedded_newlines' => TRUE,
     );
-
     $this->source = new MigrateSourceCSV($source, $columns, $options);
+
+    $destination = 'publication';
+    $this->destination = new MigrateDestinationNode($destination);
 
     $this->map = new MigrateSQLMap($this->machineName,
       array(
@@ -42,9 +44,6 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
       ),
       MigrateDestinationNode::getKeySchema()
     );
-
-    $destination = 'publication';
-    $this->destination = new MigrateDestinationNode($destination);
 
     $this->addFieldMapping('nid', 'p_page_id')->sourceMigration('RBKCMigrationNodePublication');
   }
@@ -105,7 +104,6 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
 
     foreach ($linked_page_ids as $page_id) {
       if ($nid = self::lookupDestinationIDWrapper($page_id)) {
-        syslog(LOG_WARNING, sprintf('Adding an entry into the children array, key (nid) is %s and page_id is %s', $parent_nid, $page_id));
         $this->children[$nid] = $page_id;
       }
     }
@@ -115,7 +113,7 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     if ($updated_child_count !== $current_child_count) {
       $child = end($this->children);
 
-      $body = db_select('rbkc_migration_source', 's')
+      $body = db_select('rbkc_migration_content', 's')
         ->fields('s', array('body'))
         ->condition('p_page_id', $child)
         ->execute()
@@ -165,24 +163,5 @@ class RBKCMigrationNodePublicationAssociateChildren extends Migration {
     $node->book['bid'] = $parent_nid;
     $node->book['weight'] = $weight;
     node_save($node);
-  }
-
-  public static function extractNodeFromXML($xml, $node) {
-    $content = '';
-
-    if (empty($xml)) {
-      return $content;
-    }
-
-    try {
-      $xml = new SimpleXMLElement($xml);
-    }
-    catch (Exception $e) {
-      syslog(LOG_ERR, sprintf('Failed to load source XML as SimpleXMLElement when looking for %s: %s', $node, $e->getMessage()));
-      return $content;
-    }
-
-    $content = (string) $xml->content->{$node};
-    return $content;
   }
 }
