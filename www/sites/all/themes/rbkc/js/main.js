@@ -94,6 +94,29 @@
     });
   } // end service list
 
+  // styling PDF links with icon.  A fix until we move to Drupal - SP.
+  function stylePDF() {
+    $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
+      if (!$(this).parents('.context-file_with_size').length) {
+        var linkElement = $(this);
+        var linkText = linkElement.text();
+        var linkHref =  $(this).attr('href');
+        var linkParent = $(this).parents("li:first, p:first");
+        linkParent.addClass("docLink");
+        $('<br>').appendTo(linkElement);
+        // Create the Icon with the duplicated link
+        var Icon =
+          $('<a />', {
+            'class': 'docLink-icon',
+            'href' : linkHref,
+            //to hide extra link from screen reader
+            'role' : 'presentation',
+            'tabindex' : "-1"
+          }).prependTo(linkParent);
+      }
+    });
+  } // end stylePDF
+
 
   function commsHeight() {  //make comms panels correct height when no flexbox support
     if  (!$('html').hasClass('flexbox')) {
@@ -187,6 +210,8 @@ $(document).ready(function() {
   serviceList();
 
   commsHeight();
+
+  stylePDF()
 
   try {
   slickSlider();
