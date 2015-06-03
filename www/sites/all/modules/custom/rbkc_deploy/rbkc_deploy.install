@@ -892,3 +892,10 @@ function rbkc_deploy_update_7076() {
 function rbkc_deploy_update_7077() {
   module_enable(array('linkit_picker'), TRUE);
 }
+
+/**
+ * Switch on pathologic.
+ */
+function rbkc_deploy_update_7078() {
+  module_enable(array('pathologic'), TRUE);
+}
