@@ -95,9 +95,10 @@ function feature_common_wysiwyg_default_profiles() {
       'stylesSet' => 'WarningRed=p.warning-red
 WarningYellow=p.warning-yellow
 NoticeMessage=p.notice-message
-PolicyInfo=p.policy-info',
+PolicyInfo=p.policy-info
+LargeIntroText=p.large-text',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
-      'advanced__active_tab' => 'edit-basic',
+      'advanced__active_tab' => 'edit-css',
       'forcePasteAsPlainText' => 0,
     ),
   );

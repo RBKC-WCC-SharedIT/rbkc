@@ -58,6 +58,15 @@ ul li ul li {
   background-position: left 9px;
   background-position: left 0.55rem;
 }
+hr {
+  background-color: #d3d3d1;
+  border: 0;
+  color: #d3d3d1;
+  margin-top: 0;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  height: 1px;
+}
 
 /*** links to PDF documents - also styled by js ***/
 a[href$=".pdf"],
@@ -105,4 +114,39 @@ td a[href*="idoc.ashx"]:hover,
 td a[href$=".docx"]:hover,
 td a[href$=".doc"]:hover {
   border-bottom: none;
+}
+.image-cap {
+  background: #fff;
+  overflow: hidden;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0;
+  font-size: 13px;
+}
+.image-cap__pic {
+  width: 100%;
+  height: auto;
+  position: static;
+  visibility: visible;
+  margin: 0;
+}
+.image-cap__text {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1.3rem;
+  padding: 16px 24px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-style: normal;
+}
+.image-cap__text p {
+  margin: 0;
+}
+.large-text {
+  font-size:20px;
+  /* 16/20 = 1.25  */
+  font-size:1.25rem;
+  line-height:29px;
+  line-height: 1.8125rem;
 }
