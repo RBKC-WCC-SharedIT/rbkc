@@ -9,6 +9,7 @@ dependencies[] = features
 dependencies[] = filter
 dependencies[] = linkit
 dependencies[] = pathauto
+dependencies[] = pathologic
 dependencies[] = strongarm
 dependencies[] = views
 dependencies[] = wysiwyg
