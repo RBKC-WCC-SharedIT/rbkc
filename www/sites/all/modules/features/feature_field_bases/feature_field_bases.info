@@ -46,7 +46,6 @@ features[field_base][] = field_short_title
 features[field_base][] = field_show_more_in_links
 features[field_base][] = field_subpage_link_and_teaser
 features[field_base][] = field_tag
-features[field_base][] = field_topic
 features[field_base][] = field_topic_link
 features[field_base][] = field_user
 features[field_group][] = group_external_link|field_collection_item|field_other_popular_content|form

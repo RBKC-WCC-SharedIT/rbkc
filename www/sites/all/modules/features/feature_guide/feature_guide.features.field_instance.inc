@@ -98,48 +98,6 @@ function feature_guide_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-guide-field_action'
-  $field_instances['node-guide-field_action'] = array(
-    'bundle' => 'guide',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select an action with which to tag this page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_action',
-    'label' => 'Action',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'node-guide-field_review_date'
   $field_instances['node-guide-field_review_date'] = array(
     'bundle' => 'guide',
@@ -336,48 +294,6 @@ function feature_guide_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-guide-field_topic'
-  $field_instances['node-guide-field_topic'] = array(
-    'bundle' => 'guide',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Choose a topic with which to tag this page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_topic',
-    'label' => 'Topic',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-guide-field_user'
   $field_instances['node-guide-field_user'] = array(
     'bundle' => 'guide',
@@ -422,19 +338,15 @@ function feature_guide_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Action');
   t('Body');
-  t('Choose a topic with which to tag this page.');
   t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select a user with which to tag this page.');
-  t('Select an action with which to tag this page.');
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
   t('Short Title');
   t('Start typing to find an existing tag or add a new one.');
   t('Tag');
-  t('Topic');
   t('User');
 
   return $field_instances;
