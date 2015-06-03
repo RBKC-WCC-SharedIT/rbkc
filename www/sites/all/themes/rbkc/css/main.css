@@ -1127,11 +1127,13 @@ a.footerglobal__contact:hover,
   width: 100%;
   border-bottom: solid #D3D3D1 1px;
   text-align:left;
+  border-bottom: 0;
 }
 .pag__next-name {
   float:left;
   clear:left;
   text-align: left;
+  border-bottom: 0;
 }
 .pag__prev-num {
   position: absolute;
