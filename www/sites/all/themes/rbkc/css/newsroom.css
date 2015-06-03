@@ -1,0 +1,1208 @@
+/* 01/12/2014 15.51 */
+
+section .sectionContent,
+.latestNewsIntro {
+  -webkit-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  border: 1px solid #ccc;
+  position: relative;
+}
+#latestNews,
+#pressReleases,
+#socialMedia,
+#capital_projects,
+#newsletters,
+#royalBorough,
+#pressContact {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+#latestNews,
+#pressReleases,
+#royalBorough,
+#pressContact {
+  overflow: hidden;
+}
+
+#pressReleases .sectionContent,
+#capital_projects .sectionContent,
+#newsletters .sectionContent,
+#royalBorough .sectionContent,
+#pressContact .sectionContent {
+  background: #fff;
+}
+
+#socialMedia .sectionContent,
+#capital_projects .sectionContent,
+#newsletters .sectionContent,
+#royalBorough .sectionContent,
+#pressContact .sectionContent {
+  margin-bottom: 3em;
+}
+
+#capital_projects h2,
+#newsletters h2,
+#socialMedia h2  {
+  background: #fff;
+  padding: 16px;
+
+}
+
+#latestNews .sectionContent {
+  border: 0;
+}
+#latestNews .sectionContent li {
+  border: 1px solid #ccc;
+}
+
+
+
+h2  {
+  margin-bottom: 12px !important;
+}
+
+.soc {
+  float: right;
+  margin-top: -10px;
+}
+
+.showMoreNewsletters,
+.showMoreCapProjects {
+  margin-top: -10px;
+}
+
+.fixedItem {
+  background: #E5E5E5; /* made this the same colour as twitter's chrome as unable to change that */
+  border-color: #ccc #ccc -moz-use-text-color;
+  -webkit-border-image: none;
+  -o-border-image: none;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 1px medium;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.25em !important;
+  width: inherit;
+  position: absolute;
+  z-index: 9999;
+  border-color: #ccc #ccc #ddd;
+  -webkit-transition: all .25s linear 0s;
+  transition: all .25s linear 0s;
+}
+.lt-ie9 #socialMedia img {
+  position:relative;
+  visibility:visible;
+  border: none;
+}
+.lt-ie9 #socialMedia .sectionContent {
+  display:block;
+  /*     height:375px; */
+  border: 0;
+  margin-bottom: 32px;
+}
+
+.lt-ie9  #socialMedia .sectionContent iframe {
+  height: 480px !important;
+  margin-bottom: -5px;
+  width: 100% !important;
+}
+
+.lt-ie9 #latestNews .sectionContent {
+  height:385px;
+  /*   overflow-x:hidden;
+  overflow-y:scroll; */
+}
+
+.lt-ie9 #capital_projects .sectionContent{
+  height:520px;
+  /*    overflow-y:scroll; */
+}
+
+.lt-ie9 #pressReleases .sectionContent {
+  height: 375px !important;
+}
+
+#pressReleases .sectionContent h2 {
+  display: none;
+}
+
+#pressReleases .sectionContent {
+  overflow-y:scroll;
+  margin-top: 32px;
+  min-height: 200px; /* adding this so can see the editable area in the CMS */
+  float: left;
+}
+
+
+#latestNews ul.deskView {
+  list-style: none;
+  margin: 0;
+  float: left;
+}
+#latestNews li {
+  padding: 0;
+  position: relative;
+  float: left;
+  margin-bottom: 1em;
+  list-style-type: none;
+  background: #fff;
+  overflow: hidden;
+}
+#latestNews img {
+  width: 100%;
+  visibility: visible;
+  position: relative;
+  border:none; /* for IE8.... */
+  height: auto;
+  display: block;
+}
+#latestNews p {
+  padding: .3em;
+  display: block;
+}
+
+#latestNews .caption {
+  padding: .3em 1em .3em .3em;
+}
+
+#latestNews .caption p {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 14px;
+  line-height: 1.4rem;
+  font-weight: bold;
+}
+
+
+.latestNewsIntro {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
+  border: medium none;
+  /*bottom: 0;
+  position: absolute;*/
+}
+#latestNews a {
+  border-bottom: none;
+}
+#latestNews p {
+  /* position:absolute;*/
+  margin-bottom: 0;
+  width: 100%;
+  /*     background: transparent; */
+}
+.pager {
+  background: white;
+  border: solid 1px #ccc;
+  border-top: none;
+  height: 48px;
+  z-index: 2;
+  display: none;
+}
+#latestNews .pager a {
+  border: none;
+  z-index: 100;
+}
+
+
+
+#capital_projects .sectionContent,
+#pressReleases .sectionContent {
+  border: 1px solid #ccc;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+#capital_projects .sectionContent ul {
+  width: 100%;
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#pressReleases .sectionContent ul a,
+#capital_projects .sectionContent ul  a {
+  display: block;
+}
+
+#pressReleases .sectionContent ul  a:hover,
+#capital_projects .sectionContent ul  a:hover {
+  background: white;
+  border-bottom: 0;
+  text-decoration: underline;
+}
+
+#royalBorough:hover .fixedItem,
+#newsletters:hover .fixedItem,
+#capital_projects:hover .fixedItem,
+#pressReleases:hover .fixedItem {
+  box-shadow: 0px 3px 5px rgba(20, 19, 19, 0.8);
+}
+
+#capital_projects .sectionContent {
+  padding: 2em 0 0 0;
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+
+#capital_projects .intro {
+  padding: 1em;
+}
+
+#capital_projects ul {
+  display: block;
+  float: left;
+  font-size: 16px;
+  font-size: 1rem;
+  overflow-y: scroll;
+}
+#pressReleases ul {
+  float: left;
+  height: auto;
+}
+#newsletters ul {
+  float: left;
+  margin: 2.3em 0 0 0;
+  padding: 0;
+}
+
+#newsletters a:hover {
+  border-bottom: dotted 1px;
+}
+
+#capital_projects li,
+#pressReleases li {
+  position: relative;
+  list-style-type: none;
+}
+
+#capital_projects li a,
+#pressReleases li a {
+  padding:8px;
+  padding: 0.5em 1em;
+  -webkit-transition: all .25s linear 0s;
+  transition: all .25s linear 0s;
+}
+
+
+#pressReleases li:hover {
+  background: white;
+}
+.fixedItem span {
+  font-size:14px;
+  font-size: .875rem;
+  color: #376697;
+}
+.fixedItem span:first-child {
+  font-weight: bold;
+  float: left;
+}
+.fixedItem span:last-child {
+  float: right;
+}
+#newsletters p {
+  /* padding: .5em; */
+  margin-bottom: 7px;
+}
+
+
+
+
+.rbContent {
+  padding: 48px 16px 16px 16px;
+  padding: 3rem 1rem 1rem 1rem;
+  clear: none;
+}
+
+
+.rbContent p {
+  margin-bottom: 0;
+}
+
+
+.rbImage {
+  margin-top: 31px;
+  margin-right: 1em;
+  float: none;
+  height: 224px;
+  width: 167px;
+}
+
+
+.rbImage,
+.rbImage img {
+  display: block;
+}
+
+.rbImage  p {
+  margin: 0 !important;
+  padding: 0 ;
+}
+
+
+#newsletters .sectionContent {
+  padding: 3em 1em 0 1em;
+}
+
+#capital_projects li {
+  margin-left: 2.5em;
+}
+#newsletters li {
+  padding: 0;
+  background: none;
+  margin-left: .5em;
+  margin-bottom: 1em;
+  float: left;
+  width: 32%;
+  list-style-type: none;
+}
+.lt-ie9 #newsletters li {
+  width:48%;
+}
+#newsletters li a {
+  padding: 0 1em 0 0;
+  background: url('../images/refresh/rightdouble-chevron-8px.png') 100% 50% no-repeat;
+  border-bottom: none;
+}
+
+
+#capital_projects li,
+#pressReleases li {
+  background-image: none;
+  margin: 0;
+}
+
+/* #pressReleases .sectionContent {
+width: 100%;
+display: block;
+clear: both;
+} */
+
+/* #royalBorough .sectionContent {
+background: url('../images/refresh/RoyalBoroughMastHead700.jpg') 50% 0 no-repeat;
+background-size:contain;
+padding: 25% 1em 0;
+}
+.lt-ie9 #royalBorough .sectionContent {
+background: url('../images/refresh/RoyalBoroughMastHead450.jpg') 50% 0 no-repeat;
+}
+ */
+
+
+#socialMedia {
+  margin-bottom: 2em;
+}
+
+#socialMedia h2 {
+  font-size: 0;
+  color: #fff;
+}
+
+#socialMedia  img {
+  width: 48px;
+  height: auto;
+}
+
+#socialMedia  span a {
+  background: none;
+}
+
+#socialMedia  span a:hover {
+  border-bottom: 0;
+  opacity: 0.7;
+}
+
+.soc {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+#socialMedia .sectionContent {
+  padding: 0;
+  display:none;
+}
+
+#latestNews li.rslides_here {
+  background: #4e4949;
+  border: solid 1px #ddd;
+}
+#pressContact i {
+  font-size: 2.5em;
+  padding: .25em;
+}
+#pressContact p:first-child a {
+  border: none;
+}
+#pressContact p {
+  margin: 0 0 0 1em;
+  color: #376697;
+  /*float: left;
+  width:50%;*/
+  margin-left: 0;
+  -webkit-transition: all .3s linear 0s;
+  transition: all .3s linear 0s
+}
+#pressContact .sectionContent {
+  padding-bottom: 1em;
+}
+
+
+#latestNews p,
+#pressReleases p,
+#socialMedia p,
+#capital_projects p,
+#newsletters p,
+#royalBorough p,
+#pressContact p  {
+  /* clear: both; */
+  color: #505a66;
+  display: block;
+  font-size:15px;
+  font-size: .9375rem;
+  /* padding:4.5px 0;
+  padding: 0.2rem 0; */
+  font-weight: 400;
+}
+
+#pressContact p:first-child  {
+  margin-bottom: 12px;
+}
+
+
+.prDate {
+  font-weight: bold;
+  font-size:12px;
+  font-size: .75rem;
+}
+#pressContact p:hover i {
+  -webkit-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  transform: scale(1.25);
+  -webkit-transition: all .3s linear 0s;
+  transition: all .3s linear 0s
+}
+
+#pressContact .sectionContent {
+  padding: 16px;
+  padding: 1rem;
+}
+
+
+#latestNews li {
+  width:100%;
+  display: block;
+}
+.showMoreCapProjects,
+.showMoreNewsletters {
+  color: #999;
+  cursor: pointer;
+  font-size: 3rem;
+  line-height: 1rem;
+  padding: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+
+
+@media only screen and (min-width: 10px) {  /* so that the image is not hidden in the cms */
+  .rbImage,
+  .rbImage img {
+    display: none;
+    float: left;
+  }
+
+}
+
+
+@media only screen and (min-width: 320px) {
+
+
+  #latestNews,
+  #pressReleases  {
+    margin-bottom: 3em;
+  }
+
+  #socialMedia img {
+    height: 42px;
+    width: 42px;
+    position: relative;
+    visibility: visible;
+    border:none; /* This is for IE9 */
+  }
+  #socialMedia h2 a {
+    padding-right: 0;
+  }
+  #newsletters li {
+    width: 100%;
+  }
+
+
+}/* end media query */
+
+
+
+@media only screen and (min-width: 400px) {
+  #latestNews .newsPic {
+    display:block;
+    float: left;
+    width: 50%;
+    position: relative;
+    margin: 0 ;
+
+  }
+
+  #latestNews .caption {
+    float: left;
+    width: 50%;
+    padding-left: 1em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 0 1em 0;
+  }
+
+  #latestNews li {
+    height: auto;
+    overflow: visible;
+  }
+
+  #latestNews  li:last-child .caption,
+  #latestNews li:last-child,
+  #latestNews li:last-child .newsPic {
+    margin-bottom: 0;
+  }
+  .latestNewsIntro p {
+    color:#2b5d92;
+    display: block;
+    font-size: .875em;
+    display: inline-block;
+    margin-left: 0%;
+    padding: 0 1em;
+  }
+}/* end media query */
+
+@media only screen and (min-width: 480px) {
+
+
+  #newsletters li {
+    width: 48%;
+  }
+
+
+  #socialMedia h2 {
+    font-size: 22px;
+    font-size: 1.375rem;
+    color: #343C47;
+  }
+
+  .soc {
+    width: auto;
+    float: right;
+  }
+
+  .rbImage,
+  .rbImage img {
+    display: block;
+    width: 157px !important;
+    height: 224px !important;
+  }
+
+
+}/* end media query */
+
+
+@media only screen and (min-width: 520px) {
+
+  #latestNews .caption p:first-child {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 26px;
+    line-height: 1.625rem;
+
+  }
+
+  #latestNews .caption p:last-child {
+    font-size: 1rem;
+    font-size: 16px;
+  }
+}/* end media query */
+
+@media only screen and (min-width: 700px) {
+
+
+  #capital_projects h2,
+  #newsletters h2,
+  #socialMedia h2  {
+    background: none;
+    padding: 0;
+  }
+
+  #latestNews .newsPic {
+    margin: 0 0 1em 0;
+  }
+
+  .soc {
+    width: 100%;
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  .soc span:first-child {
+    margin-left: 0;
+  }
+
+  .rbImage,
+  .rbImage img {
+    /* width: 105px !important;
+    height: 150px !important; */
+    display: none;
+  }
+
+  .showMoreNewsletters,
+  .showMoreCapProjects {
+    display: none;
+  }
+
+  #socialMedia .sectionContent {
+    border: 0;
+    overflow: hidden;
+
+  }
+
+
+  #socialMedia .sectionContent  iframe{
+    width: 100% !important;
+    height: 415px !important;
+    margin-bottom: -5px;
+  }
+
+
+  #pressReleases ul {
+    min-height:1px;
+    overflow:auto;
+  }
+  #newsletters li {
+    /*width: calc(55% - 2.5em);*/
+    width: 45.7621247113164%;
+    min-height: 3.65em;
+  }
+
+  #latestNews img {
+    margin: 0 1em 0 0;
+  }
+  #latestNews .sectionContent {
+    border-left:none;
+    border-right:none;
+    border-top: none;
+  }
+  #latestNews .pager {
+    clear: both;
+  }
+
+  #latestNews .caption p:first-child,
+  #latestNews .caption p:last-child {
+    font-size: 15px;
+    font-size: 0.9375rem;
+    line-height: 14px;
+    line-height: 1.4rem;
+  }
+
+  #latestNews li {
+    margin-bottom: 0;
+  }
+  ul.rslides li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .latestNewsIntro p {
+    padding: .5em;
+    float: left;
+    width: 100%;
+    background: #000;
+    color:white;
+  }
+  .latestNewsIntro a {
+    /*padding: .25em;*/
+    color:white;
+  }
+  #capital_projects,
+  #newsletters,
+  #socialMedia .sectionContent,
+  #royalBorough {
+    display: block;
+  }
+
+  #socialMedia .sectionContent {
+    margin-bottom: 1em;
+  }
+
+  #royalBorough .sectionContent {
+    margin-bottom: 2em;
+  }
+
+  .rslides_tabs {
+    /*display: none;*/
+  }
+  .rslides_tabs:first-child {
+    position: relative;
+  }
+  #latestNews .rslides1_tabs {
+    width: 179px;
+    min-width: 179px;
+    margin: 0 auto 0 auto;
+    position: relative;
+    z-index: 99;
+    top: 4px;
+    padding: .75em 0 0;
+    display: block;
+  }
+  .pager {
+    display: block;
+  }
+  #latestNews img {
+    width: 100%;
+    display: block;
+  }
+  #latestNews .newsPic,
+  #latestNews .caption  {
+    float: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  #latestNews .newsPic p {
+    padding: 0;
+  }
+
+  #latestNews .newsPic a {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  #latestNews .caption p {
+    padding: 0;
+  }
+  #latestNews .caption a {
+    display: block;
+    padding-left: 0.7em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+  #latestNews .caption p:first-child  a{
+    padding-top: 0.6em;
+  }
+
+  #latestNews .caption p:last-child a {
+    padding-bottom: 0.6em;
+  }
+
+  #latestNews p.latestNewsIntro {
+    width: 100%;
+    padding: 0;
+  }
+  .rslides1_tabs a {
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+  }
+
+  #latestNews .rslides1 p {
+    padding-bottom: 0;
+  }
+
+  #latestNews .rslides1 p {
+    /*width:75%;*/
+    margin: 0;
+  }
+  #latestNews .rslides1 p {
+    color: inherit;
+    /*       background: transparent; */
+    /*padding:.25em;*/
+    line-height: 1.4;
+    background: #000;
+  }
+  #latestNews .rslides1 p {
+    font-size: 12px;
+    font-size: .9em;
+    position: relative;
+    color: white;
+    /*     background: transparent; */
+  }
+  .rslides1 a {
+    color: inherit;
+    border-bottom: none;
+    /*font-weight: bold;*/
+  }
+  #latestNews .rslides1_tabs li {
+    background: none repeat scroll 0 0 #ccc;
+    border: none;
+    border-radius: 50%;
+    height: 1em;
+    text-align: center;
+    width: 1em;
+    margin: 0 .6em;
+  }
+  #latestNews
+/*.rslides1_tabs*/
+li.rslides_here {
+    background: #999;
+  }
+  a.prev,
+  a.next {
+    position: absolute;
+    bottom: .4em;
+    color: #376697;
+    border-bottom: none;
+    display: block;
+    border: none;
+    font-size: 32px;
+    font-size: 2rem;
+    color: #ccc;
+    -webkit-transition: color .3s linear 0s;
+    transition: color .3s linear 0s
+  }
+  a.prev:hover,
+  a.next:hover {
+    color:#999;
+  }
+  a.prev {
+    left: .5em;
+  }
+  a.next {
+    right: .5em;
+  }
+  #capital_projects p {
+    display: block;
+    margin-bottom: 0;
+  }
+  #capital_projects .sectionContent {
+    /*height: 284px;*/
+    height:385px;
+  }
+  #capital_projects ul {
+    /*height: 249px;*/
+    /* height:351px; */
+    overflow-y: auto;
+  }
+
+}/* end media query */
+
+@media only screen and (min-width: 800px) {
+
+  .rbImage,
+  .rbImage img {
+    width: 157px !important;
+    height: 224px !important;
+    display: block;
+  }
+
+  .soc {
+    float: right;
+    width: auto;
+    margin-top: -10px;
+  }
+
+  #pressContact p {
+    float: left;
+
+  }
+
+
+  #pressContact p:first-child {
+    margin-right: 32px;
+  }
+
+}/* end media query */
+
+@media only screen and (min-width: 900px) {
+
+
+
+  #pressContact p:first-child  {
+    margin-bottom: 0;
+  }
+
+}/* end media query */
+
+
+.lt-ie9 #latestNews,
+.lt-ie9 #pressReleases  {
+  margin-bottom: 2em;
+}
+
+.lt-ie9  #latestNews .newsPic {
+  display:block;
+  float: left;
+  width: 40%;
+  position: relative;
+  margin: 0 0 1em 0;
+}
+
+.lt-ie9 #latestNews .caption {
+  float: left;
+  width: 60%;
+  padding-left: 1em;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 0 1em 0;
+}
+
+.lt-ie9    #latestNews img {
+  margin: 0 1em 0 0;
+}
+.lt-ie9    #latestNews .sectionContent {
+  border-left:none;
+  border-right:none;
+  border-top: none;
+  height: auto;
+}
+
+.lt-ie9   #latestNews .pager {
+  border-left: 1px solid rgb(86, 210, 196);
+  border-right: 1px solid rgb(86, 210, 196);
+  clear: both;
+  margin-top: -20px;
+}
+
+.lt-ie9   #latestNews li {
+  height: auto;
+  overflow: visible;
+  margin-bottom: 0;
+}
+
+.lt-ie9     #latestNews .rslides1_tabs {
+  width: 179px;
+  min-width: 179px;
+  margin: 4px auto 0 auto;
+  position: relative;
+  z-index: 99;
+  padding: .75em 0 0;
+  display: block;
+}
+.lt-ie9    .pager {
+  display: block;
+}
+
+
+.lt-ie9    #latestNews img {
+  width: 100%;
+  display: block;
+}
+.lt-ie9 #latestNews .newsPic,
+.lt-ie9 #latestNews .caption  {
+  float: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.lt-ie9 #latestNews .newsPic p {
+  padding: 0;
+}
+
+.lt-ie9 #latestNews .newsPic a {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.lt-ie9 #latestNews .caption p {
+  padding: 0;
+}
+.lt-ie9 #latestNews .caption a {
+  display: block;
+  padding-left: 0.7em;
+  padding-top: 0.2em;
+  padding-bottom: 0.6em;
+}
+
+
+.lt-ie9 #latestNews .caption p:first-child a {
+  padding-top: 0.6em;
+  padding-bottom: 0.2em;
+}
+
+
+
+.lt-ie9    #latestNews p.latestNewsIntro {
+  width: 100%;
+  padding: 0;
+}
+.lt-ie9    .rslides1_tabs a {
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  border: none;
+}
+
+.lt-ie9 #latestNews .rslides1 p {
+  padding-bottom: 0;
+}
+
+.lt-ie9    #latestNews .rslides1 p {
+  /*width:75%;*/
+  margin: 0;
+}
+.lt-ie9    #latestNews .rslides1 p {
+  color: inherit;
+  /*       background: transparent; */
+  /*padding:.25em;*/
+  line-height: 1.4;
+  background: #000;
+}
+.lt-ie9    #latestNews .rslides1 p {
+  font-size: 12px;
+  font-size: .9em;
+  position: relative;
+  color: white;
+  /*     background: transparent; */
+}
+.lt-ie9    .rslides1 a {
+  color: inherit;
+  border-bottom: none;
+  /*font-weight: bold;*/
+}
+.lt-ie9    #latestNews .rslides1_tabs li {
+  background: none repeat scroll 0 0 #ccc;
+  border: none;
+  border-radius: 50%;
+  height: 1em;
+  text-align: center;
+  width: 1em;
+  margin: 0 .6em;
+}
+.lt-ie9    #latestNews
+.lt-ie9    li.rslides_here {
+  background: #999;
+}
+.lt-ie9   a.prev,
+.lt-ie9   a.next {
+  position: absolute;
+  bottom: .4em;
+  color: #376697;
+  border-bottom: none;
+  display: block;
+  border: none;
+  font-size: 32px;
+  font-size: 2rem;
+  color: #ccc;
+  -webkit-transition: color .3s linear 0s;
+  transition: color .3s linear 0s
+}
+.lt-ie9       a.prev:hover,
+.lt-ie9   a.next:hover {
+  color:#999;
+}
+.lt-ie9   a.prev {
+  left: .5em;
+}
+.lt-ie9   a.next {
+  right: .5em;
+}
+
+.lt-ie9   #latestNews  li.rslides_here {
+  background: #999;
+}
+
+.lt-ie9 .rbImage,
+.lt-ie9 .rbImage img {
+  display: block;
+}
+
+
+
+.lt-ie8 .fixedItem {
+  position: static;
+  height: 26px;
+  margin-bottom: 0;
+}
+
+.lt-ie8 .sectionContent {
+  padding: 0;
+}
+
+.lt-ie8  #pressReleases .sectionContent  {
+  margin-top : 0;
+}
+
+.lt-ie8  #capital_projects  .sectionContent {
+  width: 448px;
+  height: 460px;
+}
+
+.lt-ie8  #capital_projects ul  {
+  margin-top : 0;
+  width: 447px;
+}
+
+.lt-ie8 #latestNews .sectionContent {
+  height: 379px;
+  border-bottom: 0;
+}
+
+.lt-ie8 #latestNews  h2 {
+  margin-bottom: 11px !important;  /* for some reason this was spaced differently, can't figure out why */
+}
+
+.lt-ie8 #latestNews .caption p {
+  padding: 0;
+  width: 480px;
+}
+.lt-ie8 #latestNews .caption a {
+  display: block;
+  padding-left: 0.7em;
+  padding-top: 0.2em;
+  padding-bottom: 0.6em;
+  color: #fff;
+}
+
+.lt-ie8 .pager {
+  margin-bottom: 32px;
+}
+
+.lt-ie8 .rslides_nav {
+  margin-top: -10px;
+  position: absolute;
+  bottom: 45px !important;
+}
+
+.lt-ie8 #newsletters  .sectionContent {
+  width: 415px !important;
+}
+
+.lt-ie8 #newsletters  li {
+  width: 190px !important;
+}
+
+.lt-ie8 #pressReleases ul {
+  list-style-position: outside;
+}
+
+.lt-ie8    #latestNews .rslides1_tabs {
+  width: 200px;
+}
+
+.lt-ie8 #royalBorough .sectionContent {
+  width: 416px;
+}
+
+.lt-ie8 #pressContact .sectionContent {
+  width: 447px;
+}
