@@ -1403,12 +1403,13 @@ div.accordionContents + h4 {
 }
 
 /*** print page links below content on some content types ***/
-.print-page {
-  text-align: right;
-  font-size: 13px;
-}
 .print-page span {
   margin-left: 0;
+}
+
+/** taxonomy tags ***/
+.field-type-taxonomy-term-reference {
+  margin-bottom: 24px;
 }
 
 /******************************************************/
