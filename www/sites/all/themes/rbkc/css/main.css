@@ -1576,6 +1576,7 @@ ol li.docLink {
   margin-bottom: 1.5rem;
   display:block;
   float:left;
+  border-bottom: 0 !important;
 }
 
 /*** resetting PDFs within tables ***/
