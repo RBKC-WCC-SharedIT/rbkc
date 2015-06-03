@@ -28,12 +28,13 @@ function feature_topics_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'External link',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-external-topic-link field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-external-topic-link field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_external_topic_link|field_collection_item|field_topic_link|form'] = $field_group;

@@ -126,6 +126,7 @@ sup, sub {
 hr {
   background-color: #d3d3d1;
   border: 0;
+  height: 1px;
   color: #d3d3d1;
   margin-top: 0;
   margin-bottom: 24px;
@@ -1126,11 +1127,13 @@ a.footerglobal__contact:hover,
   width: 100%;
   border-bottom: solid #D3D3D1 1px;
   text-align:left;
+  border-bottom: 0;
 }
 .pag__next-name {
   float:left;
   clear:left;
   text-align: left;
+  border-bottom: 0;
 }
 .pag__prev-num {
   position: absolute;
@@ -1400,12 +1403,13 @@ div.accordionContents + h4 {
 }
 
 /*** print page links below content on some content types ***/
-.print-page {
-  text-align: right;
-  font-size: 13px;
-}
 .print-page span {
   margin-left: 0;
+}
+
+/** taxonomy tags ***/
+.field-type-taxonomy-term-reference {
+  margin-bottom: 24px;
 }
 
 /******************************************************/
@@ -1418,10 +1422,11 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 }  */
 
 .content a {
-  border-bottom: 1px dotted #376697;
+  /*border-bottom: 1px dotted #376697;*/
+  border-bottom: 1px solid #b0c8e2  ;
 }
 .content a:hover {
-  border-bottom: none;
+  border-bottom: 1px solid #376697;
 }
 .content h2   {
   padding-top: 12px;
@@ -1492,7 +1497,7 @@ a[href$=".doc"] {
   font-size: 1rem;
   line-height:25px;
 }
-a[href$=".pdf"],
+/*a[href$=".pdf"],
 a[href^="IDOC"],
 a[href*="idoc.ashx"],
 a[href$=".docx"],
@@ -1507,7 +1512,7 @@ a[href*="idoc.ashx"]:hover,
 a[href$=".docx"]:hover,
 a[href$=".doc"]:hover {
 border-bottom: dotted 1px;
-}
+}*/
 
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
@@ -1571,6 +1576,7 @@ ol li.docLink {
   margin-bottom: 1.5rem;
   display:block;
   float:left;
+  border-bottom: 0 !important;
 }
 
 /*** resetting PDFs within tables ***/
