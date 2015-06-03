@@ -29,6 +29,69 @@ function feature_common_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_admin_cancelbutton';
+  $strongarm->value = 1;
+  $export['content_lock_admin_cancelbutton'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_admin_verbose';
+  $strongarm->value = 1;
+  $export['content_lock_admin_verbose'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_allowed_formats';
+  $strongarm->value = array(
+    'full_html' => 0,
+    'filtered_html' => 0,
+    'plain_text' => 0,
+  );
+  $export['content_lock_allowed_formats'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_allowed_node_types';
+  $strongarm->value = array(
+    'answer' => 'answer',
+    'guide' => 'guide',
+    'publication' => 'publication',
+    'servicehub' => 'servicehub',
+    'subhub' => 'subhub',
+    'survey' => 'survey',
+    'topic' => 'topic',
+    'feed' => 0,
+    'press_release' => 0,
+  );
+  $export['content_lock_allowed_node_types'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_unload_js';
+  $strongarm->value = 1;
+  $export['content_lock_unload_js'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_unload_js_message';
+  $strongarm->value = 'If you proceed, ALL of your changes will be lost.';
+  $export['content_lock_unload_js_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'content_lock_unload_js_message_enable';
+  $strongarm->value = 1;
+  $export['content_lock_unload_js_message_enable'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'linkit_picker_views';
   $strongarm->value = array(
     'wysiwyg_linkit_profile' => array(
