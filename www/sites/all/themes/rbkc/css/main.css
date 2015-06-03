@@ -1423,7 +1423,7 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 
 .content a {
   /*border-bottom: 1px dotted #376697;*/
-    border-bottom: 1px solid #b0c8e2  ;
+  border-bottom: 1px solid #b0c8e2  ;
 }
 .content a:hover {
   border-bottom: 1px solid #376697;
@@ -1497,7 +1497,7 @@ a[href$=".doc"] {
   font-size: 1rem;
   line-height:25px;
 }
-a[href$=".pdf"],
+/*a[href$=".pdf"],
 a[href^="IDOC"],
 a[href*="idoc.ashx"],
 a[href$=".docx"],
@@ -1512,7 +1512,7 @@ a[href*="idoc.ashx"]:hover,
 a[href$=".docx"]:hover,
 a[href$=".doc"]:hover {
 border-bottom: dotted 1px;
-}
+}*/
 
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
