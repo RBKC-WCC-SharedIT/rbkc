@@ -1,8 +1,9 @@
 a {
-  border-bottom: 1px dotted #376697;
+  /*border-bottom: 1px dotted #376697;*/
+  border-bottom: 1px solid #b0c8e2  ;
 }
 a:hover {
-  border-bottom: none;
+  border-bottom: 1px solid #376697;
 }
 h2   {
   padding-top: 12px;

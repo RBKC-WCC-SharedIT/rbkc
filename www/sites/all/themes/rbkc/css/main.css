@@ -1422,10 +1422,11 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 }  */
 
 .content a {
-  border-bottom: 1px dotted #376697;
+  /*border-bottom: 1px dotted #376697;*/
+    border-bottom: 1px solid #b0c8e2  ;
 }
 .content a:hover {
-  border-bottom: none;
+  border-bottom: 1px solid #376697;
 }
 .content h2   {
   padding-top: 12px;
