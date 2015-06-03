@@ -94,7 +94,7 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
-<div id="sitestat" data-page="page-name" data-hub="hub-name" data-sub="sub-name" >
+<div id="sitestat" data-url="<?php print str_replace('/', '.', current_path()); ?>"  >
 
 <script type="text/javascript">
  //<!-- Begin Sitestat4 Loadingtime1 code -->
@@ -104,30 +104,12 @@ ns_loadingtime1=(new Date()).getTime();
 <!-- Begin Sitestat4 code -->
 <script type="text/javascript">
 
-function getHub() {
+function getURL() {
   var stats = document.getElementById('sitestat');
-  if (stats.hasAttribute("data-hub")) {
-    return stats.dataset.hub + ".";
-  }
-  else {
-    return "";
-  }
-};
-function getSub() {
-  var stats = document.getElementById('sitestat');
-  if (stats.hasAttribute("data-sub")) {
-    return stats.dataset.sub + ".";
-  }
-  else {
-    return "";
-  }
-};
-function getTitle() {
-  var stats = document.getElementById('sitestat');
-  return stats.dataset.page;
-};
+    return stats.dataset.url;
+}
 
-console.log("http://uk.sitestat.com/rbkc/rbkc/s?" + getHub() + getSub() + getTitle() + ".page");
+//console.log("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page");
 
 <!--
 function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
@@ -136,11 +118,11 @@ ns_0=(ns_0.lastIndexOf('/')==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf('/')
 if(ns_0.length>0)ns_l+='&amp;ns_referrer='+escape(ns_0);
 if(document.images){ns_1=new Image();ns_1.src=ns_l;}else
 document.write('<img src="'+ns_l+'" width="1" height="1" alt="" />');}
-sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getHub() + getSub() + getTitle() + ".page" );
+sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
 //-->
 </script>
 
-<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?hub-name.sub-name.page-name.page" width="1" height="1" alt="" /></div>
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php print str_replace('/', '.', current_path()); ?>.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
