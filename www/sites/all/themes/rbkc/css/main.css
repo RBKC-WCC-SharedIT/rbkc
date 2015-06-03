@@ -1529,6 +1529,11 @@ td a[href$=".doc"]:hover {
   border-bottom: none;
 }
 
+/*** PDF container added by Drupal ***/
+.context-file_with_size {
+  overflow: hidden;
+}
+
 /*** PDF classes and markup added by js ***/
 .docLink,
 ul li.docLink,
