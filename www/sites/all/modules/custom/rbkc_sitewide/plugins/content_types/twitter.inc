@@ -9,6 +9,7 @@ $plugin = array(
   'render callback' => 'rbkc_twitter_timeline_render',
   'admin info' => 'rbkc_twitter_timeline_admin_info',
   'defaults' => array(
+    'show_social' => '',
     'username' => 'RBKC',
     'tweets_to_show' => 5,
     'widget_id' => '346591497258422273',
@@ -36,6 +37,13 @@ function rbkc_twitter_timeline_admin_info($subtype, $conf, $contexts) {
  */
 function rbkc_twitter_timeline_edit_form($form, &$form_state) {
   $conf = $form_state['conf'];
+
+  $form['show_social'] = array(
+    '#type' => 'select',
+    '#options' => drupal_map_assoc(array(t('Show'),t('Hide'))),
+    '#title' => t('Show social links?'),
+    '#default_value' => $conf['show_social'],
+  );
 
   $form['widget_id'] = array(
     '#title' => t('Twitter Widget ID'),
@@ -97,10 +105,26 @@ function rbkc_twitter_timeline_edit_form_submit($form, &$form_state) {
  */
 function rbkc_twitter_timeline_render($subtype, $conf, $panel_args, $context = NULL) {
   $block = new stdClass();
+  $render_icons = NULL;
+  $twitter_icon = '<div class="twitter-header"></div>';
+  if ($conf['show_social'] == 'Show') {
+    $twitter_icon = '';
+    $social_icons = array(
+      'twitter' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Twitter&ns_type=clickout', 'icon' => 'tweeter'),
+      'flickr' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Flickr&ns_type=clickout', 'icon' => 'flickr'),
+      'facebook' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Facebook&ns_type=clickout', 'icon' => 'facebook'),
+      'youtube' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Youtube&ns_type=clickout', 'icon' => 'youtube'),
+    );
+    $path = drupal_get_path('module','rbkc_sitewide');
+    $path = $path . '/plugins/content_types/images/';
+    $render_icons = '';
+    foreach ($social_icons as $icon) {
+      $render_icons .= '<span>' . l(theme('image', array('path' => $path . $icon['icon'])),$icon['link'], array('html' => TRUE)) . '</span>';
+    }
+  }
 
   // initial content is blank
   $block->title = '';
-  $block->content = '<div class="twitter-header"></div>';
   // Include twitter javascript - by linking to the external file.
   drupal_add_js('//platform.twitter.com/widgets.js', 'external');
   $chrome = array();
@@ -108,7 +132,7 @@ function rbkc_twitter_timeline_render($subtype, $conf, $panel_args, $context = N
     $chrome[] = check_plain($option);
   }
   $block->content = array(
-    '#prefix' => '<div class="twitter-header"></div>',
+    '#prefix' => $twitter_icon . '<span class="soc">' . $render_icons . '</span>',
     '#type' => 'link',
     '#title' => t('Tweets by @username', array('@username' => $conf['username'])),
     '#href' => check_url('https://twitter.com/' . $conf['username']),
