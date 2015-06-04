@@ -990,9 +990,9 @@ div.add-or-remove-shortcuts {
 }
 .linkit-wrapper {
   width: 800px !important;
-}
-.linkit-wrapper {
-  width: 780px !important;
+  height: 100% !important;
+  overflow-y: scroll !important;
+  padding-top: 20px;
 }
 #linkit-modal .views-field-body {
   max-width: 250px !important;
