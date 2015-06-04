@@ -3,6 +3,7 @@ description = Sub-Hub feature
 core = 7.x
 package = Features
 dependencies[] = ctools
+dependencies[] = entityreference
 dependencies[] = entityreference_view_widget
 dependencies[] = feature_field_bases
 dependencies[] = features
