@@ -151,6 +151,7 @@ function feature_common_views_default_views() {
     'answer' => 'answer',
     'guide' => 'guide',
     'publication' => 'publication',
+    'topic' => 'topic',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
@@ -162,6 +163,7 @@ function feature_common_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
+    5 => 0,
     4 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
