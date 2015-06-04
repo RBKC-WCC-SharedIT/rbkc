@@ -57,6 +57,7 @@ class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
     $row->body_html = self::extractNodeFromXML($row->body, 'contentsbox');
     $row->body_html = $this->transformSourceLinkTokens($row->body_html);
     $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
+    $row->body_html = $this->transformClasses($row->body_html);
 
     self::setBookIdIfParent($row);
 

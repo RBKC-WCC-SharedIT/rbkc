@@ -66,6 +66,21 @@ trait RBKCMigrationCommon {
   }
 
   /**
+   * Transform instances of some class names in incoming content.
+   *
+   * @param $html
+   * @return mixed
+   */
+  protected function transformClasses($html) {
+    $search = array('noticeMessage', 'policyInfo', 'warningRed', 'warningYellow');
+    $replace = array('notice-message', 'policy-info', 'warning-red', 'warning-yellow');
+
+    $html = str_replace($search, $replace, $html);
+
+    return $html;
+  }
+
+  /**
    * Find and replace occurrences of IDOC's in the source data.
    *
    * Regular expression pattern should match the following strings capturing

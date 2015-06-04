@@ -56,6 +56,7 @@ class RBKCMigrationNodeTopic extends RBKCBaseNodeMigration {
     $row->body_html = self::extractNodeFromXML($row->body, 'content');
     $row->body_html = $this->transformSourceLinkTokens($row->body_html);
     $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
+    $row->body_html = $this->transformClasses($row->body_html);
 
     return TRUE;
   }
