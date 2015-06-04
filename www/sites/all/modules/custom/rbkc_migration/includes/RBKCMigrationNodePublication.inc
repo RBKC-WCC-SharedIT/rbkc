@@ -47,6 +47,8 @@ class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
     $this->addFieldMapping('metatag_keywords', 'metatag_keywords');
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'callbackTransformCreatedDate'));
     $this->addFieldMapping('book', 'book');
+    $this->addFieldMapping('language')->defaultValue(LANGUAGE_NONE);
+    $this->addFieldMapping('pathauto')->defaultValue(1);
   }
 
   public function prepareRow($row) {
