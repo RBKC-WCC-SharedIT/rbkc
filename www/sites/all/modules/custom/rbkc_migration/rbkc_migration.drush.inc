@@ -28,6 +28,8 @@ function drush_rbkc_migration_rbkc_split_csvs() {
     switch ($row->template) {
       case 'rf-answer-planning':
       case 'rf-answer-generic':
+      case 'rf-answer-parking':
+      case 'rf-plain-content':
         $handle = rbkc_migration_establish_handle($csv, 'answer');
         break;
 
