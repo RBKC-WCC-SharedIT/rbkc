@@ -17,7 +17,11 @@ trait RBKCMigrationHandleRedirect {
         'language' => LANGUAGE_NONE,
       ));
 
-      redirect_save($redirect);
+      $alias = db_query('SELECT alias FROM {url_alias} WHERE source = :src_path', array(':src_path' => 'node/'. $entity->nid))->fetchField();
+
+      if (FALSE === $alias) {
+        redirect_save($redirect);
+      }
     }
   }
 }
