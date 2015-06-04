@@ -126,7 +126,7 @@ trait RBKCMigrationCommon {
       return $anchor;
     }
 
-    return '/' . drupal_get_path_alias('node/' . $result);
+    return '/node/' . $result;
   }
 
   protected function generateNidFromSourceLinkToken(array $ilink) {
