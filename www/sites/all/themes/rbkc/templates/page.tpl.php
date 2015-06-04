@@ -94,7 +94,10 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
-<div id="sitestat" data-url="<?php print str_replace('/', '.', current_path()); ?>"  >
+<div id="sitestat" data-url="<?php
+                              $statlink = str_replace('/', '.', request_uri());
+                              print substr($statlink, 1);
+                             ?>">
 
 <script type="text/javascript">
  //<!-- Begin Sitestat4 Loadingtime1 code -->
@@ -122,7 +125,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
 //-->
 </script>
 
-<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php print str_replace('/', '.', current_path()); ?>.page" width="1" height="1" alt="" /></div>
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php print substr($statlink, 1); ?>.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
