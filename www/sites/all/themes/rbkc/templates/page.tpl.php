@@ -112,8 +112,6 @@ function getURL() {
     return stats.dataset.url;
 }
 
-//console.log("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page");
-
 <!--
 function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
 ns_0=document.referrer;
@@ -132,5 +130,5 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
 <!-- End Sitestat4 Technical code -->
 <!-- Begin Sitestat4 Loadingtime2 code -->
 <script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>
-<noscript><div>&nbsp;</div></noscript><!-- End Sitestat4 Loadingtime2 code -->
+<!-- End Sitestat4 Loadingtime2 code -->
 </div>
