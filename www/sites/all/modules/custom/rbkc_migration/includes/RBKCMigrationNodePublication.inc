@@ -47,6 +47,8 @@ class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
     $this->addFieldMapping('metatag_keywords', 'metatag_keywords');
     $this->addFieldMapping('created', 'created')->callbacks(array(self, 'callbackTransformCreatedDate'));
     $this->addFieldMapping('book', 'book');
+    $this->addFieldMapping('language')->defaultValue(LANGUAGE_NONE);
+    $this->addFieldMapping('pathauto')->defaultValue(1);
   }
 
   public function prepareRow($row) {
@@ -57,6 +59,7 @@ class RBKCMigrationNodePublication extends RBKCBaseNodeMigration {
     $row->body_html = self::extractNodeFromXML($row->body, 'contentsbox');
     $row->body_html = $this->transformSourceLinkTokens($row->body_html);
     $row->body_html = $this->transformSourceDocumentTokens($row->body_html);
+    $row->body_html = $this->transformClasses($row->body_html);
 
     self::setBookIdIfParent($row);
 
