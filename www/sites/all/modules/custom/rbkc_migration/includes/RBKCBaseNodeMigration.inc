@@ -27,7 +27,6 @@ class RBKCBaseNodeMigration extends RBKCBaseMigration {
       'sticky',
       'revision',
       'log',
-      'language',
       'tnid',
       'translate',
       'is_new',
