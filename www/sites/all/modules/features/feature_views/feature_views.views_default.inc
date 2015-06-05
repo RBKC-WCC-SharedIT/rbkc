@@ -158,9 +158,23 @@ function feature_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'There no rows matching your criteria.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -171,10 +185,12 @@ function feature_views_views_default_views() {
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Field: Content: Author uid */
-  $handler->display->display_options['fields']['uid']['id'] = 'uid';
-  $handler->display->display_options['fields']['uid']['table'] = 'node';
-  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Author';
   /* Field: Content: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
@@ -184,6 +200,7 @@ function feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_audited']['id'] = 'field_audited';
   $handler->display->display_options['fields']['field_audited']['table'] = 'field_data_field_audited';
   $handler->display->display_options['fields']['field_audited']['field'] = 'field_audited';
+  $handler->display->display_options['fields']['field_audited']['empty'] = 'No';
   /* Field: Content revision: Updated date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'node_revision';
@@ -206,27 +223,49 @@ function feature_views_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+  );
   /* Filter criterion: Content: Audited (field_audited) */
   $handler->display->display_options['filters']['field_audited_value']['id'] = 'field_audited_value';
   $handler->display->display_options['filters']['field_audited_value']['table'] = 'field_data_field_audited';
   $handler->display->display_options['filters']['field_audited_value']['field'] = 'field_audited_value';
+  $handler->display->display_options['filters']['field_audited_value']['value'] = array(
+    0 => '0',
+    1 => '1',
+  );
   $handler->display->display_options['filters']['field_audited_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_audited_value']['expose']['operator_id'] = 'field_audited_value_op';
   $handler->display->display_options['filters']['field_audited_value']['expose']['label'] = 'Audited (field_audited)';
   $handler->display->display_options['filters']['field_audited_value']['expose']['operator'] = 'field_audited_value_op';
   $handler->display->display_options['filters']['field_audited_value']['expose']['identifier'] = 'field_audited_value';
-  $handler->display->display_options['filters']['field_audited_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-    4 => 0,
+  $handler->display->display_options['filters']['field_audited_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_audited_value']['group_info']['label'] = 'Page has been audited';
+  $handler->display->display_options['filters']['field_audited_value']['group_info']['identifier'] = 'field_audited_value';
+  $handler->display->display_options['filters']['field_audited_value']['group_info']['optional'] = FALSE;
+  $handler->display->display_options['filters']['field_audited_value']['group_info']['default_group'] = '1';
+  $handler->display->display_options['filters']['field_audited_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'No',
+      'operator' => 'not',
+      'value' => array(
+        1 => '1',
+      ),
+    ),
+    2 => array(
+      'title' => 'Yes',
+      'operator' => 'or',
+      'value' => array(
+        1 => '1',
+      ),
+    ),
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/workbench/editorial/workbench-audited-content';
-  $handler->display->display_options['menu']['type'] = 'default tab';
+  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Audited content';
   $handler->display->display_options['menu']['description'] = 'See which content has been audited';
   $handler->display->display_options['menu']['weight'] = '0';
