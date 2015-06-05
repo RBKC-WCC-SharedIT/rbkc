@@ -9,6 +9,22 @@ function rbkc_fe_form_node_form_alter(&$form, &$form_state) {
   $form['#attached']['js'][] = drupal_get_path('module', 'rbkc_fe') . '/js/scald.js';
 }
 
+function rbkc_fe_wysiwyg_plugin($editor, $version) {
+  $plugins = array();
+  switch ($editor) {
+    case 'ckeditor':
+      $plugins['dndck4'] = array(
+        'path' => drupal_get_path('module', 'rbkc_fe') . '/plugins/dndck4',
+        'filename' => 'plugin.js',
+        'buttons' => array(
+          'dndck4' => t('Scald DnD integration dndck4 - CKEditor 4 widgets'),
+        ),
+        'load' => TRUE,
+      );
+  }
+  return $plugins;
+}
+
 /**
  * Implements hook_block_view_MODULE_DELTA_alter().
  */
@@ -67,12 +83,19 @@ function rbkc_fe_scald_contexts() {
  */
 function rbkc_fe_scald_wysiwyg_context_list_alter(&$contexts) {
   foreach ($contexts as $context => $type) {
-    if($context != 'image') {
+    if($context == 'image') {
+      $contexts['image'] = array('image_without_caption' => $contexts['image']['image_without_caption']) + $contexts['image'];
+      unset($contexts[$context]['file_with_size']);
+      unset($contexts[$context]['full']);
+      unset($contexts[$context]['sdl_editor_representation']);
+      unset($contexts[$context]['file_representation']);
+    }
+    if($context == 'file') {
       unset($contexts[$context]['image_with_caption']);
       unset($contexts[$context]['image_without_caption']);
-    }
-    if($context != 'file') {
-      unset($contexts[$context]['file_with_size']);
+      unset($contexts[$context]['full']);
+      unset($contexts[$context]['sdl_editor_representation']);
+      unset($contexts[$context]['file_representation']);
     }
   }
 }
