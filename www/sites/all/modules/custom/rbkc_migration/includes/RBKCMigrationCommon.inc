@@ -293,6 +293,9 @@ trait RBKCMigrationCommon {
 
     $term_name = static::resolveTermMapping($part);
 
+    $path_to_dictionary = drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'rbkc.dict';
+    $term_name = self::splitWordIntoWords($term_name, $path_to_dictionary);
+
     $terms = taxonomy_get_term_by_name($term_name, $vocabulary->machine_name);
     if (count($terms)) {
       $term = array_shift($terms);
@@ -331,5 +334,47 @@ trait RBKCMigrationCommon {
     }
 
     return $path_to_idocs . rawurlencode($filename);
+  }
+
+  /**
+   * Given a word frequency dictionary and a word such as thesearesomewords,
+   * transform the word in to these are some words.
+   *
+   * We use Sphinxsearch to index the body_value field of field_data_body then
+   * use Sphinxsearch indexer to generate a keyword frequency dictionary which
+   * is in turn passed into Sphinxsearch's wordbreaker via exec().
+   *
+   * @see http://sphinxsearch.com/blog/2013/01/29/a-new-tool-in-the-trunk-wordbreaker/
+   *
+   * @param $word
+   * @return string
+   */
+  protected static function splitWordIntoWords($word, $path_to_dictionary) {
+    if (FALSE !== strpos($word, ' ')) {
+      return $word;
+    }
+
+    $first_letter = substr($word, 0, 1);
+    if (ctype_upper($first_letter)) {
+      return $word;
+    }
+
+    $result = exec('wordbreaker');
+
+    if (empty($result)) {
+      return $word;
+    }
+
+    if (!file_exists($path_to_dictionary)) {
+      return $word;
+    }
+
+    $words = exec("echo $word | wordbreaker --dict $path_to_dictionary split");
+
+    if (empty($words)) {
+      return $word;
+    }
+
+    return ucfirst($words);
   }
 }
