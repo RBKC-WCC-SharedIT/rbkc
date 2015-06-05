@@ -140,6 +140,55 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-answer-field_audited'
+  $field_instances['node-answer-field_audited'] = array(
+    'bundle' => 'answer',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Tick to indicate the page has been audited',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_audited',
+    'label' => 'Audited',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-answer-field_contact_department'
   $field_instances['node-answer-field_contact_department'] = array(
     'bundle' => 'answer',
@@ -492,6 +541,7 @@ function feature_answer_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Action');
+  t('Audited');
   t('Begin typing the name of the department to show suggestions, the selected contact department name is used to generate the contact us button.');
   t('Body');
   t('Check this box if you want to display "More in" links on this page. ');
@@ -507,6 +557,7 @@ function feature_answer_field_default_field_instances() {
   t('Show more in links');
   t('Start typing to find an existing tag or add a new one.');
   t('Tags');
+  t('Tick to indicate the page has been audited');
   t('User');
 
   return $field_instances;

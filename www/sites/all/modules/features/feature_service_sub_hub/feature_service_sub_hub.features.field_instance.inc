@@ -425,6 +425,55 @@ function feature_service_sub_hub_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-subhub-field_audited'
+  $field_instances['node-subhub-field_audited'] = array(
+    'bundle' => 'subhub',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Tick to indicate the page has been audited',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_audited',
+    'label' => 'Audited',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-subhub-field_curated_topic'
   $field_instances['node-subhub-field_curated_topic'] = array(
     'bundle' => 'subhub',
@@ -624,6 +673,7 @@ function feature_service_sub_hub_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Audited');
   t('Body');
   t('Curated link and summary');
   t('Curated topic');
@@ -637,6 +687,7 @@ function feature_service_sub_hub_field_default_field_instances() {
   t('Select the Service hub that this page should appear under.');
   t('Service hub');
   t('Short Title');
+  t('Tick to indicate the page has been audited');
   t('Type in a title for your curated topic');
 
   return $field_instances;
