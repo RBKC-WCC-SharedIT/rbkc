@@ -22,6 +22,7 @@ features[features_api][] = api:2
 features[field_base][] = body
 features[field_base][] = field_action
 features[field_base][] = field_asset
+features[field_base][] = field_audited
 features[field_base][] = field_contact_department
 features[field_base][] = field_contact_department_link
 features[field_base][] = field_contact_department_name

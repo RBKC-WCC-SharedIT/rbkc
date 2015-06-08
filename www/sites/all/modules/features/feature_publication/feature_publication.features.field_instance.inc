@@ -145,6 +145,55 @@ function feature_publication_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-publication-field_audited'
+  $field_instances['node-publication-field_audited'] = array(
+    'bundle' => 'publication',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Tick to indicate the page has been audited',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_audited',
+    'label' => 'Audited',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'node-publication-field_review_date'
   $field_instances['node-publication-field_review_date'] = array(
     'bundle' => 'publication',
@@ -389,6 +438,7 @@ function feature_publication_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Audited');
   t('Body');
   t('PDF');
   t('Please set the date and time editors should review this content.');
@@ -397,6 +447,7 @@ function feature_publication_field_default_field_instances() {
   t('Service hub');
   t('Short Title');
   t('Tag');
+  t('Tick to indicate the page has been audited');
   t('Upload the PDF document for this publication (ensure it is uploaded the top-most publication page otherwise it will not show in the table of contents).');
   t('User');
 
