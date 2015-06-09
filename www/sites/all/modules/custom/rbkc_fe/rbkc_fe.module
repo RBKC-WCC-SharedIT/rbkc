@@ -134,3 +134,9 @@ function rbkc_fe_scald_render($atom, $context, $options) {
 
   return $output;
 }
+
+function rbkc_fe_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, 'webform') !== FALSE || strpos($form_id, 'search_form') !== FALSE ) {
+    $form['#attributes']['class'][] = 'form';
+  }
+}
