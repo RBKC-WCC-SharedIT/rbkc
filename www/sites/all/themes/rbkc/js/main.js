@@ -2,7 +2,6 @@
 
   var headerMob,
       headerDesk,
-      stylePDF,
   //  accordion,
       addViewAllMore,
       addViewAllElsewhere,
@@ -46,34 +45,12 @@
     });
   }
 
-  function stylePDF() {
-    $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
-      var linkElement = $(this);
-      var linkText = linkElement.text();
-      var linkHref =  $(this).attr('href');
-      var linkParent = $(this).parents("li:first, p:first");
-      // adding a class to the link's parent
-      linkParent.addClass("docLink");
-      $('<br>').appendTo(linkElement);
-      // Create the Icon with the duplicated link
-      var Icon =
-        $('<a />', {
-          'class': 'docLink-icon',
-          'href' : linkHref,
-          // to hide from screen reader
-          'role' : 'presentation',
-          'tabindex' : "-1"
-        }).prependTo(linkParent);
-    }); // end each function
-  } // end stylePDF
-
-
   // where there are more than three items in menu add 'view all'
-  function addViewAll() {
-    $('.related ul').each(function() {
+  $.fn.addViewAll = function(numItems) {
+    this.each(function() {
       var childNumber = $(this).find('li');
-      if (childNumber.length > 3) {
-        $('<p class="related__viewall">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
+      if (childNumber.length > numItems) {
+        $('<p class="view-all">View all</p>').attr('title', 'View other, related pages').insertAfter($(this));
       }
     });
   }
@@ -82,23 +59,22 @@
     $(this).parent().find('li:gt(2)').slideToggle('150');
         if ($(this).text() === "View all") {
           $(this).text("View less").attr('title', 'View fewer links');/* Toggles the title text  */
+          $(this).addClass('open');
         }
         else {
           $(this).text("View all").attr('title', 'View more links');/* Toggles the title text */
-          }
+          $(this).removeClass('open');
+        }
   }   // end show/hide right hand column menu
+
 
   // if broswer does not support html5 placeholder, add value to form field
   function checkPlaceholder() {
     if(!Modernizr.input.placeholder){
-       $('.headerglobal-search_full_text input').val('Enter search terms...');
-       $('.headerglobal-search_full_text input').click(function() {
-        function doOnce() {
-          $('.headerglobal-search_full_text input').val("");
-          doOnce = function() {};
-        }
-        doOnce();
-       });
+      $('.search__input').val('Enter search terms...');
+      $('.search__input').one("click", function() {
+        $(this).val("");
+      });
     }
   }
 
@@ -118,15 +94,38 @@
     });
   } // end service list
 
+  // styling PDF links with icon.  A fix until we move to Drupal - SP.
+  function stylePDF() {
+    $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
+      if (!$(this).parents('.context-file_with_size').length) {
+        var linkElement = $(this);
+        var linkText = linkElement.text();
+        var linkHref =  $(this).attr('href');
+        var linkParent = $(this).parents("li:first, p:first");
+        linkParent.addClass("docLink");
+        $('<br>').appendTo(linkElement);
+        // Create the Icon with the duplicated link
+        var Icon =
+          $('<a />', {
+            'class': 'docLink-icon',
+            'href' : linkHref,
+            //to hide extra link from screen reader
+            'role' : 'presentation',
+            'tabindex' : "-1"
+          }).prependTo(linkParent);
+      }
+    });
+  } // end stylePDF
+
 
   function commsHeight() {  //make comms panels correct height when no flexbox support
     if  (!$('html').hasClass('flexbox')) {
-      var newsBoxHeight = $('.newsbox-news').outerHeight();
+      var newsBoxHeight = $('.comms__news').outerHeight();
       //console.log(newsBoxHeight);
-      var imgBoxHeight = $('.newsbox-img').outerHeight();
+      var imgBoxHeight = $('.comms__img').outerHeight();
       var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
       //console.log(blogBoxHeight);
-      $('.lblog .newsbox-item ').css('height', blogBoxHeight + "px");
+      $('.comms__feature .comms__item').css('height', blogBoxHeight + "px");
     }
   }
 
@@ -141,18 +140,17 @@
       responsive: [
         {
           breakpoint: 700,
-          settings: {
-          slidesToShow: 2,
-          swipe: true
-          }
+					settings: {
+						slidesToShow: 2,
+						swipe: true
+					}
         },
         {
           breakpoint: 560,
           settings: {
-          slidesToShow: 1,
-          swipe: true,
-
-          }
+						slidesToShow: 1,
+						swipe: true
+					}
         }
       ]
     });
@@ -194,17 +192,16 @@ $(document).ready(function() {
   //assign click function to open the service menu in desktop
   assignOpenMenu( '#openServiceMenu', '.service-menu');
 
-  stylePDF();
-
   //accordion();
 
   try {
-    addViewAll();
+    $('.related ul').addViewAll(3);
+    $('.sub-hub-topic ul').addViewAll(3);
   }
   catch(e){
   }
 
-  $('.related__viewall').on("click", showMore);
+  $('.view-all').on("click", showMore);
 
   checkPlaceholder();
 
@@ -213,6 +210,8 @@ $(document).ready(function() {
   serviceList();
 
   commsHeight();
+
+  stylePDF()
 
   try {
   slickSlider();

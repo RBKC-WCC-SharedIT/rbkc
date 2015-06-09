@@ -34,6 +34,12 @@ function feature_topics_strongarm() {
       'top_three_topics' => array(
         'custom_settings' => TRUE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -41,19 +47,34 @@ function feature_topics_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
-        ),
-        'metatags' => array(
           'weight' => '6',
         ),
+        'metatags' => array(
+          'weight' => '9',
+        ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '5',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__topic'] = $strongarm;
@@ -95,6 +116,13 @@ function feature_topics_strongarm() {
   $strongarm->name = 'node_submitted_topic';
   $strongarm->value = 0;
   $export['node_submitted_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_topic_pattern';
+  $strongarm->value = '[node:field-service-hub:parents:join-path]/[node:field-service-hub:name]/[node:title]';
+  $export['pathauto_node_topic_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

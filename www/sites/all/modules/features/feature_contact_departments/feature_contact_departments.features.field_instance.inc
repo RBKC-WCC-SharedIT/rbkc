@@ -81,6 +81,9 @@ function feature_contact_departments_field_default_field_instances() {
     'label' => 'Name',
     'required' => 1,
     'settings' => array(
+      'context' => '',
+      'dnd_enabled' => 0,
+      'mee_enabled' => 0,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),

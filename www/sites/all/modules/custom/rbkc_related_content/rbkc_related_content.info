@@ -1,0 +1,4 @@
+name = RBKC related content
+description = Provides the logic for retrieving related content links that appears on answer pages.
+core = 7.x
+package = RBKC

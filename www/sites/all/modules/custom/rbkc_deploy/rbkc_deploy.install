@@ -642,3 +642,275 @@ function rbkc_deploy_update_7048() {
 function rbkc_deploy_update_7049() {
   module_enable(array('feature_survey'), TRUE);
 }
+
+/**
+ * Switch on the Smart Trim feature.
+ */
+function rbkc_deploy_update_7050() {
+  module_enable(array('smart_trim'), TRUE);
+}
+
+/**
+ * Switch on the Admin UI module.
+ */
+function rbkc_deploy_update_7051() {
+  module_enable(array('admin_ui'), TRUE);
+}
+
+/**
+ * Switch on feature_images and dependencies. Switch off the media modules.
+ */
+function rbkc_deploy_update_7052() {
+  module_enable(array('feature_images'), TRUE);
+  module_disable(array('file_entity', 'media', 'media_wysiwyg', 'media_wysiwyg_view_mode'));
+}
+
+/**
+ * Switch on scald_file module.
+ */
+function rbkc_deploy_update_7053() {
+  module_enable(array('scald_file'), TRUE);
+}
+
+/**
+ * Add deeplink to survey content type.
+ */
+function rbkc_deploy_update_7054() {
+  variable_set(DEEPLINK_CONTENT_TYPES, array(
+    'answer' => 'answer',
+    'guide' => 'guide',
+    'publication' => 'publication',
+    'servicehub' => 'servicehub',
+    'subhub' => 'subhub',
+    'topic' => 'topic',
+    'survey' => 'survey',
+  ));
+}
+
+/**
+ * Switch on the entity token module.
+ */
+function rbkc_deploy_update_7055() {
+  module_enable(array('entity_token'), TRUE);
+}
+
+/**
+ * Switch on simple hierarchical select module.
+ */
+function rbkc_deploy_update_7056() {
+  module_enable(array('shs'), TRUE);
+}
+
+/**
+ * Create topic, tag, action and user vocabularies.
+ */
+function rbkc_deploy_update_7057() {
+  $vocabulary_machine_names = array(
+    'topic',
+    'tag',
+    'action',
+    'user'
+  );
+
+  $vocabularies = taxonomy_vocabulary_get_names();
+
+  foreach ($vocabulary_machine_names as $vocabulary_machine_name) {
+    if (array_key_exists($vocabulary_machine_name, $vocabularies)) {
+      continue;
+    }
+
+    db_insert('taxonomy_vocabulary')
+      ->fields(array('name' => t(ucfirst($vocabulary_machine_name)), 'machine_name' => $vocabulary_machine_name, 'description' => ucfirst($vocabulary_machine_name) . '.'))
+      ->execute();
+  }
+}
+
+/**
+ * Switch on summary settings module.
+ */
+function rbkc_deploy_update_7058() {
+  module_enable(array('summary_settings'), TRUE);
+}
+
+/**
+ * Switch on spelling suggestions (GSA).
+ */
+function rbkc_deploy_update_7059() {
+  variable_set('google_appliance_spelling_suggestions', '1');
+}
+
+/**
+ * Switch on feature_roles_permissions.
+ */
+function rbkc_deploy_update_7060() {
+  module_enable(array('feature_roles_permissions'), TRUE);
+}
+
+/**
+ * Switch on the ShareThis module.
+ */
+function rbkc_deploy_update_7061() {
+  module_enable(array('ShareThis'), TRUE);
+}
+
+/**
+ * Switch on the ShareThis feature.
+ */
+function rbkc_deploy_update_7062() {
+  module_enable(array('feature_sharethis'), TRUE);
+}
+
+/**
+ * Enable and configure scald_maps .
+ */
+function rbkc_deploy_update_7063() {
+  module_enable(array('scald_map'), TRUE);
+  features_revert_module('feature_common');
+}
+
+/**
+ * Switch on the accessibility checking modules.
+ */
+function rbkc_deploy_update_7064() {
+  module_enable(array('accessibility', 'accessibility_content', 'accessibility_wysiwyg'), TRUE);
+}
+
+/**
+ * Switch on the aggregator module.
+ */
+function rbkc_deploy_update_7065() {
+  module_enable(array('aggregator'), TRUE);
+}
+
+/**
+ * Switch on the RBKC related content module.
+ */
+function rbkc_deploy_update_7066() {
+  module_enable(array('rbkc_related_content'), TRUE);
+}
+
+/**
+ * Switch on the Views Arguments Extras module.
+ */
+function rbkc_deploy_update_7067() {
+  module_enable(array('views_arguments_extras'), TRUE);
+}
+
+/**
+ * Switch on the add to head module.
+ */
+function rbkc_deploy_update_7068() {
+  module_enable(array('add_to_head'), TRUE);
+}
+
+/**
+ * Put the GSA ga_related_searches block in the content region.
+ */
+function rbkc_deploy_update_7069() {
+  $delta = 'ga_related_searches';
+  $region = 'rbkc';
+
+  $query = db_merge('block')
+    ->key(array('module' => 'google_appliance', 'delta' => $delta, 'theme' => $region))
+    ->fields(array(
+      'status' => 1,
+      'region' => 'content',
+      'pages' => '',
+    ))
+    ->execute();
+
+  db_update('block')
+    ->fields(array('weight' => -5))
+    ->condition('module', 'google_appliance')
+    ->condition('delta', $delta)
+    ->condition('theme', $region)
+    ->execute();
+}
+
+/**
+ * Set the visibility of the ga_related_searches block.
+ */
+function rbkc_deploy_update_7070() {
+  $delta = 'ga_related_searches';
+  $region = 'rbkc';
+
+  db_update('block')
+    ->fields(array('visibility' => 1, 'pages' => 'gsearch/*'))
+    ->condition('module', 'google_appliance')
+    ->condition('delta', $delta)
+    ->condition('theme', $region)
+    ->execute();
+}
+
+/**
+ * Switch on the feature_views feature.
+ */
+function rbkc_deploy_update_7071() {
+  module_enable(array('feature_views'), TRUE);
+}
+
+/**
+ * Switch on the wysiwyg_tpr module.
+ */
+function rbkc_deploy_update_7072() {
+  module_enable(array('wysiwyg_tpr'), TRUE);
+}
+
+/**
+ * Switch on the wysiwyg_tpr module.
+ */
+function rbkc_deploy_update_7073() {
+  module_enable(array('wysiwyg_tools_plus'), TRUE);
+}
+
+/**
+ * Resolve can't change field type issue.
+ */
+function rbkc_deploy_update_7074() {
+  field_delete_field('field_other_popular_content');
+  field_delete_field('field_popular_tasks');
+  features_revert();
+}
+
+/**
+ * Switch on linkit picker module.
+ */
+function rbkc_deploy_update_7075() {
+  module_enable(array('linkit_picker'), TRUE);
+}
+
+/**
+ * Switch on content lock.
+ */
+function rbkc_deploy_update_7076() {
+  module_enable(array('content_lock'), TRUE);
+}
+
+/**
+ * Switch on linkit picker module (again).
+ */
+function rbkc_deploy_update_7077() {
+  module_enable(array('linkit_picker'), TRUE);
+}
+
+/**
+ * Switch on pathologic.
+ */
+function rbkc_deploy_update_7078() {
+  module_enable(array('pathologic'), TRUE);
+}
+
+/**
+ * Switch on RBKC Linkit Picker.
+ */
+function rbkc_deploy_update_7079() {
+  module_enable(array('rbkc_linkit_picker'), TRUE);
+}
+
+/**
+ * Remove the link to topic field from the Service Sub-Hub content type.
+ */
+function rbkc_deploy_update_7080() {
+  field_delete_field('field_subhub_link_to_topic');
+  features_revert();
+}

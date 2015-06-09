@@ -1,0 +1,164 @@
+<?php
+
+/**
+ * @file
+ * Provides the Also in <top level service hub section name> and More in <page
+ * title> links that appear on the right hand side of answer pages.
+ *
+ * Logic:
+ * If I am on an answer page and if it's tagged with a service hub then...
+ * - Get the top level service hub term
+ * - Get the menu link from the service drop down menu that matches on term name == link title
+ * - Load the node associated with the menu link
+ * - Generate a list of links to the popular topics referenced on the node
+ *
+ * Logic:
+ * If I am on an answer page and the show more in checkbox is checked and there
+ * are more pages tagged with the same topic term then display the most recent
+ * 10 as links.
+ */
+
+/**
+ * Implements hook_node_view().
+ */
+function rbkc_related_content_node_view($node, $view_mode, $langcode) {
+  if (!rbkc_related_content_is_answer_page($node)) {
+    return;
+  }
+
+  if ('full' !== $view_mode) {
+    return;
+  }
+
+  rbkc_related_content_embed_more($node);
+  rbkc_related_content_embed_also($node);
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function rbkc_related_content_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'rbkc_related_content') . '/includes',
+  );
+}
+
+function rbkc_related_content_is_answer_page(stdClass $node) {
+  return ('answer' === $node->type);
+}
+
+function rbkc_related_content_embed_more(stdClass $node) {
+  if ($node->field_show_more_in_links[LANGUAGE_NONE][0]['value']) {
+    $node->content['rbkc_related_content']['more_in']['#markup'] = trim(views_embed_view('rbkc_related_content_more'));
+  }
+}
+
+function rbkc_related_content_get_service_area_node(stdClass $node) {
+  if (!isset($node->field_service_hub[LANGUAGE_NONE][0]['tid'])) {
+    return NULL;
+  }
+
+  $tid = $node->field_service_hub[LANGUAGE_NONE][0]['tid'];
+  $parents = taxonomy_get_parents_all($tid);
+
+  if (!$parents) {
+    return NULL;
+  }
+
+  $parent = array_pop($parents);
+
+  $parent_name = $parent->name;
+  $menu_name = 'drop-down-service-menu';
+  $links = db_select('menu_links', 'ml', array('fetch' => PDO::FETCH_ASSOC))
+    ->fields('ml')
+    ->condition('ml.menu_name', $menu_name)
+    ->condition('ml.link_title', $parent_name)
+    ->execute()
+    ->fetchAll();
+
+  foreach ($links as &$link) {
+    $link['options'] = unserialize($link['options']);
+  }
+
+  $menu_link = array_pop($links);
+  if (!($menu_link['link_path'])) {
+    return NULL;
+  }
+
+  $link_path = $menu_link['link_path'];
+  if (FALSE === strpos($link_path, 'node/')) {
+    return;
+  }
+
+  $nid = (int) str_replace('node/', '', $link_path);
+
+  if ($nid == $node->nid) {
+    return NULL;
+  }
+
+  $service_area_node = node_load($nid);
+
+  return $service_area_node;
+}
+
+function rbkc_related_content_embed_also(stdClass $node) {
+  $parent_node = rbkc_related_content_get_service_area_node($node);
+  if (!isset($parent_node->field_popular_topics[LANGUAGE_NONE]) || empty($parent_node->field_popular_topics[LANGUAGE_NONE])) {
+    return;
+  }
+
+  $popular_topics = $parent_node->field_popular_topics[LANGUAGE_NONE];
+
+  $links = array();
+
+  $count = 0;
+  foreach ($popular_topics as $popular_topic) {
+    $entity = field_collection_item_load($popular_topic['value']);
+    if ($entity->revision_id != $popular_topic['revision_id']) {
+      $entity = field_collection_item_revision_load($popular_topic['revision_id']);
+    }
+
+    if (!isset($entity->field_internal_page_link)) {
+      continue;
+    }
+
+    $internal_page_link = $entity->field_internal_page_link;
+
+    if (!isset($internal_page_link[LANGUAGE_NONE][0]['target_id'])) {
+      continue;
+    }
+
+    $target_id = (int) $internal_page_link[LANGUAGE_NONE][0]['target_id'];
+    $target_node = node_load($target_id);
+
+    $node_url = 'node/' . $target_id;
+    $node_title = check_plain($target_node->title);
+
+    $key = ($count >= 3) ? 'hide ' . $count : $count;
+    $links[$key] = array(
+      'title' => $node_title,
+      'href' => $node_url,
+    );
+
+    $count++;
+  }
+
+  if (!$links) {
+    return;
+  }
+
+  $variables = array(
+    'links' => $links,
+    'attributes' => array('class' => 'chevronlist'),
+    'heading' => array(
+      'class' => 'related__header',
+      'text' => 'Also in ' . $parent_node->title,
+      'level' => 'h2',
+    ),
+  );
+
+  $node->content['rbkc_related_content']['also_in'] = array(
+    '#markup' => theme('links', $variables),
+  );
+}

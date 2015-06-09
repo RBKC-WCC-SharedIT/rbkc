@@ -31,26 +31,50 @@ function feature_publication_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'top_three_topics' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '4',
+          'weight' => '8',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__publication'] = $strongarm;
@@ -92,6 +116,13 @@ function feature_publication_strongarm() {
   $strongarm->name = 'node_submitted_publication';
   $strongarm->value = 0;
   $export['node_submitted_publication'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_publication_pattern';
+  $strongarm->value = '[node:field-service-hub:parents:join-path]/[node:field-service-hub:name]/[node:title]';
+  $export['pathauto_node_publication_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

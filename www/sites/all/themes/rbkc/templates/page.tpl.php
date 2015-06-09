@@ -50,7 +50,9 @@
        <div class="inner breadcrumb lightlinks">
           <ol>
             <li><a href="<?php print $front_page; ?>" title="Home page" >Home page</a></li>
-            <li><a href="#" title="#" >Service area link goes here</a></li>
+            <?php if (isset($service_area_link)): ?>
+            <li><?php print $service_area_link; ?></li>
+            <?php endif; ?>
             <li><?php print $title; ?></li>
            </ol>
        </div><!-- end inner breadcrumb-->
@@ -92,3 +94,41 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
+<div id="sitestat" data-url="<?php
+                              $statlink = str_replace('/', '.', request_uri());
+                              print substr($statlink, 1);
+                             ?>">
+
+<script type="text/javascript">
+ //<!-- Begin Sitestat4 Loadingtime1 code -->
+ns_loadingtime1=(new Date()).getTime();
+//<!-- End Sitestat4 Loadingtime1 code -->
+</script>
+<!-- Begin Sitestat4 code -->
+<script type="text/javascript">
+
+function getURL() {
+  var stats = document.getElementById('sitestat');
+    return stats.dataset.url;
+}
+
+<!--
+function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
+ns_0=document.referrer;
+ns_0=(ns_0.lastIndexOf('/')==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf('/'),0):ns_0;
+if(ns_0.length>0)ns_l+='&amp;ns_referrer='+escape(ns_0);
+if(document.images){ns_1=new Image();ns_1.src=ns_l;}else
+document.write('<img src="'+ns_l+'" width="1" height="1" alt="" />');}
+sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
+//-->
+</script>
+
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php print substr($statlink, 1); ?>.page" width="1" height="1" alt="" /></div>
+
+<!-- End Sitestat4 code -->
+<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
+<!-- End Sitestat4 Technical code -->
+<!-- Begin Sitestat4 Loadingtime2 code -->
+<script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>
+<!-- End Sitestat4 Loadingtime2 code -->
+</div>

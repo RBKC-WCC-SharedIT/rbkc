@@ -1,0 +1,8 @@
+name = Roles and permissions
+description = User roles and permissions
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = google_appliance
+features[features_api][] = api:2
+features[user_permission][] = access_google_appliance_content

@@ -1,0 +1,13 @@
+name = Feature Views
+core = 7.x
+package = Features
+dependencies[] = ds
+dependencies[] = views
+dependencies[] = views_content
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = rbkc_events
+features[views_view][] = rbkc_news
+features[views_view][] = workbench_audited_content
+features[views_view][] = workbench_editorial_review
+features_exclude[dependencies][ctools] = ctools

@@ -70,6 +70,12 @@ function feature_service_hub_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+      'link_field' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -77,19 +83,34 @@ function feature_service_hub_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
-        ),
-        'metatags' => array(
           'weight' => '8',
         ),
+        'metatags' => array(
+          'weight' => '11',
+        ),
       ),
-      'display' => array(),
+      'display' => array(
+        'sharethis' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '4',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__servicehub'] = $strongarm;
@@ -131,6 +152,13 @@ function feature_service_hub_strongarm() {
   $strongarm->name = 'node_submitted_servicehub';
   $strongarm->value = 0;
   $export['node_submitted_servicehub'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_servicehub_pattern';
+  $strongarm->value = '[node:field-service-hub:parents:join-path]/[node:field-service-hub:name]/[node:title]';
+  $export['pathauto_node_servicehub_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

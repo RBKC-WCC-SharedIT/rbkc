@@ -2,49 +2,45 @@
                   <div class="col8">
                     <div class="content">
                       <?php
+                      //var_dump($content); die();
                         hide($content['field_contact_department']);
+                        hide($content['deeplink_form']);
+                        hide($content['rbkc_related_content']);
+                        hide($content['sharethis']);
+                        hide($content['field_tag']);
                         print render($content);
                        ?>
 
                     </div>
-                    <p class="print-page">Print page: <?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
-
+                    <div class="content group">
+                      <?php print render($content['field_tag']); ?>
+                      <p class="print-page"><strong>Print page: </strong><?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
+                      <?php
+                        print render($content['sharethis']);
+                        print render($content['deeplink_form']);
+                      ?>
+                    </div>
                   </div><!-- end col8 -->
 
                   <div class="col4"  role="complementary">
+                    <?php if ((isset($content['rbkc_related_content']['more_in']['#markup']) && !empty($content['rbkc_related_content']['more_in']['#markup'])) || isset($content['rbkc_related_content']['also_in']['#markup'])): ?>
                     <div class="bordered related">
                       <!-- child menu -->
+                      <?php if (isset($content['rbkc_related_content']['more_in']['#markup']) && !empty($content['rbkc_related_content']['more_in']['#markup'])): ?>
                       <div class="related__more">
                         <h2 class="related__header">More in <?php print $title ?></h2>
-
-                        <ul class="chevronlist">
-                          <li class="level0"><a href="/planningandbuildingcontrol/homepage.aspx">Home page</a></li>
-                          <li class="level0"><a href="/planningandbuildingcontrol/newpage.aspx">New Page</a></li>
-                          <li class="level0"><a href="/planningandbuildingcontrol/heritageandconservation.aspx">Heritage and conservation</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/newsroom.aspx">Newsroom</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/guidepage.aspx">Guide Page</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/newmenutest.aspx">New menu test</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/forms.aspx">forms</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/planningpolicy.aspx">Planning Policy</a></li>
-                        </ul>
+                        <?php print render($content['rbkc_related_content']['more_in']); ?>
                       </div><!-- end related-more -->
+                      <?php endif; ?>
 
+                      <?php if (isset($content['rbkc_related_content']['also_in']['#markup'])): ?>
                       <!-- sibling menu -->
                       <div class="related__elsewhere">
-                        <h2 class="related__header">Also in Related Topic</h2>
-
-                        <ul class="chevronlist">
-                          <li class="level0"><a href="/planningandbuildingcontrol/homepage.aspx">Home page</a></li>
-                          <li class="level0"><a href="/planningandbuildingcontrol/newpage.aspx">New Page</a></li>
-                          <li class="level0"><a href="/planningandbuildingcontrol/heritageandconservation.aspx">Heritage and conservation</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/newsroom.aspx">Newsroom</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/guidepage.aspx">Guide Page</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/newmenutest.aspx">New menu test</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/forms.aspx">forms</a></li>
-                          <li class="hide level0"><a href="/planningandbuildingcontrol/planningpolicy.aspx">Planning Policy</a></li>
-                        </ul>
+                        <?php print render($content['rbkc_related_content']['also_in']); ?>
                       </div><!-- end related-elsewhere -->
+                      <?php endif; ?>
                     </div><!-- end bordered related -->
+                    <?php endif; ?>
 
                     <?php print render($content['field_contact_department']); ?>
 

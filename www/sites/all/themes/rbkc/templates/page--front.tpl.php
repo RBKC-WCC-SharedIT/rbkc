@@ -520,3 +520,31 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
+
+<script type="text/javascript">
+ //<!-- Begin Sitestat4 Loadingtime1 code -->
+ns_loadingtime1=(new Date()).getTime();
+//<!-- End Sitestat4 Loadingtime1 code -->
+</script>
+<!-- Begin Sitestat4 code -->
+<script type="text/javascript">
+
+<!--
+function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
+ns_0=document.referrer;
+ns_0=(ns_0.lastIndexOf('/')==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf('/'),0):ns_0;
+if(ns_0.length>0)ns_l+='&amp;ns_referrer='+escape(ns_0);
+if(document.images){ns_1=new Image();ns_1.src=ns_l;}else
+document.write('<img src="'+ns_l+'" width="1" height="1" alt="" />');}
+sitestat("http://uk.sitestat.com/rbkc/rbkc/s?home.page" );
+//-->
+</script>
+
+<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
+
+<!-- End Sitestat4 code -->
+<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
+<!-- End Sitestat4 Technical code -->
+<!-- Begin Sitestat4 Loadingtime2 code -->
+<script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>
+<!-- End Sitestat4 Loadingtime2 code -->

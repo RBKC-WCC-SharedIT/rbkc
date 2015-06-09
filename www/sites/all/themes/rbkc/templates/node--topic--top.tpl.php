@@ -1,6 +1,5 @@
+<h3><a href="<?php print $node_url ?>"><?php print $title ?></a></h3>
 <?php
-  for ( $i = 0; $i < 3; $i++ ) {
-    print render($content['field_topic_link'][$i]);
-  }
+  hide($content['links']);
+  print render($content);
 ?>
-<h3><a href="<?php print $node_url;?>">More in <?php print $content['field_topic_link']['#object']->title;?>...</a></h3>

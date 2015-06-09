@@ -134,29 +134,6 @@ function rbkc_menu_tree__book_toc_publication(&$variables) {
   return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
 }
 
-/**
- * Implements template_preprocess_field().
- */
-function rbkc_preprocess_field(&$variables, $hook) {
-  $element = $variables['element'];
-
-  if (!isset($element['#field_name'])) {
-    return;
-  }
-
-  if ('field_popular_tasks' !== $element['#field_name']) {
-    return;
-  }
-
-  if (!empty($variables['items'][0])) {
-    $variables['items'][0]['#element']['attributes']['class'] = 'first';
-  }
-
-  $last_index = (count($variables['items'])) - 1;
-  if (!empty($variables['items'][$last_index])) {
-    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
-  }
-}
 
 /**
  * Override menu link variables.
@@ -184,13 +161,19 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
  * @param type $vars
  */
 function rbkc_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'teaser') {
+  if ($vars['view_mode'] == 'teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__teaser';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__teaser';
   }
-  if($vars['view_mode'] == 'top_three_topics') {
+
+  if ($vars['view_mode'] == 'top_three_topics') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__top';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__top';
+  }
+
+  if ($vars['view_mode'] == 'link_field') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__link';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__link';
   }
 }
 
@@ -252,9 +235,47 @@ function rbkc_file_icon($variables) {
   return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
 }
 
+/**
+ * Implements hook_css_alter().
+ */
 function rbkc_css_alter(&$css) {
   $exclude = array(
     'modules/system/system.menus.css' => FALSE,
+    'sites/all/modules/contrib/scald/modules/library/dnd/css/editor-global.css' => FALSE,
   );
   $css = array_diff_key($css, $exclude);
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ * See https://api.drupal.org/api/drupal/modules%21system%21system.api.php/function/hook_form_FORM_ID_alter/7
+ */
+function rbkc_form_google_appliance_block_form_alter(&$form, &$form_state) {
+  // Add placeholder text to the Google Appliance search form.
+  $form['search_keys']['#attributes']['placeholder'] = t('Enter search terms…');
+}
+
+
+/**
+ * Implements template_preprocess_field().
+ */
+function rbkc_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  if (!isset($element['#field_name'])) {
+    return;
+  }
+
+  if ('field_popular_tasks' !== $element['#field_name']) {
+    return;
+  }
+
+  if (!empty($variables['items'][0])) {
+    $variables['items'][0]['#element']['attributes']['class'] = 'first';
+  }
+
+  $last_index = (count($variables['items'])) - 1;
+  if (!empty($variables['items'][$last_index])) {
+    $variables['items'][$last_index]['#element']['attributes']['class'] = 'last';
+  }
 }

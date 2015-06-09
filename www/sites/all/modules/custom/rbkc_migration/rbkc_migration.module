@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ */
+
+// Traits alone in files referenced in .info files don't seem to get loaded so
+// explicitly requiring them here.
+require_once(drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'RBKCMigrationCommon.inc');
+require_once(drupal_get_path('module', 'rbkc_migration') . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'RBKCMigrationHandleRedirect.inc');

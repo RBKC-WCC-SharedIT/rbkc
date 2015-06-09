@@ -42,7 +42,6 @@ function feature_common_wysiwyg_default_profiles() {
           'Link' => 1,
           'Unlink' => 1,
           'Anchor' => 1,
-          'Image' => 1,
           'TextColor' => 1,
           'BGColor' => 1,
           'Superscript' => 1,
@@ -66,17 +65,22 @@ function feature_common_wysiwyg_default_profiles() {
           'SelectAll' => 1,
           'Find' => 1,
           'Replace' => 1,
-          'Flash' => 1,
           'Smiley' => 1,
           'CreateDiv' => 1,
-          'Iframe' => 1,
           'Maximize' => 1,
           'SpellChecker' => 1,
           'Scayt' => 1,
           'About' => 1,
         ),
+        'dndck4' => array(
+          'dndck4' => 1,
+        ),
+        'linkit' => array(
+          'linkit' => 1,
+        ),
         'drupal' => array(
-          'media' => 1,
+          'accordion' => 1,
+          'accordion_header' => 1,
           'break' => 1,
         ),
       ),
@@ -91,7 +95,8 @@ function feature_common_wysiwyg_default_profiles() {
       'stylesSet' => 'WarningRed=p.warning-red
 WarningYellow=p.warning-yellow
 NoticeMessage=p.notice-message
-PolicyInfo=p.policy-info',
+PolicyInfo=p.policy-info
+LargeIntroText=p.large-text',
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
       'advanced__active_tab' => 'edit-css',
       'forcePasteAsPlainText' => 0,

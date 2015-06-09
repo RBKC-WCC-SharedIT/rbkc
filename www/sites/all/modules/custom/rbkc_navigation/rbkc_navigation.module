@@ -238,21 +238,21 @@ function rbkc_book_preprocess_book_navigation(&$variables) {
       $prev_href = url($prev['href']);
       drupal_add_html_head_link(array('rel' => 'prev', 'href' => $prev_href));
       $variables['prev_url'] = $prev_href;
-      $variables['prev_title'] = check_plain($prev['title']);
+      $variables['prev_title'] = check_plain($prev['link_title']);
     }
 
     if ($book_link['plid'] && $parent = book_link_load($book_link['plid'])) {
       $parent_href = url($parent['href']);
       drupal_add_html_head_link(array('rel' => 'up', 'href' => $parent_href));
       $variables['parent_url'] = $parent_href;
-      $variables['parent_title'] = check_plain($parent['title']);
+      $variables['parent_title'] = check_plain($parent['link_title']);
     }
 
     if ($next = rbkc_book_next($book_link)) {
       $next_href = url($next['href']);
       drupal_add_html_head_link(array('rel' => 'next', 'href' => $next_href));
       $variables['next_url'] = $next_href;
-      $variables['next_title'] = check_plain($next['title']);
+      $variables['next_title'] = check_plain($next['link_title']);
     }
   }
 
@@ -269,4 +269,31 @@ function rbkc_book_preprocess_book_navigation(&$variables) {
       $variables[$link] = '';
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function rbkc_navigation_preprocess_page(&$variables) {
+  $node = menu_get_object();
+
+  if (is_null($node)) {
+    return;
+  }
+
+  $service_area_node = rbkc_related_content_get_service_area_node($node);
+
+  if (is_null($service_area_node)) {
+    return;
+  }
+
+  $link_variables = array(
+    'path' => 'node/' . $service_area_node->nid,
+    'text' => $service_area_node->title,
+    'options' => array(
+      'attributes' => array(),
+      'html' => FALSE,
+      ),
+  );
+  $variables['service_area_link'] = theme('link', $link_variables);
 }

@@ -114,11 +114,14 @@ function feature_topics_field_default_field_instances() {
     'label' => 'External link teaser',
     'required' => 0,
     'settings' => array(
+      'context' => '',
+      'dnd_enabled' => 0,
       'linkit' => array(
         'button_text' => 'Search',
         'enable' => 0,
         'profile' => '',
       ),
+      'mee_enabled' => 0,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -197,6 +200,12 @@ function feature_topics_field_default_field_instances() {
 
   // Exported field_instance: 'node-topic-body'
   $field_instances['node-topic-body'] = array(
+    'accessibility_content' => 1,
+    'accessibility_content_block_submit' => array(
+      'moderate' => 0,
+      'severe' => 0,
+      'suggestion' => 0,
+    ),
     'bundle' => 'topic',
     'default_value' => NULL,
     'deleted' => 0,
@@ -211,37 +220,220 @@ function feature_topics_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'smart_trim',
         'settings' => array(
-          'trim_length' => 600,
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'trim',
+          'trim_length' => 220,
+          'trim_options' => array(
+            'text' => 'text',
+          ),
+          'trim_suffix' => '…',
+          'trim_type' => 'chars',
         ),
-        'type' => 'text_summary_or_trimmed',
+        'type' => 'smart_trim_format',
         'weight' => 0,
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_options' => array(),
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 1,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'context' => 'debug',
+      'context_default' => 'full',
+      'display_summary' => 1,
+      'dnd_enabled' => 1,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'mee_enabled' => 0,
+      'summary_display' => 'required',
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_display' => 'default',
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-topic-field_audited'
+  $field_instances['node-topic-field_audited'] = array(
+    'bundle' => 'topic',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Tick to indicate the page has been audited',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => FALSE,
+    'field_name' => 'field_audited',
+    'label' => 'Audited',
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'module' => 'text',
+      'active' => 1,
+      'module' => 'options',
       'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
+        'display_label' => 1,
       ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 2,
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-topic-field_review_date'
+  $field_instances['node-topic-field_review_date'] = array(
+    'bundle' => 'topic',
+    'deleted' => 0,
+    'description' => 'Please set the date and time editors should review this content.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_review_date',
+    'label' => 'Review Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'repeat_collapsed' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-topic-field_service_hub'
+  $field_instances['node-topic-field_service_hub'] = array(
+    'bundle' => 'topic',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the Service hub that this page should appear under.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'top_three_topics' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_service_hub',
+    'label' => 'Service hub',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'shs',
+      'settings' => array(
+        'shs' => array(
+          'create_new_levels' => 0,
+          'create_new_terms' => 0,
+          'force_deepest' => 0,
+          'node_count' => 0,
+        ),
+      ),
+      'type' => 'taxonomy_shs',
+      'weight' => 4,
     ),
   );
 
@@ -268,7 +460,7 @@ function feature_topics_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'node',
@@ -276,6 +468,9 @@ function feature_topics_field_default_field_instances() {
     'label' => 'Short Title',
     'required' => FALSE,
     'settings' => array(
+      'context' => '',
+      'dnd_enabled' => 0,
+      'mee_enabled' => 0,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -313,12 +508,9 @@ function feature_topics_field_default_field_instances() {
       ),
       'top_three_topics' => array(
         'label' => 'hidden',
-        'module' => 'field_collection',
-        'settings' => array(
-          'view_mode' => 'top_three_topics',
-        ),
-        'type' => 'field_collection_fields',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -339,12 +531,18 @@ function feature_topics_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Audited');
   t('Body');
   t('External link');
   t('External link teaser');
   t('Internal topic link');
+  t('Please set the date and time editors should review this content.');
+  t('Review Date');
+  t('Select the Service hub that this page should appear under.');
   t('Select the pages for this topic');
+  t('Service hub');
   t('Short Title');
+  t('Tick to indicate the page has been audited');
   t('Topic link');
 
   return $field_instances;

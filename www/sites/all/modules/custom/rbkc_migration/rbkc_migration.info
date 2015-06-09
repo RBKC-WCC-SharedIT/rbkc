@@ -1,0 +1,20 @@
+name = RBKC Migration
+description = Imports data from RBKC's Alterian CMS.
+package = RBKC
+core = 7.x
+
+dependencies[] = migrate
+dependencies[] = field_collection
+
+files[] = rbkc_migration.migrate.inc
+files[] = includes/RBKCBaseMigration.inc
+files[] = includes/RBKCBaseNodeMigration.inc
+files[] = includes/RBKCMigrateDestinationFieldCollection.inc
+files[] = includes/RBKCMigrationSourceContentCSV.inc
+files[] = includes/RBKCMigrationSourceDocumentsCSV.inc
+files[] = includes/RBKCMigrationNodeAnswer.inc
+files[] = includes/RBKCMigrationNodePublication.inc
+files[] = includes/RBKCMigrationNodePublicationAssociateChildren.inc
+files[] = includes/RBKCMigrationNodeTopic.inc
+files[] = includes/RBKCMigrationNodeTopicFieldTopicLink.inc
+files[] = handlers/MigrateRBKCHandler.inc

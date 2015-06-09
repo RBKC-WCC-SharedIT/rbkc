@@ -9,6 +9,9 @@
                     <div class="content">
                       <?php print render($content['body']); ?>
                     </div><!-- end content -->
-                    <?php print render($content['book_navigation']); ?>
+                    <?php
+                      print render($content['book_navigation']);
+                      print render($content['deeplink_form']);
+                    ?>
                   </div><!--end col 9-->
                 </div><!-- end row -->

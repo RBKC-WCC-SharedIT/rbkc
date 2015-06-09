@@ -6,12 +6,13 @@
                     </div>
 
                     <div class="content group">
-                      <?php
-                        print render($content['body']);
-                      ?>
+                      <?php print render($content['body']); ?>
                     </div><!-- end content -->
 
-                    <?php print render($content['book_navigation']); ?>
+                    <?php
+                      print render($content['book_navigation']);
+                      print render($content['deeplink_form']);
+                    ?>
                   </div><!--end col 8-->
 
                   <div class="col4"  role="complementary">
