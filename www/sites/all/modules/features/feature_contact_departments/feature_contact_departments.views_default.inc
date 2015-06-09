@@ -43,7 +43,7 @@ function feature_contact_departments_views_default_views() {
   $handler->display->display_options['filters']['field_contact_department_name_value']['id'] = 'field_contact_department_name_value';
   $handler->display->display_options['filters']['field_contact_department_name_value']['table'] = 'field_data_field_contact_department_name';
   $handler->display->display_options['filters']['field_contact_department_name_value']['field'] = 'field_contact_department_name_value';
-  $handler->display->display_options['filters']['field_contact_department_name_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_contact_department_name_value']['operator'] = 'word';
 
   /* Display: Entity Reference */
   $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
