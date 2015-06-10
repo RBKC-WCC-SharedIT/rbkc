@@ -71,8 +71,8 @@ function feature_guide_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'context' => 'file_with_size',
-      'context_default' => 'image_without_caption',
+      'context' => 'debug',
+      'context_default' => 'full',
       'display_summary' => 1,
       'dnd_enabled' => 1,
       'linkit' => array(
@@ -385,48 +385,6 @@ function feature_guide_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-guide-field_topic'
-  $field_instances['node-guide-field_topic'] = array(
-    'bundle' => 'guide',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Choose a topic with which to tag this page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_topic',
-    'label' => 'Topic',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'node-guide-field_user'
   $field_instances['node-guide-field_user'] = array(
     'bundle' => 'guide',
@@ -474,7 +432,6 @@ function feature_guide_field_default_field_instances() {
   t('Action');
   t('Audited');
   t('Body');
-  t('Choose a topic with which to tag this page.');
   t('Please set the date and time editors should review this content.');
   t('Review Date');
   t('Select a user with which to tag this page.');

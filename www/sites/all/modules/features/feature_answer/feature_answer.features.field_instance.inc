@@ -71,8 +71,8 @@ function feature_answer_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'context' => 'file_with_size',
-      'context_default' => 'image_without_caption',
+      'context' => 'debug',
+      'context_default' => 'full',
       'display_summary' => 1,
       'dnd_enabled' => 1,
       'linkit' => array(
@@ -496,48 +496,6 @@ function feature_answer_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-answer-field_topic'
-  $field_instances['node-answer-field_topic'] = array(
-    'bundle' => 'answer',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Choose a topic with which to tag this page.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'top_three_topics' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_topic',
-    'label' => 'Topic',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'node-answer-field_user'
   $field_instances['node-answer-field_user'] = array(
     'bundle' => 'answer',
@@ -587,7 +545,6 @@ function feature_answer_field_default_field_instances() {
   t('Begin typing the name of the department to show suggestions, the selected contact department name is used to generate the contact us button.');
   t('Body');
   t('Check this box if you want to display "More in" links on this page. ');
-  t('Choose a topic with which to tag this page.');
   t('Contact department');
   t('Please enter a short title for this content');
   t('Please set the date and time editors should review this content.');

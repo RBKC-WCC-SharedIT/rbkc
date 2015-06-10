@@ -398,8 +398,8 @@ function feature_service_sub_hub_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'context' => 'file_with_size',
-      'context_default' => 'image_without_caption',
+      'context' => 'debug',
+      'context_default' => 'full',
       'display_summary' => 1,
       'dnd_enabled' => 1,
       'linkit' => array(
