@@ -52,7 +52,7 @@ CKEDITOR.plugins.add('dndck4', {
           el.attributes = {class: el.attributes.class};
           // If we find caption content, set the data accordingly.
           if (el.children[0] && el.children[0].type == CKEDITOR.NODE_ELEMENT && el.children[0].hasClass('dnd-caption-wrapper')) {
-            $.extend(data, {usesCaption: false});
+            $.extend(data, {usesCaption: true});
           }
           // We're done. The HTML for the expanded widget is fetched using AJAX
           // in the data() callback.
@@ -694,7 +694,7 @@ Drupal.dndck4 = {
         data.usesCaption = false;
         if (el.children[1] && el.children[1].type == CKEDITOR.NODE_ELEMENT && el.children[1].hasClass('dnd-legend-wrapper')) {
           caption = el.children[1].getHtml();
-          data.usesCaption = false;
+          data.usesCaption = true;
         }
         // Replace the element with the markup for a downcasted widget.
         var html = Drupal.dndck4.downcastedHtml(data, caption);

@@ -71,6 +71,17 @@ CKEDITOR.dialog.add('atomProperties', function(editor) {
               widget.setData('align', this.getValue());
             }
           },
+          {
+            id: 'chkCaption',
+            type: 'checkbox',
+            label: lang.properties_has_caption,
+            setup: function(widget) {
+              this.setValue(widget.data.usesCaption);
+            },
+            commit: function(widget) {
+              widget.setData('usesCaption', this.getValue());
+            }
+          }
         ]
       }
     ]
