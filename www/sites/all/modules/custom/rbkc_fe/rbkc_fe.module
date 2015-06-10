@@ -1,13 +1,4 @@
 <?php
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function rbkc_fe_form_node_form_alter(&$form, &$form_state) {
-  // Attach javascript to the node edit form to override default scald theming.
-  // It needs to happen at this point in time as the wrapping divs get inserted
-  // into the textarea at the time of edit rather than at the time of rendering.
-  $form['#attached']['js'][] = drupal_get_path('module', 'rbkc_fe') . '/js/scald.js';
-}
 
 function rbkc_fe_wysiwyg_plugin($editor, $version) {
   $plugins = array();
