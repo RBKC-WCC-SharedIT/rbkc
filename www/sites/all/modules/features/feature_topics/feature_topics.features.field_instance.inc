@@ -257,8 +257,8 @@ function feature_topics_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'context' => 'debug',
-      'context_default' => 'full',
+      'context' => 'file_with_size',
+      'context_default' => 'image_without_caption',
       'display_summary' => 1,
       'dnd_enabled' => 1,
       'linkit' => array(
