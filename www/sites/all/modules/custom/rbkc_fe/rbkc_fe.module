@@ -120,7 +120,7 @@ function rbkc_fe_scald_player() {
 /**
  * Implements hook_scald_render().
  */
-function rbkc_fe_scald_render($atom, $context, $options, $mode) {
+function rbkc_fe_scald_render($atom, $context, $options) {
   switch($context) {
     case 'image_without_caption':
       $output = $atom->rendered->player;
