@@ -267,14 +267,6 @@ function dnd_wysiwyg_plugin($editor, $version) {
         ),
         'load' => TRUE,
       );
-      $plugins['dndck4'] = array(
-        'path' => drupal_get_path('module', 'dnd') . '/plugins/dndck4',
-        'filename' => 'plugin.js',
-        'buttons' => array(
-          'dndck4' => t('Scald DnD integration dndck4 - CKEditor 4 widgets'),
-        ),
-        'load' => TRUE,
-      );
       break;
   }
   $disable = (version_compare($version, '4.3.0') >= 0 ? 'dnd' : 'dndck4');

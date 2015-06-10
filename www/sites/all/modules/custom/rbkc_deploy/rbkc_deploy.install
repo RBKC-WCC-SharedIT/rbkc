@@ -914,3 +914,11 @@ function rbkc_deploy_update_7080() {
   field_delete_field('field_subhub_link_to_topic');
   features_revert();
 }
+
+/**
+ * Remove the image caption field from the scald image.
+ */
+function rbkc_deploy_update_7081() {
+  field_delete_field('field_image_caption');
+  features_revert();
+}
