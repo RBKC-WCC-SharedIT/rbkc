@@ -12,12 +12,6 @@ function feature_press_release_field_default_field_instances() {
 
   // Exported field_instance: 'node-press_release-body'
   $field_instances['node-press_release-body'] = array(
-    'accessibility_content' => 0,
-    'accessibility_content_block_submit' => array(
-      'moderate' => 0,
-      'severe' => 0,
-      'suggestion' => 0,
-    ),
     'bundle' => 'press_release',
     'default_value' => NULL,
     'deleted' => 0,
@@ -60,8 +54,8 @@ function feature_press_release_field_default_field_instances() {
     'label' => 'Body',
     'required' => 0,
     'settings' => array(
-      'context' => 'file_with_size',
-      'context_default' => 'image_without_caption',
+      'context' => 'debug',
+      'context_default' => 'full',
       'display_summary' => 1,
       'dnd_enabled' => 1,
       'linkit' => array(
@@ -70,7 +64,6 @@ function feature_press_release_field_default_field_instances() {
         'profile' => '',
       ),
       'mee_enabled' => 0,
-      'summary_display' => 'default',
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
