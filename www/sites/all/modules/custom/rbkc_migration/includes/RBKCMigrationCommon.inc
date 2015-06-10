@@ -253,13 +253,27 @@ trait RBKCMigrationCommon {
         return 'answer';
         break;
 
+      case 'rf-landing-planning':
+        return 'subhub';
+        break;
+
       case 'rf-pub-child':
       case 'rf-pub-parent':
+      case 'rf-pub-planning':
         return 'publication';
+        break;
+
+      case 'rf-servicehub':
+        return 'servicehub';
         break;
 
       case 'rf-topic-planning':
         return 'topic';
+        break;
+
+      case 'rf-guide-single-page-planning':
+      case 'rf-guidepage-planning':
+        return 'guide';
         break;
 
       default:
