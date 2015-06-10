@@ -116,3 +116,42 @@ function seven_css_alter(&$css) {
     $css['misc/ui/jquery.ui.theme.css']['type'] = 'file';
   }
 }
+
+function seven_mee_widget_embed($vars) {
+  $classes = array('dnd-widget-wrapper', 'context-' . $vars['context'], 'type-' . $vars['atom']->type);
+
+  if ('right' !== $vars['align'] && 'image_with_caption' === $vars['context']) {
+    $vars['align'] = 'left';
+  }
+
+  if ($vars['align'] != 'none') {
+    $classes[] = 'atom-align-' . $vars['align'];
+  }
+
+  if ('image_without_caption' === $vars['context'] && 'none' !== $vars['align']) {
+    $classes[] = 'float' . $vars['align'];
+  }
+
+
+  $caption = '';
+  if ($vars['caption'] || $vars['wysiwyg']) {
+    // Note: The 'dnd-caption-wrapper' class is used by the CKEditor plugin to
+    // identify the editable zone and should not be modified by theme overrides.
+    $caption = '<div class="image-cap__text dnd-caption-wrapper">' . $vars['caption'] . '</div>';
+  }
+
+  $prefix = '';
+  $suffix = '';
+  if ('image_with_caption' === $vars['context']) {
+    $prefix = '<div class="image-cap dnd-atom-wrapper type-image context-full" contenteditable="false"><div class="image-cap__pic float' . $vars['align'] . '">';
+    $suffix = '</div>' . $caption . '</div>';
+  }
+
+  $output = '<div class="' . implode(' ', $classes) . '">';
+
+  $output .= '<div class="dnd-atom-rendered">' . $prefix . $vars['content'] . $suffix . '</div>';
+
+  $output .= '</div>';
+
+  return $output;
+}

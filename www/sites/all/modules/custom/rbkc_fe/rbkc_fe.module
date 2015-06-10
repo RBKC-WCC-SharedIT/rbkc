@@ -123,17 +123,14 @@ function rbkc_fe_scald_player() {
 function rbkc_fe_scald_render($atom, $context, $options) {
   switch($context) {
     case 'image_without_caption':
-      $output = $atom->rendered->player;
-    break;
     case 'image_with_caption':
-      $output = '<div class="image-cap dnd-atom-wrapper type-image context-full" contenteditable="false">';
-      $output .= $atom->rendered->player;
-      $output .= '<div class="image-cap__text dnd-legend-wrapper" contenteditable="true"><div class="meta">' . $atom->field_image_caption['und'][0]['safe_value'] . '</div>';
-      $output .= '</div></div>';
-    break;
+      $output = $atom->rendered->player;
+      break;
+
     case 'file_with_size':
       $output = '<a class="docLink-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '</a><br><span class="smallest-text"> [' . strtoupper(substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1)) . '] (file size ' . format_size($atom->base_entity->filesize) . ')</span>';
-    break;
+      break;
   }
+
   return $output;
 }
