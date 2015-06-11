@@ -922,3 +922,10 @@ function rbkc_deploy_update_7081() {
   field_delete_field('field_image_caption');
   features_revert();
 }
+
+/**
+ * Enable module Environment Indicator
+ */
+function rbkc_deploy_update_7082() {
+  module_enable(array('environment_indicator'), TRUE);
+}
