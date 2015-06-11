@@ -1315,6 +1315,7 @@ a.footerglobal__contact:hover,
   text-align: center;
   padding: 0;
   font-size: 13px;
+  width: 100%;
 }
 .image-cap__pic {
   width: 100%;
@@ -1472,8 +1473,18 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
   height: auto !important;
   display: none;
 }
+/*** Drupal wrapper for images without captions ***/
+.context-image_without_caption img {
+  margin: 12px 32px 12px 0;
+}
+.context-image_without_caption.floatright img {
+  margin: 16px 0 16px 16px;
+}
 .content .image-cap__pic {
   display: block;
+}
+.content .image-cap__text {
+  whitespace: word-wrap;
 }
 
 .content ul,
@@ -2170,6 +2181,17 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
     margin-right: 0;
     padding-bottom: 0;
   }
+  .flexbox .image-cap  {
+    display: webkit-flex;
+    display: flex;
+  }
+   .flexbox .image-cap__pic  {
+    display: webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
   .image-cap__pic {
     width: 60%;
   }
@@ -2613,6 +2635,10 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
 
   /*** image with caption ***/
+  .flexbox .image-cap,
+  .flexbox .image-cap__pic  {
+    display: block;
+  }
   .col8 .image-cap__pic,
   .col8 .image-cap__text {
       width: 100%;
@@ -2666,6 +2692,16 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
 
   /*** image with caption ***/
+  .flexbox .image-cap  {
+    display: webkit-flex;
+    display: flex;
+  }
+   .flexbox .image-cap__pic  {
+    display: webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+  }
   .col8 .image-cap__pic {
       width: 60%;
   }
