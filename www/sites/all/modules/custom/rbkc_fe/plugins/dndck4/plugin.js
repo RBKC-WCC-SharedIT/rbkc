@@ -402,9 +402,9 @@ Drupal.dndck4 = {
       // The default context for newly embedded atoms is a setting of the text
       // field, and is placed in the 'data-dnd-context' attribute on the
       // textarea.
-      context : (editor.element.$.attributes['data-dnd-context']) ?
-        editor.element.$.attributes['data-dnd-context'].value :
-        Drupal.settings.dnd.contextDefault,
+      context : ('file' === atomInfo.meta.type) ?
+        'file_with_size' :
+        'image_without_caption',
       // Modules can use hook_scald_dnd_library_item_alter() to add default
       // options in the sas code for the atom.
       options : sasData.options || '{}',
