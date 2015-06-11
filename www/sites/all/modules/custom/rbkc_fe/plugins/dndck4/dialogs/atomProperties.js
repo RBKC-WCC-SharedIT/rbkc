@@ -65,7 +65,12 @@ CKEDITOR.dialog.add('atomProperties', function(editor) {
                      [lang.alignment_left, 'left'],
                      [lang.alignment_right, 'right']  ],
             setup: function(widget) {
-              this.setValue(widget.data.align);
+              if ('image_with_caption' === widget.data.context && 'right' !== widget.data.align) {
+                this.setValue('left');
+              }
+              else {
+                this.setValue(widget.data.align);
+              }
             },
             commit: function(widget) {
               widget.setData('align', this.getValue());
@@ -76,11 +81,22 @@ CKEDITOR.dialog.add('atomProperties', function(editor) {
             type: 'checkbox',
             label: lang.properties_has_caption,
             setup: function(widget) {
-              this.setValue(widget.data.usesCaption);
+              if ('image_with_caption' === widget.data.context) {
+                this.setValue(true);
+              }
+              else {
+                this.setValue(false);
+              }
             },
             commit: function(widget) {
-              widget.setData('usesCaption', this.getValue());
-            }
+              if ('image_with_caption' === widget.data.context) {
+                widget.setData('usesCaption', true);
+              }
+              else {
+                widget.setData('usesCaption', this.getValue());
+              }
+            },
+            hidden: true
           }
         ]
       }
