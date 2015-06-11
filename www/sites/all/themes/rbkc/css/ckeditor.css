@@ -164,7 +164,6 @@ td a[href$=".doc"]:hover {
   .context-image_with_caption {
     width: 620px;
     display: block;
-    float: left;
-    clear: both;
+    float: none !important;
   }
 }
