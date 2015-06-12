@@ -20,7 +20,7 @@ function feature_service_hub_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 2,
@@ -51,7 +51,7 @@ function feature_service_hub_field_default_field_instances() {
       'module' => 'entityreference_view_widget',
       'settings' => array(
         'allow_duplicates' => 0,
-        'close_modal' => 0,
+        'close_modal' => 1,
         'pass_argument' => 0,
         'pass_arguments' => '',
         'rendered_entity' => 0,

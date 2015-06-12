@@ -939,14 +939,14 @@ a.footerglobal__contact:hover,
   margin-bottom: 2rem;
 }
 .hub-feature__text {
-  /* used margin instead of padding as there was a strange bug in chrome where the border on the link didn't appear on hover - SP */
-  margin: 20px 20px 20px 0;
-  margin: 0.8rem 1.3rem 0 0;
+  padding: 20px 20px 20px 0;
 }
 .hub-feature img {
   float:left;
   margin-right: 20px;
   margin-right: 1.3rem;
+  height: 94px;
+  width: 91px;
 }
 
 /***** Service Sub-Hub ********/

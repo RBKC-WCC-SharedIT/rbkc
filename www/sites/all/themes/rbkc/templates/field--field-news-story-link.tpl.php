@@ -51,7 +51,7 @@ After copying this file to your theme's folder and customizing it, remove this
 HTML comment.
 -->
 <?php foreach ($items as $delta => $item): ?>
-  <div class="hub-feature__text">
+  <div class="hub-feature__text content">
     <?php print render($item); ?>
   </div>
 <?php endforeach; ?>
