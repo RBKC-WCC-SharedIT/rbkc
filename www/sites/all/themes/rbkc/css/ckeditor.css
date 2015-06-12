@@ -124,6 +124,7 @@ td a[href$=".doc"]:hover {
   text-align: center;
   padding: 0;
   font-size: 13px;
+  width: 100%;
 }
 .image-cap__pic {
   width: 100%;
@@ -150,4 +151,19 @@ td a[href$=".doc"]:hover {
   font-size:1.25rem;
   line-height:29px;
   line-height: 1.8125rem;
+}
+
+@media screen and (min-width: 600px) {
+  .image-cap__pic {
+    width: 70%;
+  }
+  .image-cap__text {
+    width: 30%;
+    text-align: left;
+  }
+  .context-image_with_caption {
+    width: 620px;
+    display: block;
+    float: none !important;
+  }
 }
