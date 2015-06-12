@@ -48,15 +48,16 @@ function rbkc_news_comms_edit_form($form, &$form_state) {
     '#default_value' => $conf['comms_label'],
     '#required' => TRUE,
   );
+
   $form['comms_image'] = array(
     '#type' => 'managed_file',
     '#name' => 'rbkc_news_comms_image',
     '#title' => t('Comms image'),
-    '#size' => 40,
-    '#description' => t("Please upload the image to be displayed on this news comm"),
+    '#description' => t("Please upload the image to be displayed on this news comm."),
     '#default_value' => $conf['comms_image'],
     '#upload_location' => 'public://'
   );
+
   $items = array('itemone', 'itemtwo', 'itemthree');
   foreach($items as $item) {
     $form[$item] = array(
