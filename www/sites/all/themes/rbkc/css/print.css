@@ -14,6 +14,7 @@ th {
 tr.odd {background-color: #ddd;}
 tr.even {background-color: #fff;}
 td {padding: 5px;}
+li {background: none !important;}
 #menu {visibility: hidden;}
 #main {margin: 1em;}
 a:link {color: #000;}
@@ -45,3 +46,7 @@ img.print-logo {border: 0; margin-bottom: 15px;}
 .print-links {font-size: small;}
 .print-footer {text-align: center;}
 #webchatplanning {display: none;}
+.acc-head, .ready-accordion-header {
+  display:block !important;
+  margin-left: 0 !important;
+}
