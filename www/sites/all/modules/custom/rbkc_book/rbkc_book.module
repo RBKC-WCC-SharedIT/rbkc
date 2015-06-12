@@ -59,6 +59,12 @@ function rbkc_book_admin_overview() {
  */
 function rbkc_book_admin_edit($form, $form_state, $node) {
   drupal_set_title($node->title);
+  $form['actions']['add_guide_page'] = array(
+    '#markup' => '<p> + ' . l(t('Add a new guide page'), 'node/add/guide') . '</p>',
+  );
+  $form['actions']['add_publication_page'] = array(
+    '#markup' => '<p>  + ' . l(t('Add a new publication page'), 'node/add/publication') . '</p>',
+  );
   $form['#node'] = $node;
   _rbkc_book_admin_table($node, $form);
   $form['save'] = array(

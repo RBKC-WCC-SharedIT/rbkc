@@ -821,19 +821,52 @@ a.footerglobal__contact:hover,
 }
 
 /*** accordion styles ***/
-
-.acc-head .collapsed {
-  background-image:  url('../images/refresh/accordion_open_icon.png');
-  padding-left: 20px;
+.acc-head {
+  display: inline-block;
+  margin: 0 0 24px 0 !important;
+  border-bottom: 0 !important;
 }
-.acc-head .expanded {
-  background-image:  url('../images/refresh/accordion_close_icon.png');
-  padding-left: 20px;
+.acc-head span {
+  border-bottom: 1px solid #b0c8e2;
+  background: none !important;
+  padding: 0 !important;
+  transition: border linear .2s;
+  margin-left: 5px;
+}
+.acc-head:hover span {
+  border-bottom: 1px solid #376697;
+}
+.acc-head .collapsed:before  {
+  content: "";
+  display: block;
+  float: left;
+  width: 15px;
+  height: 24px;
+  height: 1.5rem;
+  position: relative;
+  top: -2px;
+  background:  url('../images/refresh/accordion_open_icon.png') no-repeat center;
+}
+.acc-head .expanded:before {
+  content: "";
+  display: block;
+  float: left;
+  width: 15px;
+  height: 24px;
+  height: 1.5rem;
+  position: relative;
+  top: -2px;
+  background:  url('../images/refresh/accordion_close_icon.png') no-repeat center;
+}
+.ready-accordion {
+  margin: -24px 0 24px 0 !important;
 }
 
+/*** view all link for expanding menus ***/
 .view-all {
   cursor: pointer;
 }
+
 
 /****************************************************/
 /*                   MODULE RULES                   */
@@ -906,14 +939,14 @@ a.footerglobal__contact:hover,
   margin-bottom: 2rem;
 }
 .hub-feature__text {
-  /* used margin instead of padding as there was a strange bug in chrome where the border on the link didn't appear on hover - SP */
-  margin: 20px 20px 20px 0;
-  margin: 0.8rem 1.3rem 0 0;
+  padding: 20px 20px 20px 0;
 }
 .hub-feature img {
   float:left;
   margin-right: 20px;
   margin-right: 1.3rem;
+  height: 94px;
+  width: 91px;
 }
 
 /***** Service Sub-Hub ********/
@@ -1497,34 +1530,14 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
   background-position: left 0.55rem;
 }
 
-/*** links to PDF documents - also styled by js ***/
+/*** links to PDF documents  ***/
 a[href$=".pdf"],
 a[href^="IDOC"],
 a[href*="idoc.ashx"],
 a[href$=".docx"],
 a[href$=".doc"] {
   font-weight: bold;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height:25px;
 }
-/*a[href$=".pdf"],
-a[href^="IDOC"],
-a[href*="idoc.ashx"],
-a[href$=".docx"],
-a[href$=".doc"],
-a.docLink-icon,
-.content a.docLink-icon:hover {
-border-bottom: none;
-}
-a[href$=".pdf"]:hover,
-a[href^="IDOC"]:hover,
-a[href*="idoc.ashx"]:hover,
-a[href$=".docx"]:hover,
-a[href$=".doc"]:hover {
-border-bottom: dotted 1px;
-}*/
-
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
 td a[href^="IDOC"],
@@ -1532,25 +1545,37 @@ td a[href*="idoc.ashx"],
 td a[href$=".docx"],
 td a[href$=".doc"] {
   font-weight: 400;
-  font-size: 14px;
-  font-size:.875rem;
-  line-height:24px;
-  border-bottom: dotted 1px;
-}
-td a[href$=".pdf"]:hover,
-td a[href^="IDOC"]:hover,
-td a[href*="idoc.ashx"]:hover,
-td a[href$=".docx"]:hover,
-td a[href$=".doc"]:hover {
-  border-bottom: none;
 }
 
 /*** PDF container added by Drupal ***/
 .context-file_with_size {
   overflow: hidden;
+  position: relative;
+  padding-left: 48px;
+  padding-left: 3rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  min-height: 54px;
+}
+.doc-icon  {
+  width:38px;
+  height:50px;
+  background: url("../images/refresh/doc-icon.png") no-repeat;
+  color:#2B5D92;
+  font-weight:700;
+  display:block;
+  position: absolute;
+  left: 0;
+  border-bottom: 0 !important;
+}
+.doc-icon:hover  {
+  opacity: 0.6;
+}
+.context-file_with_size .smallest-text {
+  display: block;
 }
 
-/*** PDF classes and markup added by js ***/
+/*** PDF classes and markup added by js - legacy classes ***/
 .docLink,
 ul li.docLink,
 ol li.docLink {
@@ -1566,9 +1591,14 @@ ol li.docLink {
   clear:left;
   font-weight:normal;
   font-style:normal;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
   list-style-type:none;
+  overflow: hidden;
+}
+.docLink a {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 24px;
+  line-height: 1.5rem;
 }
 /* for when there are document links and plain text mixed up in a list */
 .docLink + ul li,
@@ -1662,120 +1692,68 @@ h3 + .docLink {
   margin-bottom: 0;
 }
 
-/***********************************************************************************/
-/*   FORMS - definitely needs to be rewritten but depends on work from Clearleft   */
-/***********************************************************************************/
+/*****************/
+/***   FORMS   ***/
+/*****************/
 
-.rbkc-form,
-#recordDetailsPage #accordion2 {
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.form {
   background: #E6EAEB;
-  padding: 32px 16px 0 16px;
-  padding: 2rem 1rem 0 1rem;
+  padding: 32px 16px 24px 16px;
+  padding: 2rem 1rem 1.5rem 1rem;
   overflow:hidden;
-  margin: 0 0 32px 0;
-  margin: 0 0 2rem 0;
+  margin: 0 -16px 32px -16px;
+  margin: 0 -1rem 2rem -1rem;
 }
-.rbkc-form h2,
-.rbkc-form h3 {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 450px;
+.form label:not(.option) {
+  font-weight: normal;
+  margin-bottom: 6px;
 }
-.rbkc-form .formSection {  /* a header that divides sections on a complex form */
+.form .form-item {
   width: 100%;
-  max-width: 100%;
-  text-align: center;
-  border-bottom: solid #A2A4A5 1px;
-  padding: 3px 10px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 48px;
-  margin-top: 3rem;
-  margin-bottom:40px;
-  margin-bottom:2.5rem;
-}
-/* each label and input pair are wrapped in a p tag */
-.rbkc-form p,
-.rbkc-form ul,
-.rbkc-form ol,
-#recordDetailsPage #accordion2 p
- {
-  width: 100%;
-  max-width: 450px;
-  font-size: 14px;
-  font-size:.875rem;
   line-height:24px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px !important;
+  margin-bottom: 1.5rem !important;
   overflow:hidden;
 }
-#recordDetailsPage #accordion2 p {
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-  overflow:hidden;
-}
-.rbkc-form label {
-  font-size: 14px;
-  font-size:.875rem;
-  line-height:24px;
-  float: left;
-  clear:left;
-}
-.rbkc-form input,
-.rbkc-form textarea,
-.rbkc-form select,
-#recordDetailsPage #accordion2 input,
-#recordDetailsPage #accordion2 textarea {
+.form input,
+.form textarea,
+.form select {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  color:#505a66;
 }
-.rbkc-form input[type=text],
-.rbkc-form input[type=email],
-.rbkc-form input[type=tel],
-.rbkc-form input[type=url],
-.rbkc-form input[type=password],
-.rbkc-form input[type=date],
-.rbkc-form input[type=time],
-.rbkc-form input[type=number],
-.rbkc-form textarea,
-#recordDetailsPage #accordion2 input {
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form input[type="url"],
+.form input[type="password"],
+.form input[type="date"],
+.form input[type="number"],
+.form textarea {
   width: 100%;
-  float: left;
-  clear:left;
   height: 32px;
   height: 2rem;
   border: solid #CFD0CB 1px;
-  padding: 0 8px;
-  padding: 0 0.5rem;
+  padding: 6px 8px;
+  padding: 1.25rem 0.8rem;
   margin-bottom: 0;
 }
-#recordDetailsPage #accordion2 textarea {
-  width: 100%;
-  float: left;
-  clear:left;
-  border: solid #CFD0CB 1px;
-  padding: 0 8px;
-  padding: 0 0.5rem;
-  margin-bottom: 0;
-}
-.rbkc-form select {
-  width: 100%;
-  float: left;
-  clear:left;
+.form select {
   border: solid #CFD0CB 1px;
   padding: 5px 8px;
+  background: #fff;
   padding: 0.35rem 0.5rem;
   margin-bottom: 0;
 }
-.rbkc-form option {
+.form option {
   margin: 0 8px;
   margin: 0 0.5rem;
 }
-.rbkc-form input[type=range] {
+.form input[type="range"] {
   width: 100%;
   float: left;
   clear:left;
@@ -1785,55 +1763,66 @@ h3 + .docLink {
   padding: 0 0.5rem;
   margin-bottom: 0;
 }
-.rbkc-form textarea {
+.form textarea {
   height: auto;
   padding: 8px;
   padding: 0.5rem;
 }
-.rbkc-form input[type=radio],
-.rbkc-form  input[type=checkbox] {
-  float:left;
-  clear:left;
-  margin: 10px 10px 0 0;
-  margin-top: 10px;
-  margin-right: 10px;
+.form input.error,
+.form input:focus.error {
+  border-color:#B2334C;
+}
+.form .messages.error {
+  padding: 10px 15px 10px 55px;
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  /* 14/16 = .875; */
+  font-size:.875rem;
+  line-height:24px;
+  color:#B2334C;
+  background: #F0D9DB url("../images/refresh/warningRed.png") 15px center no-repeat;
+  border: none;
+}
 
+/*** Check boxes and radio buttons ***/
+/*** wrapper for radio select lists - we can use whatever name we want but this is drupal's name ***/
+.webform-component--select,
+/*** wrapper for checkbox select list ***/
+.webform-component--another-select  {
+  position: relative;
 }
-/* styling a label for a checkbox/radio button. Appears to the right of the input */
-.rbkc-form input[type=radio] + label,
-.rbkc-form input[type=checkbox] + label {
-  float:left;
-  clear:none;
-  margin-top: 5px;
+/*** divs that wrap checkbox or radio element pairs (input and label) ***/
+.webform-component--select .form-item,
+.webform-component--another-select .form-item  {
+  margin-bottom: 0 !important;
+  padding-left: 20px;
 }
-/* put this around lists of radio buttons or check boxes.  Makes sure the elements clear the preceding text */
-span.check-radio {
-  display:block;
+.webform-component--select input[type="radio"],
+.webform-component--another-select input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  margin: 6px 0 0 0;
+}
+.webform-component--select .form-item {
+  margin-bottom: 0 !important;
+}
+/*** div wrapping bottom-of-form buttons ***/
+.form .form-actions {
+  padding: 6px 0;
 }
 /* focus styles - adding border and removing outline */
-.rbkc-form input[type=number]:focus,
-.rbkc-form input:focus,
-.rbkc-form textarea:focus,
-.rbkc-form select:focus {
-  border: solid #9A9A9A 1px;
-  outline:none;
+.form input[type="number"]:focus,
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  border: solid #9A9A9A 1px !important;
+  outline:none !important;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
-/* styling inline inputs (such as number field within a sentence - do we need these styles?? */
-.rbkc-form label input[type=number] {
-  float:none;
-  clear:none;
-  width:auto;
-  height: 32px;
-  height: 2rem;
-  border: solid #CFD0CB 1px;
-  margin: 0 8px;
-  margin: 0 0.5rem;
-}
-/* submit button. Styles nicked from contactUs in global css - too much repetition? */
-.rbkc-form input[type=submit],
-.rbkc-form  input[type=reset],
-#recordDetailsPage #accordion2 input[type=submit]
- {
+/*** submit button ***/
+.form input[type="submit"] {
   display:block;
   background-color: #4699be;
   background-image: url('../images/refresh/contact-chevron.png') ;
@@ -1844,339 +1833,219 @@ span.check-radio {
   -moz-border-radius: 3px 3px 3px 3px;
   border-radius: 3px 3px 3px 3px;
   padding: 10px 35px 10px 13px;
-  margin-bottom: 36px;
-  margin-bottom: 2.25rem;
   color:#FFF;
-  font-size:13px;
-  font-size:.8125rem;
   line-height:18px;
+  min-width: 150px;
   font-weight:700;
-  float: left;
-  clear:left;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 16px;
-  margin-top: 1rem;
-}
-#recordDetailsPage #accordion2 input[type=submit] {
-  width: 200px;
-  height: 50px !important;
-}
-input[type=submit],
-input[type=reset] {
+  margin: 16px 0 6px 0;
+  margin-top: 1rem 0 1rem 0;
   cursor: pointer;
 }
 /* submit button on hover */
-.rbkc-form  input[type=submit]:hover,
-.rbkc-form  input[type=reset]:hover,
-#recordDetailsPage #accordion2 input[type=submit]:hover {
+.form input[type="submit"]:hover {
   border-bottom: none;
   background-color: #377A95;
 }
+.form input[value="Upload"],
+.form input[type="file"] {
+  font-size:13px;
+  font-size:.8125rem;
+}
+.form input[value="Upload"] {
+  background: #777;
+  width: auto;
+  padding: 0.5rem;
+  min-width: 100px !important;
+}
+.form input[value="Upload"]:hover {
+  background: #555;
+}
+.form .form-required {
+  color:#B2334C !important;
+}
 
-/* the yellow help tips that appear directly after form fields and the red validation notification for the top of the form.
-Colours are applied using existing generic styles */
-.rbkc-form .infoYellow,
-.rbkc-form .infoRed {
-  display:block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+
+/*** advanced website search ***/
+/*** wrapper for search input - GSA classes ***/
+.container-inline > div {
+  display: block;
+}
+.search-form {
+  max-width: none;
+}
+.search-form label.element-invisible {
+  position: static !important;
+  clip: none !important;
+  height: auto;
+  width: auto;
+}
+.search-form input[type="submit"] {
+  padding: 12px;
+  float: right;
+  width: 100%;
+  min-width: 0 !important;
+  margin-top: 24px;
+  margin-top: 1.5rem;
+  background-color: #6ed5c9;
+  background-image: url('../images/refresh/search-chevron.png');
+  background-repeat: no-repeat;
+  background-position: 95% center;
+}
+.search-form input[type="submit"]:hover {
+  background-color: #4f9990;
+}
+
+/*** related search terms ***/
+.related-search-terms {
+  overflow: hidden;
+}
+.related-search-terms p {
+  margin-bottom: 0 !important;
+}
+.related-search-terms ul li {
+  float: left;
   font-size: 14px;
   font-size:.875rem;
   line-height:24px;
-  width: 100%;
-  max-width: 450px;
-  padding: 5px 12px;
+  margin: 0 1em 0.5em 0;
 }
-.rbkc-form .infoYellow {
-  float:left;
-}
-/* added server-side so assuming it's not wrapped in a p tag */
-.rbkc-form .infoRed {
-  text-align:center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
-}
-/* but just in case... */
-.rbkc-form p .infoRed {
-  margin-bottom: 0;
-}
-/* styling an input targeted for validation.  Have assumed a class on the input */
-.rbkc-form input.val,
-.rbkc-form textarea.val,
-.rbkc-form select.val {
-  border: solid #b2334c 1px;
-}
-.rbkc-form .val,
-.rbkc-form span.val,
-.rbkc-form span.required,
-*[id*="RequiredFieldValidator"] {
-  /* styling a validation message directly after an input / a required asterisk */
-  display:inline;
-  float:left;
-  clear:left;
-  margin: 0 5px 0 0;
-  color:#B2334C !important;
-  font-weight: 700;
-}
-/* extra styles for yellow bordered notice message boxes in forms */
-.rbkc-form  div.noticeMessageBox {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 450px;
-}
-.rbkc-form div.noticeMessageBox p,
-.rbkc-form div.noticeMessageBox h2,
-.rbkc-form div.noticeMessageBox h3 {
-  max-width:100%;
-  margin-left: 0;
-}
-.rbkc-form div.noticeMessageBox ul {
-  margin: 0;
-  width:auto;
-  padding-left:14px;
-}
-.rbkc-form div.noticeMessageBox li {
-  list-style-position:outside;
-}
-/* sometimes containers holding only a label with an inline form element might look a little crowded by elements below and above.
-Can add extra margin by applying this class.  Could apply automatically using jQuery if we wanted. */
-.rbkc-form .extraPadding {
-  margin-top:2rem;
-  margin-bottom:2rem;
-}
-#showcomments {
-  float:right;
-  margin-top: -32px;
-  -webkit-border-radius: 0 0 3px 3px;
-  -moz-border-radius: 0 0 3px 3px;
-  border-radius: 0 0 3px 3px;
-  font-weight: bold;
-  font-size: 14px;
-  font-size: 0.875rem;
-  padding-right: 13px;
-}
-.multiple  select {
-  width: auto;
-}
-.multiple .field-label,
-.multiple label,
-.multiple .multitext  {
-  overflow: hidden;
-  float: left;
-}
-.multiple .multitext  {
+.related-search-terms a {
   display: block;
-  width: 100%;
-  clear: both;
+  background-color:#DDF6F3;
+  color: #41998E;
+  padding: 3px 7px;
 }
-.rbkc-form span[class*="helptip02"] {
-    clear: left;
-    color: #b2334c;
-    display: inline;
-    float: left;
-    margin: 0 5px 0 0;
-  font-weight: 700;
+.related-search-terms a:hover {
+  border-bottom: 0;
+  background-color: #AEEAE2;
+  color: #2D6B63;
 }
-ul.form-selectlist > li {
-  background: none;
-  padding: 0;
-}
-.form-selectlist  td {
-  padding: 0 !important;
-  border: 0 !important;
-}
-
-/*** begin tabbed jQuery menu ***/
-.rbkc-form ul.tabMenu,
-ul.tabMenu {
-  font-size: 14px;
-  font-size:.875rem; /* 14/16 = .875; */
-  line-height:24px;
-  margin-left: 0;
-  margin-bottom: 0;
-  position:relative;
-  bottom: -2px;
-  overflow: hidden;
-  max-width: 100%;
-}
-ul.tabMenu li {
-  float: left;
-  background: none;
-  padding: 0;
-}
-ul.tabMenu a {
-  display: block;
-  padding: 12px 19px;
-  padding: 0.8rem 1.2rem;
-  background: #E9EAE5;
-  border-left: solid #D4D4D4 1px;
-  border-bottom: solid #D4D4D4 1px;
+.related-search-terms,
+.search-form {
+  background: #fff;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-weight: bold;
-  z-index: 1;
-  color: #5E6A77;
+  margin: -32px -16px 24px -16px;
 }
-ul.tabMenu a:hover {
-  background: #D4D4D4;
-  border-bottom: solid #D4D4D4 1px;
+.search-form {
+  padding: 24px 36px !important;
+  border-bottom: 1px solid #6ed5c9;
 }
-ul.tabMenu li.active a {
-  background: #F5F5F1;
-  border-left: solid #D4D4D4 1px;
-  border-top: solid #D4D4D4 1px;
-  border-bottom: solid #F5F5F1 1px;
-  color: #3E3F41;
+.related-search-terms {
+  padding: 24px 36px 12px 36px;
 }
-ul.tabMenu li:first-child a {
-  -webkit-border-radius: 3px 0 0 0;
-  -moz-border-radius: 3px 0 0 0;
-  border-radius: 3px 0 0 0;
+.related-search-terms + .search-form {
+  position: relative;
+  top: -5px ;
+  border-top: 0;
 }
-ul.tabMenu li:last-child a {
-  -webkit-border-radius: 0 3px 0 0;
-  -moz-border-radius: 0 3px 0 0;
-  border-radius: 0 3px 0 0;
+.google-appliance-sort-headers {
+  float: left !important;
+  clear: left;
+  padding-top: 6px;
 }
-.tabMenu-underneath {
-  border: solid #D4D4D4 1px;
-  width: 100%;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-border-radius: 0 0 3px 3px;
-  -moz-border-radius:0 0 3px 3px;
-  border-radius: 0 0 3px 3px;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
+.google-appliance-results-control-bar {
+  border: 0;
+  padding: 6px 16px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+  margin-left: -16px;
+  margin-right: -16px;
 }
-
-/*** begin generic search page styles ***/
-.searchBack {
-  background: url('../images/refresh/leftdouble-chevron-8px.png') left center no-repeat;
-  padding-left: 12px;
-  padding-left: 0.75rem;
+.search-results {
+  margin-left: -16px;
+  margin-right: -16px;
 }
-
-/*** begin search results with links ***/
-.content .linkResults,
-.content .plainResults {
-  border: solid #DDD 1px;
-  font-size:13px;
-  /* 13/16 = .8125; */
-  font-size:.8125rem;
-  line-height:18px;
-  position:relative;
-  margin-bottom: 48px;
-  margin-bottom: 3rem;
+.search-results li {
+  border-bottom: solid #D3D3D1 1px;
+  padding: 24px 16px 0 16px;
+  overflow: hidden;
 }
-ul.linkResults-list,
-ul.plainResults-list {
-  margin: 0;
+.search-results li:nth-child(even) {
+  background-color: #E9EAE3;
 }
-ul.linkResults-list  li {
-  background: none;
-  border-bottom: solid #DDD 1px;
-  margin: 0;
-  padding: 0;
+.search-results + .google-appliance-results-control-bar {
+  margin-top: 0;
+  margin-bottom: 36px;
 }
-.linkResults-list a {
-  display:block;
-  color: #5E6A77;
-  padding: 16px 24px;
-  padding: 1.5rem 1.2rem;
+.search-info {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+}
+.pager {
+  color:#2B5D92;
   overflow:hidden;
-  transition: none;
-  border-bottom: none;
-}
-ul.plainResults-list  li {
-  background: none;
-  border-bottom: solid #DDD 1px;
-  margin: 0;
-  padding: 0;
-  display:block;
-  color: #5E6A77;
-  padding: 16px 24px;
-  padding: 1.5rem 1.2rem;
-  overflow:hidden;
-  transition: none;
-}
-.linkResults a:hover,
-.linkResults a:active {
-  background-color: #E6EAEB;
-  border-bottom: none;
-}
-.linkResults a:hover .linkResults-name span ,
-.linkResults a:active .linkResults-name span {
-  border-bottom: 2px dotted #aecae7;
-}
-.content .linkResults p {
-  letter-spacing: normal;
-}
-.linkResults-header,
-.plainResults-header {
-  border-bottom: solid #DDD 1px;
-  padding: 8px 19px;
-  padding: 0.5rem 1.2rem;
+  margin-bottom: 36px;
+  margin-bottom: 2.25rem;
   font-size: 14px;
-  font-size:.875rem; /* 14/16 = .875; */
+  /* 14/16 = .875; */
+  font-size:.875rem;
   line-height:24px;
-  color: #000;
-  margin: 0;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  position:relative;
+  padding: 12px 6px !important;
+  margin: -36px 0 36px 0 !important;
 }
-.linkResults-ref {
-  float:left;
-  margin-right: 16px;
-  margin-right: 1rem;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
+.pager-first,
+.pager-previous,
+.pager-next,
+.pager-last {
+  display: block;
+  padding: 17px 16px;
+  padding: 1.1rem 1rem;
+  -moz-box-sizing: border-box;
+  box-sizing: borderbox;
+  width: 100%;
+  border-bottom: 0;
 }
-.linkResults-date {
-  float:left;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
+.pager-item {
+  margin: 0 !important;
 }
-.linkResults-name,
-.plainResults-name {
-  font-size:20px;
-  /* 16/20 = 1.25  */
-  font-size:1.25rem;
-  line-height:29px;
-  color: #2B5D92;
-  float:left;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
-  clear:left;
-}
-.linkResults-detail,
-.plainResults-detail {
-   color:#3d434d;
-   float:left;
-   clear:left;
-}
-.linkResults .infoYellow,
-.linkResults .infoGreen,
-.linkResults .infoRed,
-.linkResults .infoGrey {
-  display:inline-block;
-  padding: 2px 8px;
-  font-size:.8125rem;
+.pager-item a {
+  padding: 2px 5px;
+  display: inline-block;
+  min-width: 16px;
   font-weight:700;
-  margin-bottom: 16px;
-  margin-bottom: 1rem;
-  margin-top: -4px;
-  margin-right: 16px;
-  margin-right: 1rem;
-  float:left;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
 }
-.linkResults .pagnumber,
-.plainResults .pagnumber {
-  background: none;
-  border: none;
+.pager-item a:hover{
+  background-color: #e6eaeb;
+  border-bottom:none;
+}
+.pager-current,
+.pager-current:hover {
+  background-color: #6ED5C9;
+  color:#FFF;
+  margin: 0 10px !important;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  padding: 6px 9px !important;
+}
+
+/*** PDF script reset for search results ***/
+.search-results li.docLink {
+  margin-bottom: 0;
+  padding-left: 16px;
+}
+.search-results li.docLink h3 a {
+  padding-right: 1.3em !important;
+  font-size: 1.2em !important;
+}
+.search-snippet {
+  font-size: 16px;
   font-size: 1rem;
-  margin: 0;
 }
 
 /*** styling some Drupal markup ***/
@@ -2288,15 +2157,12 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
   }
 
   /* giving submit buttons auto width in wider views */
-  .rbkc-form  input[type=submit],
-  .rbkc-form  input[type=reset]
-   {
+  .form  input[type="submit"] {
     width:auto;
     min-width: 150px;
-    margin-right: 32px;
-    margin-right: 2rem;
-    float:left;
-    clear: none;
+  }
+  .search-form input[type="submit"] {
+    width: 100%;
   }
 
   /*** govmetric snippet ***/
@@ -2388,6 +2254,52 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
   /*** forms ***/
   .linkResults-date {
     float:right;
+  }
+
+   /*** search results ***/
+  .search-form {
+    max-width: none !important;
+   }
+  .search-form .form-item {
+    width: 80% !important;
+    padding-right: 16px;
+    float: left;
+  }
+  .search-form input[type="submit"] {
+    width: 20% !important;
+  }
+  .related-search-terms,
+  .search-form {
+    border: 1px solid #6ed5c9;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0;
+  }
+  .related-search-terms + .search-form {
+   -moz-border-radius: 0 0 3px 3px;
+    -webkit-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+  }
+  .google-appliance-results-control-bar {
+    border: solid #D3D3D1 1px;
+    border-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .search-results {
+    margin-left: 0;
+    margin-right: 0;
+    border: solid #D3D3D1 1px;
+    border-bottom: 0;
+  }
+  .search-results + .google-appliance-results-control-bar {
+    border: solid #D3D3D1 1px;
+    border-top: 0;
+  }
+  .pager {
+    border: solid #D3D3D1 1px;
+    border-top: 0;
   }
 
 } /* end media query */
@@ -2743,6 +2655,19 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   height: 147px;
   }
 
+  /*** forms ***/
+  .form {
+    padding-left: 48px ;
+    padding-left: 3.5rem;
+    padding-right: 48px;
+    padding-right: 3.5rem;
+    margin: 0;
+    max-width: 600px;
+  }
+  .search-form {
+    margin: 0 auto;
+  }
+
   /****************************************************/
   /*  STATE RULES (indicate a javascript dependency)  */
   /****************************************************/
@@ -3019,6 +2944,13 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
     background: #F5F6F1;
     border-bottom: solid #F5F6F1 1px;
     z-index: 900;
+  }
+
+  /*** search results ***/
+  .google-appliance-sort-headers {
+    float: right !important;
+    clear: none;
+    padding: 0;
   }
 
   /****************************************************/

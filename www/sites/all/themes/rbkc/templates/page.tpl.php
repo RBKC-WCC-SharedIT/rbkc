@@ -126,7 +126,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
 <div><img src="http://uk.sitestat.com/rbkc/rbkc/s?<?php print substr($statlink, 1); ?>.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
-<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
+<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="/js/rbkc/sitestat.js"></script>
 <!-- End Sitestat4 Technical code -->
 <!-- Begin Sitestat4 Loadingtime2 code -->
 <script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>

@@ -37,6 +37,7 @@ features[variable][] = node_preview_answer
 features[variable][] = node_submitted_answer
 features[variable][] = pathauto_node_answer_pattern
 features[variable][] = short_title_enable_answer
+features[variable][] = webform_node_answer
 features[variable][] = workbench_moderation_default_state_answer
 features[variable][] = workbench_scheduler_answer
 features[variable][] = xmlsitemap_settings_node_answer

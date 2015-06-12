@@ -96,6 +96,7 @@ function rbkc_menu_link__book_toc_publication(&$variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
 }
 
+
 /**
  * Override theme_menu_tree variables.
  */
@@ -134,7 +135,6 @@ function rbkc_menu_tree__book_toc_publication(&$variables) {
   return '<ul class="toc__chapter-list">' . $variables['tree'] . '</ul>';
 }
 
-
 /**
  * Override menu link variables.
  *
@@ -146,10 +146,25 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
   // Remove all classes from book menu links.
   unset($variables['element']['#attributes']['class']);
 
+  // Get the menu link id (mlid) of the tip of the active menu trail.
+  $active_trail = menu_get_active_trail();
+  $active_tip = array_pop($active_trail);
+  $active_tip_mlid = $active_tip['mlid'];
+
   $element = $variables['element'];
 
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+
+  // Compare this against the menu link we're processing.
+  if ($active_tip_mlid === $variables['element']['#original_link']['mlid']) {
+    $retStr = '<li class="active"' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+  }
+
+  else {
+    $retStr = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . "</li>\n";
+  }
+
+  return $retStr;
 }
 
 /**
@@ -317,4 +332,35 @@ function rbkc_mee_widget_embed($vars) {
   $output .= '</div>';
 
   return $output;
+}
+
+function rbkc_print_pdf_tcpdf_content($vars) {
+  $pdf = $vars['pdf'];
+  // set content font
+  $pdf->setFont($vars['font'][0], $vars['font'][1], $vars['font'][2]);
+
+  // Remove the logo, published, breadcrumb and footer from the main content - and also rbkc webchat
+  preg_match('!<body.*?>(.*)</body>!sim', $vars['html'], $matches);
+  $pattern = '!(?:<div class="print-(?:logo|site_name|breadcrumb|footer)">.*?</div>|<hr class="print-hr" />|<div id="webchatplanning">.*?</div>)!si';
+  $matches[1] = preg_replace($pattern, '', $matches[1]);
+
+  // Make CCK fields look better
+  $matches[1] = preg_replace('!(<div class="field.*?>)\s*!sm', '$1', $matches[1]);
+  $matches[1] = preg_replace('!(<div class="field.*?>.*?</div>)\s*!sm', '$1', $matches[1]);
+  $matches[1] = preg_replace('!<div( class="field-label.*?>.*?)</div>!sm', '<strong$1</strong>', $matches[1]);
+
+  // Since TCPDF's writeHTML is so bad with <p>, do everything possible to make it look nice
+  $matches[1] = preg_replace('!<(?:p(|\s+.*?)/?|/p)>!i', '<br$1 />', $matches[1]);
+  $matches[1] = str_replace(array('<div', 'div>'), array('<span', 'span><br />'), $matches[1]);
+  do {
+    $prev = $matches[1];
+    $matches[1] = preg_replace('!(</span>)<br />(\s*?</span><br />)!s', '$1$2', $matches[1]);
+  } while ($prev != $matches[1]);
+
+  // add line break after table caption to prevent table going off the page
+  $matches[1] = str_replace('</caption>', '</caption><br /><br />', $matches[1]);
+
+  @$pdf->writeHTML($matches[1]);
+
+  return $pdf;
 }
