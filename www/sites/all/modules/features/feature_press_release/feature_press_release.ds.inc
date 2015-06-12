@@ -31,7 +31,7 @@ function feature_press_release_ds_field_settings_info() {
     'post_date' => array(
       'weight' => '1',
       'label' => 'hidden',
-      'format' => 'ds_post_date_long',
+      'format' => 'ds_post_date_short',
       'formatter_settings' => array(
         'ft' => array(
           'func' => 'theme_ds_field_expert',
