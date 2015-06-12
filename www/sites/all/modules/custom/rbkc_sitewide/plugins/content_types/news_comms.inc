@@ -39,6 +39,8 @@ function rbkc_news_comms_admin_info($subtype, $conf, $contexts) {
  * 'Edit form' callback for the content type.
  */
 function rbkc_news_comms_edit_form($form, &$form_state) {
+  form_load_include($form_state, 'inc', 'rbkc_sitewide', 'plugins/content_types/news_comms');
+
   $conf = $form_state['conf'];
 
   $form['comms_label'] = array(
