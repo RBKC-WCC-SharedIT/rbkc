@@ -1206,3 +1206,7 @@ li.rslides_here {
 .lt-ie8 #pressContact .sectionContent {
   width: 447px;
 }
+
+h2 a {
+  background-image: none;
+}
