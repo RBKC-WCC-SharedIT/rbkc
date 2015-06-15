@@ -3,7 +3,7 @@
     <div class="inner padlr">
 
       <div class="inner headerglobal__logowrap">
-        <a href="<?php print $front_page; ?>" class="inner padlr logo" title="The Royal Borough of Kensington and Chelsea">The Royal Borough of Kensington and Chelsea</a>
+        <a href="<?php print $front_page; ?>" class="padlr logo" title="The Royal Borough of Kensington and Chelsea">The Royal Borough of Kensington and Chelsea</a>
       </div><!-- end logo -->
 
       <button class="headerglobal__open hamburger" id="openMenu" type="button">
@@ -59,7 +59,7 @@
        <?php endif; /* end if breadcrumb*/ ?>
 
       <div class="inner heading group">
-           <h1 class='heading__h1 <?php if (strlen($title) > 56) { print "long";} ?>'> <?php print $title; ?> </h1>
+           <h1 class='heading__h1 <?php if (strlen($title) > 80) { print "long";} ?>'> <?php print $title; ?> </h1>
       </div>
     </div><!-- end ribbon -->
 
