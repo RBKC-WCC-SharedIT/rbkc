@@ -1,0 +1,6 @@
+/* @group edit-display */
+#panels-edit-display .panel-pane,
+#panels-edit-display .helperclass {
+  margin: .5em;
+}
+/* @end */

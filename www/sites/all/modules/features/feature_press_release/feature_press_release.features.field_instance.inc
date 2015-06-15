@@ -41,6 +41,12 @@ function feature_press_release_field_default_field_instances() {
         'type' => 'smart_trim_format',
         'weight' => 0,
       ),
+      'teaser_small' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
@@ -93,6 +99,12 @@ function feature_press_release_field_default_field_instances() {
         'weight' => 1,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser_small' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

@@ -1,0 +1,86 @@
+<?php
+/**
+ * @file
+ * Semantic Panels.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function planer_theme() {
+  $theme = array();
+
+  $theme['planer_pane'] = array(
+    'variables' => array(
+      'output' => array(),
+      'pane' => array(),
+      'display' => array(),
+    ),
+    'path' => drupal_get_path('module', 'planer') . '/templates',
+    'template' => 'planer-pane',
+  );
+  return $theme;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function planer_ctools_plugin_directory($module, $plugin) {
+  if ($module === 'panels' || $module === 'ctools' && !empty($plugin)) {
+    return "plugins/{$plugin}";
+  }
+}
+
+/**
+ * Render an element as HTML.
+ */
+function _planer_get_html($element_key, $element_data, $pane_semantic_settings) {
+  $element_settings = $pane_semantic_settings[$element_key];
+
+  $element_settings['type'] = _planer_get_type($element_settings['type'], $element_data['default_type']);
+
+  if ($element_settings['type']) {
+    $class = '';
+    if ($element_settings['add_default_classes']) {
+      $class = $element_data['default_classes'];
+    }
+
+    if ($element_settings['class_enable'] && $element_settings['class']) {
+      if ($class) {
+        $class .= ' ';
+      }
+
+      $class .= $element_settings['class'];
+    }
+
+    $pre = '<' . $element_settings['type'];
+    if ($class) {
+      $pre .= ' class="' . $class . '"';
+    }
+    if(!empty($element_settings['attributes_array'])){
+      $pre .= ' ' . drupal_attributes($element_settings['attributes_array']);
+    }
+    $pre .= '>';
+
+    return $pre . render($element_data['content']) . '</' . $element_settings['type'] . '>';
+  }
+
+  return render($element_data['content']);
+}
+
+/**
+ * Get type.
+ */
+function _planer_get_type($type_setting, $default_type = 'div') {
+  if ($type_setting === '0' || $type_setting === '') {
+    return '';
+  }
+
+  if ($type_setting == 'default') {
+    return $default_type;
+  }
+
+  if ($type_setting) {
+    return check_plain($type_setting);
+  }
+}

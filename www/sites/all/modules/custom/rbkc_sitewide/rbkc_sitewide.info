@@ -1,0 +1,7 @@
+name = RBKC Sitewide
+description = "Code and exportables affecting the entire RBKC site"
+package = RBKC
+core = 7.x
+
+dependencies[] = panels
+dependencies[] = page_manager

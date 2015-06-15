@@ -47,6 +47,22 @@ function feature_answer_field_default_field_instances() {
         'type' => 'smart_trim_format',
         'weight' => 0,
       ),
+      'teaser_large' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 600,
+        ),
+        'type' => 'text_trimmed',
+        'weight' => 1,
+      ),
+      'teaser_medium' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'top_three_topics' => array(
         'label' => 'hidden',
         'module' => 'smart_trim',
@@ -117,6 +133,18 @@ function feature_answer_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'teaser_medium' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
@@ -162,6 +190,18 @@ function feature_answer_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_large' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'teaser_medium' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'top_three_topics' => array(
         'label' => 'above',
@@ -257,6 +297,18 @@ function feature_answer_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_large' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
+      'teaser_medium' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'top_three_topics' => array(
         'label' => 'above',
@@ -363,6 +415,18 @@ function feature_answer_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'teaser_medium' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
@@ -420,6 +484,18 @@ function feature_answer_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'teaser_medium' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'top_three_topics' => array(
         'label' => 'above',
         'settings' => array(),
@@ -468,6 +544,18 @@ function feature_answer_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'teaser_medium' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'top_three_topics' => array(
         'label' => 'above',
@@ -520,6 +608,18 @@ function feature_answer_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'teaser_large' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
+      'teaser_medium' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
