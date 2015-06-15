@@ -99,10 +99,10 @@ function feature_newsroom_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-d50be500-cfde-4f4a-b8c6-fcc2a84e8a14';
+    $pane->pid = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane->panel = 'row_one_col_two';
     $pane->type = 'views_panes';
-    $pane->subtype = 'press_releases-panel_pane_1';
+    $pane->subtype = 'press_releases-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -146,13 +146,16 @@ function feature_newsroom_default_page_manager_pages() {
       ),
       'style' => 'planer',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => '',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = 'd50be500-cfde-4f4a-b8c6-fcc2a84e8a14';
-    $display->content['new-d50be500-cfde-4f4a-b8c6-fcc2a84e8a14'] = $pane;
-    $display->panels['row_one_col_two'][0] = 'new-d50be500-cfde-4f4a-b8c6-fcc2a84e8a14';
+    $pane->uuid = '850be167-8285-4c1a-ae83-d9f05d412baf';
+    $display->content['new-850be167-8285-4c1a-ae83-d9f05d412baf'] = $pane;
+    $display->panels['row_one_col_two'][0] = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane = new stdClass();
     $pane->pid = 'new-c213450e-1589-474b-96b1-9db69fef6ec1';
     $pane->panel = 'row_two_col_two';
@@ -222,7 +225,7 @@ function feature_newsroom_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'readmore' => 'Read the latest edition here',
-      'newspaper_image' => '193',
+      'newspaper_image' => '31',
       'newspaper_body' => 'For the latest news and events read the Royal Borough, the Council\'s quarterly newspaper.
  
 Also search the archive for back issues.',

@@ -32,7 +32,7 @@ function rbkc_newspaper_admin_info($subtype, $conf, $contexts) {
  */
 function rbkc_newspaper_edit_form($form, &$form_state) {
   form_load_include($form_state, 'inc', 'rbkc_sitewide', 'plugins/content_types/newspaper');
-  
+
   $conf = $form_state['conf'];
 
   $form['readmore'] = array(
