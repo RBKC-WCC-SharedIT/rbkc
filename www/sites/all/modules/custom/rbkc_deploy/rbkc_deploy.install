@@ -965,3 +965,10 @@ function rbkc_deploy_update_7084() {
 
   variable_set('site_frontpage', 'welcome');
 }
+
+/**
+ * Switch on display suite and display suite extras.
+ */
+function rbkc_deploy_update_7085() {
+  module_enable(array('ds', 'ds_extras'), TRUE);
+}
