@@ -901,36 +901,6 @@ function rbkc_deploy_update_7078() {
 }
 
 /**
- * Enable and configure panels and main display modules.
- */
-function rbkc_deploy_update_7079() {
-  module_enable(array('panels'), TRUE);
-  module_enable(array('views_content'), TRUE);
-  module_enable(array('page_manager'), TRUE);
-  module_enable(array('ctools_custom_content'), TRUE);
-  module_enable(array('planer'), TRUE);
-  module_enable(array('feature_views'), TRUE);
-  module_enable(array('feature_display'), TRUE);
-  module_enable(array('rbkc_sitewide'), TRUE);
-
-  // Drop down service menu.
-  $menu_machine_name = 'menu-i-need-to';
-  $menu = array(
-    'menu_name' => $menu_machine_name,
-    'title' => st('I need to'),
-    'description' => 'The I Need To menu.',
-  );
-  menu_save($menu);
-
-  variable_set('site_frontpage', 'welcome');
-}
-
-/**
- * Enable feature_newsroom
- */
-function rbkc_deploy_update_7080() {
-  module_enable(array('feature_newsroom'), TRUE);
-}/**
  * Switch on RBKC Linkit Picker.
  */
 function rbkc_deploy_update_7079() {
@@ -1009,6 +979,12 @@ function rbkc_deploy_update_7085() {
   }
 }
 
+/**
+ * Switch on the newsroom Feature.
+ */
+function rbkc_deploy_update_7086() {
+  module_enable(array('feature_newsroom'), TRUE);
+}
 /**
  * Switch on the rbkc_workbench module.
  */
