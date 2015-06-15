@@ -970,5 +970,11 @@ function rbkc_deploy_update_7084() {
  * Switch on display suite and display suite extras.
  */
 function rbkc_deploy_update_7085() {
-  module_enable(array('ds', 'ds_extras'), TRUE);
+  if (!module_exists(array('ds'))) {
+    module_enable(array('ds'), TRUE);
+  }
+
+  if (!module_enable(array('ds_extras'))) {
+    module_enable(array('ds_extras'), TRUE);
+  }
 }
