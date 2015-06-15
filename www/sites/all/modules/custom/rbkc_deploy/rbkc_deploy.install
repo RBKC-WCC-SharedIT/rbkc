@@ -974,7 +974,7 @@ function rbkc_deploy_update_7085() {
     module_enable(array('ds'), TRUE);
   }
 
-  if (!module_enable(array('ds_extras'))) {
+  if (!module_exists(array('ds_extras'))) {
     module_enable(array('ds_extras'), TRUE);
   }
 }
