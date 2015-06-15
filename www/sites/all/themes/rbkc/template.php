@@ -260,19 +260,6 @@ function rbkc_preprocess_node(&$vars) {
   }
 }
 
-function rbkc_preprocess_page(&$vars) {
-  $currentpath = current_path();
-  switch ($currentpath) {
-    case 'page/newsroom':
-      drupal_add_css(drupal_get_path('theme','rbkc') . '/css/newsroom.css');
-      drupal_add_js(drupal_get_path('theme','rbkc') . '/js/responsiveslides.min.js', 'file');
-      drupal_add_js(drupal_get_path('theme','rbkc') . '/js/newsroom.js', 'file');
-      break;
-    case 'welcome':
-      break;
-  }
-}
-
 /**
  * Returns HTML for a link to a file.
  *
