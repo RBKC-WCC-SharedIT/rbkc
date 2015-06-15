@@ -15,7 +15,7 @@ function feature_newsroom_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Newsroom';
   $page->admin_description = '';
-  $page->path = 'page/newsroom';
+  $page->path = 'newsroom';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
