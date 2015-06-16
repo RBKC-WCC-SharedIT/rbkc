@@ -37,8 +37,17 @@ function feature_answer_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser_large' => array(
+        'custom_settings' => TRUE,
+      ),
+      'teaser_small' => array(
+        'custom_settings' => FALSE,
+      ),
       'revision' => array(
         'custom_settings' => FALSE,
+      ),
+      'teaser_medium' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
@@ -65,12 +74,20 @@ function feature_answer_strongarm() {
             'weight' => '2',
             'visible' => TRUE,
           ),
-          'teaser' => array(
+          'top_three_topics' => array(
             'weight' => '10',
             'visible' => FALSE,
           ),
-          'top_three_topics' => array(
-            'weight' => '10',
+          'teaser_large' => array(
+            'weight' => '9',
+            'visible' => FALSE,
+          ),
+          'teaser_medium' => array(
+            'weight' => '9',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '9',
             'visible' => FALSE,
           ),
         ),

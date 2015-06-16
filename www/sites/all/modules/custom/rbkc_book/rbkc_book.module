@@ -35,11 +35,15 @@ function rbkc_book_menu_alter(&$items) {
 function rbkc_book_admin_overview() {
   $rows = array();
 
-  $headers = array(t('Book'), t('Operations'));
+  $headers = array(t('Book'), array('data' => t('Operations'), 'colspan' => 2));
 
   // Add any recognized books to the table list.
   foreach (rbkc_book_get_books() as $book) {
-    $rows[] = array(l($book['title'], $book['href'], $book['options']), l(t('edit order and titles'), 'admin/content/book/' . $book['nid']));
+    $rows[] = array(
+      l($book['title'], $book['href'], $book['options']),
+      l(t('add a child !type', array('!type' => $book['type'])), 'node/add/' . $book['type'], array('query' => array('parent' => $book['mlid']))),
+      l(t('edit order and titles'), 'admin/content/book/' . $book['nid']),
+    );
   }
 
   return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No books available.')));
@@ -556,5 +560,28 @@ function rbkc_book_next($book_link) {
 
   if ($key == $book_link['mlid']) {
     return current($flat);
+  }
+}
+
+/**
+ * Implements hook_node_prepare().
+ */
+function rbkc_book_node_prepare($node) {
+  if (isset($node->nid)) {
+    return;
+  }
+
+  if ('guide' !== $node->type && 'publication' !== $node->type) {
+    return;
+  }
+
+  if (!isset($node->book)) {
+    return;
+  }
+
+  $parent_book_node = node_load($node->book['bid']);
+
+  if ($parent_book_node && isset($parent_book_node->field_service_hub[LANGUAGE_NONE][0]['tid'])) {
+    $node->field_service_hub[LANGUAGE_NONE][0]['tid'] = $parent_book_node->field_service_hub[LANGUAGE_NONE][0]['tid'];
   }
 }

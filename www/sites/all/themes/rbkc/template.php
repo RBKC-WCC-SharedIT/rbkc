@@ -70,6 +70,58 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
 }
 
 /**
+ * Add class to menu ul.
+ */
+function rbkc_menu_tree__drop_down_service_menu($variables) {
+  return '<ul class="servicelist__list-one">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Add class to menu ul.
+ */
+function rbkc_menu_tree__menu_i_need_to($variables) {
+  return '<ul class="quicklinks__list-one">' . $variables['tree'] . '</ul>';
+}
+
+/**
+ * Implements theme_menu_link
+ */
+function rbkc_menu_link(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+  $element['#localized_options']['html'] = TRUE;
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  if (!empty($element['#attributes']['class'])) {
+    foreach ($element['#attributes']['class'] as $key => $class) {
+      if ($class == 'first') {
+        // To remove the last class.
+        unset($element['#attributes']['class'][$key]);
+      }
+      if ($class == 'last') {
+        // To remove the last class.
+        unset($element['#attributes']['class'][$key]);
+      }
+    }
+  }
+
+  /**
+   * Add menu item's description below the menu title
+   */
+  if ($element['#original_link']['menu_name'] == "drop-down-service-menu" && isset($element['#localized_options']['attributes']['title'])){
+    $element['#title'] .= '<span class="servicelist__desc">' . $element['#localized_options']['attributes']['title'] . '</span>';
+  }
+  if ($element['#original_link']['menu_name'] == "menu-i-need-to" && isset($element['#localized_options']['attributes']['title'])){
+    unset($element['#attributes']['class']);
+  }
+
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+/**
  * Override theme_menu_link for the publication table of contents.
  *
  * @param $variables
@@ -363,4 +415,25 @@ function rbkc_print_pdf_tcpdf_content($vars) {
   @$pdf->writeHTML($matches[1]);
 
   return $pdf;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param $vars
+ */
+function rbkc_preprocess_page(&$vars) {
+  // Conditionally add stylesheets based on path.
+  $path_to_theme = drupal_get_path('theme', 'rbkc');
+
+  if (drupal_is_front_page()) {
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'front.css');
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.css');
+  }
+
+  if ('newsroom' === current_path()) {
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'newsroom.css');
+    drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'responsiveslides.min.js', 'file');
+    drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'newsroom.js', 'file');
+  }
 }

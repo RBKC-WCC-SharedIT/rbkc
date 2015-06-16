@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * rbkc_sitewide module.
+ * Code and exportables affecting the whole rbkc site.
+ */
+
+/**
+* Implements hook_ctools_plugin_api().
+*/
+function rbkc_sitewide_ctools_plugin_api($module, $api) {
+  // Ctools styles and panel panes (ctools content_types).
+  if ($module == 'panels' && $api == 'styles') {
+    return array('version' => 2.0);
+  }
+  // Exported panel pages.
+  if ($module == 'page_manager' && $api == 'pages_default') {
+    return array('version' => 1);
+  }
+  // Node overrides.
+  if ($module == 'pm_existing_pages' && $api == 'pm_existing_pages') {
+    return array('version' => 1);
+  }
+  // Custom content panes.
+  if ($module == "ctools_custom_content" && $api == "ctools_content") {
+    return array("version" => "1");
+  }
+  // Mini panels.
+  if ($module == 'panels_mini' && $api == 'panels_default') {
+    return array('version' => '1');
+  }
+  if ($module == 'current_search' &&  $api == 'current_search') {
+    return array('version' => 1);
+  }
+  if (($module == 'ds' && $api == 'ds') || ($module == 'ds_extras' && $api == 'ds_extras')) {
+  return array('version' => 1);
+  }
+}
+
+/**
+ * @param $exportable_type
+ */
+function rbkc_sitewide_get_ctools_exportables($exportable_type, $object_var, $folder = 'plugins') {
+  $items = array();
+  $path = drupal_get_path('module', 'rbkc_sitewide') . '/' . $folder . '/' . $exportable_type;
+  foreach (glob("{$path}/*.inc") as $file) {
+    include($file);
+    $items[${$object_var}->name] = ${$object_var};
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_ctools_plugin_directory()
+ */
+function rbkc_sitewide_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'page_manager' || $module == 'panels' || $module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function rbkc_sitewide_views_api() {
+  return array(
+    'api' => '3.0',
+  );
+}
+
+/**
+ * Implementation of hook_default_ctools_custom_content().
+ */
+function rbkc_sitewide_default_ctools_custom_content() {
+  return rbkc_sitewide_get_ctools_exportables('content_panes', 'content');
+}
+
+/**
+ * Implements hook_default_page_manager_pages().
+ */
+function rbkc_sitewide_default_page_manager_pages() {
+  return rbkc_sitewide_get_ctools_exportables('page_manager_pages', 'page');
+}
+
+/**
+ * Implements hook_default_page_manager_handlers().
+ *
+ * @see _ctools_export_get_defaults();
+ */
+function rbkc_sitewide_default_page_manager_handlers() {
+  return rbkc_sitewide_get_ctools_exportables('page_manager_handlers', 'handler');
+}
+
+
+function rbkc_sitewide_theme($existing, $type, $theme, $path) {
+  return array(
+    'rbkc_feature_comms' => array(
+      'variables' => array(
+        'comms_label' => NULL,
+        'comms_image' => NULL,
+        'comms_title' => NULL,
+        'comms_body' => NULL,
+        'comms_link' => NULL
+      ),
+      'template' => 'rbkc-feature-comms',
+    ),
+    'rbkc_news_comms' => array(
+      'variables' => array(
+        'comms_label' => NULL,
+        'comms_image' => NULL,
+        'comms_link' => NULL,
+        'comms_items' => NULL
+      ),
+      'template' => 'rbkc-news-comms',
+    ),
+  );
+}
