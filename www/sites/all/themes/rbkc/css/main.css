@@ -77,7 +77,8 @@ p {
   margin: 0 0 1.5rem 0;
 }
 
-a:link {
+a:link,
+a:visited {
   color:#2b5d92;
   text-decoration:none;
   transition:all .25s linear 0s;
@@ -1459,11 +1460,13 @@ div.accordionContents + h4 {
 background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 }  */
 
-.content a:link {
+.content a:link,
+.content a:visited {
   /*border-bottom: 1px dotted #376697;*/
   border-bottom: 1px solid #b0c8e2  ;
 }
-.content a:link:hover {
+.content a:link:hover,
+.content a:visited:hover {
   border-bottom: 1px solid #376697;
 }
 .content h2   {
