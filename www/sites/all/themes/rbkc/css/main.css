@@ -862,7 +862,8 @@ a.footerglobal__contact:hover,
   background:  url('../images/refresh/accordion_close_icon.png') no-repeat center;
 }
 .ready-accordion {
-  margin: 0 0 24px 0 !important;
+  margin: -12px 0 24px 0 !important;
+  white-space: pre-line;
 }
 
 /*** view all link for expanding menus ***/
