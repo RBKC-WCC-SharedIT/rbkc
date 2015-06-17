@@ -100,8 +100,8 @@ border-bottom: dotted 1px;
 .context-file_with_size {
   overflow: hidden;
   position: relative;
-  padding-left: 48px;
-  padding-left: 3rem;
+  padding-left: 48px !important;
+  padding-left: 3rem !important;
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
   min-height: 54px;
