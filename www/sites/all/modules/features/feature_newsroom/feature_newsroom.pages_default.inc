@@ -160,6 +160,60 @@ function feature_newsroom_default_page_manager_pages() {
     $display->content['new-850be167-8285-4c1a-ae83-d9f05d412baf'] = $pane;
     $display->panels['row_one_col_two'][0] = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane = new stdClass();
+    $pane->pid = 'new-911aff5a-0ffd-46e2-9ce4-e69047181f93';
+    $pane->panel = 'row_two_col_one';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Newsletters',
+      'title' => 'Newsletters',
+      'body' => '<p class="fixedItem"><span style="float:right"><a href="/newsroom/signuptooure-newsletters.aspx">Sign up for newsletters</a></span></p><p><strong>Here are the latest issues of the Council\'s enewsletters.</strong></p><ul><li><p><a href="http://rbkc.newsweaver.co.uk/rbkcdirect">RBKC Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/nicknotes">Leader\'s newsletter</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/businessdirect">Business Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/artstinformation">Arts newsletters</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/commercialwaste">Commercial waste</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/gardenersnewsletter">Community gardeners</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/PlanningBulletin">Planning Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/CityLivingLocalLife">City Living, Local Life</a></p></li></ul>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => array(
+        'element_wrapper' => array(
+          'type' => 'section',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 1,
+          'attributes' => 'id=newsletters',
+          'attributes_array' => array(
+            'id' => 'newsletters',
+          ),
+        ),
+        'element_title' => array(
+          'type' => 'h2',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'element_content' => array(
+          'type' => 'div',
+          'add_default_classes' => 0,
+          'class_enable' => 1,
+          'class' => 'sectionContent content',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+      ),
+      'style' => 'planer',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '911aff5a-0ffd-46e2-9ce4-e69047181f93';
+    $display->content['new-911aff5a-0ffd-46e2-9ce4-e69047181f93'] = $pane;
+    $display->panels['row_two_col_one'][0] = 'new-911aff5a-0ffd-46e2-9ce4-e69047181f93';
+    $pane = new stdClass();
     $pane->pid = 'new-56448fda-f60a-44ef-90a9-d143e1a1d4b5';
     $pane->panel = 'row_two_col_one';
     $pane->type = 'views';
@@ -220,11 +274,11 @@ class=row',
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
     $pane->uuid = '56448fda-f60a-44ef-90a9-d143e1a1d4b5';
     $display->content['new-56448fda-f60a-44ef-90a9-d143e1a1d4b5'] = $pane;
-    $display->panels['row_two_col_one'][0] = 'new-56448fda-f60a-44ef-90a9-d143e1a1d4b5';
+    $display->panels['row_two_col_one'][1] = 'new-56448fda-f60a-44ef-90a9-d143e1a1d4b5';
     $pane = new stdClass();
     $pane->pid = 'new-c213450e-1589-474b-96b1-9db69fef6ec1';
     $pane->panel = 'row_two_col_two';
