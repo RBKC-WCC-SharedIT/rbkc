@@ -83,14 +83,17 @@ function feature_newsroom_default_page_manager_pages() {
       ),
       'row_one_col_one' => NULL,
       'row_one_col_two' => NULL,
-      'row_two_col_one' => NULL,
       'row_two_col_two' => NULL,
+      'row_two_col_one' => NULL,
     ),
     'row_two' => array(
       'style' => 'planer',
     ),
     'row_one' => array(
       'style' => 'planer',
+    ),
+    'row_two_col_one' => array(
+      'style' => '-1',
     ),
   );
   $display->cache = array();
@@ -156,6 +159,72 @@ function feature_newsroom_default_page_manager_pages() {
     $pane->uuid = '850be167-8285-4c1a-ae83-d9f05d412baf';
     $display->content['new-850be167-8285-4c1a-ae83-d9f05d412baf'] = $pane;
     $display->panels['row_one_col_two'][0] = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
+    $pane = new stdClass();
+    $pane->pid = 'new-56448fda-f60a-44ef-90a9-d143e1a1d4b5';
+    $pane->panel = 'row_two_col_one';
+    $pane->type = 'views';
+    $pane->subtype = 'newsroom_capital_projects';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_pager_settings' => 0,
+      'use_pager' => 0,
+      'nodes_per_page' => '0',
+      'pager_id' => '0',
+      'offset' => '0',
+      'more_link' => 0,
+      'feed_icons' => 0,
+      'panel_args' => 0,
+      'link_to_view' => 0,
+      'args' => '',
+      'url' => '',
+      'display' => 'default',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => array(
+        'element_wrapper' => array(
+          'type' => 'section',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 1,
+          'attributes' => 'id=capital_projects
+class=row',
+          'attributes_array' => array(
+            'id' => 'capital_projects',
+            'class' => 'row',
+          ),
+        ),
+        'element_title' => array(
+          'type' => 'h2',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'element_content' => array(
+          'type' => 'div',
+          'add_default_classes' => 0,
+          'class_enable' => 1,
+          'class' => 'sectionContent',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+      ),
+      'style' => 'planer',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '56448fda-f60a-44ef-90a9-d143e1a1d4b5';
+    $display->content['new-56448fda-f60a-44ef-90a9-d143e1a1d4b5'] = $pane;
+    $display->panels['row_two_col_one'][0] = 'new-56448fda-f60a-44ef-90a9-d143e1a1d4b5';
     $pane = new stdClass();
     $pane->pid = 'new-c213450e-1589-474b-96b1-9db69fef6ec1';
     $pane->panel = 'row_two_col_two';
