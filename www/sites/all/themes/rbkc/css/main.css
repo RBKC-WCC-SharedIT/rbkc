@@ -823,6 +823,8 @@ a.footerglobal__contact:hover,
 /*** accordion styles ***/
 .acc-head {
   display: inline-block;
+  width: 100%;
+  clear: left;
   margin: 0 0 24px 0 !important;
   border-bottom: 0 !important;
 }
@@ -956,10 +958,10 @@ a.footerglobal__contact:hover,
 .sub-hub-topic h3 {
   margin-bottom:6px;
 }
-.sub-hub-topic li:first-child.hide,
-.sub-hub-topic li:nth-child(2).hide,
-.sub-hub-topic li:nth-child(3).hide {
-  display: block;
+.sub-hub-topic li:first-child,
+.sub-hub-topic li:nth-child(2),
+.sub-hub-topic li:nth-child(3) {
+  display: block !important;
 }
 .sub-hub-topic .view-all {
   display: inline;
@@ -3516,6 +3518,11 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   padding: 0.6rem 0.5rem 0.7rem;
 }
 
+.lt-ie9 .middle,
+.lt-ie9 .middle-hp {
+  padding-bottom: 142px
+}
+
 /*** footer ***/
 .lt-ie9 .footerglobal {
   width:100%;
@@ -3613,8 +3620,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 
 /*** service hub modules ***/
 .lt-ie9 .iconlinks--top-tasks a,
-.lt-ie9 .iconlinks--top-tasks .first,
-.lt-ie9 .iconlinks--top-tasks .last {
+.lt-ie9 .iconlinks--top-tasks li:first-child a,
+.lt-ie9 .iconlinks--top-tasks li:last-child a {
   border: solid #58d2c4 1px;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
@@ -3711,6 +3718,16 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 }
 .lt-ie9 .image-cap__text {
   width: 30%;
+}
+
+/*** topic page list ***/
+.lt-ie9 .sub-hub-topic li:first-child,
+.lt-ie9 .sub-hub-topic li:first-child + li,
+.lt-ie9 .sub-hub-topic li:first-child + li + li {
+  display: block;
+}
+.sub-hub-topic .view-all {
+  background: none !important;
 }
 
 /****************************************************/
