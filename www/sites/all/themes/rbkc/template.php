@@ -427,8 +427,9 @@ function rbkc_preprocess_page(&$vars) {
   $path_to_theme = drupal_get_path('theme', 'rbkc');
 
   if (drupal_is_front_page()) {
-    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'front.css');
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'front.css', array('weight' => 10, 'group' => CSS_THEME));
     drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.css');
+    drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.js');
   }
 
   if ('newsroom' === current_path()) {
