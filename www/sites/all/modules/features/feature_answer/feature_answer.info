@@ -22,7 +22,6 @@ features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|answer|teaser
 features[ds_field_settings][] = node|answer|teaser_large
 features[ds_field_settings][] = node|answer|teaser_medium
-features[ds_layout_settings][] = node|answer|teaser
 features[ds_layout_settings][] = node|answer|teaser_large
 features[ds_layout_settings][] = node|answer|teaser_medium
 features[features_api][] = api:2
