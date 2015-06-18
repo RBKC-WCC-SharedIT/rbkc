@@ -20,7 +20,6 @@ features[field_instance][] = node-guide-field_audited
 features[field_instance][] = node-guide-field_review_date
 features[field_instance][] = node-guide-field_service_hub
 features[field_instance][] = node-guide-field_short_title
-features[field_instance][] = node-guide-field_show_more_in_links
 features[field_instance][] = node-guide-field_tag
 features[field_instance][] = node-guide-field_user
 features[node][] = guide
