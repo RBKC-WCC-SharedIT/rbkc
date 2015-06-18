@@ -940,3 +940,28 @@ function rbkc_deploy_update_7083() {
   field_delete_field('field_image_caption');
   features_revert();
 }
+
+/**
+ * Enable and configure panels and main display modules.
+ */
+function rbkc_deploy_update_7084() {
+  module_enable(array('panels'), TRUE);
+  module_enable(array('views_content'), TRUE);
+  module_enable(array('page_manager'), TRUE);
+  module_enable(array('ctools_custom_content'), TRUE);
+  module_enable(array('planer'), TRUE);
+  module_enable(array('feature_views'), TRUE);
+  module_enable(array('feature_display'), TRUE);
+  module_enable(array('rbkc_sitewide'), TRUE);
+
+  // Drop down service menu.
+  $menu_machine_name = 'menu-i-need-to';
+  $menu = array(
+    'menu_name' => $menu_machine_name,
+    'title' => st('I need to'),
+    'description' => 'The I Need To menu.',
+  );
+  menu_save($menu);
+
+  variable_set('site_frontpage', 'welcome');
+}
