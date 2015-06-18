@@ -121,6 +121,20 @@ function rbkc_fe_scald_player() {
  * Implements hook_scald_render().
  */
 function rbkc_fe_scald_render($atom, $context, $options) {
+
+  $gettype = substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1);
+
+  switch ($gettype) {
+    case 'pdf':
+      $filetype = 'PDF';
+      break;
+    case 'vnd.openxmlformats-officedocument.wordprocessingml.document':
+      $filetype = 'Word';
+      break;
+    default:
+      $filetype = $gettype;
+  }
+
   switch($context) {
     case 'image_without_caption':
     case 'image_with_caption':
@@ -128,7 +142,7 @@ function rbkc_fe_scald_render($atom, $context, $options) {
       break;
 
     case 'file_with_size':
-      $output = '<a class="doc-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '</a><span class="smallest-text"> [' . strtoupper(substr($atom->base_entity->filemime,strpos($atom->base_entity->filemime, "/") +1)) . '] (file size ' . format_size($atom->base_entity->filesize) . ')</span>';
+      $output = '<a class="doc-icon" href="' . $atom->rendered->file_source_url . '" role="presentation" tabindex="-1"></a><a href="' . $atom->rendered->file_source_url . '">' . $atom->rendered->title . '</a><span class="smallest-text"> [' . $filetype . '] (file size ' . format_size($atom->base_entity->filesize) . ')</span>';
     break;
   }
 
