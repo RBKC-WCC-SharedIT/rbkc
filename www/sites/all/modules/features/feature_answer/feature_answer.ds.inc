@@ -23,7 +23,7 @@ function feature_answer_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
-        'wrapper' => 'h3',
+        'wrapper' => 'h2',
         'class' => '',
         'ft' => array(),
       ),
@@ -75,36 +75,6 @@ function feature_answer_ds_field_settings_info() {
  */
 function feature_answer_ds_layout_settings_info() {
   $export = array();
-
-  $ds_layout = new stdClass();
-  $ds_layout->api_version = 1;
-  $ds_layout->id = 'node|answer|teaser';
-  $ds_layout->entity_type = 'node';
-  $ds_layout->bundle = 'answer';
-  $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_reset';
-  $ds_layout->settings = array(
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'title',
-        1 => 'body',
-      ),
-    ),
-    'fields' => array(
-      'title' => 'ds_content',
-      'body' => 'ds_content',
-    ),
-    'classes' => array(),
-    'wrappers' => array(
-      'ds_content' => 'div',
-    ),
-    'layout_wrapper' => 'div',
-    'layout_attributes' => '',
-    'layout_attributes_merge' => TRUE,
-    'layout_link_attribute' => FALSE,
-    'layout_link_custom' => '',
-  );
-  $export['node|answer|teaser'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
