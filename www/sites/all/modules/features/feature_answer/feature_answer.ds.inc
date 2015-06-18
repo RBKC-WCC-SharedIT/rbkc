@@ -23,7 +23,7 @@ function feature_answer_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
-        'wrapper' => 'h3',
+        'wrapper' => 'h2',
         'class' => '',
         'ft' => array(),
       ),
