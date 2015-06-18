@@ -16,7 +16,7 @@
                   </div><!--end col 8-->
 
                   <div class="col4"  role="complementary">
-                    <?php isset($content['rbkc_related_content']['also_in']['#markup'])): ?>
+                     <?php if (isset($content['rbkc_related_content']['also_in']['#markup'])): ?>
                     <div class="bordered related">
                       <!-- sibling menu -->
                       <div class="related__elsewhere">
