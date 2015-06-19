@@ -6,19 +6,18 @@
         <a href="<?php print $front_page; ?>" class="inner padlr logo" title="The Royal Borough of Kensington and Chelsea">The Royal Borough of Kensington and Chelsea</a>
       </div><!-- end logo -->
 
-      <button class="headerglobal__open hamburger" id="openMenu" type="button">
-        <span class="element-invisible">Open <a href="#nav1">menu below: Services, MyRBKC, Council, Maps</a></span>
-      </button>
+      <button class="headerglobal__open hamburger" id="openMenu" type="button"><span class="element-invisible">Open menu</span></button>
+      <span class="element-invisible"><a href="#nav1">Skip to menu: Services, MyRBKC, Council, Maps</a></span>
 
-      <button class="headerglobal__open magnify active" id="openSearch" type="button">
-        <span class="element-invisible">Open search box below</span>
-      </button>
+      <button class="headerglobal__open magnify active" id="openSearch" type="button"><span class="element-invisible">Open search</span></button>
+      <span class="element-invisible"><a href="#search">Skip to search box</a></span>
 
       <nav role="navigation">
         <ul class="headerglobal__nav hide lightlinks" id="nav1">
           <li class="hide800"><a href="#services" title="Council Services">Services</a></li>
           <li class="show800 headerglobal__openservices" id="openServiceMenu">
-          <button type="button">Services<span class="element-invisible">Open a <a href="#nav2">full list of services below</a></span></button>
+          <button type="button">Services</button>
+          <span class="element-invisible">See a <a href="#nav2">full list of services below</a>
           </li>
           <li><a href="https://www.rbkc.gov.uk/myrbkc/login.aspx" title="MyRBKC">MyRBKC</a></li>
           <li><a href="http://www.rbkc.gov.uk/councilanddemocracy.aspx" title="Council">Council</a></li>
@@ -85,7 +84,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?home.page" );
 <div><img src="http://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
-<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="http://www.rbkc.gov.uk/sitestat.js"></script>
+<!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="/js/rbkc/sitestat.js"></script>
 <!-- End Sitestat4 Technical code -->
 <!-- Begin Sitestat4 Loadingtime2 code -->
 <script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>
