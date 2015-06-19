@@ -29,8 +29,14 @@ function rbkc_sitewide_need_to_menu($subtype, $conf, $panel_args, $context) {
   $collection1 = array_slice($links, 0, intval($link_count / 2), true);
   $collection2 = array_diff_key($links, $collection1);
 
-  $render1 = drupal_render(menu_tree_output($collection1));
-  $render2 = drupal_render(menu_tree_output($collection2));
+  $menu_tree_1 = menu_tree_output($collection1);
+  $menu_tree_2 = menu_tree_output($collection2);
+
+  $menu_tree_1['#theme_wrappers'] = array('menu_tree__menu_i_need_to__wrapper_one');
+  $menu_tree_2['#theme_wrappers'] = array('menu_tree__menu_i_need_to__wrapper_two');
+
+  $render1 = drupal_render($menu_tree_1);
+  $render2 = drupal_render($menu_tree_2);
 
   $block->title = '';
 
