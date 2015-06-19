@@ -73,14 +73,30 @@ function rbkc_menu_link__menu_drop_down_service_menu($variables) {
  * Add class to menu ul.
  */
 function rbkc_menu_tree__drop_down_service_menu($variables) {
+  return $variables['tree'];
+}
+
+function rbkc_menu_tree__drop_down_service_menu__wrapper_one($variables) {
   return '<ul class="servicelist__list-one">' . $variables['tree'] . '</ul>';
+}
+
+function rbkc_menu_tree__drop_down_service_menu__wrapper_two($variables) {
+  return '<ul class="servicelist__list-two">' . $variables['tree'] . '</ul>';
 }
 
 /**
  * Add class to menu ul.
  */
 function rbkc_menu_tree__menu_i_need_to($variables) {
+  return $variables['tree'];
+}
+
+function rbkc_menu_tree__menu_i_need_to__wrapper_one($variables) {
   return '<ul class="quicklinks__list-one">' . $variables['tree'] . '</ul>';
+}
+
+function rbkc_menu_tree__menu_i_need_to__wrapper_two($variables) {
+  return '<ul class="quicklinks__list-two">' . $variables['tree'] . '</ul>';
 }
 
 /**
