@@ -1,4 +1,5 @@
 <div class="comms__feature">
+  <?php if (!empty($comms_image)): ?>
   <div class="comms__img">
     <!-- editable header -->
     <h2><?php print $comms_label; ?></h2>
@@ -7,6 +8,7 @@
     <!-- editable link around image -->
     <?php print l($comms_image, $comms_link, array('html' => TRUE)); ?>
   </div>
+  <?php endif; ?>
   <div class="comms__content">
     <div class="hollowpointer">
       <span class="hollowpointer1"></span>
