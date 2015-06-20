@@ -26,7 +26,7 @@ function rbkc_sitewide_need_to_menu($subtype, $conf, $panel_args, $context) {
 
   $links = menu_tree_all_data('menu-i-need-to');
   $link_count = count($links);
-  $collection1 = array_slice($links, 0, intval($link_count / 2), true);
+  $collection1 = array_slice($links, 0, ceil($link_count / 2), TRUE);
   $collection2 = array_diff_key($links, $collection1);
 
   $menu_tree_1 = menu_tree_output($collection1);
