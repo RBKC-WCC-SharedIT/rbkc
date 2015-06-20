@@ -112,8 +112,13 @@ function rbkc_news_comms_edit_form_submit($form, &$form_state) {
 function rbkc_news_comms_render($subtype, $conf, $panel_args, $context = NULL) {
   $block = new stdClass();
   $rawimage = file_load($conf['comms_image']);
-  $breakpoints = picture_get_mapping_breakpoints(picture_mapping_load('rbkc'));
-  $image = theme('picture', array('style_name' => 'banner', 'uri' => $rawimage->uri, 'breakpoints' => $breakpoints,));
+
+  $image = '';
+  if (FALSE !== $rawimage) {
+    $breakpoints = picture_get_mapping_breakpoints(picture_mapping_load('rbkc'));
+    $image = theme('picture', array('style_name' => 'banner', 'uri' => $rawimage->uri, 'breakpoints' => $breakpoints,));
+  }
+
   $items = array('itemone', 'itemtwo', 'itemthree');
   foreach ($items as $item) {
     $news[$item] = array(
@@ -122,6 +127,7 @@ function rbkc_news_comms_render($subtype, $conf, $panel_args, $context = NULL) {
       'link' => $conf[$item . '_link'],
     );
   }
+
   $block->title = '';
   $block->content = theme('rbkc_news_comms', array(
     'comms_label' => $conf['comms_label'],

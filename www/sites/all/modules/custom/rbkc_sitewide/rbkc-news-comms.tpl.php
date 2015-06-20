@@ -1,9 +1,11 @@
 <div class="comms__news col8">
+  <?php if (!empty($comms_image)): ?>
   <div class="comms__img">
     <h2>Latest news</h2>
     <!-- editable link around image -->
       <?php print l($comms_image, $news['itemone']['link'], array('html' => TRUE)); ?>
   </div>
+  <?php endif; ?>
   <div class="comms__content">
     <div class="hollowpointer">
       <span class="hollowpointer1"></span>
