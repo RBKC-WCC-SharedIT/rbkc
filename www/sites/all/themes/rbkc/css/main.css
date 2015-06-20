@@ -60,15 +60,15 @@ h4, h5, h6 {
 }
 /*** blue header link with chevron  ***/
 .linkheader,
-h2 a,
-h3 a {
+h2 a:link,
+h3 a:link {
   background:url('../images/refresh/rightdouble-chevron-8px.png') right 55% no-repeat;
   padding-right: 20px;
   padding-right: 1.3rem;
   border-bottom: none;
 }
-h2 a:hover,
-h3  a:hover {
+h2 a:link:hover,
+h3 a:link:hover {
   border-bottom: dotted 1px;
 }
 
@@ -77,12 +77,13 @@ p {
   margin: 0 0 1.5rem 0;
 }
 
-a {
+a:link,
+a:visited {
   color:#2b5d92;
   text-decoration:none;
   transition:all .25s linear 0s;
 }
-a:hover {
+a:link:hover {
   border-bottom: 1px dotted #376697;
 }
 
@@ -861,7 +862,8 @@ a.footerglobal__contact:hover,
   background:  url('../images/refresh/accordion_close_icon.png') no-repeat center;
 }
 .ready-accordion {
-  margin: -24px 0 24px 0 !important;
+  margin: -12px 0 24px 0 !important;
+  white-space: pre-line;
 }
 
 /*** view all link for expanding menus ***/
@@ -1459,11 +1461,13 @@ div.accordionContents + h4 {
 background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 }  */
 
-.content a {
+.content a:link,
+.content a:visited {
   /*border-bottom: 1px dotted #376697;*/
   border-bottom: 1px solid #b0c8e2  ;
 }
-.content a:hover {
+.content a:link:hover,
+.content a:visited:hover {
   border-bottom: 1px solid #376697;
 }
 .content h2   {
@@ -1477,6 +1481,7 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
   height: auto !important;
   display: none;
 }
+
 /*** Drupal wrapper for images without captions ***/
 .context-image_without_caption img {
   margin: 12px 32px 12px 0;
