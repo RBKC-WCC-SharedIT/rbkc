@@ -17,4 +17,5 @@ files[] = includes/RBKCMigrationNodePublication.inc
 files[] = includes/RBKCMigrationNodePublicationAssociateChildren.inc
 files[] = includes/RBKCMigrationNodeTopic.inc
 files[] = includes/RBKCMigrationNodeTopicFieldTopicLink.inc
+files[] = includes/RBKCMigrationArchivedPressReleases.inc
 files[] = handlers/MigrateRBKCHandler.inc

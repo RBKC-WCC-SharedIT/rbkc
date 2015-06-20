@@ -21,6 +21,7 @@ features[ctools][] = field_group:field_group:1
 features[features_api][] = api:2
 features[field_base][] = body
 features[field_base][] = field_action
+features[field_base][] = field_archived
 features[field_base][] = field_asset
 features[field_base][] = field_audited
 features[field_base][] = field_contact_department
