@@ -6,7 +6,7 @@
                   ?>
                 </div>
                 <div class="blue-border-top row">
-                  <div class="topics col8 content">
+                  <div class="topics col8">
                     <?php
                       print render($content['field_topic_link']);
                       print render($content['deeplink_form']);
