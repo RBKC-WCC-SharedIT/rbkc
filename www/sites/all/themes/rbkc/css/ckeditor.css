@@ -272,6 +272,47 @@ td a[href$=".doc"]:hover {
   line-height:29px;
   line-height: 1.8125rem;
 }
+/*** accordion styles ***/
+.acc-head {
+  display: inline-block;
+  margin: 0 0 24px 0 !important;
+  border-bottom: 0 !important;
+}
+.acc-head span {
+  border-bottom: 1px solid #b0c8e2;
+  background: none !important;
+  padding: 0 !important;
+  transition: border linear .2s;
+  margin-left: 5px;
+}
+.acc-head:hover span {
+  border-bottom: 1px solid #376697;
+}
+.acc-head .collapsed:before  {
+  content: "";
+  display: block;
+  float: left;
+  width: 15px;
+  height: 24px;
+  height: 1.5rem;
+  position: relative;
+  top: -2px;
+  background:  url('../images/refresh/accordion_open_icon.png') no-repeat center;
+}
+.acc-head .expanded:before {
+  content: "";
+  display: block;
+  float: left;
+  width: 15px;
+  height: 24px;
+  height: 1.5rem;
+  position: relative;
+  top: -2px;
+  background:  url('../images/refresh/accordion_close_icon.png') no-repeat center;
+}
+.ready-accordion {
+  margin: 0 0 24px 0 !important;
+}
 
 @media screen and (min-width: 600px) {
   .image-cap__pic {
