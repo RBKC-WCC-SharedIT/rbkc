@@ -40,7 +40,7 @@
 			$('.ready-accordion').each(function (index) {
 				$(this).attr('id', 'acc-' + index);
 				$(this).children('.ready-accordion-header').wrap('<a class="acc-head" id="acc-head-' + index + '" href="javascript:void(0);"></a>');
-				$(this).children('a').insertBefore(jQuery(this));
+        $(this).children('.acc-head').insertBefore(jQuery(this));
 
         // awful hack: apply .last to the accordion heads which appear to be last
         if ($(this).next().length == 0 || !$(this).next().hasClass("ready-accordion")) {
