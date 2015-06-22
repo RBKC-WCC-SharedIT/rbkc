@@ -1847,7 +1847,7 @@ h3 + .docLink {
   min-width: 150px;
   font-weight:700;
   margin: 16px 0 6px 0;
-  margin-top: 1rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   cursor: pointer;
 }
 /* submit button on hover */
@@ -1873,6 +1873,11 @@ h3 + .docLink {
   color:#B2334C !important;
 }
 
+/*** Drupal webform progress bar ***/
+.webform-progressbar {
+  width: 100%;
+  margin-bottom: 24px;
+}
 
 /*** advanced website search ***/
 /*** wrapper for search input - GSA classes ***/
