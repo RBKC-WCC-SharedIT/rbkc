@@ -28,44 +28,44 @@ function rbkc_sitewide_contact_us_links($subtype, $conf, $panel_args, $context) 
   $block->content = '<ul class="fit-3">
                 <li>
                   <a href="https://twitter.com/intent/tweet?screen_name=RBKC_CS">
-                    <span class="colorbox-700__left">
-                      <span class="icon-twitter">
-                      </span>
-                      <span class="colorbox-700__pointer"></span>
-                    </span>
-                    <span class="colorbox-700__content">
+                    <div class="colorbox-700__left">
+                      <div class="icon-twitter">
+                      </div>
+                      <div class="colorbox-700__pointer"></div>
+                    </div>
+                    <div class="colorbox-700__content">
                       <h3>Tweet us</h3>
                       <p>@RBKC_CS</p>
-                    </span>
+                    </div>
 
                   </a>
                 </li>
                 <li>
                   <a class="purple" href="https://www.eforms.rbkc.gov.uk/default.aspx/RenderForm/?F.Name=FoXT6rvnp4J">
-                    <span class="colorbox-700__left">
+                    <div class="colorbox-700__left">
 
-                      <span class="icon-envelope">
-                      </span>
+                      <div class="icon-envelope">
+                      </div>
 
-                      <span class="colorbox-700__pointer"></span>
-                    </span>
-                    <span class="colorbox-700__content">
+                      <div class="colorbox-700__pointer"></div>
+                    </div>
+                    <div class="colorbox-700__content">
                       <h3>Email us</h3>
                       <p>Customer Services</p>
-                    </span>
+                    </div>
                   </a>
                 </li>
                 <li>
                   <a href="http://www.rbkc.gov.uk/contactus/telephoneandemail.aspx">
-                    <span class="colorbox-700__left">
-                      <span class="icon-phone">
-                      </span>
-                      <span class="colorbox-700__pointer"></span>
-                    </span>
-                    <span class="colorbox-700__content">
+                    <div class="colorbox-700__left">
+                      <div class="icon-phone">
+                      </div>
+                      <div class="colorbox-700__pointer"></div>
+                    </div>
+                    <div class="colorbox-700__content">
                       <h3>Call us</h3>
                       <p>Talk to one of our advisers</p>
-                    </span>
+                    </div>
                   </a>
                 </li>
               </ul>';
