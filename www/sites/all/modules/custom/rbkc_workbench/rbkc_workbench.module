@@ -801,6 +801,10 @@ function rbkc_workbench_override_workbench_recent_content(&$views) {
   $handler->display->display_options['fields']['edit_node']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
   /* Sort criterion: Content: Updated date */
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
