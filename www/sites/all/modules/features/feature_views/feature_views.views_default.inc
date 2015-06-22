@@ -279,13 +279,14 @@ function feature_views_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Workbench: Editorial Review';
+  $view->human_name = 'Workbench: Timestamped Content';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Timestamped Content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'view all unpublished content';
@@ -341,13 +342,6 @@ function feature_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['label'] = '';
-  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
   /* Field: Content: Review Date */
   $handler->display->display_options['fields']['field_review_date']['id'] = 'field_review_date';
   $handler->display->display_options['fields']['field_review_date']['table'] = 'field_data_field_review_date';
@@ -365,6 +359,18 @@ function feature_views_views_default_views() {
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node_1']['id'] = 'edit_node_1';
+  $handler->display->display_options['fields']['edit_node_1']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node_1']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node_1']['label'] = 'Edit';
+  $handler->display->display_options['fields']['edit_node_1']['text'] = 'edit';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = 'Delete';
+  $handler->display->display_options['fields']['delete_node']['text'] = 'delete';
   /* Sort criterion: Content: Review Date (field_review_date) */
   $handler->display->display_options['sorts']['field_review_date_value']['id'] = 'field_review_date_value';
   $handler->display->display_options['sorts']['field_review_date_value']['table'] = 'field_data_field_review_date';
@@ -412,11 +418,11 @@ function feature_views_views_default_views() {
     4 => 0,
   );
 
-  /* Display: Editorial Review */
-  $handler = $view->new_display('page', 'Editorial Review', 'page_1');
+  /* Display: Timestamped Content */
+  $handler = $view->new_display('page', 'Timestamped Content', 'page_1');
   $handler->display->display_options['path'] = 'admin/workbench/editorial/needs-review';
   $handler->display->display_options['menu']['type'] = 'tab';
-  $handler->display->display_options['menu']['title'] = 'Editorial Review';
+  $handler->display->display_options['menu']['title'] = 'Timestamped Content';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;

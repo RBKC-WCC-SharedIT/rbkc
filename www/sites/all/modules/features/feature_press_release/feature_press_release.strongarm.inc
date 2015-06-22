@@ -43,23 +43,29 @@ function feature_press_release_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'teaser_large' => array(
+        'custom_settings' => FALSE,
+      ),
+      'teaser_medium' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '5',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
       ),
       'display' => array(
