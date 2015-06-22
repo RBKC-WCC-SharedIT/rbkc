@@ -81,7 +81,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?home.page" );
 //-->
 </script>
 
-<div><img src="http://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
+<div><img src="https://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="/js/rbkc/sitestat.js"></script>
