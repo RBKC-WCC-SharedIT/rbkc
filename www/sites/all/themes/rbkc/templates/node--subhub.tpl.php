@@ -1,4 +1,4 @@
-  <div class="row col12 large-text">
+  <div class="row col12 large-text content">
     <?php
       hide($content['field_curated_topic']);
       hide($content['deeplink_form']);
