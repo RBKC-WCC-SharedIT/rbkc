@@ -32,6 +32,7 @@
   <div class="presstweet">
     <div class="inner">
       <?php print $content['presstweet']; ?>
+      <p class="smallest-text"><a href="http://www.geograph.org.uk/photo/1700705" target="_blank">High Street Kensington Station image</a> &copy; Copyright Ruth Sharville</p>
     </div><!-- end inner -->
   </div><!-- end presstweet -->
 </div>

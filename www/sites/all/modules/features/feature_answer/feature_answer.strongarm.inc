@@ -91,6 +91,16 @@ function feature_answer_strongarm() {
             'visible' => FALSE,
           ),
         ),
+        'webform' => array(
+          'teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+        ),
       ),
     ),
   );
