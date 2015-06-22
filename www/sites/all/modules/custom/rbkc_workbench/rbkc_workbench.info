@@ -3,4 +3,3 @@ description = Customise workbench.
 core = 7.x
 package = RBKC
 dependencies[] = workbench_moderation
-files[] = views/rbkc_workbench.view.inc
