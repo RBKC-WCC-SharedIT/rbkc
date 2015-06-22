@@ -11,3 +11,18 @@
 function rbkc_workbench_views_api() {
   return array('api' => 2.0);
 }
+
+/**
+ * Implements hook_module_module_implements_alter().
+ *
+ * @param $implementations
+ * @param $hook
+ */
+function rbkc_workbench_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'views_default_views_alter') {
+    $this_module = 'rbkc_workbench';
+    $group = $implementations [$this_module];
+    unset($implementations [$this_module]);
+    $implementations [$this_module] = $group;
+  }
+}
