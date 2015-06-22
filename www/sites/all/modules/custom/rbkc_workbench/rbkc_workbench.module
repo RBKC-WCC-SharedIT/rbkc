@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Drupal hooks to customise Workbench.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function rbkc_workbench_moderation_views_api() {
+  return array('api' => 2.0);
+}

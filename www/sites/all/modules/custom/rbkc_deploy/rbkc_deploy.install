@@ -978,3 +978,10 @@ function rbkc_deploy_update_7085() {
     module_enable(array('ds_extras'), TRUE);
   }
 }
+
+/**
+ * Switch on the rbkc_workbench module.
+ */
+function rbkc_deploy_update_7086() {
+  module_enable(array('rbkc_workbench'), TRUE);
+}
