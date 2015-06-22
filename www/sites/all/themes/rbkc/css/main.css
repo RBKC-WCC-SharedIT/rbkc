@@ -3731,8 +3731,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
 .lt-ie9 .sub-hub-topic li:first-child + li + li {
   display: block;
 }
-.sub-hub-topic .view-all {
+.lt-ie9 .sub-hub-topic .view-all {
   background: none !important;
+  padding: 0;
 }
 
 /****************************************************/
