@@ -17,7 +17,7 @@
           <li class="hide800"><a href="<?php print $front_page; ?>#services" title="Council Services">Services</a></li>
           <li class="show800 headerglobal__openservices" id="openServiceMenu">
           <button type="button">Services</button>
-          <span class="element-invisible">See a <a href="#nav2">full list of services below</a>
+          <span class="element-invisible">See a <a href="#nav2">full list of services below</a></span>
           </li>
           <li><a href="https://www.rbkc.gov.uk/myrbkc/login.aspx" title="MyRBKC">MyRBKC</a></li>
           <li><a href="http://www.rbkc.gov.uk/councilanddemocracy.aspx" title="Council">Council</a></li>
