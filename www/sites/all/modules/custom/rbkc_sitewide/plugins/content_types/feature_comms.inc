@@ -50,6 +50,7 @@ function rbkc_feature_comms_edit_form($form, &$form_state) {
     '#title' => t('Comms image'),
     '#size' => 40,
     '#description' => t("Please upload the image to be displayed on this feature comm"),
+    '#default_value' => $conf['comms_image'],
     '#upload_location' => 'public://'
   );
   $form['comms_title'] = array(

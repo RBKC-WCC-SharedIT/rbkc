@@ -1,11 +1,8 @@
 <?php
-/**
- * @file
- * Layout definition for LEP - 1 col.
- */
 
 /**
- * Panel plugin definition for LEP - 1 col layout.
+ * @file
+ * Panel plugin definition.
  */
 $plugin = array(
   'title'    => t('RBKC Comms Feature'),

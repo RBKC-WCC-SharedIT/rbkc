@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature Newsroom feature.
+ */
+
+include_once 'feature_newsroom.features.inc';
