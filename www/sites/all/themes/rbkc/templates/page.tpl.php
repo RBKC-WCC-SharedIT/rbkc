@@ -52,7 +52,9 @@
             <?php if (isset($service_area_link)): ?>
             <li><?php print $service_area_link; ?></li>
             <?php endif; ?>
+            <?php if (!empty($title)): ?>
             <li><?php print $title; ?></li>
+            <?php endif; ?>
            </ol>
        </div><!-- end inner breadcrumb-->
        <?php endif; /* end if breadcrumb*/ ?>
