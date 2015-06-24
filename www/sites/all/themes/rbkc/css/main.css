@@ -1224,7 +1224,7 @@ a.footerglobal__contact:hover,
   padding: 9px 35px 10px 13px;
   margin-bottom: 36px;
   margin-bottom: 2.25rem;
-  color:#FFF;
+  color:#FFF !important;
   font-size:13px;
   /* 13/16 = .8125; */
   font-size:.8125rem;
@@ -1233,7 +1233,7 @@ a.footerglobal__contact:hover,
   -webkit-text-stroke-width: 0;
 }
 .contact-team:hover {
-  border-bottom: none;
+  border-bottom: none !important;
   background-color: #377A95;
 }
 
