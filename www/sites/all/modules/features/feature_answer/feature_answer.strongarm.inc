@@ -100,15 +100,9 @@ function feature_answer_strongarm() {
             'weight' => '10',
             'visible' => FALSE,
           ),
-        ),
-        'webform' => array(
-          'teaser' => array(
+          'default' => array(
             'weight' => '10',
-            'visible' => FALSE,
-          ),
-          'top_three_topics' => array(
-            'weight' => '10',
-            'visible' => FALSE,
+            'visible' => TRUE,
           ),
         ),
       ),
