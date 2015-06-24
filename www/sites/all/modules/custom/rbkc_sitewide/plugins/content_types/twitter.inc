@@ -110,10 +110,9 @@ function rbkc_twitter_timeline_render($subtype, $conf, $panel_args, $context = N
   if ($conf['show_social'] == 'Show') {
     $twitter_icon = '';
     $social_icons = array(
-      'twitter' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Twitter&ns_type=clickout', 'icon' => 'tweeter'),
-      'flickr' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Flickr&ns_type=clickout', 'icon' => 'flickr'),
-      'facebook' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Facebook&ns_type=clickout', 'icon' => 'facebook'),
-      'youtube' => array('link' => 'http://uk.sitestat.com/rbkc/rbkc/s?Youtube&ns_type=clickout', 'icon' => 'youtube'),
+      'twitter' => array('link' => 'https://twitter.com/RBKC', 'icon' => 'tweeter'),
+      'facebook' => array('link' => 'https://www.facebook.com/RoyalBorough', 'icon' => 'facebook'),
+      'youtube' => array('link' => 'https://www.youtube.com/user/kensingtonandchelsea', 'icon' => 'youtube'),
     );
     $path = drupal_get_path('module','rbkc_sitewide');
     $path = $path . '/plugins/content_types/images/';
