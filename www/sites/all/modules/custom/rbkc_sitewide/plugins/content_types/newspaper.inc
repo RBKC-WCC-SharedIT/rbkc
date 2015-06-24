@@ -11,7 +11,7 @@ $plugin = array(
   'defaults' => array(
     'readmore' => 'Read the latest edition here',
     'newspaper_image' => '',
-    'newspaper_body' => '',
+    'newspaper_body' => array('value' => '', 'format' => filter_default_format()),
   )
 );
 
@@ -52,10 +52,11 @@ function rbkc_newspaper_edit_form($form, &$form_state) {
     '#upload_location' => 'public://'
   );
   $form['newspaper_body'] = array(
+    '#type' => 'text_format',
     '#title' => t('Body'),
-    '#description' => t(''),
-    '#type' => 'textarea',
-    '#default_value' => $conf['newspaper_body'],
+    '#default_value' => $conf['newspaper_body']['value'],
+    '#format' => $conf['newspaper_body']['format'],
+    '#weight' => 10,
     '#required' => TRUE,
   );
 
@@ -88,7 +89,7 @@ function rbkc_newspaper_render($subtype, $conf, $panel_args, $context = NULL) {
   $block->content = theme('rbkc_newspaper', array(
     'readmore' => $conf['readmore'],
     'newspaper_image' => $image,
-    'newspaper_body'  => $conf['newspaper_body'],
+    'newspaper_body'  => check_markup($conf['newspaper_body']['value'], $conf['newspaper_body']['format'], LANGUAGE_NONE),
     ));
 
   return $block;
