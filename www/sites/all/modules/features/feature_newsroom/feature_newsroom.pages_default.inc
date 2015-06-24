@@ -82,7 +82,25 @@ function feature_newsroom_default_page_manager_pages() {
         ),
       ),
       'row_one_col_one' => NULL,
-      'row_one_col_two' => NULL,
+      'row_one_col_two' => array(
+        'region_wrapper' => array(
+          'type' => 'section',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 1,
+          'attributes' => 'id=pressReleases',
+          'attributes_array' => array(
+            'id' => 'pressReleases',
+          ),
+        ),
+        'separator' => array(
+          'active' => 0,
+          'element_type' => '',
+          'show_css' => 0,
+          'element_class' => '',
+        ),
+      ),
       'row_two_col_two' => NULL,
       'row_two_col_one' => NULL,
     ),
@@ -96,7 +114,7 @@ function feature_newsroom_default_page_manager_pages() {
       'style' => 'naked',
     ),
     'row_one_col_two' => array(
-      'style' => 'naked',
+      'style' => 'planer',
     ),
   );
   $display->cache = array();
@@ -227,20 +245,18 @@ function feature_newsroom_default_page_manager_pages() {
     );
     $pane->cache = array();
     $pane->style = array(
+      'style' => 'planer',
       'settings' => array(
         'element_wrapper' => array(
-          'type' => 'section',
+          'type' => '',
           'add_default_classes' => 0,
           'class_enable' => 0,
           'class' => '',
-          'attributes_enable' => 1,
-          'attributes' => 'id=pressReleases',
-          'attributes_array' => array(
-            'id' => 'pressReleases',
-          ),
+          'attributes_enable' => 0,
+          'attributes' => '',
         ),
         'element_title' => array(
-          'type' => 'h2',
+          'type' => '',
           'add_default_classes' => 0,
           'class_enable' => 0,
           'class' => '',
@@ -256,7 +272,6 @@ function feature_newsroom_default_page_manager_pages() {
           'attributes' => '',
         ),
       ),
-      'style' => 'planer',
     );
     $pane->css = array(
       'css_id' => '',
