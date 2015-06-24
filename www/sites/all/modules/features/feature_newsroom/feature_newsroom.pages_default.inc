@@ -457,10 +457,11 @@ class=row',
     $pane->access = array();
     $pane->configuration = array(
       'readmore' => 'Read the latest edition here',
-      'newspaper_image' => '31',
-      'newspaper_body' => 'For the latest news and events read the Royal Borough, the Council\'s quarterly newspaper.
- 
-Also search the archive for back issues.',
+      'newspaper_image' => 0,
+      'newspaper_body' => array(
+        'value' => '<p><strong>For the latest news and events read the Royal Borough, the Council\'s quarterly newspaper.</strong></p><p>&nbsp;</p><p><strong>Also search the archive for back issues.</strong></p>',
+        'format' => 'full_html',
+      ),
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
