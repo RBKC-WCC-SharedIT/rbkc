@@ -56,7 +56,7 @@ function rbkc_sitewide_contact_us_links($subtype, $conf, $panel_args, $context) 
                   </a>
                 </li>
                 <li>
-                  <a href="http://www.rbkc.gov.uk/contactus/telephoneandemail.aspx">
+                  <a href="/contact-us/telephone-and-email">
                     <div class="colorbox-700__left">
                       <div class="icon-phone">
                       </div>
