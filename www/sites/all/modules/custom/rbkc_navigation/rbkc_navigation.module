@@ -278,12 +278,43 @@ function rbkc_navigation_preprocess_page(&$variables) {
   $node = menu_get_object();
 
   if (is_null($node)) {
+    $link_variables = array();
+
+    switch ($_GET['q']) {
+      case 'newsroom':
+        $link_variables = array(
+          'path' => 'newsroom',
+          'text' => t('Newsroom'),
+          'options' => array(
+            'attributes' => array(),
+            'html' => FALSE,
+          ),
+        );
+        break;
+    }
+
+    if (!empty($link_variables)) {
+      $variables['service_area_link'] = theme('link', $link_variables);
+    }
+
     return;
   }
 
   $service_area_node = rbkc_related_content_get_service_area_node($node);
 
   if (is_null($service_area_node)) {
+    if ('press_release' === $node->type) {
+      $link_variables = array(
+        'path' => 'newsroom',
+        'text' => t('Newsroom'),
+        'options' => array(
+          'attributes' => array(),
+          'html' => FALSE,
+        ),
+      );
+
+      $variables['service_area_link'] = theme('link', $link_variables);
+    }
     return;
   }
 
@@ -295,5 +326,6 @@ function rbkc_navigation_preprocess_page(&$variables) {
       'html' => FALSE,
       ),
   );
+
   $variables['service_area_link'] = theme('link', $link_variables);
 }
