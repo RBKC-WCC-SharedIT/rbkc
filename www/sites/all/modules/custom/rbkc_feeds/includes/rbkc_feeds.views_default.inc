@@ -155,7 +155,7 @@ function rbkc_feeds_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p class="fixedItem"><span style="float:right"><a href="http://www.rbkc.gov.uk/pressrelease/search.aspx">Search press releases</a></span></p>';
+  $handler->display->display_options['header']['area']['content'] = '<p class="fixedItem"><span style="float:right"><a href="/pressrelease/search.aspx">Search press releases</a></span></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
