@@ -95,6 +95,9 @@ function feature_newsroom_default_page_manager_pages() {
     'row_two_col_one' => array(
       'style' => '-1',
     ),
+    'row_one_col_two' => array(
+      'style' => 'naked',
+    ),
   );
   $display->cache = array();
   $display->title = '';
@@ -156,6 +159,58 @@ function feature_newsroom_default_page_manager_pages() {
     $display->content['new-315f6206-a24d-47a6-a35d-a07b37abecbc'] = $pane;
     $display->panels['row_one_col_one'][0] = 'new-315f6206-a24d-47a6-a35d-a07b37abecbc';
     $pane = new stdClass();
+    $pane->pid = 'new-f73e9cc1-8db6-42ca-839a-15c6de4fb55e';
+    $pane->panel = 'row_one_col_two';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Press releases title',
+      'title' => '',
+      'body' => '<h2>Press releases</h2>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'naked',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'f73e9cc1-8db6-42ca-839a-15c6de4fb55e';
+    $display->content['new-f73e9cc1-8db6-42ca-839a-15c6de4fb55e'] = $pane;
+    $display->panels['row_one_col_two'][0] = 'new-f73e9cc1-8db6-42ca-839a-15c6de4fb55e';
+    $pane = new stdClass();
+    $pane->pid = 'new-35efe18c-6491-4e4e-b306-8f8e053a4143';
+    $pane->panel = 'row_one_col_two';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Search press releases link',
+      'title' => '',
+      'body' => '<p class="fixedItem"><span style="float:right"><a href="/pressrelease/search.aspx">Search press releases</a></span></p>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'naked',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '35efe18c-6491-4e4e-b306-8f8e053a4143';
+    $display->content['new-35efe18c-6491-4e4e-b306-8f8e053a4143'] = $pane;
+    $display->panels['row_one_col_two'][1] = 'new-35efe18c-6491-4e4e-b306-8f8e053a4143';
+    $pane = new stdClass();
     $pane->pid = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane->panel = 'row_one_col_two';
     $pane->type = 'views_panes';
@@ -208,11 +263,11 @@ function feature_newsroom_default_page_manager_pages() {
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 2;
     $pane->locks = array();
     $pane->uuid = '850be167-8285-4c1a-ae83-d9f05d412baf';
     $display->content['new-850be167-8285-4c1a-ae83-d9f05d412baf'] = $pane;
-    $display->panels['row_one_col_two'][0] = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
+    $display->panels['row_one_col_two'][2] = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane = new stdClass();
     $pane->pid = 'new-911aff5a-0ffd-46e2-9ce4-e69047181f93';
     $pane->panel = 'row_two_col_one';

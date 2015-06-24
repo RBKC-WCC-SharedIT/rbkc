@@ -122,9 +122,11 @@ function rbkc_feeds_views_default_views() {
 
   /* Display: Press Releases (Newsroom) */
   $handler = $view->new_display('panel_pane', 'Press Releases (Newsroom)', 'panel_pane_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['display_description'] = 'Press Releases Content Pane for the Newsroom page';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['hide_admin_links'] = TRUE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
-  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = FALSE;
@@ -151,12 +153,6 @@ function rbkc_feeds_views_default_views() {
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser_small';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<p class="fixedItem"><span style="float:right"><a href="/pressrelease/search.aspx">Search press releases</a></span></p>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Text area */
   $handler->display->display_options['footer']['area']['id'] = 'area';
@@ -168,7 +164,7 @@ function rbkc_feeds_views_default_views() {
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 0;
   $handler->display->display_options['allow']['link_to_view'] = 'link_to_view';
-  $handler->display->display_options['allow']['more_link'] = 'more_link';
+  $handler->display->display_options['allow']['more_link'] = 0;
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
