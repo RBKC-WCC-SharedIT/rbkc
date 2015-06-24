@@ -81,7 +81,7 @@ function rbkc_menu_tree__drop_down_service_menu__wrapper_one($variables) {
 }
 
 function rbkc_menu_tree__drop_down_service_menu__wrapper_two($variables) {
-  return '<ul class="servicelist__list-two">' . $variables['tree'] . '</ul>';
+  return '<ul class="servicelist__list-two hide">' . $variables['tree'] . '</ul>';
 }
 
 /**
