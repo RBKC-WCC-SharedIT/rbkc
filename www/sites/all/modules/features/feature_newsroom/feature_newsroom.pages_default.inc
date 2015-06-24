@@ -93,7 +93,7 @@ function feature_newsroom_default_page_manager_pages() {
       'style' => 'planer',
     ),
     'row_two_col_one' => array(
-      'style' => '-1',
+      'style' => 'naked',
     ),
     'row_one_col_two' => array(
       'style' => 'naked',
@@ -277,13 +277,14 @@ function feature_newsroom_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => 'Newsletters',
-      'title' => 'Newsletters',
-      'body' => '<p class="fixedItem"><span style="float:right"><a href="/newsroom/signuptooure-newsletters.aspx">Sign up for newsletters</a></span></p><p><strong>Here are the latest issues of the Council\'s enewsletters.</strong></p><ul><li><p><a href="http://rbkc.newsweaver.co.uk/rbkcdirect">RBKC Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/nicknotes">Leader\'s newsletter</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/businessdirect">Business Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/artstinformation">Arts newsletters</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/commercialwaste">Commercial waste</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/gardenersnewsletter">Community gardeners</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/PlanningBulletin">Planning Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/CityLivingLocalLife">City Living, Local Life</a></p></li></ul>',
+      'title' => '',
+      'body' => '<h2>Newsletters</h2><p class="fixedItem"><span style="float:right"><a href="/newsroom/signuptooure-newsletters.aspx">Sign up for newsletters</a></span></p><div class="sectionContent content"><p><strong>Here are the latest issues of the Council\'s enewsletters.</strong></p><ul><li><p><a href="http://rbkc.newsweaver.co.uk/rbkcdirect">RBKC Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/nicknotes">Leader\'s newsletter</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/businessdirect">Business Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/artstinformation">Arts newsletters</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/commercialwaste">Commercial waste</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/gardenersnewsletter">Community gardeners</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/PlanningBulletin">Planning Direct</a></p></li><li><p><a href="http://rbkc.newsweaver.co.uk/CityLivingLocalLife">City Living, Local Life</a></p></li></ul></div>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
     $pane->cache = array();
     $pane->style = array(
+      'style' => 'planer',
       'settings' => array(
         'element_wrapper' => array(
           'type' => 'section',
@@ -297,7 +298,7 @@ function feature_newsroom_default_page_manager_pages() {
           ),
         ),
         'element_title' => array(
-          'type' => 'h2',
+          'type' => '',
           'add_default_classes' => 0,
           'class_enable' => 0,
           'class' => '',
@@ -305,15 +306,14 @@ function feature_newsroom_default_page_manager_pages() {
           'attributes' => '',
         ),
         'element_content' => array(
-          'type' => 'div',
+          'type' => '',
           'add_default_classes' => 0,
-          'class_enable' => 1,
-          'class' => 'sectionContent content',
+          'class_enable' => 0,
+          'class' => '',
           'attributes_enable' => 0,
           'attributes' => '',
         ),
       ),
-      'style' => 'planer',
     );
     $pane->css = array();
     $pane->extras = array();
