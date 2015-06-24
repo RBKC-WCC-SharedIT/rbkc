@@ -980,14 +980,15 @@ function rbkc_deploy_update_7085() {
 }
 
 /**
- * Switch on the newsroom Feature.
- */
-function rbkc_deploy_update_7086() {
-  module_enable(array('feature_newsroom'), TRUE);
-}
-/**
  * Switch on the rbkc_workbench module.
  */
 function rbkc_deploy_update_7086() {
   module_enable(array('rbkc_workbench'), TRUE);
+}
+
+/**
+ * Switch on the newsroom Feature.
+ */
+function rbkc_deploy_update_7087() {
+  module_enable(array('feature_newsroom'), TRUE);
 }
