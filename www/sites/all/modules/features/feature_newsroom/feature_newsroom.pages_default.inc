@@ -102,6 +102,60 @@ function feature_newsroom_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
+    $pane->pid = 'new-315f6206-a24d-47a6-a35d-a07b37abecbc';
+    $pane->panel = 'row_one_col_one';
+    $pane->type = 'custom';
+    $pane->subtype = 'newsroom_top_stories_slider';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => array(
+        'element_wrapper' => array(
+          'type' => 'section',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 1,
+          'attributes' => 'id=latestNews',
+          'attributes_array' => array(
+            'id' => 'latestNews',
+          ),
+        ),
+        'element_title' => array(
+          'type' => 'h2',
+          'add_default_classes' => 0,
+          'class_enable' => 0,
+          'class' => '',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+        'element_content' => array(
+          'type' => 'div',
+          'add_default_classes' => 0,
+          'class_enable' => 1,
+          'class' => 'sectionContent',
+          'attributes_enable' => 0,
+          'attributes' => '',
+        ),
+      ),
+      'style' => 'planer',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '315f6206-a24d-47a6-a35d-a07b37abecbc';
+    $display->content['new-315f6206-a24d-47a6-a35d-a07b37abecbc'] = $pane;
+    $display->panels['row_one_col_one'][0] = 'new-315f6206-a24d-47a6-a35d-a07b37abecbc';
+    $pane = new stdClass();
     $pane->pid = 'new-850be167-8285-4c1a-ae83-d9f05d412baf';
     $pane->panel = 'row_one_col_two';
     $pane->type = 'views_panes';
