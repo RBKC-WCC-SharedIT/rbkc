@@ -131,7 +131,8 @@ function rbkc_twitter_timeline_render($subtype, $conf, $panel_args, $context = N
     $chrome[] = check_plain($option);
   }
   $block->content = array(
-    '#prefix' => $twitter_icon . '<section id="socialMedia"><h2>' . t('Social media') . '<span class="soc">' . $render_icons . '</span></h2></section>',
+    '#prefix' => $twitter_icon . '<section id="socialMedia"><h2>' . t('Social media') . '<span class="soc">' . $render_icons . '</span></h2><div class="sectionContent">',
+    '#suffix' => '</div></section>',
     '#type' => 'link',
     '#title' => t('Tweets by @username', array('@username' => $conf['username'])),
     '#href' => check_url('https://twitter.com/' . $conf['username']),
