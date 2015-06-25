@@ -363,6 +363,7 @@ function feature_newsroom_default_page_manager_pages() {
     );
     $pane->cache = array();
     $pane->style = array(
+      'style' => 'planer',
       'settings' => array(
         'element_wrapper' => array(
           'type' => 'section',
@@ -386,15 +387,14 @@ class=row',
           'attributes' => '',
         ),
         'element_content' => array(
-          'type' => 'div',
+          'type' => '',
           'add_default_classes' => 0,
-          'class_enable' => 1,
-          'class' => 'sectionContent',
+          'class_enable' => 0,
+          'class' => '',
           'attributes_enable' => 0,
           'attributes' => '',
         ),
       ),
-      'style' => 'planer',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -428,33 +428,8 @@ class=row',
     );
     $pane->cache = array();
     $pane->style = array(
-      'settings' => array(
-        'element_wrapper' => array(
-          'type' => 'section',
-          'add_default_classes' => 0,
-          'class_enable' => 0,
-          'class' => '',
-          'attributes_enable' => 0,
-          'attributes' => '',
-        ),
-        'element_title' => array(
-          'type' => '',
-          'add_default_classes' => 0,
-          'class_enable' => 0,
-          'class' => '',
-          'attributes_enable' => 0,
-          'attributes' => '',
-        ),
-        'element_content' => array(
-          'type' => '',
-          'add_default_classes' => 0,
-          'class_enable' => 0,
-          'class' => '',
-          'attributes_enable' => 0,
-          'attributes' => '',
-        ),
-      ),
-      'style' => 'planer',
+      'style' => 'naked',
+      'settings' => NULL,
     );
     $pane->css = array();
     $pane->extras = array();
