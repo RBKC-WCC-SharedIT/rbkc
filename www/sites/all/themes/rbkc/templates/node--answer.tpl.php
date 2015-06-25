@@ -44,7 +44,7 @@
 
                     <?php print render($content['field_contact_department']); ?>
 
-                    <div id="webchatplanning">
+                    <!--<div id="webchatplanning">
                       <script type="text/javascript">
                         var m3_u = "http://rbkc.logo-net.co.uk/Delivery/DBURL.php";
                         var strPURL = parent.document.URL;
@@ -63,6 +63,6 @@
                         document.write('&CMS=' + cMS);
                         document.write("'></scr" + "ipt>");
                       </script>
-                    </div>
+                    </div>-->
                   </div><!-- end col4 -->
                 </div><!-- end row -->
