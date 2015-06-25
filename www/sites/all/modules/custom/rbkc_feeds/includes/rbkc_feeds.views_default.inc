@@ -110,6 +110,13 @@ function rbkc_feeds_views_default_views() {
   $handler->display->display_options['footer']['area']['field'] = 'area';
   $handler->display->display_options['footer']['area']['content'] = '<p><a href="/pressrelease/default.aspx">All press releases</a></p>';
   $handler->display->display_options['footer']['area']['format'] = 'full_html';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['footer']['area_1']['table'] = 'views';
+  $handler->display->display_options['footer']['area_1']['field'] = 'area';
+  $handler->display->display_options['footer']['area_1']['label'] = 'Image attribution';
+  $handler->display->display_options['footer']['area_1']['content'] = '<p class="smallest-text"><a href="http://www.geograph.org.uk/photo/1700705" target="_blank">High Street Kensington Station image</a> © Copyright Ruth Sharville</p>';
+  $handler->display->display_options['footer']['area_1']['format'] = 'full_html';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 0;
