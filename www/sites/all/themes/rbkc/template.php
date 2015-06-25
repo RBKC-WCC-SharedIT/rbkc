@@ -449,7 +449,7 @@ function rbkc_preprocess_page(&$vars) {
   }
 
   if ('newsroom' === current_path()) {
-    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'newsroom.css');
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'newsroom.css', array('weight' => 100, 'group' => CSS_THEME));
     drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'responsiveslides.min.js', 'file');
     drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'newsroom.js', 'file');
   }

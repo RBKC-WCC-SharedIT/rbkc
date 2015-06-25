@@ -391,6 +391,7 @@ grey matter.</p>',
       'override_title' => 0,
       'override_title_text' => '',
       'override_title_heading' => 'h2',
+      'show_social' => 'Hide',
     );
     $pane->cache = array();
     $pane->style = array(

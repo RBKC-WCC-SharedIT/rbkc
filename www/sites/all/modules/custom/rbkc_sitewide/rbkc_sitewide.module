@@ -114,5 +114,13 @@ function rbkc_sitewide_theme($existing, $type, $theme, $path) {
       ),
       'template' => 'rbkc-news-comms',
     ),
+    'rbkc_newspaper' => array(
+      'variables' => array(
+        'readmore' => NULL,
+        'newspaper_image' => NULL,
+        'newspaper_body' => NULL,
+      ),
+      'template' => 'rbkc-newspaper',
+    ),
   );
 }
