@@ -118,7 +118,7 @@ function rbkc_twitter_timeline_render($subtype, $conf, $panel_args, $context = N
     $path = $path . '/plugins/content_types/images/';
     $render_icons = '';
     foreach ($social_icons as $icon) {
-      $render_icons .= '<span>' . l(theme('image', array('path' => $path . $icon['icon'])),$icon['link'], array('html' => TRUE)) . '</span>';
+      $render_icons .= '<span>' . l(theme('image', array('path' => $path . $icon['icon'] . '.png')),$icon['link'], array('html' => TRUE)) . '</span>';
     }
   }
 
