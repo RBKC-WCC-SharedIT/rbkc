@@ -37,13 +37,6 @@ function feature_views_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Header: Global: Text area */
-  $handler->display->display_options['header']['area_1']['id'] = 'area_1';
-  $handler->display->display_options['header']['area_1']['table'] = 'views';
-  $handler->display->display_options['header']['area_1']['field'] = 'area';
-  $handler->display->display_options['header']['area_1']['label'] = 'View all link';
-  $handler->display->display_options['header']['area_1']['content'] = '<p class="fixedItem"><span style="float:right"><a href="/tags/capital-projects">View all capital projects</a></span></p>';
-  $handler->display->display_options['header']['area_1']['format'] = 'full_html';
-  /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
