@@ -992,3 +992,12 @@ function rbkc_deploy_update_7086() {
 function rbkc_deploy_update_7087() {
   module_enable(array('feature_newsroom'), TRUE);
 }
+
+/**
+ * Switch off the feature_newsroom.
+ *
+ * To prevent content changes on deployment.
+ */
+function rbkc_deploy_update_7088() {
+  module_disable(array('feature_newsroom'));
+}
