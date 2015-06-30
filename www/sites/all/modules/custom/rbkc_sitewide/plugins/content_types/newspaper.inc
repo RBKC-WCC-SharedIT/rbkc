@@ -72,6 +72,15 @@ function rbkc_newspaper_edit_form_submit($form, &$form_state) {
       $form_state['conf'][$key] = $form_state['values'][$key];
     }
   }
+
+  if (isset($form_state['values']['newspaper_image'])) {
+    if ($file = file_load($form_state['values']['newspaper_image'])) {
+      if ($file->status !== FILE_STATUS_PERMANENT) {
+        $file->status = FILE_STATUS_PERMANENT;
+        file_save($file);
+      }
+    }
+  }
 }
 
 /**
