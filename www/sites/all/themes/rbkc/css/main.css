@@ -1152,7 +1152,7 @@ a.footerglobal__contact:hover,
 .pag__prev-name:hover,
 .pag__prev-name:active {
   background: #F4FCFB;
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 .pag-divider {
   width: 100%;
