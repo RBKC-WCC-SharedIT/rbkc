@@ -863,7 +863,6 @@ a.footerglobal__contact:hover,
 }
 .ready-accordion {
   margin: -12px 0 24px 0 !important;
-  white-space: pre-line;
 }
 
 /*** view all link for expanding menus ***/
@@ -1583,6 +1582,13 @@ td a[href$=".doc"] {
 .context-file_with_size .smallest-text {
   display: block;
 }
+td .context-file_with_size {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+td .doc-icon  {
+  display: none;
+}
 
 /*** PDF classes and markup added by js - legacy classes ***/
 .docLink,
@@ -1602,12 +1608,22 @@ ol li.docLink {
   font-style:normal;
   list-style-type:none;
   overflow: hidden;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+}
+ul li.docLink,
+ol li.docLink {
+  margin-left: -24px !important;
 }
 .docLink a {
-  font-size: 16px;
-  font-size: 1rem;
   line-height: 24px;
   line-height: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+}
+td .docLink a {
+  font-size: 14px;
+  font-size: .875rem;
 }
 /* for when there are document links and plain text mixed up in a list */
 .docLink + ul li,
@@ -1622,8 +1638,6 @@ ol li.docLink {
   background: url("../images/refresh/doc-icon.png") no-repeat;
   color:#2B5D92;
   font-weight:700;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
   display:block;
   float:left;
   border-bottom: 0 !important;
