@@ -20,8 +20,8 @@
           <span class="element-invisible">See a <a href="#nav2">full list of services below</a></span>
           </li>
           <li><a href="https://www.rbkc.gov.uk/myrbkc/login.aspx" title="MyRBKC">MyRBKC</a></li>
-          <li><a href="http://www.rbkc.gov.uk/councilanddemocracy.aspx" title="Council">Council</a></li>
-          <li><a href="http://www.rbkc.gov.uk/leisureandlibraries/popularlocalmaps.aspx" title="Maps">Maps</a></li>
+          <li><?php print l('Council', 'node/2479'); ?></li>
+          <li><?php print l('Maps', 'node/76'); ?></li>
         </ul><!-- end menu -->
       </nav>
 
