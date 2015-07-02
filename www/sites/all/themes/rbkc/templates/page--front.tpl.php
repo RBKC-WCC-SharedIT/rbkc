@@ -61,7 +61,7 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
-
+<div id="sitestat" class="element-invisible" >
 <script type="text/javascript">
  //<!-- Begin Sitestat4 Loadingtime1 code -->
 ns_loadingtime1=(new Date()).getTime();
@@ -81,7 +81,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?home.page" );
 //-->
 </script>
 
-<div><img src="https://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
+<div ><img class="element-invisible" src="https://uk.sitestat.com/rbkc/rbkc/s?home.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="/js/rbkc/sitestat.js"></script>
@@ -89,3 +89,4 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?home.page" );
 <!-- Begin Sitestat4 Loadingtime2 code -->
 <script type="text/javascript">ns_loadingtime2=(new Date()).getTime();</script>
 <!-- End Sitestat4 Loadingtime2 code -->
+</div>
