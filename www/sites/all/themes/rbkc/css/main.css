@@ -980,6 +980,9 @@ a.footerglobal__contact:hover,
   background: url('../images/refresh/chevron-up-blue.png') no-repeat right 40%;
   background-size: 14px;
 }
+.sub-hub-topic .col7 p:last-of-type {
+  margin-bottom: 0;
+}
 
 /* begin Topic page elements (simple list page) */
 .topics {
