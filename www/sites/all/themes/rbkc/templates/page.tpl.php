@@ -9,7 +9,7 @@
       <button class="headerglobal__open hamburger" id="openMenu" type="button"><span class="element-invisible">Open menu</span></button>
       <span class="element-invisible"><a href="#nav1">Skip to menu: Services, MyRBKC, Council, Maps</a></span>
 
-      <button class="headerglobal__open magnify active" id="openSearch" type="button"><span class="element-invisible">Open search</span></button>
+      <button class="headerglobal__open magnify" id="openSearch" type="button"><span class="element-invisible">Open search</span></button>
       <span class="element-invisible"><a href="#search">Skip to search box</a></span>
 
       <nav role="navigation">
@@ -95,7 +95,7 @@
   <?php print render($page['govmetric']); ?>
 </div><!-- end outerwrap -->
 
-<div id="sitestat" data-url="<?php
+<div class="element-invisible" id="sitestat" data-url="<?php
                               $statlink = str_replace('/', '.', request_uri());
                               print substr($statlink, 1);
                              ?>">
@@ -124,7 +124,7 @@ sitestat("http://uk.sitestat.com/rbkc/rbkc/s?" + getURL() + ".page" );
 //-->
 </script>
 
-<div><img src="https://uk.sitestat.com/rbkc/rbkc/s?<?php print substr($statlink, 1); ?>.page" width="1" height="1" alt="" /></div>
+<div ><img src="https://uk.sitestat.com/rbkc/rbkc/s?<?php print substr($statlink, 1); ?>.page" width="1" height="1" alt="" /></div>
 
 <!-- End Sitestat4 code -->
 <!-- Begin Sitestat4 Technical code --><script type="text/javascript" src="/js/rbkc/sitestat.js"></script>
