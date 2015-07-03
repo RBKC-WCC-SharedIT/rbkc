@@ -1548,7 +1548,7 @@ a[href$=".docx"],
 a[href$=".doc"] {
   font-weight: bold;
   /*** in case headers ***/
-  background: none !important;
+  background: none;
 }
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
