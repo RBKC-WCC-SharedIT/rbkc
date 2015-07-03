@@ -585,6 +585,10 @@ a.servicelist__viewall {
 .twitter-ie {
   display: none;
 }
+/*** hiding the h2 that crept in because of the way panels has been set up ***/
+.presstweet .twitter h2 {
+  display: none;
+}
 
 @media only screen and (min-width: 400px) { /* --------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
