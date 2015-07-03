@@ -9,7 +9,7 @@
       <button class="headerglobal__open hamburger" id="openMenu" type="button"><span class="element-invisible">Open menu</span></button>
       <span class="element-invisible"><a href="#nav1">Skip to menu: Services, MyRBKC, Council, Maps</a></span>
 
-      <button class="headerglobal__open magnify active" id="openSearch" type="button"><span class="element-invisible">Open search</span></button>
+      <button class="headerglobal__open magnify" id="openSearch" type="button"><span class="element-invisible">Open search</span></button>
       <span class="element-invisible"><a href="#search">Skip to search box</a></span>
 
       <nav role="navigation">
