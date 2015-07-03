@@ -947,8 +947,7 @@ a.footerglobal__contact:hover,
 .hub-feature img {
   float:left;
   margin-right: 20px;
-  margin-right: 1.3rem;
-  height: 94px;
+  margin-right: 1.3rem;gf
   width: 91px;
 }
 
@@ -1544,6 +1543,8 @@ a[href*="idoc.ashx"],
 a[href$=".docx"],
 a[href$=".doc"] {
   font-weight: bold;
+  /*** in case headers ***/
+  background: none !important;
 }
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
