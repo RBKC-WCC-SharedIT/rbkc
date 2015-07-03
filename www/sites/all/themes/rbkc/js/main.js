@@ -2,7 +2,6 @@
 
   var headerMob,
       headerDesk,
-  //  accordion,
       addViewAllMore,
       addViewAllElsewhere,
       showMore,
@@ -156,28 +155,14 @@
     });
   } // end slickSlider
 
-  // ensuring govMetric does not obscure footer links at any viewport width
-/*  function moveGovmetric() {
-    //position of bottom of viewport
-    var position =  $(window).scrollTop() + $(window).height();
-    var docHeight = $(document).height();
-    var footerHeight = $('.footerglobal').outerHeight();
-    position >= (docHeight - footerHeight) ? $('govmetric').addClass('special') : $('.govmetric').removeClass('special');
-  }*/
 
   // ensuring govMetric does not obscure footer links at any viewport width
   function moveGovmetric() {
     //position of bottom of viewport
     var position =  $(window).scrollTop() + $(window).height();
-
     var docHeight = $(document).height();
     var footerHeight = $('.footerglobal').outerHeight();
-    if( position >= (docHeight - footerHeight)) {
-      $('#govmetric').addClass('special');
-    }
-    else {
-      $('#govmetric').removeClass('special');
-    }
+    position >= (docHeight - footerHeight) ? $('#govmetric').addClass('special') : $('#govmetric').removeClass('special');
   }
 
 
@@ -262,6 +247,7 @@ $(window).on('load', function() {
         // Check if the element is wider than its parent and thus needs to be scrollable
         if (element.outerWidth() > element.parent().outerWidth()) {
             element.data('scrollWrapper').addClass('has-scroll');
+            scrollWrapper.before('<p class="scroll-indicator">Scroll</p>');
         }
         // When the viewport size is changed, check again if the element needs to be scrollable
         $(window).on('resize orientationchange', function() {
@@ -269,6 +255,7 @@ $(window).on('load', function() {
                 element.data('scrollWrapper').addClass('has-scroll');
             } else {
                 element.data('scrollWrapper').removeClass('has-scroll');
+                $('.scroll-indicator').remove();
             }
         });
     });

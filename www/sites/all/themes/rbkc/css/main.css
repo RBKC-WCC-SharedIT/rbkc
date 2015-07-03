@@ -1718,6 +1718,13 @@ h3 + .docLink {
 .scrollable.has-scroll  table {
   margin-bottom: 0;
 }
+.scroll-indicator {
+  margin-bottom: 0;
+  text-align: right;
+  background:url('../images/refresh/rightdouble-chevron-8px.png') right 50% no-repeat;
+  padding-right: 16px;
+  padding-right: 1rem;
+}
 
 /*****************/
 /***   FORMS   ***/
