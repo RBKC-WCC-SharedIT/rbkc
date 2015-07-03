@@ -33,3 +33,14 @@ inserted into the body of the accordion.
 NOTES: N/A
 
 ################################################################################
+
+PATCH: wysiwyg_tools_plus-tab_builder_js--find_nested_children.patch
+PROBLEM: The module only searches direct (first level) children for the designated
+accordion header, which means the module doesn't work when we wrap contents in p tags
+SOLUTION: Alter the jQuery to use 'find' function rather than 'children' to search
+nested elements for the designated header.
+RELATED ISSUES: N/A
+TESTING STEPS: Create an accordion and check that the header link works properly.
+NOTES: N/A
+
+################################################################################
