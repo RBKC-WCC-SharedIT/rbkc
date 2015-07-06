@@ -1,16 +1,16 @@
 /**
  * @file: tab_builder.js
- *
+ * 
  * take the html markup for tabbed/accordion body
  * content and convert to the desired presentation.
- *
+ * 
  * we'll have to rework the markup structure first and then,
  * we can apply the toggle event elements for the user interaction
  * bits.
  */
 
 (function ($){
-
+	
 	Drupal.behaviors.wysiwyg_tools_plus_theme_createTabs = {
 		attach:function (context) {
 			//tabbed elements first
@@ -34,13 +34,13 @@
 			$('.ready-tabs', context).after('<br clear="all" />');
 		}
 	}
-
+	
 	Drupal.behaviors.wysiwyg_tools_plus_theme_createAccordions = {
 		attach:function (context) {
 			$('.ready-accordion').each(function (index) {
 				$(this).attr('id', 'acc-' + index);
-				$(this).find('.ready-accordion-header').wrap('<a class="acc-head" id="acc-head-' + index + '" href="javascript:void(0);"></a>');
-        $(this).find('.acc-head').insertBefore(jQuery(this));
+				$(this).children('.ready-accordion-header').wrap('<a class="acc-head" id="acc-head-' + index + '" href="javascript:void(0);"></a>');
+				$(this).children('a').insertBefore(jQuery(this));
 
         // awful hack: apply .last to the accordion heads which appear to be last
         if ($(this).next().length == 0 || !$(this).next().hasClass("ready-accordion")) {
@@ -50,7 +50,7 @@
 
 		}
 	}
-
+	
 	Drupal.behaviors.wysiwyg_tools_plus_theme_initPage = {
 		attach:function (context) {
 			$('.ready-accordion', context).hide();
@@ -77,8 +77,8 @@
 			});
 			wysiwyg_tools_plus_theme_toggleTabContent('tab-0');
 		}
-	}
-
+	}	
+	
 	/**
 	 * Toggle the visibility of the tab content and set active link
 	 */
@@ -99,7 +99,7 @@
 			}
 		});
 	}
-
+	
 	/**
 	 * Toggle the visibility of the accordion content
 	 */
@@ -107,5 +107,5 @@
 		eventId = eventId.substring(eventId.lastIndexOf('-')+1, eventId.length);
 		$('#acc-' + eventId).toggle('fast');
 	}
-
+	
 }(jQuery));

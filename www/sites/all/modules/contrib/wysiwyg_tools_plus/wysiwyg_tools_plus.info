@@ -10,9 +10,9 @@ dependencies[] = wysiwyg
 
 package = wysiwyg
 
-; Information added by drupal.org packaging script on 2012-03-15
-version = "7.x-1.0-alpha2"
+; Information added by Drupal.org packaging script on 2015-07-02
+version = "7.x-1.0-alpha2+1-dev"
 core = "7.x"
 project = "wysiwyg_tools_plus"
-datestamp = "1331780750"
+datestamp = "1435873444"
 
