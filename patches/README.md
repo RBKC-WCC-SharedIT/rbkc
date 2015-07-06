@@ -16,7 +16,6 @@ wysiwyg_tools_plus the script pulls out any child <a> elements and inserts them
 before the accordion body, when it should be targeting the head link
 specifically. ALSO: The module only searches direct (first level) children for the designated
 accordion header, which means the module doesn't work when we wrap contents in p tags.
-
 SOLUTION: A header-link-specific selector in the Jquery and alter code to use 'find'
 function rather than 'children' to search nested elements for the designated header.
 RELATED ISSUES:  wysiwyg_tools_plus-accordion_js--wrap_contents_in_p_tags.patch
@@ -24,3 +23,15 @@ TESTING STEPS: Create an accordion with a anchor link, ensure it is not pulled
  into the accordion head. Check that the header link works properly.
 NOTES: N/A
 
+################################################################################
+
+PATCH: wysiwyg_tools_plus-accordion_js-add_p_tags_remove_whitespace
+PROBLEM: When applied the accordion strips p tags from content and inserts a non-breaking
+space before text.  This means that block elements can't be inserted into the accordion.
+SOLUTION: Alter the JavaScript to wrap contents in p tags and remove non-breaking space.
+RELATED ISSUES: wysiwyg_tools_plus-tab_builder_js--target_header_links_properly.patch
+TESTING STEPS: Create an accordion, see that there is no non-breaking space
+inserted into the body of the accordion, check that content is wrapped in p tags
+and check that you can add carriage returns/block elements in WYWIWYG area that don't
+break the accordion body.
+NOTES: N/A
