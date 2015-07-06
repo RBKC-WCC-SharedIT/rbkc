@@ -863,7 +863,6 @@ a.footerglobal__contact:hover,
 }
 .ready-accordion {
   margin: -12px 0 24px 0 !important;
-  white-space: pre-line;
 }
 
 /*** view all link for expanding menus ***/
@@ -948,8 +947,7 @@ a.footerglobal__contact:hover,
 .hub-feature img {
   float:left;
   margin-right: 20px;
-  margin-right: 1.3rem;
-  height: 94px;
+  margin-right: 1.3rem;gf
   width: 91px;
 }
 
@@ -980,6 +978,9 @@ a.footerglobal__contact:hover,
 .sub-hub-topic .view-all.open {
   background: url('../images/refresh/chevron-up-blue.png') no-repeat right 40%;
   background-size: 14px;
+}
+.sub-hub-topic .col7 p:last-of-type {
+  margin-bottom: 0;
 }
 
 /* begin Topic page elements (simple list page) */
@@ -1153,7 +1154,7 @@ a.footerglobal__contact:hover,
 .pag__prev-name:hover,
 .pag__prev-name:active {
   background: #F4FCFB;
-  border-bottom: 0;
+  border-bottom: 0 !important;
 }
 .pag-divider {
   width: 100%;
@@ -1546,6 +1547,8 @@ a[href*="idoc.ashx"],
 a[href$=".docx"],
 a[href$=".doc"] {
   font-weight: bold;
+  /*** in case headers ***/
+  background: none;
 }
 /*** resetting PDFs within tables ***/
 td a[href$=".pdf"],
@@ -1569,7 +1572,7 @@ td a[href$=".doc"] {
 .doc-icon  {
   width:38px;
   height:50px;
-  background: url("../images/refresh/doc-icon.png") no-repeat;
+  background: url("../images/refresh/doc-icon.png") no-repeat !important;
   color:#2B5D92;
   font-weight:700;
   display:block;
@@ -1582,6 +1585,13 @@ td a[href$=".doc"] {
 }
 .context-file_with_size .smallest-text {
   display: block;
+}
+td .context-file_with_size {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+td .doc-icon  {
+  display: none;
 }
 
 /*** PDF classes and markup added by js - legacy classes ***/
@@ -1602,12 +1612,22 @@ ol li.docLink {
   font-style:normal;
   list-style-type:none;
   overflow: hidden;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+}
+ul li.docLink,
+ol li.docLink {
+  margin-left: -24px !important;
 }
 .docLink a {
-  font-size: 16px;
-  font-size: 1rem;
   line-height: 24px;
   line-height: 1.5rem;
+  font-size: 16px;
+  font-size: 1rem;
+}
+td .docLink a {
+  font-size: 14px;
+  font-size: .875rem;
 }
 /* for when there are document links and plain text mixed up in a list */
 .docLink + ul li,
@@ -1619,11 +1639,9 @@ ol li.docLink {
 .docLink-icon  {
   width:50px;
   height:50px;
-  background: url("../images/refresh/doc-icon.png") no-repeat;
+  background: url("../images/refresh/doc-icon.png") no-repeat !important;
   color:#2B5D92;
   font-weight:700;
-  margin-bottom: 24px;
-  margin-bottom: 1.5rem;
   display:block;
   float:left;
   border-bottom: 0 !important;
@@ -1699,6 +1717,13 @@ h3 + .docLink {
 }
 .scrollable.has-scroll  table {
   margin-bottom: 0;
+}
+.scroll-indicator {
+  margin-bottom: 0;
+  text-align: right;
+  background:url('../images/refresh/rightdouble-chevron-8px.png') right 50% no-repeat;
+  padding-right: 16px;
+  padding-right: 1rem;
 }
 
 /*****************/
@@ -2078,6 +2103,12 @@ h3 + .docLink {
 }
 .workbench-info-block {
   margin-bottom: 24px !important;
+}
+
+/*** sitestat ***/
+#sitestat {
+  position: absolute !important;
+  height: 0 !important;
 }
 
 /******************************************************************************************************************************************************************/
