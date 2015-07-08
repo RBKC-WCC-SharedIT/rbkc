@@ -1001,3 +1001,75 @@ function rbkc_deploy_update_7087() {
 function rbkc_deploy_update_7088() {
   module_disable(array('feature_newsroom'));
 }
+
+/**
+ * Turn legacy URL aliases into 301 redirects.
+ */
+function rbkc_deploy_update_7089() {
+  // SELECT URL aliases ending in .aspx
+  $query = db_select('node', 'n');
+  $query->join('url_alias', 'a', 'a.source = CONCAT(\'node/\', n.nid)');
+  $query->fields('n', array('nid', 'language'));
+  $query->fields('a', array('pid', 'alias', 'source'));
+  $query->condition('a.alias', '%' . db_like('.aspx'), 'LIKE');
+  $result = $query->execute();
+
+  // Iterate over the aliases:
+  // If we find a 301 redirect for the .aspx alias then simply delete the .aspx
+  // alias.
+  // If we can't find a 301 redirect, delete the .aspx and create a 301
+  // redirect.
+  while ($row = $result->fetchAssoc()) {
+    $query = db_select('redirect', 'r');
+    $query->condition('r.source', $row['alias']);
+    $query->fields('r');
+    $inner_result = $query->execute();
+
+    $found = $inner_result->fetchField(0);
+
+    if ($found) {
+      // There's already a redirect for this alias, delete the alias.
+      path_delete($row['pid']);
+      continue;
+    }
+    else {
+      // There's no redirect for this alias, delete the alias and create the
+      // redirect.
+      path_delete($row['pid']);
+
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect, array('uid' => 1, 'language' => $row['language']));
+      $redirect->source = $row['alias'];
+      $redirect->redirect = $row['source'];
+
+      redirect_save($redirect);
+    }
+  }
+}
+
+/**
+ * Delete all url aliases that have an equivalent 301 redirect.
+ */
+function rbkc_deploy_update_7090() {
+  // SELECT all aliases.
+  $query = db_select('node', 'n');
+  $query->join('url_alias', 'a', 'a.source = CONCAT(\'node/\', n.nid)');
+  $query->fields('n', array('nid', 'language'));
+  $query->fields('a', array('pid', 'alias', 'source'));
+  $result = $query->execute();
+
+// Iterate over the aliases, delete all redirects that have an alias
+// equivalent.
+  while ($row = $result->fetchAssoc()) {
+    $query = db_select('redirect', 'r');
+    $query->condition('r.source', $row['alias']);
+    $query->fields('r');
+    $inner_result = $query->execute();
+
+    $found = $inner_result->fetchField(0);
+
+    if ($found) {
+      redirect_delete($found);
+    }
+  }
+}
