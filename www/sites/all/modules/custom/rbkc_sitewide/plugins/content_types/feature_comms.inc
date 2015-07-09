@@ -93,6 +93,7 @@ function rbkc_feature_comms_edit_form_submit($form, &$form_state) {
       if ($file->status !== FILE_STATUS_PERMANENT) {
         $file->status = FILE_STATUS_PERMANENT;
         file_save($file);
+        file_usage_add($file, 'rbkc_sitewide', 'pane', $file->fid);
       }
     }
   }

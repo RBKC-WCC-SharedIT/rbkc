@@ -1073,3 +1073,50 @@ function rbkc_deploy_update_7090() {
     }
   }
 }
+
+/**
+ * Create a file usage entry for managed files already in use on the homepage
+ * and newsroom.
+ * */
+function rbkc_deploy_update_7091() {
+  $tasks = page_manager_get_tasks_by_type('page');
+  $page_types = array();
+  $displays = array();
+  $fids = array();
+
+  foreach ($tasks as $task) {
+    if ($pages = page_manager_load_task_handlers($task)) {
+      $page_types[] = $pages;
+    }
+  }
+
+  foreach ($page_types as &$pages) {
+    foreach ($pages as &$page) {
+      if (empty($page->conf['display']) && !empty($page->conf['did'])) {
+        $page->conf['display'] = panels_load_display($page->conf['did']);
+        $displays[] = $page->conf['display'];
+      }
+    }
+  }
+
+  foreach ($displays as $display) {
+    foreach ($display->content as $content) {
+      if (isset($content->configuration['comms_image'])) {
+        $fids[] = $content->configuration['comms_image'];
+      }
+
+      if (isset($content->configuration['newspaper_image'])) {
+        $fids[] = $content->configuration['newspaper_image'];
+      }
+    }
+  }
+
+  foreach ($fids as $fid) {
+    if ($file = file_load($fid)) {
+      $usage = file_usage_list($file);
+      if (empty($usage)) {
+        file_usage_add($file, 'rbkc_sitewide', 'page', $file->fid);
+      }
+    }
+  }
+}
