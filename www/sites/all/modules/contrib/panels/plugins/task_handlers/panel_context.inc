@@ -865,12 +865,11 @@ function panels_panel_context_edit_preview($form, &$form_state) {
   $form['preview'] = array();
   ctools_context_replace_form($form['preview'], $contexts);
 
-  // automatically preview if there are no argument placeholders.
+  // Automatically preview if there are no argument placeholders.
   if (empty($form['preview'])) {
-    $display = panels_panel_context_get_display($form_state['handler']);
-    $display->context = $contexts;
-    $display->skip_cache = TRUE;
-    $output = panels_render_display($display);
+    $cid = uniqid("panels:preview");
+    cache_set($cid, $form_state);
+    drupal_set_message(t('Preview available <a href="!uri" target="_blank">here</a>', array('!uri' => '/panels/preview/' . $cid)));
     if (isset($form['buttons'])) {
       unset($form['buttons']);
     }
@@ -898,9 +897,11 @@ function panels_panel_context_edit_preview_submit(&$form, &$form_state) {
   $display = panels_panel_context_get_display($form_state['handler']);
   $display->context = ctools_context_replace_placeholders($form_state['contexts'], $form_state['values']['preview']);
 
-  $form_state['content'] = panels_render_display($display);
-  $form_state['redirect'] = FALSE;
-  $form_state['rerender'] = TRUE;
+  $form_state['display'] = $display;
+
+  $cid = uniqid("panels:preview:");
+  cache_set($cid, $form_state);
+  drupal_set_message(t('Preview available <a href="!uri" _target="blank">here</a>', array('!uri' => '/panels/preview/' . $cid)));
 }
 
 function panels_panel_context_get_addressable($task, $subtask_name, $handler, $address, $contexts, $arguments, $type) {

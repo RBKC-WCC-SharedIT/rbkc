@@ -184,6 +184,13 @@ function panels_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['panels/preview/%'] = array(
+    'title'           => 'Panels preview',
+    'access callback' => 'user_is_logged_in',
+    'page callback'   => 'panels_preview',
+    'page arguments'  => array(2),
+  );
+
   $admin_base = array(
     'file' => 'includes/callbacks.inc',
     'access arguments' => array('use panels dashboard'),
@@ -242,6 +249,40 @@ function panels_menu() {
 
 
   return $items;
+}
+
+/**
+ * Provides a rendered preview of an in progress panel.
+ *
+ * This relies on the panel cache created by the submit handler.
+ *
+ * @param string $cache_id
+ *   Cache ID of the panel to render
+ *
+ * @return mixed
+ *   Render array
+ */
+function panels_preview($cache_id) {
+  $form_state = cache_get($cache_id)->data;
+  // Load vars from cache state.
+  $args    = array();
+  if (isset($form_state['display'])) {
+    $display = $form_state['display'];
+  }
+  $page    = $form_state['page'];
+  $task    = $page->task;
+  $subtask = $page->subtask;
+  $handler = $page->handlers[$form_state['handler_id']];
+
+  $contexts = array();
+  if (!empty($display) && !empty($display->context)) {
+    $contexts = $display->context;
+  }
+  ctools_include('plugins');
+  ctools_include('context-task-handler');
+  $output = ctools_context_handler_render_handler($task, $subtask, $handler, $contexts, $args);
+
+  return $output;
 }
 
 /**
