@@ -1,0 +1,95 @@
+diff --git a/www/sites/all/modules/contrib/panels/panels.module b/www/sites/all/modules/contrib/panels/panels.module
+index 1136ddb..02bf773 100644
+--- a/www/sites/all/modules/contrib/panels/panels.module
++++ b/www/sites/all/modules/contrib/panels/panels.module
+@@ -184,6 +184,13 @@ function panels_menu() {
+     'type' => MENU_CALLBACK,
+   );
+ 
++  $items['panels/preview/%'] = array(
++    'title'           => 'Panels preview',
++    'access callback' => 'user_is_logged_in',
++    'page callback'   => 'panels_preview',
++    'page arguments'  => array(2),
++  );
++
+   $admin_base = array(
+     'file' => 'includes/callbacks.inc',
+     'access arguments' => array('use panels dashboard'),
+@@ -245,6 +252,40 @@ function panels_menu() {
+ }
+ 
+ /**
++ * Provides a rendered preview of an in progress panel.
++ *
++ * This relies on the panel cache created by the submit handler.
++ *
++ * @param string $cache_id
++ *   Cache ID of the panel to render
++ *
++ * @return mixed
++ *   Render array
++ */
++function panels_preview($cache_id) {
++  $form_state = cache_get($cache_id)->data;
++  // Load vars from cache state.
++  $args    = array();
++  if (isset($form_state['display'])) {
++    $display = $form_state['display'];
++  }
++  $page    = $form_state['page'];
++  $task    = $page->task;
++  $subtask = $page->subtask;
++  $handler = $page->handlers[$form_state['handler_id']];
++
++  $contexts = array();
++  if (!empty($display) && !empty($display->context)) {
++    $contexts = $display->context;
++  }
++  ctools_include('plugins');
++  ctools_include('context-task-handler');
++  $output = ctools_context_handler_render_handler($task, $subtask, $handler, $contexts, $args);
++
++  return $output;
++}
++
++/**
+  * Menu loader function to load a cache item for Panels AJAX.
+  *
+  * This load all of the includes needed to perform AJAX, and loads the
+diff --git a/www/sites/all/modules/contrib/panels/plugins/task_handlers/panel_context.inc b/www/sites/all/modules/contrib/panels/plugins/task_handlers/panel_context.inc
+index 9f03b55..17ed7cd 100644
+--- a/www/sites/all/modules/contrib/panels/plugins/task_handlers/panel_context.inc
++++ b/www/sites/all/modules/contrib/panels/plugins/task_handlers/panel_context.inc
+@@ -865,12 +865,11 @@ function panels_panel_context_edit_preview($form, &$form_state) {
+   $form['preview'] = array();
+   ctools_context_replace_form($form['preview'], $contexts);
+ 
+-  // automatically preview if there are no argument placeholders.
++  // Automatically preview if there are no argument placeholders.
+   if (empty($form['preview'])) {
+-    $display = panels_panel_context_get_display($form_state['handler']);
+-    $display->context = $contexts;
+-    $display->skip_cache = TRUE;
+-    $output = panels_render_display($display);
++    $cid = uniqid("panels:preview");
++    cache_set($cid, $form_state);
++    drupal_set_message(t('Preview available <a href="!uri" target="_blank">here</a>', array('!uri' => '/panels/preview/' . $cid)));
+     if (isset($form['buttons'])) {
+       unset($form['buttons']);
+     }
+@@ -898,9 +897,11 @@ function panels_panel_context_edit_preview_submit(&$form, &$form_state) {
+   $display = panels_panel_context_get_display($form_state['handler']);
+   $display->context = ctools_context_replace_placeholders($form_state['contexts'], $form_state['values']['preview']);
+ 
+-  $form_state['content'] = panels_render_display($display);
+-  $form_state['redirect'] = FALSE;
+-  $form_state['rerender'] = TRUE;
++  $form_state['display'] = $display;
++
++  $cid = uniqid("panels:preview:");
++  cache_set($cid, $form_state);
++  drupal_set_message(t('Preview available <a href="!uri" _target="blank">here</a>', array('!uri' => '/panels/preview/' . $cid)));
+ }
+ 
+ function panels_panel_context_get_addressable($task, $subtask_name, $handler, $address, $contexts, $arguments, $type) {

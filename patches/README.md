@@ -35,3 +35,20 @@ inserted into the body of the accordion, check that content is wrapped in p tags
 and check that you can add carriage returns/block elements in WYWIWYG area that don't
 break the accordion body.
 NOTES: N/A
+
+################################################################################
+
+PATCH: panels-preview_open_new_tab-2319517.patch
+PROBLEM: Panels preview is displayed in the administration theme so does not
+give the editor a clear indication of the what the page will look like if they
+save it.
+SOLUTION: Applied a modified version of the patch at
+https://www.drupal.org/node/2319517, the modification being to make the preview
+open in a new browser tab.
+RELATED ISSUES: N/A
+TESTING STEPS: Make an edit to a panel, click update and preview, click on the
+Preview available here link, observe a new browser tab is opened and the edited
+version of the page is displayed.
+NOTES: N/A
+
+################################################################################
