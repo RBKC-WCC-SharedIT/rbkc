@@ -453,4 +453,40 @@ function rbkc_preprocess_page(&$vars) {
     drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'responsiveslides.min.js', 'file');
     drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'newsroom.js', 'file');
   }
+
+  if (FALSE !== strpos(current_path(), 'panels/preview/panels:preview')) {
+    $cache_id = substr(current_path(), 15);
+    $form_state = cache_get($cache_id)->data;
+
+    switch ($form_state['task_name']) {
+      case 'page-homepage':
+        $vars['theme_hook_suggestions'] = array('page__front');
+
+        drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'front.css', array('weight' => 10, 'group' => CSS_THEME));
+        drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.css');
+        drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.js');
+        break;
+
+      case 'page-newsroom':
+        $vars['theme_hook_suggestions'] = array('page__newsroom');
+        drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'newsroom.css', array('weight' => 100, 'group' => CSS_THEME));
+        drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'responsiveslides.min.js', 'file');
+        drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'newsroom.js', 'file');
+        break;
+    }
+  }
+}
+
+/**
+ * Preprocess block search form
+ */
+function rbkc_preprocess_google_appliance_block_form(&$vars) {
+  if (FALSE !== strpos(current_path(), 'panels/preview/panels:preview')) {
+    $cache_id = substr(current_path(), 15);
+    $form_state = cache_get($cache_id)->data;
+
+    if ('page-homepage' === $form_state['task_name']) {
+      $vars['is_front'] = TRUE;
+    }
+  }
 }
