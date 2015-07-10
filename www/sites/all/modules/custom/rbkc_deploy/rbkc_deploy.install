@@ -1120,3 +1120,17 @@ function rbkc_deploy_update_7091() {
     }
   }
 }
+
+/**
+ * Switch on the AddtoAny module.
+ */
+function rbkc_deploy_update_7092() {
+  module_enable(array('AddtoAny'), TRUE);
+}
+
+/**
+ * Switch on the AddToAny feature.
+ */
+function rbkc_deploy_update_7093() {
+  module_enable(array('feature_addtoany'), TRUE);
+}
