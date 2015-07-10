@@ -275,57 +275,69 @@ function rbkc_book_preprocess_book_navigation(&$variables) {
  * Implements hook_preprocess_page().
  */
 function rbkc_navigation_preprocess_page(&$variables) {
+  rbkc_navigation_resolve_service_area_link($variables);
+}
+
+/**
+ * Resolve the service area under which the current page lives and generate a
+ * link that will be displayed as the first item in the breadcrumb.
+ *
+ * The majority of pages on the site are tagged with a term in the Service hub
+ * vocabulary, this is used to trace back to the top level service hub and the
+ * breadcrumb is generated accordingly.
+ *
+ * For those pages that are not tagged (could be anything really, pages or
+ * panels etc) we need to do a little more sniffing to see whether can determine
+ * a sensible first link for the breadcrumb.
+ *
+ * The first link in the breadcrumb is called the service_area_link.
+ */
+function rbkc_navigation_resolve_service_area_link(&$variables) {
   $node = menu_get_object();
 
   if (is_null($node)) {
-    $link_variables = array();
-
-    switch ($_GET['q']) {
-      case 'newsroom':
-        $link_variables = array(
-          'path' => 'newsroom',
-          'text' => t('Newsroom'),
-          'options' => array(
-            'attributes' => array(),
-            'html' => FALSE,
-          ),
-        );
-        break;
-    }
-
-    if (!empty($link_variables)) {
-      $variables['service_area_link'] = theme('link', $link_variables);
-    }
-
+    // Do nothing, this is likely to be a panel or perhaps a view, the
+    // title should be set in the view or panel and that title will be shown as
+    // the first (and only) item in the breadcrumb as static text.
     return;
   }
 
-  $service_area_node = rbkc_related_content_get_service_area_node($node);
+  $path = '';
+  $text = '';
 
-  if (is_null($service_area_node)) {
+  // We're viewing a node, see if we can load its top level service hub node.
+  if ($service_area_node = rbkc_related_content_get_service_area_node($node)) {
+    $path = 'node/' . $service_area_node->nid;
+    $text = $service_area_node->title;
+  }
+  else {
+    // Special case for press releases pages.
     if ('press_release' === $node->type) {
-      $link_variables = array(
-        'path' => 'newsroom',
-        'text' => t('Newsroom'),
-        'options' => array(
-          'attributes' => array(),
-          'html' => FALSE,
-        ),
-      );
-
-      $variables['service_area_link'] = theme('link', $link_variables);
+      $path = 'newsroom';
+      $text = t('Newsroom');
     }
-    return;
+
+    // Special case for pages with an alias that begin 'newsroom'.
+    $path_alias = drupal_get_path_alias(current_path());
+    $path_alias_parts = explode('/', $path_alias);
+    if ('newsroom' === array_shift($path_alias_parts)) {
+      $path = 'newsroom';
+      $text = t('Newsroom');
+    }
   }
 
-  $link_variables = array(
-    'path' => 'node/' . $service_area_node->nid,
-    'text' => $service_area_node->title,
-    'options' => array(
-      'attributes' => array(),
-      'html' => FALSE,
+  // If we get here and we've got path and text, we've got ourselves a link we
+  // can set as the service_area_link.
+  if (!empty($path) && !empty($text)) {
+    $link_variables = array(
+      'path' => $path,
+      'text' => $text,
+      'options' => array(
+        'attributes' => array(),
+        'html' => FALSE,
       ),
-  );
+    );
 
-  $variables['service_area_link'] = theme('link', $link_variables);
+    $variables['service_area_link'] = theme('link', $link_variables);
+  }
 }
