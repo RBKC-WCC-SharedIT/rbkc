@@ -19,11 +19,15 @@
     },
 
     runOnResize: function() {
-
+      this.moveGovmetric();
     },
 
-    runOnOnload: function() {
+    runOnScroll: function() {
+      this.moveGovmetric();
+    },
 
+    runOnload: function() {
+      this.scrollingTables();
     },
 
     bindUIActions: function() {
@@ -129,18 +133,6 @@
       position >= (docHeight - footerHeight) ? $('#govmetric').addClass('special') : $('#govmetric').removeClass('special');
     },
 
-    commsHeight: function() {
-      //make comms panels correct height when no flexbox support
-      if  (!$('html').hasClass('flexbox')) {
-        var newsBoxHeight = $('.comms__news').outerHeight();
-        //console.log(newsBoxHeight);
-        var imgBoxHeight = $('.comms__img').outerHeight();
-        var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
-        //console.log(blogBoxHeight);
-        $('.comms__feature .comms__item').css('height', blogBoxHeight + "px");
-      }
-    },
-
     stylePDF: function() {
       $('a[href^="IDOC"], a[href$=".pdf"], a[href*="idoc.ashx"], a[href$=".docx"], a[href$=".doc"]').each(function(){
         if (!$(this).parents('.context-file_with_size').length) {
@@ -160,6 +152,59 @@
               'tabindex' : "-1"
             }).prependTo(linkParent);
         }
+      });
+    },
+
+    commsHeight: function() {
+      //make comms panels correct height when no flexbox support
+      if  (!$('html').hasClass('flexbox')) {
+        var newsBoxHeight = $('.comms__news').outerHeight();
+        //console.log(newsBoxHeight);
+        var imgBoxHeight = $('.comms__img').outerHeight();
+        var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
+        //console.log(blogBoxHeight);
+        $('.comms__feature .comms__item').css('height', blogBoxHeight + "px");
+      }
+    },
+
+    // if broswer does not support html5 placeholder, add value to form field
+    checkPlaceholder: function() {
+      if(!Modernizr.input.placeholder){
+        $('.search__input').val('Enter search terms...');
+        $('.search__input').one("click", function() {
+          $(this).val("");
+        });
+      }
+    },
+
+    scrollingTables: function() {
+      // script to create scrollbars and shadows on tables from http://www.456bereastreet.com/archive/201309/responsive_scrollable_tables/
+      // Run on window load instead of on DOM Ready in case images or other scripts affect element widths
+      $('.content table').each(function() {
+          var element = $(this);
+          // Create the wrapper element
+          var scrollWrapper = $('<div />', {
+              'class': 'scrollable',
+              'html': '<div />' // The inner div is needed for styling
+          }).insertBefore(element);
+          // Store a reference to the wrapper element
+          element.data('scrollWrapper', scrollWrapper);
+          // Move the scrollable element inside the wrapper element
+          element.appendTo(scrollWrapper.find('div'));
+          // Check if the element is wider than its parent and thus needs to be scrollable
+          if (element.outerWidth() > element.parent().outerWidth()) {
+              element.data('scrollWrapper').addClass('has-scroll');
+              scrollWrapper.before('<p class="scroll-indicator">Scroll</p>');
+          }
+          // When the viewport size is changed, check again if the element needs to be scrollable
+          $(window).on('resize orientationchange', function() {
+              if (element.outerWidth() > element.parent().outerWidth()) {
+                  element.data('scrollWrapper').addClass('has-scroll');
+              } else {
+                  element.data('scrollWrapper').removeClass('has-scroll');
+                  $('.scroll-indicator').remove();
+              }
+          });
       });
     },
 
@@ -194,61 +239,20 @@
 
   }
 
+  $(document).ready(function() {
+    Sitewide.init();
+  });
 
-$(document).ready(function() {
+  $( window ).scroll(function(){
+     Sitewide.runOnScroll();
+  });
 
-  Sitewide.init();
+  $( window ).resize(function() {
+    Sitewide.runOnResize();
+  });
 
-});
+  $(window).on('load', function() {
+    Sitewide.runOnLoad();
+  });
 
-
-$( window ).scroll(function(){
-  try {
-    moveGovmetric();
-  }
-  catch(e){
-  }
-});
-
-$( window ).resize(function() {
-  try {
-    setTimeout( moveGovmetric(), 10000);
-  }
-  catch(e){
-  }
-});
-
-// script to create scrollbars and shadows on tables from http://www.456bereastreet.com/archive/201309/responsive_scrollable_tables/
-// Run on window load instead of on DOM Ready in case images or other scripts affect element widths
-$(window).on('load', function() {
-    // Check all tables. You may need to be more restrictive.
-    $('.content table').each(function() {
-        var element = $(this);
-        // Create the wrapper element
-        var scrollWrapper = $('<div />', {
-            'class': 'scrollable',
-            'html': '<div />' // The inner div is needed for styling
-        }).insertBefore(element);
-        // Store a reference to the wrapper element
-        element.data('scrollWrapper', scrollWrapper);
-        // Move the scrollable element inside the wrapper element
-        element.appendTo(scrollWrapper.find('div'));
-        // Check if the element is wider than its parent and thus needs to be scrollable
-        if (element.outerWidth() > element.parent().outerWidth()) {
-            element.data('scrollWrapper').addClass('has-scroll');
-            scrollWrapper.before('<p class="scroll-indicator">Scroll</p>');
-        }
-        // When the viewport size is changed, check again if the element needs to be scrollable
-        $(window).on('resize orientationchange', function() {
-            if (element.outerWidth() > element.parent().outerWidth()) {
-                element.data('scrollWrapper').addClass('has-scroll');
-            } else {
-                element.data('scrollWrapper').removeClass('has-scroll');
-                $('.scroll-indicator').remove();
-            }
-        });
-    });
-});  // END WINDOW ON LOAD
-
-//end wrapping function
 })(jQuery);
