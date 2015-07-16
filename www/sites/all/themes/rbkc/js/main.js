@@ -61,7 +61,7 @@
       this.commsHeight();
     },
 
-     // higher order function to test if there are more items than we want to show by default
+    // higher order function to test if there are more items than we want to show by default
     // (extra items are pre-hidden with css but we need to know if they exist we we can add 'view all')
     itemsHidden: function (numDefault, elems) {
       var childNumber = $(this).find(elems);
@@ -100,7 +100,6 @@
 
     openClose: function(thisButton, thisMenu, otherButton, otherMenu) {
       $(thisButton).click(function() {
-
         // test to see if other menu provided (only defined when acting on two mobile menus)
         if (otherButton !== undefined && otherMenu !== undefined) {
           $(otherMenu).addClass('hide'); //hide
