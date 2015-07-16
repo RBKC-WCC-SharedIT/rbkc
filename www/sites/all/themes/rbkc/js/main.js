@@ -12,7 +12,7 @@
     },
 
     init: function() {
-      $.fn.extend(this.displayViewAll);
+      $.fn.extend({displayViewAll: this.displayViewAll});
       this.updateDisplay();
       this.legacyIESupport();
       this.bindUIActions();
@@ -26,7 +26,7 @@
       this.moveGovmetric();
     },
 
-    runOnload: function() {
+    runOnLoad: function() {
       this.scrollingTables();
     },
 
@@ -49,9 +49,9 @@
     updateDisplay: function() {
       this.wrapH2();
       this.moveGovmetric();
-      //$('.related ul').displayViewAll(this.settings.numRelated, 'li', this.settings.paraViewAll);
-      //$('.sub-hub-topic ul').displayViewAll(this.settings.numSubHubTopics, 'li', this.settings.paraViewAll);
-      //$('.servicelist__wrap ul').displayViewAll(1, 'ul');
+      $('.related ul').displayViewAll(this.settings.numRelated, 'li', this.settings.paraViewAll);
+      $('.sub-hub-topic ul').displayViewAll(this.settings.numSubHubTopics, 'li', this.settings.paraViewAll);
+      $('.servicelist__wrap ul').displayViewAll(1, 'ul');
     },
 
     legacyIESupport: function() {
@@ -87,7 +87,6 @@
     },
 
     showMore: function() {
-
       var elem = $(this);
       elem.parent().find('li:gt(2)').slideToggle('150');
 
@@ -243,11 +242,11 @@
     Sitewide.init();
   });
 
-  $( window ).scroll(function(){
+  $(window).scroll(function() {
      Sitewide.runOnScroll();
   });
 
-  $( window ).resize(function() {
+  $(window).resize(function() {
     Sitewide.runOnResize();
   });
 
