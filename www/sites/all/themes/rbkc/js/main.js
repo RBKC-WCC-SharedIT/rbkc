@@ -8,13 +8,13 @@
       //number of items displayed by default in a sub hub topic
       numSubHubTopics: 3,
       //html for simple 'view all' link
-      paraViewAll = '<p class="view-all" title="View other, related pages">View all</p>'
+      paraViewAll: '<p class="view-all" title="View other, related pages"><span>View all</span></p>'
     },
 
     init: function() {
+      $.fn.extend(this.displayViewAll);
       this.updateDisplay();
       this.legacyIESupport();
-      $.fn.extend(showMore);
       this.bindUIActions();
     },
 
@@ -45,9 +45,9 @@
     updateDisplay: function() {
       this.wrapH2();
       this.moveGovmetric();
-      $('.related ul').displayViewAll(this.settings.numRelated, 'li', this.settings.paraViewAll);
-      $('.sub-hub-topic ul').displayViewAll(this.settings.numSubHubTopics, 'li', this.settings.paraViewAll);
-      $('.servicelist__wrap ul').displayViewAll(1, 'ul');
+      //$('.related ul').displayViewAll(this.settings.numRelated, 'li', this.settings.paraViewAll);
+      //$('.sub-hub-topic ul').displayViewAll(this.settings.numSubHubTopics, 'li', this.settings.paraViewAll);
+      //$('.servicelist__wrap ul').displayViewAll(1, 'ul');
     },
 
     legacyIESupport: function() {
