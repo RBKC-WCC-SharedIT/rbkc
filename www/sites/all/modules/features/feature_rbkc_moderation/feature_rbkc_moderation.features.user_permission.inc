@@ -29,15 +29,6 @@ function feature_rbkc_moderation_user_default_permissions() {
     'module' => 'workbench',
   );
 
-  // Exported permission: 'administer workbench emails'.
-  $permissions['administer workbench emails'] = array(
-    'name' => 'administer workbench emails',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'workbench_email',
-  );
-
   // Exported permission: 'administer workbench moderation'.
   $permissions['administer workbench moderation'] = array(
     'name' => 'administer workbench moderation',
@@ -139,6 +130,7 @@ function feature_rbkc_moderation_user_default_permissions() {
     'name' => 'view all unpublished content',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
   );
@@ -148,6 +140,7 @@ function feature_rbkc_moderation_user_default_permissions() {
     'name' => 'view moderation history',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
   );
