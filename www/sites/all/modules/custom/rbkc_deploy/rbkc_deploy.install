@@ -1127,3 +1127,10 @@ function rbkc_deploy_update_7091() {
 function rbkc_deploy_update_7092() {
   module_disable(array('workbench_email'), FALSE);
 }
+
+/**
+ * Turn on the user Feature.
+ */
+function rbkc_deploy_update_7093() {
+  module_enable(array('feature_user'), TRUE);
+}
