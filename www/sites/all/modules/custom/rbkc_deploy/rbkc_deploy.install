@@ -1120,3 +1120,10 @@ function rbkc_deploy_update_7091() {
     }
   }
 }
+
+/**
+ * Turn off workbench email.
+ */
+function rbkc_deploy_update_7092() {
+  module_disable(array('workbench_email'), FALSE);
+}
