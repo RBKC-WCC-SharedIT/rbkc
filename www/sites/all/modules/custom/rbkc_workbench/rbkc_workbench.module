@@ -915,3 +915,147 @@ function rbkc_workbench_override_workbench_recent_content(&$views) {
 
   $views[$view->name] = $view;
 }
+
+/**
+ * Implements hook_node_access().
+ *
+ * There's no check on role so these checks will run for all users regardless of
+ * their role but will have no affect unless they've been assigned to a service
+ * hub area.
+ */
+function rbkc_workbench_node_access($node, $op, $account) {
+  if (!is_object($node)) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  if ('view' === $op) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  // $account does not have fields, load the user object.
+  $user = user_load($account->uid);
+
+  if (!isset($user->field_editor_service_hub[LANGUAGE_NONE])) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  if (empty($user->field_editor_service_hub[LANGUAGE_NONE])) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  $actual_editor_service_hubs = array();
+  $potential_editor_service_hubs = $user->field_editor_service_hub[LANGUAGE_NONE];
+
+  foreach ($potential_editor_service_hubs as $potential_editor_service_hub) {
+    if ($potential_editor_service_hub['tid']) {
+      $actual_editor_service_hubs[] = $potential_editor_service_hub['tid'];
+    }
+  }
+
+  if (empty($actual_editor_service_hubs)) {
+    return NODE_ACCESS_IGNORE;
+  }
+
+  // At this point, we've established the editor is assigned to at least one
+  // service hub.
+
+  $page_service_hub_tid = NULL;
+
+  if (isset($node->field_service_hub[LANGUAGE_NONE][0]['tid']) ) {
+    $page_service_hub_tid = (int) $node->field_service_hub[LANGUAGE_NONE][0]['tid'];
+  }
+
+  // If the page does not have a service area, allow the editor access.
+  if (is_null($page_service_hub_tid) || 0 === $page_service_hub_tid) {
+    return NODE_ACCESS_ALLOW;
+  }
+
+  // The final checks before denying access, if the page tid is one of the
+  // assigned service hubs (or is a child of one of the assigned service hubs)
+  // then grant access.
+  foreach ($actual_editor_service_hubs as $editor_service_hub_tid) {
+    // If there's an exact match, allow access.
+    if ((int) $editor_service_hub_tid === $page_service_hub_tid) {
+      return NODE_ACCESS_ALLOW;
+    }
+
+    // There's not an exact match, check for parents.
+    if ($parent_terms = taxonomy_get_parents_all($page_service_hub_tid)) {
+      foreach ($parent_terms as $parent_term) {
+        if ((int) $editor_service_hub_tid === (int) $parent_term->tid) {
+          return NODE_ACCESS_ALLOW;
+        }
+      }
+    }
+  }
+
+  // We're done checking, this editor does not have access.
+  return NODE_ACCESS_DENY;
+}
+
+/**
+ * Implements hook_node_validate().
+ */
+function rbkc_workbench_node_validate($node, $form, &$form_state) {
+  global $user;
+
+  $account = user_load($user->uid);
+
+  if (!isset($account->field_editor_service_hub[LANGUAGE_NONE])) {
+    return;
+  }
+
+  if (empty($account->field_editor_service_hub[LANGUAGE_NONE])) {
+    return;
+  }
+
+  $actual_editor_service_hubs = array();
+  $potential_editor_service_hubs = $account->field_editor_service_hub[LANGUAGE_NONE];
+
+  foreach ($potential_editor_service_hubs as $potential_editor_service_hub) {
+    if ($potential_editor_service_hub['tid']) {
+      $actual_editor_service_hubs[] = $potential_editor_service_hub['tid'];
+    }
+  }
+
+  if (empty($actual_editor_service_hubs)) {
+    return;
+  }
+
+  // At this point, we've established the editor is assigned to at least one
+  // service hub.
+
+  $page_service_hub_tid = NULL;
+
+  if (isset($node->field_service_hub[LANGUAGE_NONE][0]['tid']) ) {
+    $page_service_hub_tid = (int) $node->field_service_hub[LANGUAGE_NONE][0]['tid'];
+  }
+
+  // If the page does not have a service area, allow the editor access.
+  if (is_null($page_service_hub_tid) || 0 === $page_service_hub_tid) {
+    return;
+  }
+
+
+  // The final checks before denying access, if the page tid is one of the
+  // assigned service hubs (or is a child of one of the assigned service hubs)
+  // then grant access.
+  foreach ($actual_editor_service_hubs as $editor_service_hub_tid) {
+    // If there's an exact match, allow access.
+    if ((int) $editor_service_hub_tid === $page_service_hub_tid) {
+      return;
+    }
+
+    // There's not an exact match, check for parents.
+    if ($parent_terms = taxonomy_get_parents_all($page_service_hub_tid)) {
+      foreach ($parent_terms as $parent_term) {
+        if ((int) $editor_service_hub_tid === (int) $parent_term->tid) {
+          return;
+        }
+      }
+    }
+  }
+
+  // We're done checking, this editor does not have access.
+  form_set_error('form', t('You do not have permission to create a page in or move a page to this service hub area.'));
+}
