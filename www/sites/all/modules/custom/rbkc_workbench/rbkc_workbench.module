@@ -1059,3 +1059,13 @@ function rbkc_workbench_node_validate($node, $form, &$form_state) {
   // We're done checking, this editor does not have access.
   form_set_error('form', t('You do not have permission to create a page in or move a page to this service hub area.'));
 }
+
+function rbkc_workbench_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+
+  if (!in_array('administrator', $user->roles)) {
+    if (isset($form['field_editor_service_hub'])) {
+      unset($form['field_editor_service_hub']);
+    }
+  }
+}
