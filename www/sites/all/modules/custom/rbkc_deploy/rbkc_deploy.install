@@ -1134,3 +1134,10 @@ function rbkc_deploy_update_7092() {
 function rbkc_deploy_update_7093() {
   module_enable(array('feature_user'), TRUE);
 }
+
+/**
+ * Turn on the redirect fix module.
+ */
+function rbkc_deploy_update_7094() {
+  module_enable(array('redirect_fix'), TRUE);
+}
