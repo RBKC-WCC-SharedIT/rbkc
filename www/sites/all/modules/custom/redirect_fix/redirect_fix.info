@@ -1,0 +1,3 @@
+name = Fix redirect
+description = Fixes a common redirect loop issue when you have pathauto, redirect and workbench moderation installed together.
+core = 7.x

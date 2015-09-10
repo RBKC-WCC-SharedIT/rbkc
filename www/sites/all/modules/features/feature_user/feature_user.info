@@ -1,0 +1,9 @@
+name = feature_user
+description = Captures user configuration.
+core = 7.x
+package = Features
+dependencies[] = feature_field_bases
+dependencies[] = features
+dependencies[] = shs
+features[features_api][] = api:2
+features[field_instance][] = user-user-field_editor_service_hub

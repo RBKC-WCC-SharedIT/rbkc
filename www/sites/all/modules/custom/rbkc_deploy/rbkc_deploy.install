@@ -1121,16 +1121,36 @@ function rbkc_deploy_update_7091() {
   }
 }
 
+/** * Turn off workbench email.
+ */
+function rbkc_deploy_update_7092() {
+  module_disable(array('workbench_email'), FALSE);
+}
+
+/**
+ * Turn on the user Feature.
+ */
+function rbkc_deploy_update_7093() {
+  module_enable(array('feature_user'), TRUE);
+}
+
+/**
+ * Turn on the redirect fix module.
+ */
+function rbkc_deploy_update_7094() {
+  module_enable(array('redirect_fix'), TRUE);
+}
+
 /**
  * Switch on the AddtoAny module.
  */
-function rbkc_deploy_update_7092() {
-  module_enable(array('AddtoAny'), TRUE);
+function rbkc_deploy_update_7095() {
+  module_enable(array('addtoany'), TRUE);
 }
 
 /**
  * Switch on the AddToAny feature.
  */
-function rbkc_deploy_update_7093() {
+function rbkc_deploy_update_7096() {
   module_enable(array('feature_addtoany'), TRUE);
 }
