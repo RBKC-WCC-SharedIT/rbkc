@@ -1,9 +1,8 @@
-name = Scald Audio
-description = Provides Audio atoms from audio files.
+name = Scald Video
+description = Provides Video atoms from video files.
 package = Scald Providers
 core = 7.x
 dependencies[] = scald
-
 
 ; Information added by Drupal.org packaging script on 2015-09-16
 version = "7.x-1.5"

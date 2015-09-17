@@ -103,8 +103,16 @@ Drupal.dnd = {
 
   // Convert HTML to SAS. We consider there is no nested elements.
   html2sas: function(text) {
-    text = text.replace(/<!-- (scald=(\d+):([a-z_]+)) -->[\r\n\s\S]*?<!-- END scald=\2 -->/g, '[$1]');
+    text = text.replace(/<!-- (scald=(\d+):([a-z_]+))(.*) -->[\r\n\s\S]*?<!-- END scald=\2 -->/g, '[$1$4]');
     return text;
+  },
+
+  // Salvage data from HTML comment and return the SAS representation.
+  htmlcomment2sas: function(text) {
+    var matches = text.match(/<!-- (scald=(\d+):([a-z_]+))([^>]*) -->/);
+    if (matches && matches.length) {
+      return '[' + matches[1] + matches[4] + ']';
+    }
   },
 
   // Convert SAS to HTML.
@@ -212,7 +220,8 @@ Drupal.theme.prototype.scaldEmbed = function(atom, context, options) {
 
   // If there are options, update the SAS representation.
   if (options) {
-    output = output.replace(/<!-- scald=\d+(.+?) -->/, '<!-- scald=' + atom.sid + ':' + context + ' ' + JSON.stringify(options) + ' -->');
+    options = (typeof options === 'string') ? options.trim() : JSON.stringify(options);
+    output = output.replace(/<!-- scald=\d+(.+?) -->/, '<!-- scald=' + atom.sid + ':' + context + ' ' + options + ' -->');
   }
 
   return output;
