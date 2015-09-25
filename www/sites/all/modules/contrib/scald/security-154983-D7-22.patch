@@ -1,0 +1,409 @@
+diff --git a/includes/scald.debug.inc b/includes/scald.debug.inc
+deleted file mode 100644
+index 8184e48..0000000
+--- a/includes/scald.debug.inc
++++ /dev/null
+@@ -1,25 +0,0 @@
+-<?php
+-
+-/**
+- * @file
+- * Scald Debugging
+- *
+- * The Scald Core "Debugging Console" and other debugging functionality
+- *
+- * @ingroup scald
+- */
+-
+-require_once 'scald.constants.inc';
+-
+-/**
+- * Callback for Scald Debugging Console.
+- *
+- * @param int $sid
+- *   The Scald ID of the Atom to load into the debugging console
+- *
+- * @return string
+- *   XHTML for the Console page
+- */
+-function scald_debug_console($sid) {
+-  return scald_render($sid, 'debug', NULL, TRUE);
+-}
+diff --git a/includes/scald.pages.inc b/includes/scald.pages.inc
+index ded2220..7be1c66 100644
+--- a/includes/scald.pages.inc
++++ b/includes/scald.pages.inc
+@@ -502,7 +502,7 @@ function scald_atom_fetch_atoms($sids) {
+   $atoms = scald_atom_load_multiple(explode(',', $sids));
+ 
+   // Context can be passed via the querystring.
+-  $context = isset($_GET['context']) && array_key_exists($_GET['context'], scald_contexts()) ? $_GET['context'] : '';
++  $context = isset($_GET['context']) && array_key_exists($_GET['context'], scald_contexts_public()) ? $_GET['context'] : '';
+ 
+   foreach ($atoms as $sid => $atom) {
+     $output[$sid] = array(
+diff --git a/includes/scald_views_handler_field_representation.inc b/includes/scald_views_handler_field_representation.inc
+index e125a68..fc763d3 100644
+--- a/includes/scald_views_handler_field_representation.inc
++++ b/includes/scald_views_handler_field_representation.inc
+@@ -29,11 +29,9 @@ class scald_views_handler_field_representation extends views_handler_field {
+     parent::options_form($form, $form_state);
+ 
+     $options = array();
+-    $contexts = scald_contexts();
++    $contexts = scald_contexts_public();
+     foreach ($contexts as $name => $context) {
+-      if (empty($context['hidden'])) {
+-        $options[$name] = $context['title'];
+-      }
++      $options[$name] = $context['title'];
+     }
+     $form['context'] = array(
+       '#type' => 'select',
+diff --git a/modules/fields/atom_reference/atom_reference.module b/modules/fields/atom_reference/atom_reference.module
+index 5c3af6a..0acdce1 100644
+--- a/modules/fields/atom_reference/atom_reference.module
++++ b/modules/fields/atom_reference/atom_reference.module
+@@ -157,15 +157,13 @@ function atom_reference_field_is_empty($item, $field) {
+ function atom_reference_field_formatter_info() {
+   // Expose all the Scald Contexts as formatters for the Atom Reference field.
+   $formatters = array();
+-  $contexts = scald_contexts();
++  $contexts = scald_contexts_public();
+   foreach ($contexts as $name => $context) {
+-    if (empty($context['hidden'])) {
+-      $formatters[$name] = array(
+-        'label' => $context['title'],
+-        'field types' => array('atom_reference'),
+-        'settings' => array('link' => 0, 'override' => 0),
+-      );
+-    }
++    $formatters[$name] = array(
++      'label' => $context['title'],
++      'field types' => array('atom_reference'),
++      'settings' => array('link' => 0, 'override' => 0),
++    );
+   }
+ 
+   return $formatters;
+@@ -276,9 +274,12 @@ function atom_reference_field_widget_settings_form($field, $instance) {
+     '#description' => t('Scald preview context to be displayed in the edit form.'),
+   );
+ 
+-  $contexts = scald_contexts();
++  $contexts = scald_contexts_public();
+   foreach ($contexts as $name => $context) {
+-    if (empty($context['hidden']) && !empty($context['parseable'])) {
++    // TODO: Atom reference shouldn't need the context to be parsable, there's
++    // nothing converting back and forth between the SAS and the rendered
++    // representation.
++    if (!empty($context['parseable'])) {
+       $form['context']['#options'][$name] = $context['title'];
+     }
+   }
+@@ -338,10 +339,10 @@ function atom_reference_field_widget_form(&$form, &$form_state, $field, $instanc
+     );
+     $context_element['#weight'] = 20;
+ 
+-    $contexts = scald_contexts();
++    $contexts = scald_contexts_public();
+     $context_element['#options']['use_the_default'] = t('Use the default');
+     foreach ($contexts as $name => $context) {
+-      if (empty($context['hidden']) && $name !== 'sdl_library_item') {
++      if ($name !== 'sdl_library_item') {
+         $context_element['#options'][$name] = $context['title'];
+       }
+     }
+diff --git a/modules/fields/mee/mee.module b/modules/fields/mee/mee.module
+index cedb5d2..43d91c8 100644
+--- a/modules/fields/mee/mee.module
++++ b/modules/fields/mee/mee.module
+@@ -112,7 +112,7 @@ function mee_form_alter(&$form, &$form_state, $form_id) {
+   $settings = $form['#instance']['settings'];
+ 
+   $context_options = array();
+-  foreach (scald_contexts() as $name => $context) {
++  foreach (scald_contexts_public() as $name => $context) {
+     $context_options[$name] = $context['title'];
+   }
+ 
+@@ -288,7 +288,7 @@ function mee_field_attach_view_alter(&$output, $context) {
+               $output[$name][$key]['#markup'] = mee_filter_process($output[$name][$key]['#markup']);
+             }
+           }
+-          $output[$name][$key]['#markup'] = scald_sas_to_rendered($output[$name][$key]['#markup'], $field['settings']['context']);
++          $output[$name][$key]['#markup'] = scald_sas_to_rendered($output[$name][$key]['#markup'], $field['settings']['context'], FALSE, dnd_scald_wysiwyg_context_slugs());
+         }
+       }
+     }
+@@ -312,7 +312,7 @@ function mee_panels_pane_content_alter($content, $pane, $args, $context) {
+         $content->content = mee_filter_process($content->content);
+       }
+     }
+-    $content->content = scald_sas_to_rendered($content->content);
++    $content->content = scald_sas_to_rendered($content->content, NULL, FALSE, dnd_scald_wysiwyg_context_slugs());
+   }
+ }
+ 
+@@ -334,7 +334,7 @@ function mee_field_widget_form_alter(&$element, &$form_state, $context) {
+   // In any case, convert SAS into rendered for format textarea.
+   if (in_array($context['field']['type'], mee_field_types()) && isset($element['#default_value'])) {
+     if (mee_store_format() == 'sas') {
+-      $element['#default_value'] = scald_sas_to_rendered($element['#default_value'], $context['instance']['settings']['context'], FALSE, TRUE);
++      $element['#default_value'] = scald_sas_to_rendered($element['#default_value'], $context['instance']['settings']['context'], FALSE, dnd_scald_wysiwyg_context_slugs());
+     }
+   }
+ 
+@@ -586,7 +586,7 @@ function theme_mee_widget_embed($vars) {
+  * Other parameters, such as context, could also be passed via the querystring.
+  */
+ function mee_ajax_widget_expand($atom) {
+-  $context = (isset($_GET['context']) && in_array($_GET['context'], array_keys(scald_contexts()))) ? $_GET['context'] : NULL;
++  $context = (isset($_GET['context']) && in_array($_GET['context'], dnd_scald_wysiwyg_context_slugs())) ? $_GET['context'] : NULL;
+   if ($atom->type == 'scald_atom_fallback') {
+     $context = 'invalid-id';
+   }
+diff --git a/modules/library/dnd/dnd.module b/modules/library/dnd/dnd.module
+index 283b722..1f89093 100644
+--- a/modules/library/dnd/dnd.module
++++ b/modules/library/dnd/dnd.module
+@@ -42,30 +42,62 @@ function dnd_theme() {
+ }
+ 
+ /**
+- * Implements hook_library().
++ * Get the list of Scald contexts that can be used in a WYSIWYG, keyed by type.
++ *
++ * @return array
++ *   Returns an associative array, keyed by the atom type machine name and whose
++ *   values are associative arrays, each keyed by the context machine name and
++ *   whose values are the user facing name of this context for this atom type.
+  */
+-function dnd_library() {
+-  $path = drupal_get_path('module', 'dnd');
+-  $types = scald_types();
+-  $contexts = array();
+-  $config = array();
++function dnd_scald_wysiwyg_context_list() {
++  $contexts = &drupal_static(__FUNCTION__, NULL);
++  if (!isset($contexts)) {
++    $types = scald_types();
++    foreach (scald_contexts_public() as $name => $definition) {
++      if (empty($definition['parseable'])) {
++        continue;
++      }
+ 
+-  foreach (scald_contexts() as $name => $definition) {
+-    if (!empty($definition['hidden']) || empty($definition['parseable'])) {
+-      continue;
++      // There "formats" is actually used nowhere in Scald. Every context is
++      // available to all atom types.
++      $definition['formats'] = $types;
++
++      foreach ($definition['formats'] as $type => $data) {
++        $contexts[$type][$name] = $definition['title'];
++      }
+     }
++    drupal_alter('scald_wysiwyg_context_list', $contexts);
++  }
+ 
+-    // There "formats" is actually used nowhere in Scald. Every context is
+-    // available to all atom types.
+-    $definition['formats'] = $types;
++  return $contexts;
++}
+ 
+-    foreach ($definition['formats'] as $type => $data) {
+-      $contexts[$type][$name] = $definition['title'];
++/**
++ * Get the list of Scald contexts machine names that are allowed in WYSIWYG.
++ */
++function dnd_scald_wysiwyg_context_slugs() {
++  $contexts_type = dnd_scald_wysiwyg_context_list();
++  $slugs = array();
++  foreach ($contexts_type as $contexts) {
++    foreach ($contexts as $slug => $label) {
++      $slugs[$slug] = $slug;
+     }
++  }
++
++  return array_values($slugs);
++}
++
++/**
++ * Implements hook_library().
++ */
++function dnd_library() {
++  $path = drupal_get_path('module', 'dnd');
++  $contexts = dnd_scald_wysiwyg_context_list();
++  $config = array();
+ 
+-    $config[$name] = scald_context_config_load($name);
++  foreach (dnd_scald_wysiwyg_context_slugs() as $slug) {
++    $config[$slug] = scald_context_config_load($slug);
+   }
+-  drupal_alter('scald_wysiwyg_context_list', $contexts);
+ 
+   $qtip_settings = '';
+   if (function_exists('qtip_fetch_instances_field')) {
+diff --git a/scald.module b/scald.module
+index 582d48d..dd2dd83 100644
+--- a/scald.module
++++ b/scald.module
+@@ -121,6 +121,21 @@ function scald_contexts($reset = FALSE) {
+ }
+ 
+ /**
++ * Returns the list of public context.
++ */
++function scald_contexts_public($reset = FALSE) {
++  $public = array();
++  $contexts = scald_contexts($reset);
++  foreach ($contexts as $name => $context) {
++    if (empty($context['hidden'])) {
++      $public[$name] = $context;
++    }
++  }
++
++  return $public;
++}
++
++/**
+  * Implements hook_scald_contexts_alter().
+  *
+  * Adds informations on the configured transcoder formats to
+@@ -812,6 +827,9 @@ function scald_search($query = array(), $fuzzy = FALSE, $singular = FALSE) {
+  * @param bool $override
+  *   A boolean used to determine if the Scald Context specified in the SAS
+  *    should be used or not.
++ * @param string[] $allowed_contexts
++ *   An array of contexts slugs that are allowed to be used in the passed-in
++ *   string. If empty, any context that's not hidden will be allowed.
+  *
+  * @return string
+  *   The same text string, but with all the Scald Atom Shorthands replaced with
+@@ -820,33 +838,51 @@ function scald_search($query = array(), $fuzzy = FALSE, $singular = FALSE) {
+  *
+  * @see scald_rendered_to_sas()
+  */
+-function scald_sas_to_rendered($string, $context = NULL, $override = FALSE) {
+-  if (empty($context)) {
++function scald_sas_to_rendered($string, $context = NULL, $override = FALSE, $allowed_contexts = array()) {
++  if (empty($context) || !array_key_exists($context, scald_contexts())) {
+     $context = 'title';
+   }
+ 
+-  global $_scald_override;
+-  $_scald_override = $override;
++  if (empty($allowed_contexts)) {
++    $allowed_contexts = array_keys(scald_contexts_public());
++  }
++
++  _scald_sas_to_rendered_callback('set', $context, $override, $allowed_contexts);
+   $rendered = preg_replace_callback(
+     SCALD_SAS_MATCH_PATTERN,
+-    create_function(
+-      '$matches',
+-      '
+-        global $_scald_override;
+-        return scald_render(
+-          $matches[1],
+-          (!empty($matches[2]) && !$_scald_override ? $matches[2] : \'' . $context . '\'),
+-          (!empty($matches[3]) ? $matches[3] : NULL)
+-        );
+-      '
+-    ),
++    '_scald_sas_to_rendered_callback',
+     $string
+   );
+ 
+-  unset($_scald_override);
+   return $rendered;
+ }
+ 
++function _scald_sas_to_rendered_callback($matches, $context = NULL, $override = NULL, $allowed_contexts = NULL) {
++  // Not using drupal_static here, because those static will
++  // always be reset by the parent using a 'set' call before
++  // they're value is actually used.
++  static $callback_context, $callback_override, $callback_allowed_contexts;
++
++  if ($matches === 'set') {
++    $callback_context = $context;
++    $callback_override = $override;
++    $callback_allowed_contexts = $allowed_contexts;
++  }
++  else {
++    if ($callback_override || empty($matches[2]) || !in_array($matches[2], $callback_allowed_contexts, TRUE)) {
++      $render_context = $callback_context;
++    }
++    else {
++      $render_context = $matches[2];
++    }
++    return scald_render(
++      $matches[1],
++      $render_context,
++      !empty($matches[3]) ? $matches[3] : NULL
++    );
++  }
++}
++
+ /**
+  * Determine atoms (expressed as SAS) embedded in a string.
+  *
+@@ -1445,16 +1481,6 @@ function _scald_context_fallback($type, $context) {
+  */
+ function _scald_system_contexts() {
+   return array(
+-    'debug' => array(
+-      'title'           => t('Debugging Display'),
+-      'description'     => t('A useful debugging display of a Scald Atom.'),
+-      'render_language' => 'XHTML',
+-      'parseable'       => FALSE,
+-      'hidden'          => TRUE,
+-      'formats'         => array(
+-        '<all>' => 'passthrough',
+-      ),
+-    ),
+     'no-access' => array(
+       'title'           => t('No Access'),
+       'description'     => t('Built-in Context used when an Atom cannot be viewed by the current User.'),
+@@ -1557,8 +1583,8 @@ function scald_scald_actions() {
+  * Implements hook_scald_prerender().
+  *
+  * Scald Core implements this hook for its role as a Scald Context Provider of
+- * Scald Contexts 'debug', 'no-access', 'invalid-id', 'deleted', 'title' and
+- * UI-created contexts, and for its role as a Scald Transcoder Provider of Scald
++ * Scald Contexts 'no-access', 'invalid-id', 'deleted', 'title' and UI-created
++ * contexts, and for its role as a Scald Transcoder Provider of Scald
+  * Transcoder 'passthrough'.
+  */
+ function scald_scald_prerender($atom, $context, $options, $mode) {
+@@ -1589,10 +1615,6 @@ function scald_scald_prerender($atom, $context, $options, $mode) {
+  */
+ function scald_scald_render($atom, $context, $options = array()) {
+   switch ($context) {
+-    case 'debug':
+-      $output = '<pre class="debug">' . print_r($atom, TRUE) . '</pre>';
+-      break;
+-
+     case 'no-access':
+       $output = theme('scald_render_error', array('context' => $context, 'message' => t('You do not have access to view this Atom.'), 'atom' => $atom));
+       break;
+@@ -2117,17 +2139,6 @@ function scald_menu() {
+     'theme callback' => 'ajax_base_page_theme',
+   );
+ 
+-  $items['atom/%/debug'] = array(
+-    'title' => 'Debug',
+-    'page callback' => 'scald_debug_console',
+-    'page arguments' => array(1),
+-    'access callback' => 'user_access',
+-    'access arguments' => array('administer scald'),
+-    'file' => 'includes/scald.debug.inc',
+-    'weight' => 90,
+-    'type' => MENU_LOCAL_TASK,
+-  );
+-
+   // Optional devel module integration.
+   if (module_exists('devel')) {
+     $items['atom/%scald_atom/devel'] = array(
