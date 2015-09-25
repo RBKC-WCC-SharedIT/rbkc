@@ -29,9 +29,11 @@ class scald_views_handler_field_representation extends views_handler_field {
     parent::options_form($form, $form_state);
 
     $options = array();
-    $contexts = scald_contexts_public();
+    $contexts = scald_contexts();
     foreach ($contexts as $name => $context) {
-      $options[$name] = $context['title'];
+      if (empty($context['hidden'])) {
+        $options[$name] = $context['title'];
+      }
     }
     $form['context'] = array(
       '#type' => 'select',

@@ -1,5 +1,5 @@
 (function ($) {
-// Drop out if for some reason Drupal.dnd is not available.
+// Drop out if for some reason Drupal.dnd is not available
 if (typeof Drupal.dnd === 'undefined') {
   CKEDITOR.plugins.add('dndck4', {});
   return;
@@ -88,10 +88,7 @@ CKEDITOR.plugins.add('dndck4', {
        * initial creation or upcast).
        */
       data: function() {
-        // Don't refresh dragged atom until it's actually dropped.
-        if (this.element.$.parentNode.parentNode) {
-          this.refreshAtom();
-        }
+        this.refreshAtom();
       }
     });
 
@@ -108,14 +105,9 @@ CKEDITOR.plugins.add('dndck4', {
       // Listen to atom drags from the Library. Namespace the event so that we
       // can unbind it when the editor is disabled.
       $(document).bind('dragstart.dndck4_' + editor.name, function (evt) {
-        var editable = editor.editable();
-        if (Drupal.dnd.currentAtom && $(editable.$).is(':visible')) {
+        if (Drupal.dnd.currentAtom) {
           var dragInfo = Drupal.dnd.sas2array(Drupal.dnd.currentAtom);
-          var atomInfo = Drupal.dnd.Atoms[dragInfo.sid];
-          var data = Drupal.dndck4.getDefaultInsertData(editor, atomInfo);
-          var caption = atomInfo.meta.legend || '';
-          var widget = Drupal.dndck4.createNewWidget(editor, data, caption);
-          Drupal.dndck4.onLibraryAtomDrag.call(widget, atomInfo);
+          Drupal.dndck4.onLibraryAtomDrag(editor, Drupal.dnd.Atoms[dragInfo.sid]);
         }
       });
     });
@@ -305,51 +297,20 @@ CKEDITOR.plugins.add('dndck4', {
     editor.addCommand('atomPaste', {
       exec: function (editor) {
         if (Drupal.dndck4.atomPaste) {
+          editor.fire('saveSnapshot');
+          editor.fire('lockSnapshot', {dontUpdate: 1});
+
           var range = editor.getSelection().getRanges()[0];
-          // insertNewWidget already handles snapshot.
           Drupal.dndck4.insertNewWidget(editor, range, Drupal.dndck4.atomPaste.data, Drupal.dndck4.atomPaste.caption);
+
+          editor.fire('unlockSnapshot');
+          editor.fire('saveSnapshot');
         }
       },
       canUndo: false,
       editorFocus: CKEDITOR.env.ie || CKEDITOR.env.webkit
     });
 
-  },
-
-  afterInit: function (editor) {
-    function setupAlignCommand(value) {
-      var command = editor.getCommand('justify' + value);
-      if (command) {
-        if (value in {right: 1, left: 1, center: 1}) {
-          command.on('exec', function (event) {
-            var widget = editor.widgets.focused;
-            if (widget && widget.name === 'dndck4') {
-              widget.setData({align: value});
-            }
-          });
-        }
-
-        command.on('refresh', function (event) {
-          var widget = editor.widgets.focused,
-            allowed = { left: 1, center: 1, right: 1 },
-            align;
-
-          if (widget && widget.name === 'dndck4') {
-            align = widget.data.align;
-
-            this.setState(
-              (align === value) ? CKEDITOR.TRISTATE_ON : (value in allowed) ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED);
-
-            event.cancel();
-          }
-        });
-      }
-    }
-
-    // Customize the behavior of the alignment commands.
-    setupAlignCommand('left');
-    setupAlignCommand('right');
-    setupAlignCommand('center');
   }
 
 });
@@ -400,36 +361,6 @@ Drupal.dndck4 = {
     }
   },
 
-  addOption: function(id, type, mode, name, callback) {
-    $('body').once(id, function() {
-      if (typeof CKEDITOR === 'undefined') {
-        // CKEditor is not available yet, lets try a little bit later.
-        setTimeout(function() {
-          // If It's still not available, stop trying.
-          if (typeof CKEDITOR !== 'undefined') {
-            Drupal.dndck4.processOption(id, type, mode, name, callback);
-          }
-        }, 1000);
-      }
-      else {
-        Drupal.dndck4.processOption(id, type, mode, name, callback);
-      }
-    });
-  },
-
-  processOption: function(id, type, mode, name, callback) {
-    CKEDITOR.on('dialogDefinition', function(ev) {
-      if (typeof Drupal.dndck4 !== 'undefined') {
-        if (ev.data.name == 'atomProperties') {
-          var dialogDefinition = ev.data.definition;
-          var infoTab = dialogDefinition.getContents('info');
-          callback.call(this, infoTab, dialogDefinition);
-          Drupal.dndck4.registerOptions(id, type, mode, name);
-        }
-      }
-    });
-  },
-
   dataFromAttributes: function (attributes) {
     return {
       sid : attributes['data-scald-sid'],
@@ -478,29 +409,26 @@ Drupal.dndck4 = {
       // options in the sas code for the atom.
       options : sasData.options || '{}',
       align : 'none',
-      usesCaption : Drupal.settings.dnd.usesCaptionDefault
+      usesCaption : true
     };
   },
 
-  createNewWidget: function(editor, data, caption) {
+  insertNewWidget: function(editor, range, data, caption) {
+    // Group all following operations in one snapshot.
+    editor.fire('saveSnapshot');
+    editor.fire('lockSnapshot', {dontUpdate: 1});
+
     // Generate the downcasted HTML for the widget, and run upcast() on it.
     var html = Drupal.dndck4.downcastedHtml(data, caption);
     var element = CKEDITOR.htmlParser.fragment.fromHtml(html).children[0];
     element = editor.widgets.registered.dndck4.upcast(element);
     // Turn it into a proper DOM element, and insert it.
     element = CKEDITOR.dom.element.createFromHtml(element.getOuterHtml());
+    range.select();
+    editor.insertElement(element);
     // Promote it to a widget. This runs the init() / data() methods, which
     // fetches the expanded HTML for the atom embed.
-    return editor.widgets.initOn(element, 'dndck4', data);
-  },
-
-  insertWidget: function(widget, editor, range) {
-    // Group all following operations in one snapshot.
-    editor.fire('saveSnapshot');
-    editor.fire('lockSnapshot', {dontUpdate: 1});
-
-    editor.editable().insertElementIntoRange(widget.wrapper, range);
-
+    var widget = editor.widgets.initOn(element, 'dndck4', data);
     widget.ready = true;
     widget.fire('ready');
     widget.focus();
@@ -511,26 +439,15 @@ Drupal.dndck4 = {
     editor.fire('saveSnapshot');
   },
 
-  insertNewWidget: function(editor, range, data, caption) {
-    var widget = Drupal.dndck4.createNewWidget(editor, data, caption);
-    Drupal.dndck4.insertWidget(widget, editor, range);
-  },
-
   // Heavily inspired from CKE widget plugin's onBlockWidgetDrag().
-  onLibraryAtomDrag: function (atomInfo) {
-    var widget = this,
-      finder = widget.repository.finder,
-      locator = widget.repository.locator,
-      liner = widget.repository.liner,
-      editor = widget.editor,
+  onLibraryAtomDrag: function (editor, atomInfo) {
+    var finder = editor.widgets.finder,
+      locator = editor.widgets.locator,
+      liner = editor.widgets.liner,
       editable = editor.editable(),
       listeners = [],
-      sorted = [],
-      dropRange = null;
+      sorted = [];
     var relations, locations, y;
-
-    // Mark dragged widget for repository#finder.
-    this.repository._.draggedWidget = widget;
 
     // Dropping into an empty CKEditor requires special logic.
     var editableHasContent = (editable.getFirst() != null);
@@ -560,7 +477,6 @@ Drupal.dndck4 = {
         liner.placeLine(sorted[0]);
         liner.cleanup();
       }
-      dropRange = finder.getRange(sorted[0]);
     });
 
     // Let's have the "dragging cursor" over entire editable.
@@ -590,8 +506,8 @@ Drupal.dndck4 = {
     listeners.push(dropElement.on('drop', function (evt) {
       evt.data.preventDefault();
       var range;
-      if (dropRange && editableHasContent && !CKEDITOR.tools.isEmpty(liner.visible)) {
-        range = dropRange;
+      if (editableHasContent && !CKEDITOR.tools.isEmpty(liner.visible)) {
+        range = finder.getRange(sorted[0]);
       }
       else {
         // If no liner position was determined, insert at the end of the
@@ -599,14 +515,10 @@ Drupal.dndck4 = {
         range = editor.createRange();
         range.moveToElementEditablePosition(editable, true);
       }
-      Drupal.dndck4.insertWidget(widget, editor, range);
-      widget.refreshAtom();
-      cleanupDrag(true);
-    }));
-
-    // Prevent paste, so the new clipboard plugin will not double insert the Atom.
-    listeners.push(editor.on('paste', function (evt) {
-      return false;
+      var data = Drupal.dndck4.getDefaultInsertData(editor, atomInfo);
+      var caption = atomInfo.meta.legend || '';
+      Drupal.dndck4.insertNewWidget(editor, range, data, caption);
+      cleanupDrag();
     }));
 
     // On dragend (without drop), cleanup the events.
@@ -622,17 +534,12 @@ Drupal.dndck4 = {
 //        console.log('dragleave');
 //      }));
 
-    function cleanupDrag(dropped) {
+    function cleanupDrag() {
       // Stop observing events.
       eventBuffer.reset();
       var l;
       while (l = listeners.pop()) {
         l.removeListener();
-      }
-      // Clean-up unused widget.
-      if (!dropped) {
-        widget.repository._.draggedWidget = null;
-        widget.repository.destroy(widget, true);
       }
       // Clean-up all remaining lines.
       liner.hideVisible();
@@ -698,10 +605,6 @@ Drupal.dndck4 = {
     var caption = '';
     if (widget.editables.caption) {
       caption = widget.editables.caption.getHtml();
-
-      if (caption == '') {
-        caption = Drupal.dnd.Atoms[widget.data.sid].meta.legend || '';
-      }
       widget.destroyEditable('caption');
     }
 
@@ -713,7 +616,7 @@ Drupal.dndck4 = {
     // Replace the inner HTML.
     widgetElement.setHtml(newElement.getHtml());
 
-    // Notify external scripts of new atom rendering.
+    // Notify external scripts of new atom rendering
     Drupal.dndck4.invokeCallbacks('AjaxExpandWidget', widget);
 
     // Initialize the new caption editable, and fill it with the previous
@@ -775,20 +678,7 @@ Drupal.dndck4 = {
       && el.children[0] && el.children[0].type == CKEDITOR.NODE_ELEMENT && el.children[0].hasClass('dnd-drop-wrapper')) {
       var sas = el.children[0].getHtml();
       var data = Drupal.dnd.sas2array(sas);
-      if (typeof data === 'undefined') {
-        // Check for any markup that can be converted to sas first.
-        sas = Drupal.dnd.htmlcomment2sas(sas);
-        if (typeof sas !== 'undefined') {
-          data = Drupal.dnd.sas2array(sas);
-        }
-      }
-      if (typeof data === 'undefined') {
-        // Remove the Atom Wrapper so we don't process it again.
-        el.removeClass('dnd-atom-wrapper');
-        // Remove the Drop wrapper so it doesn't process.
-        el.children[0].removeClass('dnd-drop-wrapper');
-      }
-      else {
+      if (data) {
         // Grab the atom type and alignment.
         data.align = 'none';
         $.each(el.attributes['class'].split(/\s+/), function (index, item) {

@@ -40,8 +40,7 @@ CKEDITOR.plugins.add('dnd', {
 
     // Assign the "insert atom into editor" method to be used for this editor.
     editor.dndInsertAtom = function(sid) {
-      var atom = Drupal.dnd.sas2array(Drupal.dnd.Atoms[sid].sas);
-      var markup = Drupal.theme('scaldEmbed', Drupal.dnd.Atoms[sid], atom.context, atom.options);
+      var markup = Drupal.theme('scaldEmbed', Drupal.dnd.Atoms[sid]);
       editor.insertElement(CKEDITOR.dom.element.createFromHtml(markup));
     };
 
@@ -144,13 +143,6 @@ CKEDITOR.plugins.add('dnd', {
           evt.data.preventDefault();
         }
         dnd.protectAtom($(editor.document.$).find('.dnd-atom-wrapper'));
-      });
-
-      // Prevent paste, so the new clipboard plugin will not double insert the Atom.
-      editor.on('paste', function (evt) {
-        if (Drupal.dnd.sas2array(evt.data.dataTransfer.getData('Text'))) {
-          return false;
-        }
       });
 
       editor.document.on('click', function (evt) {
