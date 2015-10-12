@@ -8,7 +8,7 @@
       //number of items displayed by default in a sub hub topic
       numSubHubTopics: 3,
       //html for simple 'view all' link
-      paraViewAll: '<p class="view-all" title="View other, related pages"><span>View all</span></p>'
+      paraViewAll: $('<p class="view-all" title="View all"><span>View all</span></p>')
     },
 
     init: function() {
@@ -43,15 +43,38 @@
         $('#openServiceMenu').removeClass('active');
       });
 
-      $('.view-all').on("click", this.showMore);
+      $('.sub-hub-topic .view-all').each(function() {
+        $(this).on("click",
+         {
+            num: Settings.numSubHubTopics,
+            elem: "li"
+          },
+          Sitewide.showMore);
+      }),
+      $('.related .view-all').each(function() {
+        $(this).on("click",
+         {
+            num: Settings.numRelated,
+            elem: "li"
+          },
+          Sitewide.showMore);
+      }),
+      $('.servicelist .view-all').each(function() {
+        $(this).on("click",
+         {
+            num: 1,
+            elem: "ul"
+          },
+          Sitewide.showMore);
+      })
     },
 
     updateDisplay: function() {
       this.wrapH2();
       this.moveGovmetric();
-      $('.related ul').displayViewAll(this.settings.numRelated, 'li', this.settings.paraViewAll);
-      $('.sub-hub-topic ul').displayViewAll(this.settings.numSubHubTopics, 'li', this.settings.paraViewAll);
-      $('.servicelist__wrap ul').displayViewAll(1, 'ul');
+      $('.related ul').displayViewAll(Settings.numRelated, 'li', Settings.paraViewAll);
+      $('.sub-hub-topic ul').displayViewAll(Settings.numSubHubTopics, 'li', Settings.paraViewAll);
+      $('.servicelist__wrap').displayViewAll(1, 'ul');
     },
 
     legacyIESupport: function() {
@@ -62,9 +85,9 @@
     },
 
     // higher order function to test if there are more items than we want to show by default
-    // (extra items are pre-hidden with css but we need to know if they exist we we can add 'view all')
-    itemsHidden: function (numDefault, elems) {
-      var childNumber = $(this).find(elems);
+    // (extra items are pre-hidden with css but we need to know if they exist so we can add 'view all')
+    itemsHidden: function (parent, numDefault, elems) {
+      var childNumber = parent.find(elems);
       var hidden = childNumber.length > numDefault ? true : false;
       return hidden;
     },
@@ -72,30 +95,43 @@
     // where there are more than n elements in menu display 'view all'
     displayViewAll: function(num, elems, viewAllElem) {
       $(this).each(function() {
-        var existing = $(this).find($('viewall'));
+
+        var existing = $(this).find($('.view-all'));
+
+        if (viewAllElem) {
+          var elemToShow = viewAllElem.clone();
+        }
+
         // if viewall element exists but is hidden, unhide it
-        if (existing) {
+        if (existing.length) {
           existing.removeClass('hide');
         }
         // else insert it
         else {
-          if (itemsHidden(num, elems)) {
-            viewAllElem.insertAfter($(this));
+          if (Sitewide.itemsHidden($(this), num, elems)) {
+            elemToShow.insertAfter($(this));
           }
         }
       });
     },
 
-    showMore: function() {
-      var elem = $(this);
-      elem.parent().find('li:gt(2)').slideToggle('150');
+    showMore: function(e) {
 
-      if (elem.text() === "View all") {
-        elem.find('span').text("View less").attr('title', 'View fewer links').addClass('open');
+      var elem = $(this);
+      var hiddenItems = elem.parent().find( e.data.elem + ':gt(' + (e.data.num - 1) + ')');
+
+      if (! elem.hasClass('open')) {
+        elem.find('span').text("View less").attr('title', 'View fewer links');
+        hiddenItems.slideDown(150);
+        elem.addClass('open');
       }
+
       else {
-        elem.find('span').text("View all").attr('title', 'View more links').removeClass('open');
+        elem.find('span').text("View all").attr('title', 'View more links');
+        hiddenItems.slideUp(150);
+        elem.removeClass('open');
       }
+
     },
 
     openClose: function(thisButton, thisMenu, otherButton, otherMenu) {
@@ -160,12 +196,10 @@
         //console.log(newsBoxHeight);
         var imgBoxHeight = $('.comms__img').outerHeight();
         var blogBoxHeight = (newsBoxHeight - imgBoxHeight - 30);
-        //console.log(blogBoxHeight);
-        $('.comms__feature .comms__item').css('height', blogBoxHeight + "px");
       }
     },
 
-    // if broswer does not support html5 placeholder, add value to form field
+    // if browser does not support html5 placeholder, add value to form field
     checkPlaceholder: function() {
       if(!Modernizr.input.placeholder){
         $('.search__input').val('Enter search terms...');
@@ -192,7 +226,7 @@
           // Check if the element is wider than its parent and thus needs to be scrollable
           if (element.outerWidth() > element.parent().outerWidth()) {
               element.data('scrollWrapper').addClass('has-scroll');
-              scrollWrapper.before('<p class="scroll-indicator">Scroll</p>');
+              scrollWrapper.before('<p class="small-text scroll-indicator">scroll table to see more</p>');
           }
           // When the viewport size is changed, check again if the element needs to be scrollable
           $(window).on('resize orientationchange', function() {
@@ -234,12 +268,14 @@
         });
       }
     }
-
   }
+
+  var Settings = Sitewide.settings;
 
   $(document).ready(function() {
     Sitewide.init();
   });
+
 
   $(window).scroll(function() {
      Sitewide.runOnScroll();
