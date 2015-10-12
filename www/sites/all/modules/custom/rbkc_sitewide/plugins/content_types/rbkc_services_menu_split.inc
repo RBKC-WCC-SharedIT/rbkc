@@ -40,13 +40,14 @@ function rbkc_sitewide_services_menu($subtype, $conf, $panel_args, $context) {
 
   $block->title = '';
 
-  $block->content = '<div class="servicelist" id="services"><div class="impact">
-<div class="impact__inner group">
-        <h2>Services</h2>
-        <nav role="navigation">' . $render1 . $render2 . '<a class="servicelist__viewall" href="http://www.rbkc.gov.uk/services.aspx"><span>View more services</span></a>
-        </nav>
+  $block->content = '
+  <div class="servicelist" id="services"><div class="impact">
+    <div class="impact__inner group">
+            <h2>Services</h2>
+            <nav role="navigation"><div class="servicelist__wrap">' . $render1 . $render2 . '<p class="view-all hide" ><span>View all</span></p></div>
+            </nav>
+        </div>
     </div>
-</div>
-</div>';
+  </div>';
   return $block;
 }

@@ -161,7 +161,7 @@
   font-size: 13px;
   color:#505a66;
 }
-a.servicelist__viewall {
+.servicelist .view-all {
   display: block;
   border: 0;
   background: none;
@@ -169,19 +169,20 @@ a.servicelist__viewall {
   padding: 0.6rem 1rem 2rem 1rem;
   text-align: left;
   cursor: pointer;
+  color: #376697;
 }
-.servicelist__viewall:hover,
-.servicelist__viewall:active {
+.servicelist .view-all:hover,
+.servicelist .view-all:active {
   text-decoration: underline;
   border-bottom: 0 !important;
 }
-.servicelist__viewall span {
+.servicelist .view-all span {
   background: url('../images/refresh/chevron-down-blue.png') no-repeat right 50% ;
   padding-right: 20px;
   background-size: 12px;
   font-size: 14px;
 }
-.servicelist__viewall.viewless span {
+.servicelist .view-all.open span {
   background: url('../images/refresh/chevron-up-blue.png') no-repeat right 50% ;
   background-size: 12px;
 }
@@ -841,7 +842,7 @@ a.servicelist__viewall {
   .servicelist li:last-child a {
     border-bottom: 0;
   }
-  a.servicelist__viewall,
+  .servicelist .view-all,
   .servicelist__desc {
     display: none;
   }
@@ -1418,7 +1419,7 @@ a.servicelist__viewall {
 .lt-ie9 a.servicelist-last:focus {
   border-bottom: 0 !important;
 }
-.lt-ie9 a.servicelist__viewall {
+.lt-ie9 .servicelist .view-all {
   display: none;
 }
 .lt-ie9 .servicelist ul {
