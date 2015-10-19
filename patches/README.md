@@ -9,27 +9,31 @@ This patch integrates dndck4 via a plugin for WYSIWYG.
 
 ################################################################################
 
-PATCH: wysiwyg_tools_plus-tab_builder_js--anchor_links_in_accordion_body.patch
-PROBLEM: Prevents anchor links in the accordion body from being pulled up into
+PATCH: wysiwyg_tools_plus-tab_builder_js--target_header_links_properly.patch
+PROBLEM: Prevents any link in the accordion body from being pulled up into
 the accordion head. This is because in line 43 of tab-builder.js in
 wysiwyg_tools_plus the script pulls out any child <a> elements and inserts them
 before the accordion body, when it should be targeting the head link
-specifically.
-SOLUTION: A change to the selector in the JavaScript.
-RELATED ISSUES: N/A
+specifically. ALSO: The module only searches direct (first level) children for the designated
+accordion header, which means the module doesn't work when we wrap contents in p tags.
+SOLUTION: A header-link-specific selector in the Jquery and alter code to use 'find'
+function rather than 'children' to search nested elements for the designated header.
+RELATED ISSUES:  wysiwyg_tools_plus-accordion_js--wrap_contents_in_p_tags.patch
 TESTING STEPS: Create an accordion with a anchor link, ensure it is not pulled
- into the accordion head.
+ into the accordion head. Check that the header link works properly.
 NOTES: N/A
 
 ################################################################################
 
-PATCH: wysiwyg_tools_plus-accordion_js--remove_non_breaking_space_in_accordion_body.patch
-PROBLEM: There is a non-breaking space that is inserted into the body of every
-accordion.
-SOLUTION: Alter the JavaScript to remove the non-breaking space.
-RELATED ISSUES: N/A
+PATCH: wysiwyg_tools_plus-accordion_js-add_p_tags_remove_whitespace
+PROBLEM: When applied the accordion strips p tags from content and inserts a non-breaking
+space before text.  This means that block elements can't be inserted into the accordion.
+SOLUTION: Alter the JavaScript to wrap contents in p tags and remove non-breaking space.
+RELATED ISSUES: wysiwyg_tools_plus-tab_builder_js--target_header_links_properly.patch
 TESTING STEPS: Create an accordion, see that there is no non-breaking space
-inserted into the body of the accordion.
+inserted into the body of the accordion, check that content is wrapped in p tags
+and check that you can add carriage returns/block elements in WYWIWYG area that don't
+break the accordion body.
 NOTES: N/A
 
 ################################################################################
@@ -48,3 +52,4 @@ version of the page is displayed.
 NOTES: N/A
 
 ################################################################################
+
