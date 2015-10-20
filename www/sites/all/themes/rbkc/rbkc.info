@@ -6,6 +6,7 @@ version = VERSION
 core = 7.x
 
 stylesheets[all][] = css/main.css
+stylesheets[all][] = addtoany.css
 
 scripts[] = js/main.js
 scripts[] = js/modernizr.custom.84336.js
