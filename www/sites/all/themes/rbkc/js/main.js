@@ -70,6 +70,7 @@
     },
 
     updateDisplay: function() {
+      this.slickSlider();
       this.wrapH2();
       this.moveGovmetric();
       $('.related ul').displayViewAll(Settings.numRelated, 'li', Settings.paraViewAll);
