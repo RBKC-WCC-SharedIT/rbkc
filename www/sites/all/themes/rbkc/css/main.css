@@ -553,6 +553,9 @@ margin-bottom: 0 !important;
   text-indent: 500%;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
+  z-index: 200;
+  cursor: pointer;
 }
 .search p {
   margin: 0;
@@ -583,7 +586,6 @@ margin-bottom: 0 !important;
 .search--headerglobal .search__submit:hover {
   background-position: center -37px;
   border: 0;
-  cursor: pointer;
 }
 .search__expand {
   background: #182837;
