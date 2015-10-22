@@ -553,6 +553,9 @@ margin-bottom: 0 !important;
   text-indent: 500%;
   white-space: nowrap;
   overflow: hidden;
+  position: relative;
+  z-index: 200;
+  cursor: pointer;
 }
 .search p {
   margin: 0;
@@ -583,7 +586,6 @@ margin-bottom: 0 !important;
 .search--headerglobal .search__submit:hover {
   background-position: center -37px;
   border: 0;
-  cursor: pointer;
 }
 .search__expand {
   background: #182837;
@@ -870,7 +872,6 @@ a.footerglobal__contact:hover,
   cursor: pointer;
 }
 
-
 /****************************************************/
 /*                   MODULE RULES                   */
 /****************************************************/
@@ -974,7 +975,7 @@ a.footerglobal__contact:hover,
 .sub-hub-topic .view-all span:hover {
   border-bottom: dotted 1px;
 }
-.sub-hub-topic .view-all span.open {
+.sub-hub-topic .view-all.open span {
   background: url('../images/refresh/chevron-up-blue.png') no-repeat right 40%;
   background-size: 14px;
 }
