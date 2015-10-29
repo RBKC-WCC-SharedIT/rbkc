@@ -2,7 +2,7 @@
                   <div class="col8">
                     <div class="content">
                       <?php
-                      //var_dump($content); die();
+                        //var_dump($content); die();
                         hide($content['field_contact_department']);
                         hide($content['deeplink_form']);
                         hide($content['rbkc_related_content']);
@@ -16,7 +16,6 @@
                       <?php print render($content['field_tag']); ?>
                       <p class="print-page"><strong>Print page: </strong><?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
                       <?php
-                        //print render($content['sharethis']);
                         print render($content['deeplink_form']);
                       ?>
                     </div>
