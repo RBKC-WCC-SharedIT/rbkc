@@ -1155,3 +1155,17 @@ function rbkc_deploy_update_7095() {
 function rbkc_deploy_update_7096() {
   module_enable(array('feature_addtoany'), TRUE);
 }
+
+/**
+ * Switch off the ShareThis feature.
+ */
+function rbkc_deploy_update_7097() {
+  module_disable(array('feature_sharethis'), TRUE);
+}
+
+/**
+ * Switch off the ShareThis module.
+ */
+function rbkc_deploy_update_7098() {
+  module_disable(array('ShareThis'), TRUE);
+}

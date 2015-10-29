@@ -33,11 +33,19 @@ function feature_addtoany_strongarm() {
   $strongarm->value = 'a2a_config.track_links = \'bitly\';
 a2a_config.track_links_key = \'rbkcwebmaster|R_326b58e755b047e2b12f15babc0547cc\'; // username|API key delimited by |
 a2a_config.menu_type = "mail";
+a2a_config.show_title = true;
+a2a_config.templates = {
+    email: {
+        subject: "${title}",
+        body: "I thought you might be interested in this link from RBKC:\\n${link}"
+    }
+};
 a2a_config.templates = {
     twitter: "${title} ${link} via @RBKC"
 };
-
-';
+a2a_config.templates = {
+    facebook: "${title} ${link} by RBKC"
+};';
   $export['addtoany_additional_js'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -50,9 +58,37 @@ a2a_config.templates = {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addtoany_custom_image';
+  $strongarm->value = '';
+  $export['addtoany_custom_image'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'addtoany_display_in_nodecont';
   $strongarm->value = 1;
   $export['addtoany_display_in_nodecont'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addtoany_display_in_nodelink';
+  $strongarm->value = 0;
+  $export['addtoany_display_in_nodelink'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addtoany_display_in_rss';
+  $strongarm->value = 0;
+  $export['addtoany_display_in_rss'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addtoany_display_in_teasers';
+  $strongarm->value = 0;
+  $export['addtoany_display_in_teasers'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
