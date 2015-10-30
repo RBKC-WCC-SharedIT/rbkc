@@ -2,7 +2,7 @@
                   <div class="col8">
                     <div class="content">
                       <?php
-                      //var_dump($content); die();
+                        //var_dump($content); die();
                         hide($content['field_contact_department']);
                         hide($content['deeplink_form']);
                         hide($content['rbkc_related_content']);
