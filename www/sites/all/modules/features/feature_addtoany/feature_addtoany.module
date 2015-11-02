@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the AddToAny feature.
- */
-
-include_once 'feature_addtoany.features.inc';
