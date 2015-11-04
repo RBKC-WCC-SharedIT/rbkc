@@ -16,7 +16,7 @@
                       <?php print render($content['field_tag']); ?>
                       <p class="print-page"><strong>Print page: </strong><?php print print_insert_link(); ?> / <?php print print_pdf_insert_link(); ?></p>
                       <?php
-                        //print render($content['sharethis']);
+                        print render($content['sharethis']);
                         print render($content['deeplink_form']);
                       ?>
                     </div>
