@@ -41,6 +41,16 @@ function feature_common_filter_default_formats() {
         'settings' => array(
           'local_paths' => '',
           'protocol_style' => 'path',
+          'local_paths_exploded' => array(
+            0 => array(
+              'path' => '/',
+            ),
+            1 => array(
+              'path' => '/',
+              'host' => 'default',
+            ),
+          ),
+          'base_url_host' => 'default',
         ),
       ),
     ),
