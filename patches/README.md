@@ -52,3 +52,13 @@ version of the page is displayed.
 NOTES: N/A
 
 ################################################################################
+
+PATCH: entity_reference-get_view_display.patch
+PROBLEM: Entitity reference views are not available to fields as filters under
+entity selection / mode. Get message 'No eligible views were found'
+SOLUTION: Changed Line 25 of EntityReference_SelectionHandler_Views.class.php
+to include views.
+RELATED ISSUES: N/A
+TESTING STEPS: Create a link field using the Entity Reference Utility and attempt
+to filter its view by Entity Selection.
+NOTES: N/A
