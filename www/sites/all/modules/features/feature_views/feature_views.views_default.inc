@@ -31,11 +31,7 @@ function feature_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
-  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
-  $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -69,8 +65,9 @@ function feature_views_views_default_views() {
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
   $handler->display->display_options['filters']['tid']['value'] = array(
-    0 => '329',
+    0 => '20',
   );
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
   $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
@@ -80,8 +77,15 @@ function feature_views_views_default_views() {
     1 => 0,
     3 => 0,
     5 => 0,
+    4 => 0,
   );
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'service_hub';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+
+  /* Display: Newsroom capital projects */
+  $handler = $view->new_display('block', 'Newsroom capital projects', 'newsroom_capital_projects_block');
   $export['newsroom_capital_projects'] = $view;
 
   $view = new view();

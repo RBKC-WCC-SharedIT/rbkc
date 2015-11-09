@@ -17,6 +17,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Type in a title for your curated topic',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -73,6 +85,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'field_collection',
@@ -119,6 +143,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
@@ -188,6 +224,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -244,6 +292,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'field_collection',
@@ -289,6 +349,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'entityreference',
@@ -350,6 +422,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -436,6 +520,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Tick to indicate the page has been audited',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -481,6 +577,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'field_collection',
@@ -526,6 +634,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -582,6 +702,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Select the Service hub that this page should appear under.',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -631,6 +763,18 @@ function feature_service_sub_hub_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),

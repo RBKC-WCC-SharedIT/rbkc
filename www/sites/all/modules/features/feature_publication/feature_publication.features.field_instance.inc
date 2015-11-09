@@ -23,6 +23,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -104,6 +116,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Upload the PDF document for this publication (ensure it is uploaded the top-most publication page otherwise it will not show in the table of contents).',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'settings' => array(),
@@ -156,6 +180,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Tick to indicate the page has been audited',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -200,6 +236,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Please set the date and time editors should review this content.',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -256,6 +304,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Select the Service hub that this page should appear under.',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -305,6 +365,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -352,6 +424,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -399,6 +483,18 @@ function feature_publication_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'carousel' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'carousel_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',

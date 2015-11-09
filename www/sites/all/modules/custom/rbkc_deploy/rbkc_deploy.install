@@ -1142,4 +1142,30 @@ function rbkc_deploy_update_7094() {
   module_enable(array('redirect_fix'), TRUE);
 }
 
+/**
+ * Turn on the newsroom content type Feature.
+ */
+function rbkc_deploy_update_7095() {
+  module_enable(array('feature_newsroom_content_type'), TRUE);
+}
 
+/**
+ * Turn on the Oauth module.
+ */
+function rbkc_deploy_update_7096() {
+  module_enable(array('oauth'), TRUE);
+}
+
+/**
+ * Turn on the Twitter module.
+ */
+function rbkc_deploy_update_7097() {
+  module_enable(array('twitter'), TRUE);
+}
+
+/**
+ * Turn on the Twitter feature.
+ */
+function rbkc_deploy_update_7098() {
+  module_enable(array('feature_twitter'), TRUE);
+}

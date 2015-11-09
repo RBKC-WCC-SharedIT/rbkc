@@ -98,9 +98,7 @@ function feature_common_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'answer' => 'answer',
-    'guide' => 'guide',
-    'publication' => 'publication',
-    'topic' => 'topic',
+    'press_release' => 'press_release',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
@@ -112,6 +110,7 @@ function feature_common_views_default_views() {
     2 => '2',
     1 => 0,
     3 => 0,
+    5 => 0,
     4 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
@@ -238,6 +237,17 @@ function feature_common_views_default_views() {
   /* Display: Internal link to any content type */
   $handler = $view->new_display('entityreference_view_widget', 'Internal link to any content type', 'entityreference_view_widget_5');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+
+  /* Display: Internal link to press release or answer page */
+  $handler = $view->new_display('entityreference_view_widget', 'Internal link to press release or answer page', 'entityreference_view_widget_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['display_description'] = 'Link to an answer page or a press release  ';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
