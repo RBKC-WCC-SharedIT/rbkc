@@ -113,28 +113,6 @@ function feature_common_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'linkit_picker_views';
-  $strongarm->value = array(
-    'wysiwyg_linkit_profile' => array(
-      'views' => array(
-        'linkit_picker_node' => 'linkit_picker_node',
-        'linkit_picker_term' => 0,
-        'linkit_picker_user' => 0,
-      ),
-    ),
-    'linkit_for_service_hub_fields' => array(
-      'views' => array(
-        'linkit_picker_node' => 'linkit_picker_node',
-        'linkit_picker_term' => 0,
-        'linkit_picker_user' => 0,
-      ),
-    ),
-  );
-  $export['linkit_picker_views'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'mee_store_format';
   $strongarm->value = 'embed_div';
   $export['mee_store_format'] = $strongarm;
