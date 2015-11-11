@@ -1,0 +1,13 @@
+diff --git a/www/sites/all/modules/contrib/entityreference/plugins/selection/EntityReference_SelectionHandler_Views.class.php b/www/sites/all/modules/contrib/entityreference/plugins/selection/EntityReference_SelectionHandler_Views.class.php
+index 1b036a7..e43c3d3 100644
+--- a/www/sites/all/modules/contrib/entityreference/plugins/selection/EntityReference_SelectionHandler_Views.class.php
++++ b/www/sites/all/modules/contrib/entityreference/plugins/selection/EntityReference_SelectionHandler_Views.class.php
+@@ -22,7 +22,7 @@ class EntityReference_SelectionHandler_Views implements EntityReference_Selectio
+    */
+   public static function settingsForm($field, $instance) {
+     $view_settings = empty($field['settings']['handler_settings']['view']) ? '' : $field['settings']['handler_settings']['view'];
+-    $displays = views_get_applicable_views('entityreference display');
++    $displays = views_get_applicable_views('entityreference view display');
+     // Filter views that list the entity type we want, and group the separate
+     // displays by view.
+     $entity_info = entity_get_info($field['settings']['target_type']);
