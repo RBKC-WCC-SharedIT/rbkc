@@ -1141,3 +1141,4 @@ function rbkc_deploy_update_7093() {
 function rbkc_deploy_update_7094() {
   module_enable(array('redirect_fix'), TRUE);
 }
+
