@@ -350,6 +350,15 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'image',
   );
 
+  // Exported permission: 'administer linkit'.
+  $permissions['administer linkit'] = array(
+    'name' => 'administer linkit',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'linkit',
+  );
+
   // Exported permission: 'administer manualcrop settings'.
   $permissions['administer manualcrop settings'] = array(
     'name' => 'administer manualcrop settings',
