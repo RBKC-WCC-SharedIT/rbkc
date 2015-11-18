@@ -1,0 +1,4 @@
+name = RBKC Fix Linkit View
+description = Restores corrupted Linkit view
+core = 7.x
+package = RBKC
