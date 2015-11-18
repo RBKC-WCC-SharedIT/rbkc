@@ -1142,4 +1142,9 @@ function rbkc_deploy_update_7094() {
   module_enable(array('redirect_fix'), TRUE);
 }
 
-
+/**
+ * Turn on the redirect fix module.
+ */
+function rbkc_deploy_update_7095() {
+  module_enable(array('rbkc_fix_linkit_view'), TRUE);
+}
