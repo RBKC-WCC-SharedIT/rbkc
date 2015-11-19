@@ -1145,6 +1145,6 @@ function rbkc_deploy_update_7094() {
 /**
  * Turn on the redirect fix module.
  */
-function rbkc_deploy_update_7095() {
+function rbkc_deploy_update_7099() {
   module_enable(array('rbkc_fix_linkit_view'), TRUE);
 }
