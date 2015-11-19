@@ -1,5 +1,5 @@
 name = RBKC Linkit Picker
 description = Overrides the node Linkit Picker View.
-core = 7.x
+core = 7.x-1.0
 package = RBKC
 dependencies[] = linkit_picker
