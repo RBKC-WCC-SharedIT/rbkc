@@ -1,0 +1,600 @@
+.top-news__text,
+.newsletters,
+.press-releases,
+.press-releases-search,
+.press-releases-all,
+.press-releases__column,
+.press-releases-all,
+.capital-projects li,
+.tweet-container,
+.tweet  {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.newsroom-section {
+  padding-top: 24px;
+  padding-bottom: 12px;
+  overflow: hidden;
+}
+.newsroom-section ul {
+  overflow: hidden;
+}
+.action:not(.special) {
+  font-size: 16px;
+  text-align: right;
+  margin-bottom: 24px;
+  font-weight: bold;
+  clear: both;
+}
+
+/*** top news carousel ***/
+.top-news__slider {
+  margin-top: 24px;
+  margin-bottom: 0 !important;
+  position: relative;
+}
+.top-news__item {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.top-news a {
+  color:#505a66;
+  transition:all .25s linear 0s;
+  display: block;
+  overflow: hidden;
+}
+.top-news a:hover  {
+  opacity: 0.7;
+  border-bottom: 0;
+}
+.top-news__item h2,
+.top-news__item p {
+  line-height: 30px;
+  margin-bottom: 0;
+}
+.top-news__item h2 {
+  margin-bottom: 15px;
+}
+.top-news__img {
+  position: relative;
+}
+/** 448 by 294 px **/
+.top-news__img img {
+  width: 100%;
+  height: auto !important;
+  display: block;
+}
+.top-news__text {
+  padding: 24px 24px 0 24px;
+  position: relative;
+  text-overflow: ellipsis;
+}
+.top-news__text p {
+  display: none;
+}
+
+/*** press releases ***/
+.press-releases .view-content {
+  overflow: hidden;
+}
+.press-releases .date {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+}
+
+/*** newsletters ***/
+.newsletters .newsroom-section {
+  padding-bottom: 0;
+}
+.newsletters {
+  padding-bottom: 12px;
+}
+.newsletters ul {
+  overflow: hidden;
+}
+.newsletters li {
+  margin-bottom: 12px;
+}
+.newsletters li:last-child {
+  margin-bottom: 24px;
+}
+.newsletters .image {
+  display: block;
+  width: 100%;
+  padding-bottom: 120px;
+  background-position: 212px;
+}
+.newsletters__link {
+  display: block;
+}
+.newsletters__link:hover {
+  border-bottom: 0 !important;
+}
+.newsletters__link:hover .newsletters__caption  {
+  border-color: #58D2C4;
+}
+.newsletters__caption {
+  padding: 10px 16px;
+  font-weight: bold;
+  background: #fff;
+  color: #444;
+  min-height: 72px;
+  border-right: solid #ddd 5px;
+  float: left;
+  width: 180px;
+  height: 100px;
+}
+.newsletters__description {
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+/*** social media ***/
+.social-media {
+  overflow: visible !important;
+}
+.social-media .action {
+  overflow: hidden;
+}
+.special  {
+  padding: 0 0 24px 0;
+  font-weight: bold;
+  clear:both;
+}
+.special a {
+  background: none !important;
+  position: relative;
+  float: left;
+  display: block;
+  width: 33.333%;
+  padding: 0 !important;
+  text-align: center;
+}
+.special a:hover {
+  border-bottom: 0 !important;
+}
+.special a:hover .social-media__link {
+  border-bottom: dotted 1px;
+}
+.special .wtbird,
+.special .wficon {
+  background-size: 55%;
+}
+.special .wytube {
+  background-size: 65%;
+}
+.special .wtbird,
+.special .wficon,
+.special .wytube {
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 0 auto 12px auto;
+  border-radius: 50%;
+  background-color: #58D2C4;
+  background-position: center;
+}
+.special .find-us {
+  display: block;
+  padding-bottom: 24px;
+}
+
+/*** tweets ***/
+.tweets {
+  float: left;
+  width: 100%;
+  overflow: visible;
+}
+.tweet-container {
+  width: 100%;
+  position: relative;
+  float: left;
+  margin-bottom: 12px;
+}
+.tweet {
+  float: left !important;
+  padding: 0 24px 16px 80px;
+  font-size: 14px;
+  min-height: 170px;
+  clear: both;
+}
+.views-field-profile-image-url {
+  position: absolute;
+  left: 16px;
+  top: 40px;
+  margin-top: -25px;
+  height: 40px;
+  width: 40px;
+  margin-right: 12px;
+  background: url('../images/refresh/rbkc-logo-blue.png') center no-repeat;
+  background-size: 40px;
+}
+.tweet .views-field-name {
+  padding-right: 5px;
+  font-size: 17px;
+  position: absolute;
+  left: 0;
+  top: 65px;
+  line-height: 24px;
+}
+.tweet .views-field-screen-name {
+  position: absolute;
+  left: 0;
+  top: 95px;
+  line-height: 16px;
+}
+.tweet .views-field-screen-name a {
+  color: #505a66;
+}
+.tweet .views-field-follow {
+  dislay: none !important;
+  font-size: 0;
+  height: 0;
+}
+.tweet .views-field-text {
+  float: left;
+  clear:both;
+  padding: 36px 16px 24px 16px;
+  background: #fff url('../images/refresh/btbird.svg') 97% 10px no-repeat;
+  background-size: 16px;
+  border: solid #ddd 1px;
+  position: relative;
+  margin-bottom: 12px;
+  min-height: 58px;
+}
+.tweet .views-field-text:before {
+  content: "";
+  display:block;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-left: solid #ddd 1px;
+  border-top: solid #ddd 1px;
+  position: absolute;
+  left: -14px;
+  -ms-transform: rotate(315deg); /* IE 9 */
+  -webkit-transform: rotate(315deg); /* Safari */
+  transform: rotate(315deg);
+}
+.views-field-created-time,
+.views-field-web-intents {
+  font-size: 13px;
+  float: right;
+  clear:both;
+}
+.tweet .views-field-profile-image-url img {
+  display:none;
+}
+.tweet .views-field-web-intents a {
+  text-indent: 200%;
+  font-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  width: 20px;
+  height: 20px;
+  float: left;
+  padding-right: 6px;
+  transition: none;
+}
+.tweet .views-field-web-intents a:hover {
+  border-bottom: 0;
+}
+.tweet .views-field-web-intents a:active {u
+}
+.tweet .views-field-web-intents span:nth-child(1) a {
+  background: url('../images/refresh/twit-reply.svg') no-repeat;
+  background-size: 20px;
+}
+.tweet .views-field-web-intents span:nth-child(2) a {
+  background: url('../images/refresh/twit-retweet.svg') no-repeat;
+  background-size: 20px;
+}
+.tweet .views-field-web-intents span:nth-child(3) a {
+  background: url('../images/refresh/twit-like.svg') no-repeat;
+  background-size: 18px;
+}
+.tweet .views-field-web-intents span:nth-child(1) a:hover {
+  background: url('../images/refresh/twit-reply-blue.svg') no-repeat;
+  background-size: 20px;
+}
+.tweet .views-field-web-intents span:nth-child(2) a:hover  {
+  background: url('../images/refresh/twit-retweet-hover.svg') no-repeat;
+  background-size: 20px;
+}
+.tweet .views-field-web-intents span:nth-child(3) a:hover {
+  background: url('../images/refresh/twit-like-hover.svg') no-repeat;
+  background-size: 18px;
+}
+
+/*** capital projects ***/
+.capital-projects li {
+  margin: 0 !important;
+}
+
+@media only screen and (min-width: 600px) {
+
+  .newsroom-section {
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+  .newsroom-section h2 a {
+    float: right;
+    clear: none;
+  }
+
+  /*** top news ***/
+  .top-news__img {
+    float: left;
+    width: 55%;
+  }
+  .top-news__text {
+    padding: 16px 36px 6px 24px;
+    width: 45%;
+    float: right;
+  }
+
+  /*** press releases ***/
+  .press-releases__feed {
+    float: left;
+    width: 100%;
+    padding-top: 12px;
+  }
+  .press-releases__column {
+    width: 50%;
+    min-height: 10px;
+    float: left;
+  }
+  .press-releases-action {
+    margin-bottom: 12px;
+  }
+  .press-releases-action span {
+    width: 50%;
+    float: left;
+  }
+  .press-releases-search {
+    text-align: right;
+  }
+  .press-releases-all {
+    text-align: left;
+  }
+  .press-releases__column:first-child {
+    padding-right: 20px;
+  }
+  .press-releases__column:last-child {
+    padding-left: 20px;
+  }
+
+  /*** newsletters ***/
+  .newsletters {
+    padding-bottom: 24px;
+  }
+
+  /*** social media ***/
+  p.social-media__intro {
+    float:left;
+    clear: both;
+  }
+  .special {
+    overflow: visible !important;
+    text-align: right;
+    display: block;
+    padding-top: 24px;
+  }
+ .special a {
+    text-align:left;
+    width: auto !important;
+    padding: 12px 0 12px 40px !important;
+    margin-left: 20px;
+    display: inline;
+    float: none !important;
+  }
+  .special .find-us {
+    display: inline;
+    text-align: left;
+    padding: 0;
+  }
+  .social-media .wtbird,
+  .social-media .wficon,
+  .social-media .wytube {
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  .special a:first-child {
+    margin-left: 0;
+  }
+
+
+  /*** capital projects ***/
+  .capital-projects li {
+    width: 50%;
+    float: left;
+    padding: 0 0 12px 0;
+  }
+  .capital-projects li:nth-child(odd) {
+    padding-right: 24px;
+  }
+
+}
+
+@media only screen and (min-width: 700px) {
+
+  /*** top news ***/
+  .top-news__img {
+    width: 45%;
+  }
+  .top-news__text {
+    width: 55%;
+   }
+   .top-news__text p {
+    display: block;
+   }
+  .top-news__text {
+    display: block;
+    height: 9em !important;
+    overflow: hidden;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .top-news__text:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    height: 1.5em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  }
+
+  /*** social media ***/
+  .newsletters .image {
+    padding-bottom: 130px;
+    background-position: top left;
+  }
+  .newsletters li {
+    margin-bottom: 36px;
+  }
+  .newsletters li a {
+    padding-top: 92px;
+  }
+  .newsletters__caption {
+    border-right: 0;
+    border-bottom: solid #ddd 5px;
+    float: none;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+
+  .top-news__text {
+    height: 10.5em !important;
+  }
+
+/*  .special a {
+    float: none;
+    display: inline;
+    padding: 0 0 0 45px;
+  }
+  .social-media .wtbird,
+  .social-media .wficon,
+  .social-media .wytube {
+    top: -10px;
+  }*/
+
+}
+
+@media only screen and (min-width: 850px) {
+
+  /*** tweets ***/
+.tweets {
+  padding-top: 24px;
+  margin-bottom: 36px;
+}
+.tweet-container {
+  margin-left: 6.25%;
+  width: 29.167%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+  .tweet .views-field-name {
+    position: static;
+    float: left;
+  }
+  .tweet .views-field-screen-name {
+    position: static;
+    float: left;
+    clear:right;
+  }
+  .views-field-created-time,
+  .views-field-web-intents {
+    float: left;
+  }
+
+  .tweet {
+    padding: 0;
+  }
+  .tweet .views-field-text:before {
+    border-right: solid #ddd 1px;
+    border-left: solid #fff 1px !important;
+    left: 10%;
+    top: -13px;
+  }
+  .flexbox .tweets,
+  .flexbox .tweet-container {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+  }
+  .tweet .views-field-name,
+  .tweet .views-field-screen-name {
+    float: left;
+  }
+  .tweet .views-field-name {
+    float:none;
+  }
+  .tweet .views-field-screen-name {
+    font-size: 13px;
+  }
+  .tweet .views-field-text {
+    position: relative;
+    width: 100%;
+    margin: 24px 0 12px 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .views-field-follow {
+    display: none;
+  }
+  .tweet-container:first-child {
+    margin-left: 0;
+  }
+  .views-field-profile-image-url {
+    position: static;
+    float: left;
+    padding: 0;
+    margin-top: 0;
+  }
+
+
+
+}
+
+@media only screen and (min-width: 900px) {
+
+  .top-news__text {
+    height: 12em !important;
+  }
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+  .top-news__text p {
+    height: 13.5em !important;
+  }
+
+}
+
+@media only screen and (min-width: 1050px) {
+
+/*  .top-news .slick-prev {
+    left: -32px;
+  }
+  .top-news .slick-next {
+    right: -32px;
+  }*/
+
+}
