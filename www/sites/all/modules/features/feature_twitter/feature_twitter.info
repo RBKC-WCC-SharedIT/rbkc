@@ -1,0 +1,17 @@
+name = Twitter
+description = Capture all things Twitter-module-related
+core = 7.x
+package = Features
+dependencies[] = twitter
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = twitter_api
+features[variable][] = twitter_consumer_key
+features[variable][] = twitter_consumer_secret
+features[variable][] = twitter_expire
+features[variable][] = twitter_host
+features[variable][] = twitter_import
+features[variable][] = twitter_search
+features[variable][] = twitter_tinyurl
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][strongarm] = strongarm

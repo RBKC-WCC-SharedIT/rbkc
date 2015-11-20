@@ -49,6 +49,9 @@ function feature_answer_strongarm() {
       'teaser_medium' => array(
         'custom_settings' => TRUE,
       ),
+      'carousel_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -90,6 +93,14 @@ function feature_answer_strongarm() {
             'weight' => '9',
             'visible' => FALSE,
           ),
+          'carousel_teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'carousel' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
         ),
         'webform' => array(
           'teaser' => array(
@@ -107,6 +118,18 @@ function feature_answer_strongarm() {
             'visible' => FALSE,
           ),
           'top_three_topics' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'carousel_teaser' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => TRUE,
+          ),
+          'carousel' => array(
             'weight' => '10',
             'visible' => FALSE,
           ),

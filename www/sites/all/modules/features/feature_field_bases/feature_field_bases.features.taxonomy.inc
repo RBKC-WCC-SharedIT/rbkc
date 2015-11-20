@@ -21,7 +21,7 @@ function feature_field_bases_taxonomy_default_vocabularies() {
       'name' => 'Service Hub',
       'machine_name' => 'service_hub',
       'description' => 'Service Hub.',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

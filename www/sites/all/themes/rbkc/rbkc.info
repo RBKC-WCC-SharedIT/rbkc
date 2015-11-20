@@ -7,9 +7,8 @@ core = 7.x
 
 stylesheets[all][] = css/main.css
 
-scripts[] = js/main.js
 scripts[] = js/modernizr.custom.84336.js
-
+scripts[] = js/main.js
 
 regions[servicedropdown] = ServiceDropDown
 regions[content] = Content
