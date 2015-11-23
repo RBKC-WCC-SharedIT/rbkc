@@ -541,6 +541,8 @@ margin-bottom: 0 !important;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 0;
+  position: relative;
+  z-index: 150;
 }
 .search__submit {
   background: #fff url('../images/refresh/search_submit_37px.png') no-repeat;
@@ -669,7 +671,6 @@ margin-bottom: 0 !important;
 }
 
 .middle {
-  overflow: hidden;
  /* do not change - fits the 12px baseline grid */
   padding-top: 30px;
 }

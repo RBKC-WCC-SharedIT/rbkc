@@ -1142,3 +1142,72 @@ function rbkc_deploy_update_7094() {
   module_enable(array('redirect_fix'), TRUE);
 }
 
+/**
+ * Turn on the rbkc fix linkit view fix module.
+ */
+function rbkc_deploy_update_7099() {
+  module_enable(array('rbkc_fix_linkit_view'), TRUE);
+}
+
+/**
+ * Switch on linkit picker module.
+ */
+function rbkc_deploy_update_7100() {
+  module_enable(array('linkit_picker'), TRUE);
+}
+
+/**
+ * Switch on linkit picker module.
+ */
+function rbkc_deploy_update_7101() {
+  module_enable(array('linkit_picker'), TRUE);
+}
+
+/**
+ * Switch on linkit picker module.
+ */
+function rbkc_deploy_update_7102() {
+  module_enable(array('linkit_picker'), TRUE);
+}
+
+/**
+ * Switch on RBKC Linkit Picker.
+ */
+function rbkc_deploy_update_7103() {
+  module_enable(array('rbkc_linkit_picker'), TRUE);
+}
+
+/**
+ * Turn on the newsroom content type Feature.
+ */
+function rbkc_deploy_update_7104() {
+  module_enable(array('feature_newsroom_content_type'), TRUE);
+}
+
+/**
+ * Turn on the Oauth module.
+ */
+function rbkc_deploy_update_7105() {
+  module_enable(array('oauth'), TRUE);
+}
+
+/**
+ * Turn on the Twitter module.
+ */
+function rbkc_deploy_update_7106() {
+  module_enable(array('twitter'), TRUE);
+}
+
+/**
+ * Turn on the Twitter feature.
+ */
+function rbkc_deploy_update_7107() {
+  module_enable(array('feature_twitter'), TRUE);
+}
+
+/**
+ * Turn off the Twitter feature.
+ */
+function rbkc_deploy_update_7108() {
+  module_disable(array('feature_twitter'), TRUE);
+}

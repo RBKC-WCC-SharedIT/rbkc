@@ -98,6 +98,24 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'aggregator',
   );
 
+  // Exported permission: 'access own authorizations'.
+  $permissions['access own authorizations'] = array(
+    'name' => 'access own authorizations',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
+  );
+
+  // Exported permission: 'access own consumers'.
+  $permissions['access own consumers'] = array(
+    'name' => 'access own consumers',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
+  );
+
   // Exported permission: 'access own webform results'.
   $permissions['access own webform results'] = array(
     'name' => 'access own webform results',
@@ -196,6 +214,15 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'google_appliance',
   );
 
+  // Exported permission: 'add authenticated twitter accounts'.
+  $permissions['add authenticated twitter accounts'] = array(
+    'name' => 'add authenticated twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
+  );
+
   // Exported permission: 'add content to books'.
   $permissions['add content to books'] = array(
     'name' => 'add content to books',
@@ -204,6 +231,15 @@ function feature_roles_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'book',
+  );
+
+  // Exported permission: 'add twitter accounts'.
+  $permissions['add twitter accounts'] = array(
+    'name' => 'add twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
   );
 
   // Exported permission: 'admin_display_suite'.
@@ -267,6 +303,15 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'breakpoints',
+  );
+
+  // Exported permission: 'administer consumers'.
+  $permissions['administer consumers'] = array(
+    'name' => 'administer consumers',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
   );
 
   // Exported permission: 'administer contact departments'.
@@ -413,6 +458,15 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer oauth'.
+  $permissions['administer oauth'] = array(
+    'name' => 'administer oauth',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
+  );
+
   // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
@@ -519,6 +573,15 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer twitter accounts'.
+  $permissions['administer twitter accounts'] = array(
+    'name' => 'administer twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
   );
 
   // Exported permission: 'administer url aliases'.
@@ -718,6 +781,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'book',
   );
 
+  // Exported permission: 'create news content'.
+  $permissions['create news content'] = array(
+    'name' => 'create news content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'create press_release content'.
   $permissions['create press_release content'] = array(
     'name' => 'create press_release content',
@@ -834,6 +904,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'delete any news content'.
+  $permissions['delete any news content'] = array(
+    'name' => 'delete any news content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'delete any press_release content'.
   $permissions['delete any press_release content'] = array(
     'name' => 'delete any press_release content',
@@ -937,6 +1014,13 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'delete own news content'.
+  $permissions['delete own news content'] = array(
+    'name' => 'delete own news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1128,6 +1212,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'edit any news content'.
+  $permissions['edit any news content'] = array(
+    'name' => 'edit any news content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'edit any press_release content'.
   $permissions['edit any press_release content'] = array(
     'name' => 'edit any press_release content',
@@ -1241,6 +1332,13 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'editor' => 'editor',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'edit own news content'.
+  $permissions['edit own news content'] = array(
+    'name' => 'edit own news content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1545,6 +1643,24 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'pathauto',
+  );
+
+  // Exported permission: 'oauth authorize any consumers'.
+  $permissions['oauth authorize any consumers'] = array(
+    'name' => 'oauth authorize any consumers',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
+  );
+
+  // Exported permission: 'oauth register any consumers'.
+  $permissions['oauth register any consumers'] = array(
+    'name' => 'oauth register any consumers',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'oauth_common',
   );
 
   // Exported permission: 'rename features'.

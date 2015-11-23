@@ -86,6 +86,10 @@ function feature_press_release_strongarm() {
             'weight' => '3',
             'visible' => FALSE,
           ),
+          'carousel' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
