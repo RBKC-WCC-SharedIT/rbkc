@@ -10,7 +10,7 @@
       <h2>Press releases</h2>
       <div class="press-releases__feed">
 
-         <?php print views_embed_view("press_releases", 'newsroom_press_releases'); ?>
+         <?php print views_embed_view("newsroom_press_releases", 'newsroom_press_releases'); ?>
       </div>
       <div class="action linkheader">
         <?php print render($content['field_search_newsroom_action']); ?>
@@ -52,7 +52,7 @@
 
       <div class="content">
       <p class="large-text"><?php print render($content['field_capital_projects_intro']); ?></p>
-        <?php print views_embed_view("newsroom_capital_projects", 'newsroom_capital_projects_block'); ?>
+        <?php print views_embed_view("new_newsroom_capital_projects", 'newsroom_capital_projects_block'); ?>
 
       </div>
       <div class="action linkheader"><?php print render($content['field_view_all_capital_projects']); ?></div>
