@@ -240,6 +240,7 @@ function rbkc_menu_link__book_toc_guide(array $variables) {
  *
  * This is so that we can style how content appears when it's pulled through
  * onto other pages.
+ * Also adds specific CSS and JavaScript to the Newsroom content type
  *
  * @param type $vars
  */
@@ -257,6 +258,20 @@ function rbkc_preprocess_node(&$vars) {
   if ($vars['view_mode'] == 'link_field') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__link';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__link';
+  }
+
+  if ($vars['view_mode'] == 'carousel') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__carousel';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->nid . '__carousel';
+  }
+
+  if($vars['type'] == 'news') {
+    // Conditionally add stylesheets based on path.
+    $path_to_theme = drupal_get_path('theme', 'rbkc');
+
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'new-newsroom.css', array('weight' => 10, 'group' => CSS_THEME));
+    drupal_add_css($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.css');
+    drupal_add_js($path_to_theme . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'slick-1.3.15' . DIRECTORY_SEPARATOR . 'slick' . DIRECTORY_SEPARATOR . 'slick.js');
   }
 }
 

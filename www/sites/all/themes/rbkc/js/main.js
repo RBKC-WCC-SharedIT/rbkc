@@ -268,6 +268,18 @@
           ]
         });
       }
+      if ($('.top-news').length) {
+        $('.top-news__slider').slick({
+          infinite: true,
+          speed: 1000,
+          autoplaySpeed: 4000,
+          fade:true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          swipe: true,
+        });
+      }
     }
   }
 
