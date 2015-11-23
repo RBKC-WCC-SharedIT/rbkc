@@ -1204,3 +1204,10 @@ function rbkc_deploy_update_7106() {
 function rbkc_deploy_update_7107() {
   module_enable(array('feature_twitter'), TRUE);
 }
+
+/**
+ * Turn off the Twitter feature.
+ */
+function rbkc_deploy_update_7108() {
+  module_disable(array('feature_twitter'), TRUE);
+}

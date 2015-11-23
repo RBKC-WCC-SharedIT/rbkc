@@ -214,6 +214,15 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'google_appliance',
   );
 
+  // Exported permission: 'add authenticated twitter accounts'.
+  $permissions['add authenticated twitter accounts'] = array(
+    'name' => 'add authenticated twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
+  );
+
   // Exported permission: 'add content to books'.
   $permissions['add content to books'] = array(
     'name' => 'add content to books',
@@ -222,6 +231,15 @@ function feature_roles_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'book',
+  );
+
+  // Exported permission: 'add twitter accounts'.
+  $permissions['add twitter accounts'] = array(
+    'name' => 'add twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
   );
 
   // Exported permission: 'admin_display_suite'.
@@ -555,6 +573,15 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer twitter accounts'.
+  $permissions['administer twitter accounts'] = array(
+    'name' => 'administer twitter accounts',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'twitter',
   );
 
   // Exported permission: 'administer url aliases'.
