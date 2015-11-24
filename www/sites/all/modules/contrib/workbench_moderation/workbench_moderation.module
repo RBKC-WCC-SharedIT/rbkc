@@ -1555,10 +1555,6 @@ function workbench_moderation_moderate($node, $state) {
  *   The node being saved.
  */
 function workbench_moderation_store($node) {
-	
-	dpm($node);
-	watchdog('Workbench moderation', 'NODE: '.print_r($node, true));	
-  
   if (!isset($node->nid)) {
     watchdog('Workbench moderation', 'Failed to save node revision: node not passed to shutdown function.', array(), WATCHDOG_NOTICE);
     return;
@@ -1571,9 +1567,6 @@ function workbench_moderation_store($node) {
   $live_revision->revision = 0;
   // Prevent another moderation record from being written.
   $live_revision->workbench_moderation['updating_live_revision'] = TRUE;
-
-	dpm($live_revision);
-	watchdog('Workbench moderation', 'LIVE REVISION: '.print_r($live_revision, true));
 
   // Reset flag from taxonomy_field_update() so that {taxonomy_index} values aren't written twice.
   $taxonomy_index_flag = &drupal_static('taxonomy_field_update', array());
