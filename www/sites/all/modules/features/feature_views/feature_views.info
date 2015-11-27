@@ -11,6 +11,7 @@ features[features_api][] = api:2
 features[views_view][] = new_newsroom_capital_projects
 features[views_view][] = newsroom_capital_projects
 features[views_view][] = newsroom_press_releases
+features[views_view][] = newsroom_tweets
 features[views_view][] = rbkc_events
 features[views_view][] = rbkc_news
 features[views_view][] = workbench_audited_content
