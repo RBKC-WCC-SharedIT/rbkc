@@ -38,32 +38,6 @@ function feature_views_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['views-tweets-newsroom_tweets'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'tweets-newsroom_tweets',
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'rbkc' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'rbkc',
-        'weight' => 0,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['views-workbench_edited-block_1'] = array(
     'cache' => -1,
     'custom' => 0,
