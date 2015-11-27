@@ -1515,7 +1515,7 @@ background: url('../images/refresh/12px_gridlines.png') 10px 19px ;
 }
 .content  li {
   /* do not change unless to 0px or 6px or 12px - fits the 12px baseline grid */
-  margin-bottom: 0;
+  margin-bottom: 12px;
 }
 .content ul > li {
   background: url('../images/refresh/bullet_blue.png') no-repeat;
