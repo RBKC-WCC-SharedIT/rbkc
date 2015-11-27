@@ -6,7 +6,6 @@ dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = views:views_default:3.0
 features[fe_block_settings][] = views-9cf22433e0efbd8b206c8e4c2edb177c
-features[fe_block_settings][] = views-tweets-newsroom_tweets
 features[fe_block_settings][] = views-workbench_edited-block_1
 features[features_api][] = api:2
 features[views_view][] = new_newsroom_capital_projects
