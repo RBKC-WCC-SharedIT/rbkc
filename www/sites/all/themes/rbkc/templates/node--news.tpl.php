@@ -28,7 +28,7 @@
     <div class=" blue-border-top social-media newsroom-section group">
       <h2>Social media</h2>
 
-        <?php print views_embed_view("newsroom_tweets", 'newsroom_tweets'); ?>
+        <?php print views_embed_view("newsroom_tweets", 'block'); ?>
 
         <div class="action special">
           <span class="find-us">Find us:</span>
