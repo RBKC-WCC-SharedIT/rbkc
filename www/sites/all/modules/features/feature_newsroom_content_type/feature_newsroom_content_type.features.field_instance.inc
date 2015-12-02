@@ -62,7 +62,7 @@ function feature_newsroom_content_type_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 1,
-      'default_image' => 36,
+      'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '500 KB',
