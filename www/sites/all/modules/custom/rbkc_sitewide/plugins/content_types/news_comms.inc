@@ -20,6 +20,7 @@ $plugin = array(
     'itemthree_title' => '',
     'itemthree_body' => '',
     'itemthree_link' => '',
+    'comms_newslink' => 'https://www.rbkc.gov.uk/newsroom',
   )
 );
 
@@ -91,6 +92,14 @@ function rbkc_news_comms_edit_form($form, &$form_state) {
     );
   }
 
+  $form['comms_newslink'] = array(
+    '#title' => t('Link to newsroom'),
+    '#description' => t(''),
+    '#type' => 'textfield',
+    '#default_value' => 'https://www.rbkc.gov.uk/newsroom',
+    '#required' => FALSE,
+  );
+
   return $form;
 }
 
@@ -143,6 +152,7 @@ function rbkc_news_comms_render($subtype, $conf, $panel_args, $context = NULL) {
     'comms_label' => $conf['comms_label'],
     'comms_image' => $image,
     'news' => $news,
+    'comms_newslink' => $conf['comms_newslink'],
     ));
 
   return $block;
