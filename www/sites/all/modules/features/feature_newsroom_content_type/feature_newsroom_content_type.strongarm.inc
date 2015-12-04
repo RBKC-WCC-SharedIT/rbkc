@@ -90,9 +90,7 @@ function feature_newsroom_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_news';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
+  $strongarm->value = array();
   $export['menu_options_news'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -107,8 +105,8 @@ function feature_newsroom_content_type_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_news';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_news'] = $strongarm;
 
@@ -116,7 +114,7 @@ function feature_newsroom_content_type_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_news';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_news'] = $strongarm;
 
   $strongarm = new stdClass();

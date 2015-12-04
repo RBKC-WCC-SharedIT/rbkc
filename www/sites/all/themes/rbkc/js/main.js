@@ -43,6 +43,8 @@
         $('#openServiceMenu').removeClass('active');
       });
 
+
+
       $('.sub-hub-topic .view-all').each(function() {
         $(this).on("click",
          {
@@ -106,12 +108,15 @@
         // if viewall element exists but is hidden, unhide it
         if (existing.length) {
           existing.removeClass('hide');
+
         }
         // else insert it
         else {
+
           if (Sitewide.itemsHidden($(this), num, elems)) {
             elemToShow.insertAfter($(this));
           }
+
         }
       });
     },

@@ -28,7 +28,7 @@
     <!-- repeating comms__item field -->
 
     <div class="comms__item comms__readmore">
-      <h3><a href="/newsroom">Visit the newsroom for more updates</a></h3>
+      <h3><?php print l('Visit the newsroom for more updates', $comms_newslink); ?></h3>
     </div>
   </div><!-- end comms content -->
 </div><!-- end comms news -->

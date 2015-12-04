@@ -523,4 +523,3 @@ function rbkc_preprocess_html(&$vars) {
   );
   drupal_add_html_head($viewport, 'viewport');
 }
-

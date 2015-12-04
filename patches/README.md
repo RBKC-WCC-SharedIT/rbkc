@@ -62,3 +62,4 @@ RELATED ISSUES: N/A
 TESTING STEPS: Create a link field using the Entity Reference Utility and attempt
 to filter its view by Entity Selection.
 NOTES: N/A
+

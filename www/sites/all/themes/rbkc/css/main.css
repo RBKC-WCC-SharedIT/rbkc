@@ -979,6 +979,7 @@ a.footerglobal__contact:hover,
 .sub-hub-topic .view-all span:hover {
   border-bottom: dotted 1px;
 }
+
 .sub-hub-topic .view-all.open span {
   background: url('../images/refresh/chevron-up-blue.png') no-repeat right 40%;
   background-size: 14px;

@@ -1,0 +1,6 @@
+# `local` environment config goes here
+
+modules:
+    enabled:
+        - PhpBrowser:
+            url: http://localhost
