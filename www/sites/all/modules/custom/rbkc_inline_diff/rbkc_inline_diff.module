@@ -1,0 +1,110 @@
+<?php
+
+/**
+ * Allow modules to provide a comparison about entities.
+ *
+ * @param object $old_entity
+ *   The older entity revision.
+ * @param object $new_entity
+ *   The newer entity revision.
+ * @param array $context
+ *   An associative array containing:
+ *   - entity_type: The entity type; e.g., 'node' or 'user'.
+ *   - view_mode: The view mode to use. Defaults to FALSE.
+ *
+ * @return array
+ *   An associative array of values keyed by the entity property.
+ *
+ * @todo
+ *   Investiagate options and document these.
+ */
+
+/**
+ * Implementation of hook_menu
+ */
+function rbkc_inline_diff_menu() {
+  $items = array();
+  $items['node/%/inline_diff/%/%'] = array(
+    'title' => 'Inline diff view',
+    'page arguments' => array(1, 3, 4),
+    'page callback' => 'rbkc_inline_diff_view',
+    'access arguments' => array('administer content'),
+    'type' => MENU_CALLBACK,
+  );  
+  return $items;
+}
+
+/**
+ * Implementation of hook_libraries_info
+ */
+function rbkc_inline_diff_libraries_info() {
+  $libraries = array();
+
+  $libraries['phphtmldiff'] = array(
+    'name' => 'PHP HTML Diff',
+    'vendor url' => 'https://github.com/rashid2538/php-htmldiff',
+    'download url' => 'https://github.com/rashid2538/php-htmldiff/archive/master.zip',
+    'version callback' => 'rbkc_inline_diff_phphtmldiff_version',
+    // 'version arguments' => array(
+    //   'file' => 'HtmlDiff.php', 
+    //   'pattern' => '/Version (\d+)/', 
+    //   'lines' => 1,
+    // ),
+    'files' => array(
+      'php' => array('HtmlDiff.php'), //this can be a path to the file location like array('lib/simple.js')
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Libraries API expects a version number but
+ * HtmlDiff doesn't have one, so we simply return true;
+ * @return bool true
+ */
+function rbkc_inline_diff_phphtmldiff_version() {
+  return true;
+}
+/**
+ * Loads versions $vid1 and $vid2 of node $nid
+ * and displays them using the Htmldiff library
+ * @param  int $nid  Node ID
+ * @param  int $vid1 the first version
+ * @param  int $vid2 the second version
+ * @return html       The rendered Htmldiff page
+ */
+function rbkc_inline_diff_view($nid, $vid1, $vid2) {
+  if ($vid1 == $vid2) {
+    return t('Error: Version numbers must be different.');
+  }
+
+  // get the node versions
+  if ($vid1 > $vid2) {
+    $old_node = node_load($nid, $vid2);
+    $new_node = node_load($nid, $vid1);
+  } else {
+    $old_node = node_load($nid, $vid1);
+    $new_node = node_load($nid, $vid2);
+  }
+
+  // if either version are not found, exit
+  if (!$old_node || !$new_node) {
+    return t('Error: Node or version not found');
+  }
+
+  // create node wrappers
+  $old_wrapper = entity_metadata_wrapper('node', $old_node);
+  $new_wrapper = entity_metadata_wrapper('node', $new_node);
+
+  // load the Htmldiff library
+  $lib_status = libraries_load('phphtmldiff');
+  if ($lib_status === false) {
+    return t('Error: PHP HTMLDiff not found');
+  }
+  
+  // generate diff
+  $diff = new HtmlDiff($old_wrapper->body->value->value(), $new_wrapper->body->value->value());
+  $diff->build();
+  return $diff->getDifference();
+}
