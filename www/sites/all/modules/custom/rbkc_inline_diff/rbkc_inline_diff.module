@@ -102,6 +102,9 @@ function rbkc_inline_diff_view($nid, $vid1, $vid2) {
   $diff = new HtmlDiff($old_wrapper->body->value->value(), $new_wrapper->body->value->value());
   $diff->build();
 
+  // add toggle javascript
+  drupal_add_js(drupal_get_path('module', 'rbkc_inline_diff') . '/rbkc_inline_diff.js');
+  
   return theme('rbkc_inline_diff_view', array('new' => $diff->getNewHtml(), 'difference' => $diff->getDifference()));
 }
 

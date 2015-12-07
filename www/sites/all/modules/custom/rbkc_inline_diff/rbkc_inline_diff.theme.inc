@@ -2,8 +2,17 @@
 
 function theme_rbkc_inline_diff_view($vars) {
 	$output = '';
-	$output .= '<div id="content_difference">' . $vars['difference']. '</div>';
-	$output .= '<div id="content_new">' . $vars['new']. '</div>';
+
+	// links
+	$output .= '<div id="toggle">';
+	$output .= '<span class="toggle_link">'.l(t('Final with markup'), '', array('attributes' => array('id' => 'toggle_link_finalwithmarkup'))).'</span>';
+	$output .= '<span class="toggle_link">'.l(t('Final'), '', array('attributes' => array('id' => 'toggle_link_final'))).'</span>';
+	$output .= '<div>';
+
+	// content
+	$output .= '<div id="content_difference"><h1>'.t('Final with markup').'</h1>'.$vars['difference']. '</div>';
+	$output .= '<div id="content_new" style="display:none"><h1>'.t('Final').'</h1>'.$vars['new'].'</div>';
+
 	return $output;
 }
 
