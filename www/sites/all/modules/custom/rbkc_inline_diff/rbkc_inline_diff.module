@@ -45,13 +45,8 @@ function rbkc_inline_diff_libraries_info() {
     'vendor url' => 'https://github.com/rashid2538/php-htmldiff',
     'download url' => 'https://github.com/rashid2538/php-htmldiff/archive/master.zip',
     'version callback' => 'rbkc_inline_diff_phphtmldiff_version',
-    // 'version arguments' => array(
-    //   'file' => 'HtmlDiff.php', 
-    //   'pattern' => '/Version (\d+)/', 
-    //   'lines' => 1,
-    // ),
     'files' => array(
-      'php' => array('HtmlDiff.php'), //this can be a path to the file location like array('lib/simple.js')
+      'php' => array('HtmlDiff.php'), 
     ),
   );
 
@@ -106,5 +101,38 @@ function rbkc_inline_diff_view($nid, $vid1, $vid2) {
   // generate diff
   $diff = new HtmlDiff($old_wrapper->body->value->value(), $new_wrapper->body->value->value());
   $diff->build();
-  return $diff->getDifference();
+
+  return theme('rbkc_inline_diff_view', array('new' => $diff->getNewHtml(), 'difference' => $diff->getDifference()));
+}
+
+
+function rbkc_inline_diff_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['diff_node_revisions'])) {
+    $theme_registry['diff_node_revisions']['file'] = 'rbkc_inline_diff.theme.inc';
+    $theme_registry['diff_node_revisions']['theme_path'] = drupal_get_path('module', 'rbkc_inline_diff');
+    $theme_registry['diff_node_revisions']['function'] = 'theme_rbkc_inline_diff_diff_node_revisions';
+    $theme_registry['diff_node_revisions']['includes'] = array(drupal_get_path('module', 'rbkc_inline_diff').'/rbkc_inline_diff.theme.inc');
+  }
+}
+
+function rbkc_inline_diff_form_diff_node_revisions_alter(&$form, &$form_state, $form_id) {
+  $form['submit_inline'] = array(
+    '#type' => 'submit',
+    '#value' => t('Compare Inline'),
+    '#submit' => array('rbkc_inline_diff_diff_node_revisions_submit'),
+  );
+}
+
+function rbkc_inline_diff_diff_node_revisions_submit($form, &$form_state) {
+  $vals = $form_state['values'];
+  drupal_goto('node/'.$vals['nid'].'/inline_diff/'.$vals['old'].'/'.$vals['new']);
+}
+
+function rbkc_inline_diff_theme($existing, $type, $theme, $path) {
+  return array(
+    'rbkc_inline_diff_view' => array(
+      'variables' => array('new' => NULL, 'difference' => NULL),
+      'file' => 'rbkc_inline_diff.theme.inc',
+    )
+  );
 }
