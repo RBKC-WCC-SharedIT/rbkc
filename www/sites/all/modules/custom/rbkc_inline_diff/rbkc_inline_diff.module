@@ -28,7 +28,7 @@ function rbkc_inline_diff_menu() {
     'title' => 'Inline diff view',
     'page arguments' => array(1, 3, 4),
     'page callback' => 'rbkc_inline_diff_view',
-    'access arguments' => array('administer content'),
+    'access arguments' => array('view moderation history'),
     'type' => MENU_CALLBACK,
   );  
   return $items;
