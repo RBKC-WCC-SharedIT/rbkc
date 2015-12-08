@@ -98,14 +98,26 @@ function rbkc_inline_diff_view($nid, $vid1, $vid2) {
     return t('Error: PHP HTMLDiff not found');
   }
   
-  // generate diff
+  // generate title diff
+  $diff_title = new HtmlDiff($old_node->title, $new_node->title);
+  $diff_title->build();
+  // generate content diff
   $diff = new HtmlDiff($old_wrapper->body->value->value(), $new_wrapper->body->value->value());
   $diff->build();
 
   // add toggle javascript
   drupal_add_js(drupal_get_path('module', 'rbkc_inline_diff') . '/rbkc_inline_diff.js');
-  
-  return theme('rbkc_inline_diff_view', array('new' => $diff->getNewHtml(), 'difference' => $diff->getDifference()));
+
+  // Change the title to a more useful one
+  drupal_set_title($new_node->title);
+
+  return theme('rbkc_inline_diff_view', array(
+    'new' => $diff->getNewHtml(), 
+    'difference' => $diff->getDifference(), 
+    'new_node' => $new_node, 
+    'old_node' => $old_node, 
+    'new_title' => $new_node->title,
+    'difference_title' => $diff_title->getDifference()));
 }
 
 
@@ -134,7 +146,7 @@ function rbkc_inline_diff_diff_node_revisions_submit($form, &$form_state) {
 function rbkc_inline_diff_theme($existing, $type, $theme, $path) {
   return array(
     'rbkc_inline_diff_view' => array(
-      'variables' => array('new' => NULL, 'difference' => NULL),
+      'variables' => array('params' => NULL),
       'file' => 'rbkc_inline_diff.theme.inc',
     )
   );
