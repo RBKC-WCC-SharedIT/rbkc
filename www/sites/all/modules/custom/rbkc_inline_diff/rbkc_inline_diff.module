@@ -24,12 +24,13 @@
  */
 function rbkc_inline_diff_menu() {
   $items = array();
-  $items['node/%/inline_diff/%/%'] = array(
+  $items['node/%/moderation/diff/inline_view/%/%'] = array(
     'title' => 'Inline diff view',
-    'page arguments' => array(1, 3, 4),
+    'page arguments' => array(1, 5, 6),
     'page callback' => 'rbkc_inline_diff_view',
     'access arguments' => array('view moderation history'),
-    'type' => MENU_CALLBACK,
+    'tab_parent' => 'node/%/moderation/diff/list',
+    'type' => MENU_LOCAL_TASK,
   );  
   return $items;
 }
@@ -140,7 +141,7 @@ function rbkc_inline_diff_form_diff_node_revisions_alter(&$form, &$form_state, $
 
 function rbkc_inline_diff_diff_node_revisions_submit($form, &$form_state) {
   $vals = $form_state['values'];
-  drupal_goto('node/'.$vals['nid'].'/inline_diff/'.$vals['old'].'/'.$vals['new']);
+  drupal_goto('node/'.$vals['nid'].'/moderation/diff/inline_view/'.$vals['old'].'/'.$vals['new']);
 }
 
 function rbkc_inline_diff_theme($existing, $type, $theme, $path) {
