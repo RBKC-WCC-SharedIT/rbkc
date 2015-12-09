@@ -1455,6 +1455,25 @@ div.accordionContents + h4 {
   margin-bottom: 24px;
 }
 
+/*** drupal tabs section ***/
+.drupal-tabs {
+  margin-top: 32px;
+  text-align: center;
+}
+.drupal-tabs .tabs.primary {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.drupal-tabs .tabs.secondary  {
+  text-align: center;
+  width: 960px;
+  margin: 0 auto;
+  border-bottom: 0;
+}
+
+
+
+
 /******************************************************/
 /*    CONTENT AREA (subject to wysiwyg restrictions)  */
 /******************************************************/
@@ -2985,7 +3004,8 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 600px) 
   }
   .tabs .active a {
     background: #F5F6F1;
-    border-bottom: solid #F5F6F1 1px;
+    border-right: solid #CFD0CB 1px !important;
+    border-bottom: solid #F5F6F1 1px !important;
     z-index: 900;
   }
 

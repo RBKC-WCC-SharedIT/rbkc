@@ -1,0 +1,12 @@
+
+ins,
+.diffins,
+ins.diffmod {
+  background: #ccffcc;
+  text-decoration: none;
+}
+del,
+del.diffmod,
+del.diffdel {
+  color: red;
+}
