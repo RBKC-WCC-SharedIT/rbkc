@@ -246,4 +246,3 @@ features[user_permission][] = view own unpublished content
 features[user_permission][] = view revisions
 features[user_permission][] = view the administration theme
 features[variable][] = user_admin_role
-features_exclude[dependencies][oauth_common] = oauth_common
