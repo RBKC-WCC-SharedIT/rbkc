@@ -103,7 +103,11 @@ function rbkc_inline_diff_view($nid, $vid1, $vid2) {
   $diff_title = new HtmlDiff($old_node->title, $new_node->title);
   $diff_title->build();
   // generate content diff
-  $diff = new HtmlDiff($old_wrapper->body->value->value(), $new_wrapper->body->value->value());
+  $old_node_view = node_view($old_node);
+  $old_node_rendered = render($old_node_view);
+  $new_node_view = node_view($new_node);
+  $new_node_rendered = render($new_node_view);  
+  $diff = new HtmlDiff($old_node_view['body'][0]['#markup'], $new_node_view['body'][0]['#markup']);
   $diff->build();
 
   // add toggle javascript
