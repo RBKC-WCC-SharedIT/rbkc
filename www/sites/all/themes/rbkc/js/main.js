@@ -75,6 +75,7 @@
       this.slickSlider();
       this.wrapH2();
       this.moveGovmetric();
+      this.stylePDF();
       $('.related ul').displayViewAll(Settings.numRelated, 'li', Settings.paraViewAll);
       $('.sub-hub-topic ul').displayViewAll(Settings.numSubHubTopics, 'li', Settings.paraViewAll);
       $('.servicelist__wrap').displayViewAll(1, 'ul');
