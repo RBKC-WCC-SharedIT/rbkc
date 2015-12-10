@@ -1762,6 +1762,8 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'view any atom',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'scald',
@@ -1772,6 +1774,8 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'view contact departments',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
       'editor' => 'editor',
     ),
     'module' => 'contact_department',
