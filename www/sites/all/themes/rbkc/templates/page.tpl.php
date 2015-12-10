@@ -64,11 +64,14 @@
       </div>
     </div><!-- end ribbon -->
 
-    <div class="drupal-tabs">
-      <?php if ($tabs = render($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
-      <?php print render($page['help']); ?>
-    </div>
+    <?php if ($tabs = render($tabs)): ?>
+      <div class="drupal-tabs">
+        <div class="tabs"><?php print $tabs; ?></div>
+      </div>
+    <?php endif; ?>
+
     <div class="middle inner padlr group">
+      <?php print render($page['help']); ?>
       <?php print render($page['content']); ?>
     </div><!-- end middle inner -->
 
