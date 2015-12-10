@@ -10,8 +10,10 @@ function theme_rbkc_inline_diff_view($vars) {
 	$output .= '<div>';
 
 	// content
+  $output .= '<div class="content">'; 
 	$output .= '<div id="content_difference"><h1>'.t('Final with markup').'</h1>'.'<p>Title: '.$vars['difference_title'].'</p>'.$vars['difference']. '</div>';
 	$output .= '<div id="content_new" style="display:none"><h1>'.t('Final').'</h1>'.'<p>Title: '.$vars['new_title'].'</p>'.$vars['new'].'</div>';
+  $output .= '</div> <!-- div.content -->';
 
 	return $output;
 }
