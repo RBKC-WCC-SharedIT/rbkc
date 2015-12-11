@@ -1211,3 +1211,10 @@ function rbkc_deploy_update_7107() {
 function rbkc_deploy_update_7108() {
   module_disable(array('feature_twitter'), TRUE);
 }
+
+/**
+ * Enable the RBKC Inline Diff module
+ */
+function rbkc_deploy_update_7109() {
+  module_enable(array('rbkc_inline_diff'), TRUE);
+}

@@ -1,0 +1,161 @@
+<?php
+
+/**
+ * Allow modules to provide a comparison about entities.
+ *
+ * @param object $old_entity
+ *   The older entity revision.
+ * @param object $new_entity
+ *   The newer entity revision.
+ * @param array $context
+ *   An associative array containing:
+ *   - entity_type: The entity type; e.g., 'node' or 'user'.
+ *   - view_mode: The view mode to use. Defaults to FALSE.
+ *
+ * @return array
+ *   An associative array of values keyed by the entity property.
+ *
+ * @todo
+ *   Investiagate options and document these.
+ */
+
+/**
+ * Implementation of hook_menu
+ */
+function rbkc_inline_diff_menu() {
+  $items = array();
+  $items['node/%/moderation/diff/inline_view/%/%'] = array(
+    'title' => 'Inline diff view',
+    'page arguments' => array(1, 5, 6),
+    'page callback' => 'rbkc_inline_diff_view',
+    'access arguments' => array('view moderation history'),
+    'tab_parent' => 'node/%/moderation/diff/list',
+    'type' => MENU_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_libraries_info
+ */
+function rbkc_inline_diff_libraries_info() {
+  $libraries = array();
+
+  $libraries['phphtmldiff'] = array(
+    'name' => 'PHP HTML Diff',
+    'vendor url' => 'https://github.com/rashid2538/php-htmldiff',
+    'download url' => 'https://github.com/rashid2538/php-htmldiff/archive/master.zip',
+    'version callback' => 'rbkc_inline_diff_phphtmldiff_version',
+    'files' => array(
+      'php' => array('HtmlDiff.php'),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Libraries API expects a version number but
+ * HtmlDiff doesn't have one, so we simply return true;
+ * @return bool true
+ */
+function rbkc_inline_diff_phphtmldiff_version() {
+  return true;
+}
+/**
+ * Loads versions $vid1 and $vid2 of node $nid
+ * and displays them using the Htmldiff library
+ * @param  int $nid  Node ID
+ * @param  int $vid1 the first version
+ * @param  int $vid2 the second version
+ * @return html       The rendered Htmldiff page
+ */
+function rbkc_inline_diff_view($nid, $vid1, $vid2) {
+  if ($vid1 == $vid2) {
+    return t('Error: Version numbers must be different.');
+  }
+
+  // get the node versions
+  if ($vid1 > $vid2) {
+    $old_node = node_load($nid, $vid2);
+    $new_node = node_load($nid, $vid1);
+  } else {
+    $old_node = node_load($nid, $vid1);
+    $new_node = node_load($nid, $vid2);
+  }
+
+  // if either version are not found, exit
+  if (!$old_node || !$new_node) {
+    return t('Error: Node or version not found');
+  }
+
+  // create node wrappers
+  $old_wrapper = entity_metadata_wrapper('node', $old_node);
+  $new_wrapper = entity_metadata_wrapper('node', $new_node);
+
+  // load the Htmldiff library
+  $lib_status = libraries_load('phphtmldiff');
+  if ($lib_status === false) {
+    return t('Error: PHP HTMLDiff not found');
+  }
+
+  // generate title diff
+  $diff_title = new HtmlDiff($old_node->title, $new_node->title);
+  $diff_title->build();
+  // generate content diff
+  $old_node_view = node_view($old_node);
+  $old_node_rendered = render($old_node_view);
+  $new_node_view = node_view($new_node);
+  $new_node_rendered = render($new_node_view);  
+  $diff = new HtmlDiff($old_node_view['body'][0]['#markup'], $new_node_view['body'][0]['#markup']);
+  $diff->build();
+
+  // add toggle javascript
+  drupal_add_js(drupal_get_path('module', 'rbkc_inline_diff') . '/rbkc_inline_diff.js');
+
+  // add markup css
+  drupal_add_css(drupal_get_path('module', 'rbkc_inline_diff') . '/rbkc_inline_diff.css');
+
+  // Change the title to a more useful one
+  drupal_set_title($new_node->title);
+
+  return theme('rbkc_inline_diff_view', array(
+    'new' => $diff->getNewHtml(),
+    'difference' => $diff->getDifference(),
+    'new_node' => $new_node,
+    'old_node' => $old_node,
+    'new_title' => $new_node->title,
+    'difference_title' => $diff_title->getDifference()));
+}
+
+
+function rbkc_inline_diff_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['diff_node_revisions'])) {
+    $theme_registry['diff_node_revisions']['file'] = 'rbkc_inline_diff.theme.inc';
+    $theme_registry['diff_node_revisions']['theme_path'] = drupal_get_path('module', 'rbkc_inline_diff');
+    $theme_registry['diff_node_revisions']['function'] = 'theme_rbkc_inline_diff_diff_node_revisions';
+    $theme_registry['diff_node_revisions']['includes'] = array(drupal_get_path('module', 'rbkc_inline_diff').'/rbkc_inline_diff.theme.inc');
+  }
+}
+
+function rbkc_inline_diff_form_diff_node_revisions_alter(&$form, &$form_state, $form_id) {
+  $form['submit_inline'] = array(
+    '#type' => 'submit',
+    '#value' => t('Compare Inline'),
+    '#submit' => array('rbkc_inline_diff_diff_node_revisions_submit'),
+  );
+}
+
+function rbkc_inline_diff_diff_node_revisions_submit($form, &$form_state) {
+  $vals = $form_state['values'];
+  drupal_goto('node/'.$vals['nid'].'/moderation/diff/inline_view/'.$vals['old'].'/'.$vals['new']);
+}
+
+function rbkc_inline_diff_theme($existing, $type, $theme, $path) {
+  return array(
+    'rbkc_inline_diff_view' => array(
+      'variables' => array('params' => NULL),
+      'file' => 'rbkc_inline_diff.theme.inc',
+    )
+  );
+}
