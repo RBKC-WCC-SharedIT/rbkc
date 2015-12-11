@@ -1,0 +1,7 @@
+name = RBKC Inline Diff
+description = Shows comparison differences inline
+core = 7.x
+package = RBKC
+
+dependencies[] = libraries
+dependencies[] = diff

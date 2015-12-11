@@ -64,8 +64,13 @@
       </div>
     </div><!-- end ribbon -->
 
+    <?php if ($tabs = render($tabs)): ?>
+      <div class="drupal-tabs">
+        <div class="tabs"><?php print $tabs; ?></div>
+      </div>
+    <?php endif; ?>
+
     <div class="middle inner padlr group">
-      <?php if ($tabs = render($tabs)): ?><div class="tabs"><?php print $tabs; ?></div><?php endif; ?>
       <?php print render($page['help']); ?>
       <?php print render($page['content']); ?>
     </div><!-- end middle inner -->
