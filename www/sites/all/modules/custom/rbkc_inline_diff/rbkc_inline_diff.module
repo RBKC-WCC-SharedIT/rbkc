@@ -119,6 +119,9 @@ function rbkc_inline_diff_view($nid, $vid1, $vid2) {
   // Change the title to a more useful one
   drupal_set_title($new_node->title);
 
+  // Display the appropriate workbench moderation admin block
+  workbench_moderation_messages('view', $new_node);
+
   return theme('rbkc_inline_diff_view', array(
     'new' => $diff->getNewHtml(),
     'difference' => $diff->getDifference(),
