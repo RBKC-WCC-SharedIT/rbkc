@@ -5,3 +5,5 @@ package = RBKC
 
 dependencies[] = libraries
 dependencies[] = diff
+dependencies[] = workbench_moderation
+
