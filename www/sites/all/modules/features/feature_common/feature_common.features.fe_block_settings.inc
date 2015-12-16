@@ -55,7 +55,7 @@ function feature_common_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'rbkc',
-        'weight' => -14,
+        'weight' => -17,
       ),
       'seven' => array(
         'region' => '',
@@ -66,6 +66,58 @@ function feature_common_default_fe_block_settings() {
     ),
     'title' => '',
     'visibility' => 1,
+  );
+
+  $export['system-main'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'main',
+    'module' => 'system',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'rbkc' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'rbkc',
+        'weight' => -18,
+      ),
+      'seven' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['workbench-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'block',
+    'module' => 'workbench',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'rbkc' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'rbkc',
+        'weight' => -19,
+      ),
+      'seven' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'seven',
+        'weight' => -99,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   return $export;
