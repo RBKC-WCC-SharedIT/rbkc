@@ -133,7 +133,8 @@ function rbkc_sitewide_theme($existing, $type, $theme, $path) {
  * in hook_view_node_alter().
  */
 function rbkc_sitewide_node_access($node, $op, $account) {
-  if (($op == 'view') && (is_null($account->uid))) {
+  //dpm($account);
+  if (($op == 'view') && !(user_is_logged_in())) {
     return NODE_ACCESS_ALLOW;
   }
 
@@ -148,7 +149,7 @@ function rbkc_sitewide_node_access($node, $op, $account) {
  */
 function rbkc_sitewide_node_view_alter(&$build) {
   $node = $build['#node'];
-  if ($node->status == NODE_NOT_PUBLISHED) {
+  if (($node->status == NODE_NOT_PUBLISHED) && !(user_is_logged_in())) {
     drupal_not_found();
     drupal_exit();
   }
