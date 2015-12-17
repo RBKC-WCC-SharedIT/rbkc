@@ -133,7 +133,7 @@ function rbkc_sitewide_theme($existing, $type, $theme, $path) {
  * in hook_view_node_alter().
  */
 function rbkc_sitewide_node_access($node, $op, $account) {
-  if ($op == 'view') {
+  if (($op == 'view') && (is_null($account->uid))) {
     return NODE_ACCESS_ALLOW;
   }
 
