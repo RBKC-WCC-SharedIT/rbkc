@@ -124,3 +124,37 @@ function rbkc_sitewide_theme($existing, $type, $theme, $path) {
     ),
   );
 }
+
+
+/**
+ * Implements hook_node_access().
+ *
+ * Allow users to view unpublished nodes, but modify them later to return 404 
+ * in hook_view_node_alter().
+ */
+function rbkc_sitewide_node_access($node, $op, $account) {
+  if ($op == 'view') {
+    return NODE_ACCESS_ALLOW;
+  }
+
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ *
+ * Provide a 404 page for unpublished nodes.
+ * Access is allowed through hook_node_access().
+ */
+function rbkc_sitewide_node_view_alter(&$build) {
+  $node = $build['#node'];
+  if ($node->status == NODE_NOT_PUBLISHED) {
+    drupal_not_found();
+    drupal_exit();
+  }
+}
+
+
+
+
+
