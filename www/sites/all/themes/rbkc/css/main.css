@@ -2338,6 +2338,9 @@ only screen and (                min-resolution: 2dppx)  and (min-width: 480px) 
     border-radius: 3px;
     margin: 0;
   }
+  .related-search-terms {
+    margin: 0px 0px 20px 0px;
+  }
   .related-search-terms + .search-form {
    -moz-border-radius: 0 0 3px 3px;
     -webkit-border-radius: 0 0 3px 3px;
