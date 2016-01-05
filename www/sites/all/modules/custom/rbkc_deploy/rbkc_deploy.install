@@ -1218,3 +1218,10 @@ function rbkc_deploy_update_7108() {
 function rbkc_deploy_update_7109() {
   module_enable(array('rbkc_inline_diff'), TRUE);
 }
+
+/**
+ * Enable the RBKC stats module
+ */
+function rbkc_deploy_update_7110() {
+  module_enable(array('rbkc_stats'), TRUE);
+}

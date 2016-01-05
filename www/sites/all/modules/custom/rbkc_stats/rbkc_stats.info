@@ -1,0 +1,4 @@
+name = RBKC Stats
+description = Enable sitestat analysis.
+core = 7.x
+package = RBKC

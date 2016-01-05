@@ -48,6 +48,12 @@
 <html class="no-js" lang="en">
 
 <head profile="<?php print $grddl_profile; ?>">
+  <?php
+    if (module_exists(rbkc_stats)  && drupal_is_front_page()) {
+      $sitestat_loading_time1 = module_invoke('rbkc_stats', 'block_view', 'sitestat_loading1');
+      print render($sitestat_loading_time1['content']);
+    }
+  ?>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
@@ -63,5 +69,21 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
+  <?php
+    if (module_exists(rbkc_stats)) {
+
+      $sitestat_normal_measurement = module_invoke('rbkc_stats', 'block_view', 'sitestat_normal_measurement');
+      print render($sitestat_normal_measurement['content']);
+
+      if(drupal_is_front_page()) {
+
+        $sitestat_technical_measurement = module_invoke('rbkc_stats', 'block_view', 'sitestat_technical_measurement');
+        print render($sitestat_technical_measurement['content']);
+
+        $sitestat_loading_time2 = module_invoke('rbkc_stats', 'block_view', 'sitestat_loading2');
+        print render($sitestat_loading_time2['content']);
+      }
+    }
+  ?>
 </body>
 </html>
