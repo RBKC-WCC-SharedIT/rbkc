@@ -1,0 +1,167 @@
+<?php
+
+/**
+  *
+  * From ComScore's documentation:
+  *
+  * NORMAL MEASUREMENT:
+  * The normal measurement is used for measuring a visit to a page (page view) and in addition, also
+  * measures where the browser came from before entering your website. The code appears as follows and
+  * needs to be placed between the <body> and </body> tags. You can position the code directly after the
+  * <body> tag. As a result of this, the pixel will be called first which means that every measurement is
+  * done immediately. This is accepted practice according to ABCe and IVW standards.
+  * When you place the pixel directly after the <body> tag the measurement is taken immediately but, you
+  * will not always know for sure if the entire page was loaded and therefore has been seen by the visitor
+  * If you want to know for sure that the entire page could have been seen when the measurement is taken,
+  * we recommend that you place the code at the end of the body, just before the </body> tag. Be aware,
+  * this will result in lower numbers being reported.
+  *
+  * TECHNICAL MEASUREMENT SCRIPT
+  * This code measures technical information about the browser of the device that is accessing your
+  * content. This code should be placed only on the homepage after the splash page if present or any
+  * other high traffic page. It should be as low as possible in the page, just before the end of the
+  * </body> tag.
+  * The file ‘sitestat.js’ needs to be placed on your web server in order to makes this technical
+  * measurement work (see paragraph 3.5). The technical measurement code must be placed below
+  * the normal measurement code.
+  *
+  * LOADING TIME:
+  * The loading time measurement is used to measure
+  * the time it takes before the HTML of a page loads and also before the whole page
+  * including pictures loads.
+  * You can only measure the loading time for 1 page. This measurement only works in combination
+  * with the technical measurement code. The code for the technical measurement and
+  * the codes for the loading time measurement need to be placed on the same page to work. If you place
+  * the loading time codes on more than 1 page, then the loading times will be added up. So, only take
+  * the page for which you want to measure the loading time.
+  * Loading time 1 is placed directly below the <head> tag. Loading time 2 needs to be placed just before
+  * the end of the </body> tag, after the technical measurement.
+  */
+
+/**
+* Implements hook_block_info().
+*/
+function rbkc_stats_block_info() {
+  $blocks = array();
+
+  $blocks['sitestat_loading1'] = array(
+    'info' => t('Sitestat loading time 1 code for <head>'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['sitestat_normal_measurement'] = array(
+    'info' => t('Sitestat normal measurement code'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['sitestat_technical_measurement'] = array(
+    'info' => t('Sitestat technical measurement code'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  $blocks['sitestat_loading2'] = array(
+    'info' => t('Sitestat loading time 2 code for end of page'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*/
+function rbkc_stats_block_view($block_name = '') {
+
+  if ($block_name == 'sitestat_loading1') {
+
+    $loading1 = "ns_loadingtime1=(new Date()).getTime()";
+
+     $block = array(
+      'subject' => t('Sitestat page head code'),
+      'content' => array(
+        '#theme' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => $loading1,
+      ),
+    );
+
+    return $block;
+
+  }
+
+  if ($block_name == 'sitestat_normal_measurement') {
+
+    // get URL (after www.rbkc.gov.uk) and format
+    $uri = str_replace('/', '.', request_uri());
+
+    $stat_uri = substr($uri, 1);
+
+    $path = drupal_is_front_page() ? "https://uk.sitestat.com/rbkc/s?home.page" : "https://uk.sitestat.com/rbkc/s?$stat_uri.page";
+
+    $inline_script =
+<<<EOT
+      function sitestat(ns_l){ns_l+='&amp;ns__t='+(new Date()).getTime();ns_pixelUrl=ns_l;
+      ns_0=document.referrer;
+      ns_0=(ns_0.lastIndexOf('/')==ns_0.length-1)?ns_0.substring(ns_0.lastIndexOf('/'),0):ns_0;
+      if(ns_0.length>0)ns_l+='&amp;ns_referrer='+escape(ns_0);
+      if(document.images){ns_1=new Image();ns_1.src=ns_l;}else
+      document.write('<img src="'+ns_l+'" width="1" height="1" alt="" />');}
+      sitestat('$path');
+EOT;
+
+    $block = array(
+      'subject' => t('Sitestat end of page code'),
+      'content' => array(
+        'normal_measurement' => array(
+          'inlinescript' => array(
+            '#theme' => 'html_tag',
+            '#tag' => 'script',
+            '#value' => $inline_script,
+          ),
+          'noscript' => array(
+            '#theme' => 'html_tag',
+            '#value' => "<img src='$path' width='1px' height='1px'/>",
+            '#tag' => 'noscript',
+          ),
+        ),
+      ),
+    );
+
+    return $block;
+  }
+
+  if ($block_name == 'sitestat_technical_measurement') {
+
+    $tech_code = 'https://www.rbkc.gov.uk/sitestat.js';
+
+    $block = array(
+      'subject' => t('Sitestat end of page code'),
+      'content' => array(
+        '#theme' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => array(
+          'src' => $tech_code,
+        ),
+        '#value' => '',
+      ),
+    );
+
+    return $block;
+
+  }
+
+  if ($block_name == 'sitestat_loading2') {
+
+    $loading2 = "ns_loadingtime2=(new Date()).getTime();";
+
+     $block = array(
+      'subject' => t('Sitestat end of page code'),
+      'content' => array(
+        '#theme' => 'html_tag',
+        '#tag' => 'script',
+        '#value' => $loading2,
+      ),
+    );
+
+    return $block;
+
+  }
+
+}
