@@ -137,7 +137,7 @@ EOT;
         '#theme' => 'html_tag',
         '#tag' => 'script',
         '#attributes' => array(
-          'src' => $tech_code,
+          'src' => url($tech_code),
         ),
         '#value' => '',
       ),
