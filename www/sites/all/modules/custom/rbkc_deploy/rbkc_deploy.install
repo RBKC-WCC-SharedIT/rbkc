@@ -1225,3 +1225,11 @@ function rbkc_deploy_update_7109() {
 function rbkc_deploy_update_7110() {
   module_enable(array('rbkc_stats'), TRUE);
 }
+
+/**
+ * Enable RBKC Admin Menu feature
+ */
+function rbkc_deploy_update_7111() {
+  module_enable(array('feature_admin_menu'), TRUE);
+}
+

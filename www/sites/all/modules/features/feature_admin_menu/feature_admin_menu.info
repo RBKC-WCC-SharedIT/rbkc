@@ -1,0 +1,16 @@
+name = RBKC Admin menu
+description = Config for Admin menu
+core = 7.x
+package = Features
+version = 7.x-1.3
+project = feature_admin_menu
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:2
+features[menu_custom][] = management
+features[menu_links][] = management_atoms:admin/atoms
+features[menu_links][] = management_books:admin/books
+features[menu_links][] = management_contact-departments:admin/structure/contact-departments
+features[menu_links][] = management_my-workbench:admin/workbench
+features[menu_links][] = management_people:admin/people
+features[menu_links][] = management_webforms:admin/webforms
