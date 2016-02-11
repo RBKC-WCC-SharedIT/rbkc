@@ -44,7 +44,6 @@ function feature_roles_permissions_user_default_permissions() {
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
-      'administrator' => 'administrator',
       'editor' => 'editor',
     ),
     'module' => 'system',
@@ -53,9 +52,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'access all views'.
   $permissions['access all views'] = array(
     'name' => 'access all views',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'views',
   );
 
@@ -83,10 +80,42 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'access content overview'.
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'access environment indicator'.
+  $permissions['access environment indicator'] = array(
+    'name' => 'access environment indicator',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'node',
+    'module' => 'environment_indicator',
+  );
+
+  // Exported permission: 'access environment indicator default_environment'.
+  $permissions['access environment indicator default_environment'] = array(
+    'name' => 'access environment indicator default_environment',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'environment_indicator',
+  );
+
+  // Exported permission: 'access environment indicator overwritten_environment'.
+  $permissions['access environment indicator overwritten_environment'] = array(
+    'name' => 'access environment indicator overwritten_environment',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'environment_indicator',
+  );
+
+  // Exported permission: 'access memcache statistics'.
+  $permissions['access memcache statistics'] = array(
+    'name' => 'access memcache statistics',
+    'roles' => array(),
+    'module' => 'memcache_admin',
   );
 
   // Exported permission: 'access news feeds'.
@@ -101,18 +130,14 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'access own authorizations'.
   $permissions['access own authorizations'] = array(
     'name' => 'access own authorizations',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'oauth_common',
   );
 
   // Exported permission: 'access own consumers'.
   $permissions['access own consumers'] = array(
     'name' => 'access own consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'oauth_common',
   );
 
@@ -183,6 +208,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'access slab cachedump'.
+  $permissions['access slab cachedump'] = array(
+    'name' => 'access slab cachedump',
+    'roles' => array(),
+    'module' => 'memcache_admin',
+  );
+
   // Exported permission: 'access toolbar'.
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
@@ -245,9 +277,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'admin_display_suite'.
   $permissions['admin_display_suite'] = array(
     'name' => 'admin_display_suite',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'ds',
   );
 
@@ -263,27 +293,28 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer actions'.
   $permissions['administer actions'] = array(
     'name' => 'administer actions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
   // Exported permission: 'administer add to head'.
   $permissions['administer add to head'] = array(
     'name' => 'administer add to head',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'add_to_head',
+  );
+
+  // Exported permission: 'administer advanced pane settings'.
+  $permissions['administer advanced pane settings'] = array(
+    'name' => 'administer advanced pane settings',
+    'roles' => array(),
+    'module' => 'panels',
   );
 
   // Exported permission: 'administer blocks'.
   $permissions['administer blocks'] = array(
     'name' => 'administer blocks',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'block',
   );
 
@@ -299,18 +330,23 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer breakpoints'.
   $permissions['administer breakpoints'] = array(
     'name' => 'administer breakpoints',
+    'roles' => array(),
+    'module' => 'breakpoints',
+  );
+
+  // Exported permission: 'administer checked out documents'.
+  $permissions['administer checked out documents'] = array(
+    'name' => 'administer checked out documents',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'breakpoints',
+    'module' => 'content_lock',
   );
 
   // Exported permission: 'administer consumers'.
   $permissions['administer consumers'] = array(
     'name' => 'administer consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'oauth_common',
   );
 
@@ -326,10 +362,17 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer content types'.
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'administer custom content'.
+  $permissions['administer custom content'] = array(
+    'name' => 'administer custom content',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'node',
+    'module' => 'ctools_custom_content',
   );
 
   // Exported permission: 'administer dnd'.
@@ -341,75 +384,68 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'dnd',
   );
 
-  // Exported permission: 'administer features'.
-  $permissions['administer features'] = array(
-    'name' => 'administer features',
+  // Exported permission: 'administer environment indicator settings'.
+  $permissions['administer environment indicator settings'] = array(
+    'name' => 'administer environment indicator settings',
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'environment_indicator',
+  );
+
+  // Exported permission: 'administer features'.
+  $permissions['administer features'] = array(
+    'name' => 'administer features',
+    'roles' => array(),
     'module' => 'features',
   );
 
   // Exported permission: 'administer feeds'.
   $permissions['administer feeds'] = array(
     'name' => 'administer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'feeds',
   );
 
   // Exported permission: 'administer field collections'.
   $permissions['administer field collections'] = array(
     'name' => 'administer field collections',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'field_collection',
   );
 
   // Exported permission: 'administer fieldgroups'.
   $permissions['administer fieldgroups'] = array(
     'name' => 'administer fieldgroups',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'field_group',
   );
 
   // Exported permission: 'administer filters'.
   $permissions['administer filters'] = array(
     'name' => 'administer filters',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 
   // Exported permission: 'administer image styles'.
   $permissions['administer image styles'] = array(
     'name' => 'administer image styles',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'image',
   );
 
   // Exported permission: 'administer linkit'.
   $permissions['administer linkit'] = array(
     'name' => 'administer linkit',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'linkit',
   );
 
   // Exported permission: 'administer manualcrop settings'.
   $permissions['administer manualcrop settings'] = array(
     'name' => 'administer manualcrop settings',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'manualcrop',
   );
 
@@ -425,27 +461,21 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer meta tags'.
   $permissions['administer meta tags'] = array(
     'name' => 'administer meta tags',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'metatag',
   );
 
   // Exported permission: 'administer modules'.
   $permissions['administer modules'] = array(
     'name' => 'administer modules',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
   // Exported permission: 'administer news feeds'.
   $permissions['administer news feeds'] = array(
     'name' => 'administer news feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'aggregator',
   );
 
@@ -461,27 +491,55 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer oauth'.
   $permissions['administer oauth'] = array(
     'name' => 'administer oauth',
+    'roles' => array(),
+    'module' => 'oauth_common',
+  );
+
+  // Exported permission: 'administer page manager'.
+  $permissions['administer page manager'] = array(
+    'name' => 'administer page manager',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'oauth_common',
+    'module' => 'page_manager',
+  );
+
+  // Exported permission: 'administer pane access'.
+  $permissions['administer pane access'] = array(
+    'name' => 'administer pane access',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panels layouts'.
+  $permissions['administer panels layouts'] = array(
+    'name' => 'administer panels layouts',
+    'roles' => array(),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'administer panels styles'.
+  $permissions['administer panels styles'] = array(
+    'name' => 'administer panels styles',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'administer pathauto'.
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'pathauto',
   );
 
   // Exported permission: 'administer permissions'.
   $permissions['administer permissions'] = array(
     'name' => 'administer permissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'user',
   );
 
@@ -497,9 +555,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer print'.
   $permissions['administer print'] = array(
     'name' => 'administer print',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'print',
   );
 
@@ -515,9 +571,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer scald'.
   $permissions['administer scald'] = array(
     'name' => 'administer scald',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'scald',
   );
 
@@ -542,18 +596,14 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer site configuration'.
   $permissions['administer site configuration'] = array(
     'name' => 'administer site configuration',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
   // Exported permission: 'administer software updates'.
   $permissions['administer software updates'] = array(
     'name' => 'administer software updates',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'system',
   );
 
@@ -569,10 +619,15 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer themes'.
   $permissions['administer themes'] = array(
     'name' => 'administer themes',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'system',
+  );
+
+  // Exported permission: 'administer twitter'.
+  $permissions['administer twitter'] = array(
+    'name' => 'administer twitter',
+    'roles' => array(),
+    'module' => 'twitter',
   );
 
   // Exported permission: 'administer twitter accounts'.
@@ -605,9 +660,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer views'.
   $permissions['administer views'] = array(
     'name' => 'administer views',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'views',
   );
 
@@ -623,9 +676,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'administer_google_appliance'.
   $permissions['administer_google_appliance'] = array(
     'name' => 'administer_google_appliance',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'google_appliance',
   );
 
@@ -650,9 +701,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'bypass node access'.
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -663,6 +712,15 @@ function feature_roles_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'change layouts in place editing'.
+  $permissions['change layouts in place editing'] = array(
+    'name' => 'change layouts in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'change own username'.
@@ -682,6 +740,16 @@ function feature_roles_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'accessibility_content',
+  );
+
+  // Exported permission: 'check out documents'.
+  $permissions['check out documents'] = array(
+    'name' => 'check out documents',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+    ),
+    'module' => 'content_lock',
   );
 
   // Exported permission: 'clear feed feeds'.
@@ -1293,6 +1361,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'contact_department',
   );
 
+  // Exported permission: 'edit linkit picker settings'.
+  $permissions['edit linkit picker settings'] = array(
+    'name' => 'edit linkit picker settings',
+    'roles' => array(),
+    'module' => 'linkit_picker',
+  );
+
   // Exported permission: 'edit meta tags'.
   $permissions['edit meta tags'] = array(
     'name' => 'edit meta tags',
@@ -1513,9 +1588,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'generate features'.
   $permissions['generate features'] = array(
     'name' => 'generate features',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'features',
   );
 
@@ -1630,9 +1703,7 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'manage features'.
   $permissions['manage features'] = array(
     'name' => 'manage features',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'features',
   );
 
@@ -1657,27 +1728,21 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'oauth authorize any consumers'.
   $permissions['oauth authorize any consumers'] = array(
     'name' => 'oauth authorize any consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'oauth_common',
   );
 
   // Exported permission: 'oauth register any consumers'.
   $permissions['oauth register any consumers'] = array(
     'name' => 'oauth register any consumers',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'oauth_common',
   );
 
   // Exported permission: 'rename features'.
   $permissions['rename features'] = array(
     'name' => 'rename features',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'features',
   );
 
@@ -1708,6 +1773,13 @@ function feature_roles_permissions_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'set workbench schedule for one'.
+  $permissions['set workbench schedule for one'] = array(
+    'name' => 'set workbench schedule for one',
+    'roles' => array(),
+    'module' => 'workbench_scheduler',
+  );
+
   // Exported permission: 'unlock feed feeds'.
   $permissions['unlock feed feeds'] = array(
     'name' => 'unlock feed feeds',
@@ -1720,10 +1792,17 @@ function feature_roles_permissions_user_default_permissions() {
   // Exported permission: 'use ctools import'.
   $permissions['use ctools import'] = array(
     'name' => 'use ctools import',
+    'roles' => array(),
+    'module' => 'ctools',
+  );
+
+  // Exported permission: 'use ipe with page manager'.
+  $permissions['use ipe with page manager'] = array(
+    'name' => 'use ipe with page manager',
     'roles' => array(
       'administrator' => 'administrator',
     ),
-    'module' => 'ctools',
+    'module' => 'panels',
   );
 
   // Exported permission: 'use manualcrop'.
@@ -1734,6 +1813,49 @@ function feature_roles_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'manualcrop',
+  );
+
+  // Exported permission: 'use page manager'.
+  $permissions['use page manager'] = array(
+    'name' => 'use page manager',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'page_manager',
+  );
+
+  // Exported permission: 'use panels caching features'.
+  $permissions['use panels caching features'] = array(
+    'name' => 'use panels caching features',
+    'roles' => array(),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels dashboard'.
+  $permissions['use panels dashboard'] = array(
+    'name' => 'use panels dashboard',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels in place editing'.
+  $permissions['use panels in place editing'] = array(
+    'name' => 'use panels in place editing',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
+  );
+
+  // Exported permission: 'use panels locks'.
+  $permissions['use panels locks'] = array(
+    'name' => 'use panels locks',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'use text format filtered_html'.
@@ -1752,6 +1874,15 @@ function feature_roles_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+    ),
+    'module' => 'filter',
+  );
+
+  // Exported permission: 'use text format homepage_carousel'.
+  $permissions['use text format homepage_carousel'] = array(
+    'name' => 'use text format homepage_carousel',
+    'roles' => array(
+      'administrator' => 'administrator',
     ),
     'module' => 'filter',
   );
@@ -1816,6 +1947,15 @@ function feature_roles_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'view pane admin links'.
+  $permissions['view pane admin links'] = array(
+    'name' => 'view pane admin links',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'panels',
   );
 
   // Exported permission: 'view revisions'.
