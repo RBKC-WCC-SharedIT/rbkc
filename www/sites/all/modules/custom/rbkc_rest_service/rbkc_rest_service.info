@@ -1,0 +1,4 @@
+name = RBKC Rest Service
+description = Provides functionality to consume a RESTful service
+core = 7.x
+package = RBKC
