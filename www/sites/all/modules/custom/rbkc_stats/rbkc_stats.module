@@ -23,7 +23,7 @@
   * </body> tag.
   * The file ‘sitestat.js’ needs to be placed on your web server in order to makes this technical
   * measurement work (see paragraph 3.5). The technical measurement code must be placed below
-  * the normal measurement code.
+  * the normal measurement code.jj
   *
   * LOADING TIME:
   * The loading time measurement is used to measure
@@ -93,7 +93,7 @@ function rbkc_stats_block_view($block_name = '') {
 
     $stat_uri = substr($uri, 1);
 
-    $path = drupal_is_front_page() ? "https://uk.sitestat.com/rbkc/s?home.page" : "https://uk.sitestat.com/rbkc/s?$stat_uri.page";
+    $path = drupal_is_front_page() ? "https://uk.sitestat.com/rbkc/rbkc/s?home.page" : "https://uk.sitestat.com/rbkc/rbkc/s?$stat_uri.page";
 
     $inline_script =
 <<<EOT
