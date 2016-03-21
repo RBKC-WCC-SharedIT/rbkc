@@ -1,0 +1,6 @@
+My Workbench {"url":"admin\/workbench","options":{"attributes":{"title":""}},"weight":"-49"}
+People {"url":"admin\/people","options":{"attributes":{"title":""}},"weight":"-48"}
+Atoms {"url":"admin\/content\/atoms","options":{"attributes":{"title":""}},"weight":"-47"}
+Books {"url":"admin\/content\/book","options":{"attributes":{"title":""}},"weight":"-46"}
+Webforms {"url":"admin\/content\/webform","options":{"attributes":{"title":""}},"weight":"-45"}
+Contact departments {"url":"admin\/content\/contact-departments","options":{"attributes":{"title":""}},"weight":"0"}

@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the RBKC Admin menu feature.
  */
+
+include_once 'feature_admin_menu.features.inc';
 
 function feature_admin_menu_menu() {
 	$items = array();

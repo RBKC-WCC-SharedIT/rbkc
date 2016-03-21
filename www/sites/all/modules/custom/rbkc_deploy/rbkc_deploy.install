@@ -1233,3 +1233,10 @@ function rbkc_deploy_update_7111() {
   module_enable(array('feature_admin_menu'), TRUE);
 }
 
+/**
+ * Disable Toolbar. Enable Admin Menu Toolbar.
+ */
+function rbkc_deploy_update_7118() {
+  module_disable(array('toolbar'), TRUE);
+  module_enable(array('admin_menu_toolbar', 'admin_menu_source', 'menu_import'), TRUE);
+}
