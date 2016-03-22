@@ -1,6 +1,17 @@
-My Workbench {"url":"admin\/workbench","options":{"attributes":{"title":""}},"weight":"-49"}
-People {"url":"admin\/people","options":{"attributes":{"title":""}},"weight":"-48"}
-Atoms {"url":"admin\/content\/atoms","options":{"attributes":{"title":""}},"weight":"-47"}
-Books {"url":"admin\/content\/book","options":{"attributes":{"title":""}},"weight":"-46"}
-Webforms {"url":"admin\/content\/webform","options":{"attributes":{"title":""}},"weight":"-45"}
-Contact departments {"url":"admin\/content\/contact-departments","options":{"attributes":{"title":""}},"weight":"0"}
+Administration {"url":"admin","expanded":true,"options":{"attributes":{"title":""}},"weight":"-50"}
+-My Workbench {"url":"admin\/workbench","options":{"attributes":{"title":""}},"weight":"-50"}
+-People {"url":"admin\/people","options":{"attributes":{"title":""}},"weight":"-49"}
+-Atoms {"url":"admin\/content\/atoms","options":{"attributes":{"title":""}},"weight":"-48"}
+-Books {"url":"admin\/content\/book","options":{"attributes":{"title":""}},"weight":"-47"}
+-Webforms {"url":"admin\/content\/webform","options":{"attributes":{"title":""}},"weight":"-46"}
+-Contact departments {"url":"admin\/content\/contact-departments","options":{"attributes":{"title":""}},"weight":"-45"}
+-Structure {"url":"admin\/structure","options":{"attributes":{"title":""}},"weight":"-44"}
+--Pages {"url":"admin\/structure\/pages","options":{"attributes":{"title":""}},"weight":"0"}
+--Panels {"url":"admin\/structure\/panels","expanded":true,"options":{"attributes":{"title":""}},"weight":"0"}
+--Scald {"url":"admin\/structure\/scald","expanded":true,"options":{"attributes":{"title":""}},"weight":"0"}
+--Taxonomy {"url":"admin\/structure\/taxonomy","expanded":true,"options":{"attributes":{"title":""}},"weight":"0"}
+-Reports {"url":"admin\/reports","expanded":true,"options":{"attributes":{"title":""}},"weight":"-43"}
+--Status report {"url":"admin\/reports\/status","options":{"attributes":{"title":""}},"weight":"-50"}
+--Feeds log {"url":"admin\/reports\/feeds","options":{"attributes":{"title":""}},"weight":"-47"}
+--Top 'access denied' errors {"url":"admin\/reports\/access-denied","options":{"attributes":{"title":""}},"weight":"-49"}
+--Top 'page not found' errors {"url":"admin\/reports\/page-not-found","options":{"attributes":{"title":""}},"weight":"-48"}

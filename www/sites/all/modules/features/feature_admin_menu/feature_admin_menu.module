@@ -6,41 +6,4 @@
 
 include_once 'feature_admin_menu.features.inc';
 
-function feature_admin_menu_menu() {
-	$items = array();
-
-	$items['admin/atoms'] = array(
-		'title' => 'Atoms',
-		'type' => MENU_NORMAL_ITEM,
-		'page callback' => 'drupal_goto',
-		'page arguments' => array('admin/content/atoms'),
-    'access callback'   => 'user_access',
-    'access arguments'  => array('administer scald atoms'),		
-    'menu_name' => 'management',
-    'weight' => -48,
-	);
-
-	$items['admin/books'] = array(
-		'title' => 'Books',
-		'type' => MENU_NORMAL_ITEM,
-		'page callback' => 'drupal_goto',
-		'page arguments' => array('admin/content/book'),
-    'access callback'   => 'user_access',
-    'access arguments' => array('administer book outlines'),
-    'menu_name' => 'management',
-    'weight' => -47,
-	);
-
-	$items['admin/webforms'] = array(
-		'title' => 'Webforms',
-		'type' => MENU_NORMAL_ITEM,
-		'page callback' => 'drupal_goto',
-		'page arguments' => array('admin/content/webform'),
-    'access callback'   => 'user_access',
-    'access arguments' => array('access all webform results'),
-    'menu_name' => 'management',
-    'weight' => -46,
-	);
-	return $items;
-}
 
