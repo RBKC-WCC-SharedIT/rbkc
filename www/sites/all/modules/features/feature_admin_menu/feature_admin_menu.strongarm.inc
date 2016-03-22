@@ -60,7 +60,7 @@ function feature_admin_menu_strongarm() {
       'source' => 'menu-site-administrator-menu',
     ),
     5 => array(
-      'source' => '',
+      'source' => 'menu-site-editor-menu',
     ),
     7 => array(
       'source' => '',
