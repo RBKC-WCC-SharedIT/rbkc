@@ -22,10 +22,10 @@ function feature_admin_menu_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_menu_components';
   $strongarm->value = array(
+    'admin_menu.icon' => TRUE,
     'admin_menu.menu' => TRUE,
     'admin_menu.account' => TRUE,
     'shortcut.links' => FALSE,
-    'admin_menu.icon' => FALSE,
     'admin_menu.search' => FALSE,
     'admin_menu.users' => FALSE,
   );
