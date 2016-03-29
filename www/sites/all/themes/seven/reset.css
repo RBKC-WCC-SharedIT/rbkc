@@ -214,3 +214,8 @@ ul.inline:after {
 *:first-child + html .clearfix {
   min-height: 1%;
 }
+
+/*** a fix to some library css in ckeditor ***/
+textarea.cke_source {
+  white-space: pre-wrap !important;
+}
