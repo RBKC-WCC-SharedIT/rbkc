@@ -50,23 +50,15 @@ function feature_admin_menu_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'admin_menu_source_settings';
   $strongarm->value = array(
-    1 => array(
-      'source' => '',
-    ),
-    2 => array(
-      'source' => '',
-    ),
     3 => array(
+      'rid' => 3,
       'source' => 'menu-site-administrator-menu',
+      'weight' => 0,
     ),
     5 => array(
+      'rid' => 5,
       'source' => 'menu-site-editor-menu',
-    ),
-    7 => array(
-      'source' => '',
-    ),
-    9 => array(
-      'source' => '',
+      'weight' => 1,
     ),
   );
   $export['admin_menu_source_settings'] = $strongarm;
