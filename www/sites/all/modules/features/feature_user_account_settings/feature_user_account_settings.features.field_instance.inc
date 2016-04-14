@@ -25,6 +25,7 @@ function feature_user_account_settings_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'user',
     'field_name' => 'field_full_name',
     'label' => 'User\'s full name',
@@ -40,7 +41,7 @@ function feature_user_account_settings_field_default_field_instances() {
       ),
       'mee_enabled' => 0,
       'text_processing' => 0,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
