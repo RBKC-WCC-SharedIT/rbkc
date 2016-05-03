@@ -125,6 +125,11 @@ function rbkc_sitewide_theme($existing, $type, $theme, $path) {
   );
 }
 
+function rbkc_sitewide_getcopyrightyear(){
+  $curYear = date('Y');
+  return $curYear;
+}
+
 
 
 
