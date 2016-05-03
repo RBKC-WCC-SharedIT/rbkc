@@ -94,7 +94,7 @@
         <li><a href="http://uk.sitestat.com/rbkc/rbkc/s?Youtube&amp;ns_type=clickout" class="wytube" title="YouTube">YouTube</a></li>
       </ul>
 
-      <p>&copy; 1998-2015 The Royal Borough of Kensington and Chelsea</p>
+      <p>&copy; 1998-<?php print rbkc_sitewide_getcopyrightyear()?> The Royal Borough of Kensington and Chelsea</p>
     </div><!-- end footerglobal-inner -->
   </div> <!-- end footerglobal -->
   <?php print render($page['govmetric']); ?>
