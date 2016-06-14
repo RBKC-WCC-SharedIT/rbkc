@@ -1247,3 +1247,25 @@ function rbkc_deploy_update_7118() {
 function rbkc_deploy_update_7119() {
   module_enable(array('feature_user_account_settings'), TRUE);
 }
+
+/**
+ * Enable Rules module.
+ */
+function rbkc_deploy_update_7120() {
+  module_enable(array('rules'), TRUE);
+}
+
+/**
+ * Enable RBKC Token module.
+ */
+function rbkc_deploy_update_7121() {
+  module_enable(array('rbkc_token'), TRUE);
+}
+
+
+/**
+ * Enable RBKC workbench notifications feature.
+ */
+function rbkc_deploy_update_7122() {
+  module_enable(array('feature_workbench_email_notifications'), TRUE);
+}
