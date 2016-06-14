@@ -1,0 +1,5 @@
+name = RBKC Token
+description = Custom tokens for RBKC websites
+package = RBKC
+core = 7.x
+dependencies[] = token

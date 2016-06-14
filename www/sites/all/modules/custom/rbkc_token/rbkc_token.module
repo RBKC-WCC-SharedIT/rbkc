@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * @file
+ * Drupal hooks for RBKC Festival Calendars
+ *
+ */
+
+include_once 'rbkc_token.inc';
+
+?>

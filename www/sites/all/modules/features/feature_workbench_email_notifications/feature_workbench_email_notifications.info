@@ -1,0 +1,11 @@
+name = RBKC workbench email notifications
+description = Provides rules for sending out emails to editors to inform them about the publishing status of their content
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = feature_workbench_email_notifications
+dependencies[] = entity
+dependencies[] = rules
+dependencies[] = workbench_moderation
+features[features_api][] = api:2
+features[rules_config][] = rules_notify_editor_when_page_published
