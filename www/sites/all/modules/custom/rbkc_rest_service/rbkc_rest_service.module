@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ */
+
+function rbkc_rest_service_GetJSONResponse($url, $params){
+  $restService = new RESTService();
+  $json = RESTService->getJSONResponse($url, $params);
+}
+
+interface IRESTService
+{
+  public function getJSONResponse($url, $params);
+}
+
+class RESTService implements IRESTService
+{
+  public function getJSONResponse($url, $params){
+    $url = "http://the-api-you-want/?the-args=your-args&another-arg=another-arg"; 
+    $curlsession = curl_init(); // start CURL
+    curl_setopt($curlsession, CURLOPT_URL, $url); // set your URL
+    curl_setopt($curlsession, CURLOPT_RETURNTRANSFER, 1); // get the response as a variable
+    $json = curl_exec($curlsession); // connect and get your JSON response 
+    curl_close($curlsession);
+
+    return $json;
+  }
+
+}
