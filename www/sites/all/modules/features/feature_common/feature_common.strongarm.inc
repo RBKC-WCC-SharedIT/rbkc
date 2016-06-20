@@ -58,6 +58,7 @@ function feature_common_strongarm() {
   $strongarm->value = array(
     'answer' => 'answer',
     'guide' => 'guide',
+    'news' => 'news',
     'publication' => 'publication',
     'servicehub' => 'servicehub',
     'subhub' => 'subhub',

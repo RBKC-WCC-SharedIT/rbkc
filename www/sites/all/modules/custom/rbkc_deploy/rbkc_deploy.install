@@ -1233,3 +1233,39 @@ function rbkc_deploy_update_7111() {
   module_enable(array('feature_admin_menu'), TRUE);
 }
 
+/**
+ * Disable Toolbar. Enable Admin Menu Toolbar.
+ */
+function rbkc_deploy_update_7118() {
+  module_disable(array('toolbar'), TRUE);
+  module_enable(array('admin_menu_toolbar', 'admin_menu_source', 'menu_import'), TRUE);
+}
+
+/**
+ * Enable User Account Settings feature.
+ */
+function rbkc_deploy_update_7119() {
+  module_enable(array('feature_user_account_settings'), TRUE);
+}
+
+/**
+ * Enable Rules module.
+ */
+function rbkc_deploy_update_7120() {
+  module_enable(array('rules'), TRUE);
+}
+
+/**
+ * Enable RBKC Token module.
+ */
+function rbkc_deploy_update_7121() {
+  module_enable(array('rbkc_token'), TRUE);
+}
+
+
+/**
+ * Enable RBKC workbench notifications feature.
+ */
+function rbkc_deploy_update_7122() {
+  module_enable(array('feature_workbench_email_notifications'), TRUE);
+}

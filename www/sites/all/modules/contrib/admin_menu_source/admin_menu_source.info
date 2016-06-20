@@ -1,0 +1,13 @@
+name = Administration Menu Source
+description = Use a different menu as the Administration Menu.
+dependencies[] = admin_menu
+package = Administration
+core = 7.x
+configure = admin/config/administration/admin_menu/source
+
+; Information added by Drupal.org packaging script on 2014-07-18
+version = "7.x-1.0+4-dev"
+core = "7.x"
+project = "admin_menu_source"
+datestamp = "1405712328"
+
