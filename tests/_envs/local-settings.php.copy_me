@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Copy this file to a new file called local-settings.php in 
+ * the same folder and follow the instructions in the comments below.
+ */
+
+// replace usernamehere with the username of your local user 1 username
+define('LOCAL_DRUPAL_USER1_USERNAME', 'usernamehere');
+// replace usernamehere with the username of your local user 1 password
+define('LOCAL_DRUPAL_USER1_PASSWORD', 'passwordhere');
+
