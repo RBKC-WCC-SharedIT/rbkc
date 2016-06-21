@@ -1,6 +1,21 @@
 # `local` environment config goes here
 
+# Instructions
+# Replace yourdatabasename below with the name of your database name
+# Replace yourmysqlusername below with the username for your database
+# Replace yourmysqlpassword below with the password for your database
+# Replace yourlocalurl below with the URL of the local Drupal site you're going to test
+
 modules:
     enabled:
-        - PhpBrowser:
-            url: http://localhost
+        - WebDriver:
+            url: http://yourlocalurl
+            browser: phantomjs
+            window_size: 1440x900
+        - Db:
+            dsn: 'mysql:host=localhost;dbname=yourdatabasename'
+            user: 'yourmysqlusername' 
+            password: 'yourmysqlpassword'
+            populate: true
+            cleanup: false
+            reconnect: true                        
