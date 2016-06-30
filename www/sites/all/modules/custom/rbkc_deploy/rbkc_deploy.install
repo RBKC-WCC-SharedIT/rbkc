@@ -1262,10 +1262,16 @@ function rbkc_deploy_update_7121() {
   module_enable(array('rbkc_token'), TRUE);
 }
 
-
 /**
  * Enable RBKC workbench notifications feature.
  */
 function rbkc_deploy_update_7122() {
   module_enable(array('feature_workbench_email_notifications'), TRUE);
+}
+
+/**
+ * Enable Rules UI module.
+ */
+function rbkc_deploy_update_7123() {
+  module_enable(array('rules_ui'), TRUE);
 }
