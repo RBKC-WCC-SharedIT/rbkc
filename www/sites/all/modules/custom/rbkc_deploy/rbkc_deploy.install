@@ -1275,3 +1275,10 @@ function rbkc_deploy_update_7122() {
 function rbkc_deploy_update_7123() {
   module_enable(array('rules_ui'), TRUE);
 }
+
+/**
+ * Enable Rules UI module.
+ */
+function rbkc_deploy_update_7124() {
+  module_enable(array('rules_admin'), TRUE);
+}

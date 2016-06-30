@@ -23,8 +23,9 @@ function feature_workbench_email_notifications_default_rules_configuration() {
       "DO" : [
         { "mail" : {
             "to" : "[node:current-revision-author-mail]",
-            "subject" : "[node:current-revision-author-mail]\\r\\n\\r\\nPage \\u0027[node:title]\\u0027 has been approved and published.\\r\\n\\r\\n",
-            "message" : "Hello\\r\\n\\r\\nThe page you submitted for review, [node:title] ([node:url]) has been approved and published.\\r\\n\\r\\nRegards,\\r\\n\\r\\nEditorial team\\r\\n",
+            "subject" : "Page \\u0027[node:title]\\u0027 has been approved and published.\\r\\n\\r\\n",
+            "message" : "Hello\\r\\n\\r\\nThe page you submitted for review, [node:title] ([node:url]) has been approved and published.\\r\\n\\r\\nRegards,\\r\\n\\r\\nWeb Editorial team\\r\\n",
+            "from" : "Intrasup@rbkc.gov.uk",
             "language" : [ "" ]
           }
         }
