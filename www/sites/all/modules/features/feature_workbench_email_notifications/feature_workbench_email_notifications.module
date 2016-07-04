@@ -3,3 +3,7 @@
  * @file
  * Drupal needs this blank file.
  */
+
+function feature_workbench_email_notifications_mail_alter(&$message) {
+  $message['headers']['Sender'] = $message['headers']['Return-Path'] = $message['headers']['Errors-To'] = $message['headers']['From'];
+}
