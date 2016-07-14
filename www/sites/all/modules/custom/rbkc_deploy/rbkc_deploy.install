@@ -1282,3 +1282,10 @@ function rbkc_deploy_update_7123() {
 function rbkc_deploy_update_7124() {
   module_enable(array('rules_admin'), TRUE);
 }
+
+/**
+ * Enable Module Filter module.
+ */
+function rbkc_deploy_update_7125() {
+  module_enable(array('module_filter'), TRUE);
+}
