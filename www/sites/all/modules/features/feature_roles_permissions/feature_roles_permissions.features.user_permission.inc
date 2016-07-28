@@ -998,7 +998,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'create subhub content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1018,7 +1017,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'create topic content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1047,7 +1045,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any answer content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1076,7 +1073,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any guide content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1104,7 +1100,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any publication content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1123,7 +1118,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any subhub content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1133,7 +1127,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any survey content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1143,7 +1136,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete any topic content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1162,7 +1154,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own answer content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1191,7 +1182,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own guide content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1219,7 +1209,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own publication content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1238,7 +1227,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own subhub content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1248,7 +1236,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own survey content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1258,7 +1245,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete own topic content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1277,7 +1263,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1435,7 +1420,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'edit any subhub content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1455,7 +1439,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'edit any topic content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1569,7 +1552,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'edit own subhub content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
@@ -1589,7 +1571,6 @@ function feature_roles_permissions_user_default_permissions() {
     'name' => 'edit own topic content',
     'roles' => array(
       'administrator' => 'administrator',
-      'editor' => 'editor',
     ),
     'module' => 'node',
   );
