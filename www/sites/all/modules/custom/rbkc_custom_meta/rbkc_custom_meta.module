@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * TODO: Add admin UI for setting default $search_category 
+ * sitewide for sites without service hib taxo
+ */
+
+/**
  * Implementation of hook_html_head_alter()
  */
 function rbkc_custom_meta_html_head_alter(&$head_elements) {
