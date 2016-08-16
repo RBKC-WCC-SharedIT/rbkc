@@ -1289,3 +1289,10 @@ function rbkc_deploy_update_7124() {
 function rbkc_deploy_update_7125() {
   module_enable(array('module_filter'), TRUE);
 }
+
+/**
+ * Enable RBKC Custom Meta module.
+ */
+function rbkc_deploy_update_7126() {
+  module_enable(array('rbkc_custom_meta'), TRUE);
+}
