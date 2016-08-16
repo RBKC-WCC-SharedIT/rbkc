@@ -12,24 +12,27 @@ function rbkc_custom_meta_html_head_alter(&$head_elements) {
 
 	// only add the meta tags if this is a node
 	if (arg(0) == 'node') {
-		$node = menu_get_object();
-		$node_wrapper = entity_metadata_wrapper('node' , $node);
 
 		try {
 
+			$node = menu_get_object();
+			$node_wrapper = entity_metadata_wrapper('node' , $node);
+
 			// get the category content
 			if (isset($node->field_service_hub)) {
-				$search_category = strip_tags($node_wrapper->field_service_hub->value()->name);
+				$category_parents = taxonomy_get_parents_all($node_wrapper->field_service_hub->value()->tid);
+				$service_term = array_pop($category_parents); // gets the root ancestor
+				$search_category = strip_tags($service_term->name);
 			} else {
 				$search_category = '';
 			}
 			
 			// get the summary content
-			if (isset($node->body)) {
-				$search_summary = str_replace("\n", '', strip_tags($node_wrapper->body->summary->value()));	
-			} else {
-				$search_summary = '';
-			}
+			// if (isset($node->body)) {
+			// 	$search_summary = str_replace("\n", '', strip_tags($node_wrapper->body->summary->value()));	
+			// } else {
+			// 	$search_summary = '';
+			// }
 
 			if (!empty($search_category)) {
 				$head_elements['search_category_meta'] = array(
@@ -42,16 +45,16 @@ function rbkc_custom_meta_html_head_alter(&$head_elements) {
 				);				
 			}
 
-			if (!empty($search_summary)) {
-				$head_elements['search_summary_meta'] = array(
-					'#tag' => 'meta',
-					'#attributes' => array(
-						'name' => 'search-summary',
-						'content' => $search_summary,
-					),
-					'#type' => 'html_tag',
-				);				
-			}
+			// if (!empty($search_summary)) {
+			// 	$head_elements['search_summary_meta'] = array(
+			// 		'#tag' => 'meta',
+			// 		'#attributes' => array(
+			// 			'name' => 'search-summary',
+			// 			'content' => $search_summary,
+			// 		),
+			// 		'#type' => 'html_tag',
+			// 	);				
+			// }
 
 		} catch (Exception $e) {
 			
