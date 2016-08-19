@@ -26,5 +26,5 @@ Instructions for using this module
 
 5. Enable the module via a hook_update in the relevant deploy module.
 
-Thats it.
+That's it.
 
