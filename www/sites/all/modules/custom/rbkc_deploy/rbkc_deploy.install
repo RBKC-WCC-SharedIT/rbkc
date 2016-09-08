@@ -1296,3 +1296,10 @@ function rbkc_deploy_update_7125() {
 function rbkc_deploy_update_7126() {
   module_enable(array('rbkc_custom_meta'), TRUE);
 }
+
+/**
+ * EnableRBKC Funelback integration module.
+ */
+function rbkc_deploy_update_7127() {
+  module_enable(array('rbkc_funnelback'), TRUE);
+}

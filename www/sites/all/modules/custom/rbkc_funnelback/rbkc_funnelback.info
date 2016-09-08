@@ -1,0 +1,4 @@
+name = RBKC Funnelback Integration
+description = Integration with Funnelback search engine
+core = 7.x
+package = RBKC
