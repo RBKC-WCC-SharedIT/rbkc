@@ -1,5 +1,25 @@
 <?php
 
+define('FUNNELBACK_DEV_URL', 'https://webtest.rbkc.gov.uk/search');
+define('FUNNELBACK_PROD_URL', 'https://www.rbkc.gov.uk/search');
+
+function rbkc_funnelback_url() {
+  global $base_url;
+  $url_components = parse_url($base_url);
+  
+  $prod_hosts = array(
+    'www.rbkc.gov.uk',
+    'rbkcdrupal.rbkc.gov.uk',
+  );
+  
+  if (in_array($url_components['host'], $prod_hosts)) {
+    return FUNNELBACK_PROD_URL;
+  } else {
+    return FUNNELBACK_DEV_URL;
+  }
+  
+}
+
 function rbkc_funnelback_form() {
   $js = "jQuery(document).ready( function() {
 
@@ -12,10 +32,10 @@ function rbkc_funnelback_form() {
    jQuery('[data-toggle=tooltip]').tooltip({'html': true});
 
    // Query completion setup.
-   jQuery(\"#edit-keyword\").fbcompletion({
+   jQuery(\"#edit-keywords\").fbcompletion({
      'enabled'    : 'enabled',
      'collection' : 'rbkc-web-website',
-     'program'    : 'https://rbkc.funnelback.co.uk/s/suggest.json',
+     'program'    : '".rbkc_funnelback_url()."/suggest.json',
      'format'     : 'extended',
      'alpha'      : '.5',
      'show'       : '10',
@@ -37,15 +57,22 @@ function rbkc_funnelback_form() {
 function rbkc_funnelback_search_form($form, &$form_state) {
   $form = array();
   
-  $form['keyword'] = array(
+  $form['keywords'] = array(
     '#type' => 'textfield',
     '#title' => t('Enter the terms you wish to search for.'),
+    '#title_display' => 'invisible',
+    '#size' => 15,
+    '#default_value' => '',
+    '#attributes' => array('placeholder' => t('Enter search terms…'), 'class' => array('search__input')),
   );
   
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Search'),
-    '#attributes' => array('class' => array('search__submit')),
+  $form['actions'] = array(
+    '#type' => 'actions',
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Search'),
+      '#attributes' => array('class' => array('search__submit')),
+    ),
   );
   
   return $form;
@@ -53,8 +80,8 @@ function rbkc_funnelback_search_form($form, &$form_state) {
 
 function rbkc_funnelback_search_form_submit($form, &$form_state) {
   
-  $query = $form_state['values']['keyword'];
+  $query = $form_state['values']['keywords'];
   
-  drupal_goto('https://rbkc.funnelback.co.uk/s/search.html?collection=rbkc-web-website&query='.$query);
+  drupal_goto(rbkc_funnelback_url().'/search.html?collection=rbkc-web-website&query='.$query);
   
 }

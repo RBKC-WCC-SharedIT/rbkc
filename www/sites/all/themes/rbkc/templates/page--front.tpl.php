@@ -31,7 +31,8 @@
       <div class="ribbon--hp"></div>
       <div class="inner group">
         <h1 class="heading__h1 heading__h1--hp">Welcome to the Royal Borough</h1>
-        <?php print render($page['search']); ?>
+        <?php //print render($page['search']); ?>
+        <?php print rbkc_search_form(); ?>
       </div>
       <?php print render($page['content']); ?>
     </main>

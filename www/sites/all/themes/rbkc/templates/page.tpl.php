@@ -25,7 +25,8 @@
         </ul><!-- end menu -->
       </nav>
 
-      <?php print render($page['search']); ?>
+      <?php //print render($page['search']); ?>
+      <?php print rbkc_search_form(); ?>
 
     </div><!-- end inner padlr -->
   </div><!-- end headerGlobal -->
