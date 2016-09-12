@@ -529,8 +529,10 @@ function rbkc_search_form() {
   if (variable_get('rbkc_funnelback_active', true)) {
     return rbkc_funnelback_form();
   } else {
-    $block = module_invoke('google_appliance', 'block_view', 'ga_block_search_form');
-    print render($block['content']);
+    if (module_exists('google_appliance')) {
+      $block = module_invoke('google_appliance', 'block_view', 'ga_block_search_form');
+      print render($block['content']);
+    }
   }
 }
 

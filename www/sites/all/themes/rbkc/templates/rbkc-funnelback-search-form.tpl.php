@@ -1,4 +1,3 @@
-<?php dpm($form); ?>
 <div id ="search" class="search <?php $is_front ? print 'search--hp' : print 'search--headerglobal hide' ?>">
   <div class="search__wrap">
     <?php print render($form['keywords']); ?>
