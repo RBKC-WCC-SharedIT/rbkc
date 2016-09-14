@@ -1,58 +1,61 @@
-
-  /*// autocomplete alternative*/
-.ui-helper-hidden-accessible {display: none;}
-
-
+/*// autocomplete alternative*/
+.ui-helper-hidden-accessible {
+  display: none;
+}
 .ui-menu {
-  background-color: white;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
   width: 200px;
-  border: 1px solid #999;
+  border-right: 1px solid #D3D3D1;
+  border-bottom: 1px solid #D3D3D1;
+  border-left: 1px solid #D3D3D1;
   color: #2b5d92;
   margin-top: 5px;
-  border-radius: 3px;
+  border-radius: 0 0 3px 3px;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-.ui-menu,
-.ui-menu li {
-  padding: 0 0 5px 0;
-}
-.ui-menu li {
-  padding-left: 15px;
-  margin: 0;
-  list-style-type: none;
-}
-.ui-menu-item a,
-li.ui-autocomplete-category {
-  display: block;
-  padding: 5px 15px 5px 15px;
-}
-li.ui-autocomplete-category {
-  padding: 15px;
-  margin-bottom: 0;
-  margin-top: 0;
-  color: #505a66;
-  border-bottom: 0;
-  font-weight: bold;
-}
-.ui-menu-item a {
+.ui-autocomplete {
   position: relative;
 }
-.ui-menu-item a:before {
-  content: "";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: 400;
-  text-decoration: inherit;
-  font-size: 1.2em;
-  padding-right: 5px;
-  position: absolute;
-  left: 0;
+.ui-autocomplete li {
+  margin-bottom: 8px;
+}
+.ui-autocomplete li:last-child {
+  margin-bottom: 0;
 }
 
+li.ui-autocomplete-category {
+  font-size:18px;
+  font-size:1.125rem;
+  color: #343c47;
+
+  font-weight: bold;
+  margin-top: 24px;
+}
+li.ui-autocomplete-category:first-child {
+  margin-top: 0;
+}
+.ui-menu-item {
+    padding-left: 16px;
+    cursor: pointer;
+}
+.ui-menu-item:before {
+    content: "•";
+    color: #ddd;
+    padding-right: 10px;
+    font-size: 22px;
+    position: absolute;
+    left: 16px;
+}
+.ui-menu-item a {
+   color: #2b5d92;
+}
 .ui-state-focus,
 .ui-state-focus a,
 .ui-menu-item a:hover,
 .ui-menu-item a:active,
 .ui-menu-item a:focus {
-  color: #6ed5c9;
+  border-bottom: 1px solid #a1bfdd;
 }
-
