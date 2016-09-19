@@ -1,0 +1,9 @@
+<?php
+
+/**
+* Implements hook_install
+*/
+function rbkc_funnelback_install() {
+  // give the administrator role (rid = 3) permission to admin funnelback integration
+  user_role_change_permissions(3, array('rbkc_funnelback_active' => true));
+}

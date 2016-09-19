@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Implements hook_install
+ */
+function rbkc_custom_meta_install() {
+	// give the administrator role (rid = 3) permission to set site-wide category by default
+	user_role_change_permissions(3, array('administer site-wide category' => true));
+}

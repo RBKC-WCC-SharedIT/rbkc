@@ -523,3 +523,30 @@ function rbkc_preprocess_html(&$vars) {
   );
   drupal_add_html_head($viewport, 'viewport');
 }
+
+
+function rbkc_search_form() {
+  if (variable_get('rbkc_funnelback_active', true)) {
+    return rbkc_funnelback_form();
+  } else {
+    if (module_exists('google_appliance')) {
+      $block = module_invoke('google_appliance', 'block_view', 'ga_block_search_form');
+      print render($block['content']);
+    }
+  }
+}
+
+/**
+ * Implementation of hook_theme
+ */
+function rbkc_theme() {
+  $items = array();
+  
+  $items['rbkc_funnelback_search_form'] = array(
+    'render element' => 'form',
+    'template' => 'rbkc-funnelback-search-form',
+    'path' => drupal_get_path('theme', 'rbkc') . '/templates',
+  );
+  
+  return $items;
+}

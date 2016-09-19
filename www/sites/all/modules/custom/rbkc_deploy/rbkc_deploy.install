@@ -1262,10 +1262,44 @@ function rbkc_deploy_update_7121() {
   module_enable(array('rbkc_token'), TRUE);
 }
 
-
 /**
  * Enable RBKC workbench notifications feature.
  */
 function rbkc_deploy_update_7122() {
   module_enable(array('feature_workbench_email_notifications'), TRUE);
+}
+
+/**
+ * Enable Rules UI module.
+ */
+function rbkc_deploy_update_7123() {
+  module_enable(array('rules_ui'), TRUE);
+}
+
+/**
+ * Enable Rules UI module.
+ */
+function rbkc_deploy_update_7124() {
+  module_enable(array('rules_admin'), TRUE);
+}
+
+/**
+ * Enable Module Filter module.
+ */
+function rbkc_deploy_update_7125() {
+  module_enable(array('module_filter'), TRUE);
+}
+
+/**
+ * Enable RBKC Custom Meta module.
+ */
+function rbkc_deploy_update_7126() {
+  module_enable(array('rbkc_custom_meta'), TRUE);
+}
+
+/**
+ * EnableRBKC Funelback integration module.
+ */
+function rbkc_deploy_update_7127() {
+  module_enable(array('rbkc_funnelback'), TRUE);
 }

@@ -1,0 +1,132 @@
+<?php
+
+define('FUNNELBACK_DEV_URL', 'https://webtest.rbkc.gov.uk/search');
+define('FUNNELBACK_PROD_URL', 'https://www.rbkc.gov.uk/search');
+
+function rbkc_funnelback_url() {
+  global $base_url;
+  $url_components = parse_url($base_url);
+  
+  $prod_hosts = array(
+    'www.rbkc.gov.uk',
+    'rbkcdrupal.rbkc.gov.uk',
+  );
+  
+  if (in_array($url_components['host'], $prod_hosts)) {
+    return FUNNELBACK_PROD_URL;
+  } else {
+    return FUNNELBACK_DEV_URL;
+  }
+  
+}
+
+/**
+ * Implementation of hook_menu
+ */
+function rbkc_funnelback_menu() {
+  
+  $items = array();
+  
+  $items['admin/config/search/rbkc_funnelback'] = array(
+    'title' => 'Funnelback settings',
+    'description' => 'Funnelback settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('rbkc_funnelback_admin'),
+    'access arguments' => array('administer funnelback integration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  
+  return $items;
+}
+
+
+/**
+ * Implementation of hook_permission
+ */
+function rbkc_funnelback_permission() {
+  return array(
+    'administer funnelback integration' => array(
+      'title' => t('Administer Funnelback integration'),
+      'description' => t('Administer Funnelback integration settings.'),
+    ),
+  );
+}
+
+function rbkc_funnelback_admin() {
+  $form = array();
+  
+  $form['rbkc_funnelback_active'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Funnelback search'),
+    '#default_value' => variable_get('rbkc_funnelback_active', true),
+    '#description' => t("Tick this box to enable the Funnelback form."),
+  );
+  
+  return system_settings_form($form);
+}
+
+function rbkc_funnelback_form() {
+  $js = "jQuery(document).ready( function() {
+
+   var searchQuery;
+
+   jQuery('#edit-keyword').change(function() {
+      searchQuery = $(this).val();
+   });
+
+   jQuery('[data-toggle=tooltip]').tooltip({'html': true});
+
+   // Query completion setup.
+   jQuery(\"#edit-keywords\").fbcompletion({
+     'enabled'    : 'enabled',
+     'collection' : 'rbkc-web-website',
+     'program'    : '".rbkc_funnelback_url()."/suggest.json',
+     'format'     : 'extended',
+     'alpha'      : '.5',
+     'show'       : '10',
+     'sort'       : '0',
+     'length'     : '3',
+     'delay'      : '0',
+   });
+
+  });";
+  
+  drupal_add_js($js, 'inline');
+  drupal_add_js(drupal_get_path('module', 'rbkc_funnelback').'/jquery-ui-1.10.3.custom.min.js', 'file');
+  drupal_add_js(drupal_get_path('module', 'rbkc_funnelback').'/jquery.funnelback-completion.js', 'file');
+  drupal_add_css(drupal_get_path('module', 'rbkc_funnelback').'/rbkc_funnelback.css', 'file');
+  
+  return drupal_render(drupal_get_form('rbkc_funnelback_search_form'));
+}
+
+function rbkc_funnelback_search_form($form, &$form_state) {
+  $form = array();
+  
+  $form['keywords'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Enter the terms you wish to search for.'),
+    '#title_display' => 'invisible',
+    '#size' => 15,
+    '#default_value' => '',
+    '#attributes' => array('placeholder' => t('Enter search terms…'), 'class' => array('search__input')),
+  );
+  
+  $form['actions'] = array(
+    '#type' => 'actions',
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Search'),
+      '#attributes' => array('class' => array('search__submit')),
+    ),
+  );
+  
+  return $form;
+}
+
+function rbkc_funnelback_search_form_submit($form, &$form_state) {
+  
+  $query = $form_state['values']['keywords'];
+  
+  drupal_goto(rbkc_funnelback_url().'/search.html?collection=rbkc-web-website&query='.$query);
+  
+}

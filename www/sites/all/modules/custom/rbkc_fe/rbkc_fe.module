@@ -150,7 +150,9 @@ function rbkc_fe_scald_render($atom, $context, $options) {
 }
 
 function rbkc_fe_form_alter(&$form, &$form_state, $form_id) {
-  if (strpos($form_id, 'webform') !== FALSE || strpos($form_id, 'search_form') !== FALSE ) {
-    $form['#attributes']['class'][] = 'form';
+  if ((strpos($form_id, 'webform') !== FALSE) || (strpos($form_id, 'search_form') !== FALSE )) {
+    if ($form_id !== 'rbkc_funnelback_search_form') { // don't add the form clas to the funnelback search form
+      $form['#attributes']['class'][] = 'form';
+    }
   }
 }
