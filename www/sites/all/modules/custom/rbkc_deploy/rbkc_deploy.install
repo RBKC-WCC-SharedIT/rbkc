@@ -1298,7 +1298,7 @@ function rbkc_deploy_update_7126() {
 }
 
 /**
- * EnableRBKC Funelback integration module.
+ * Enable RBKC Funnelback integration module.
  */
 function rbkc_deploy_update_7127() {
   module_enable(array('rbkc_funnelback'), TRUE);
