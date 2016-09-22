@@ -750,7 +750,7 @@
     opacity: 1;
     font-size: 18px;
     height: 56px;
-    border: solid #ddd 1px;
+    border: solid #D3D3D1 1px;
     margin-right: 56px;
     width:100%;
     -moz-box-sizing: border-box;
@@ -760,10 +760,11 @@
   }
   .search--hp .search__wrap input:focus {
     background:#fff;
+    outline: none;
   }
   .search--hp .search__submit {
     background: #88898a url('../images/refresh/search-hp.png') center no-repeat;
-    border: 0;
+    border: solid #D3D3D1 1px;
     border-left: solid #ddd 1px;
     background-size: cover;
     height: 56px;
