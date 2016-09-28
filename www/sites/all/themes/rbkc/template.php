@@ -490,6 +490,19 @@ function rbkc_preprocess_page(&$vars) {
         break;
     }
   }
+
+  $siteimprove_script =
+  "/*<![CDATA[*/
+  (function() {
+  var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+  sz.src = '//siteimproveanalytics.com/js/siteanalyze_456378.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+  })();
+  /*]]>*/";
+
+  drupal_add_js($siteimprove_script,
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 1)
+  );
 }
 
 /**
@@ -541,12 +554,12 @@ function rbkc_search_form() {
  */
 function rbkc_theme() {
   $items = array();
-  
+
   $items['rbkc_funnelback_search_form'] = array(
     'render element' => 'form',
     'template' => 'rbkc-funnelback-search-form',
     'path' => drupal_get_path('theme', 'rbkc') . '/templates',
   );
-  
+
   return $items;
 }
