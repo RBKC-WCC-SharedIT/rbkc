@@ -88,9 +88,13 @@
 /*               MAJOR ELEMENT RULES                */
 /****************************************************/
 
-/* search - what is this? */
+/* search */
 .js .search--hp input {
     display: block;
+}
+.search--hp input {
+  /* added font size in px for iOS zoom fix */
+  font-size: 16px;
 }
 
 /* search box for home page */
