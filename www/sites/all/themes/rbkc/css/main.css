@@ -546,8 +546,6 @@ margin-bottom: 0 !important;
   border: 0;
   position: relative;
   z-index: 150;
-  /* added font size in px for iOS zoom fix */
-  font-size: 16px;
 }
 .search__submit {
   background: #fff url('../images/refresh/search_submit_37px.png') no-repeat;
